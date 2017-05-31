@@ -1,4 +1,3 @@
-! bob
 module bob
 contains
   function is_uppercase(str)

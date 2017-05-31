@@ -36,24 +36,77 @@ end function random_question
 
 test stating_something
   assert_equal( 'Whatever.' , hey('Tom-ay-to, tomaaaah-to.') )
-  assert_equal( 'Whoa chill out!' , hey('WATCH OUT!') )
-  assert_equal( 'Whoa chill out!' , hey(random_shouting(11)) )
-  assert_equal( 'Sure.' , hey('Does this cryogenic chamber make me look fat?') )
-  assert_equal( 'Sure.' , hey('You are, what, like 15?') )
-  assert_equal( 'Sure.' , hey(random_question(11)) )
-  assert_equal( 'Whatever.' , hey('Lets''s go make out behind the gym!') )
-  assert_equal( 'Whatever.' , hey('It''s OK if you don''t want to go to the DMV.') )
-  assert_equal( 'Whoa chill out!' , hey('WHAT THE HELL WHERE YOU THINKING?') )
-  assert_equal( 'Whoa chill out!' , hey('1, 2, 3, GO!') )
-  assert_equal( 'Whatever.' , hey('1, 2, 3') )
-  assert_equal( 'Sure.' , hey('4?') )
-  assert_equal( 'Whoa chill out!' , hey('ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!') )
-  assert_equal( 'Whoa chill out!' , hey('I HATE YOU') )
-  assert_equal( 'Whatever.' , hey('Ending with ? means a question.') )
-  assert_equal( 'Sure.' , hey('Wait! Hang on. Are you going to ge OK?') )
-  assert_equal( 'Fine. Be that way!' , hey('') )
-  assert_equal( 'Fine. Be that way!' , hey('     ') )
+end test
 
+test shouting
+  assert_equal( 'Whoa chill out!' , hey('WATCH OUT!') )
+end test
+
+test shouting_gibberish
+  assert_equal( 'Whoa chill out!' , hey(random_shouting(11)) )
+end test
+
+test asking_a_question
+  assert_equal( 'Sure.' , hey('Does this cryogenic chamber make me look fat?') )
+end test
+
+test asking_a_numeric_question
+  assert_equal( 'Sure.' , hey('You are, what, like 15?') )
+end test
+
+test asking_gibberish
+  assert_equal( 'Sure.' , hey(random_question(11)) )
+end test
+
+test talking_forcefully
+  assert_equal( 'Whatever.' , hey('Lets''s go make out behind the gym!') )
+end test
+
+test using_acronyms_in_regular_speech
+  assert_equal( 'Whatever.' , hey('It''s OK if you don''t want to go to the DMV.') )
+end test
+
+test forceful_questions
+  assert_equal( 'Whoa chill out!' , hey('WHAT THE HELL WHERE YOU THINKING?') )
+end test
+
+test shouting_numbers
+  assert_equal( 'Whoa chill out!' , hey('1, 2, 3, GO!') )
+end test
+
+test only_numbers
+  assert_equal( 'Whatever.' , hey('1, 2, 3') )
+end test
+
+test questions_with_only_numbers
+  assert_equal( 'Sure.' , hey('4?') )
+end test
+
+test shouting_with_special_characters
+  assert_equal( 'Whoa chill out!' , hey('ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!') )
+end test
+
+test shouting_with_no_exclamation_mark
+  assert_equal( 'Whoa chill out!' , hey('I HATE YOU') )
+end test
+
+test statement_containing_exclamation_mark
+  assert_equal( 'Whatever.' , hey('Ending with ? means a question.') )
+end test
+
+test prattling_on
+  assert_equal( 'Sure.' , hey('Wait! Hang on. Are you going to ge OK?') )
+end test
+
+test silence
+  assert_equal( 'Fine. Be that way!' , hey('') )
+end test
+
+test prolonged_silence
+  assert_equal( 'Fine. Be that way!' , hey('     ') )
+end test
+
+test on_multiple_line_questions
   multi_line_string = ''//NEW_LINE('A')//'Does this cryogenic chamber make me look fat?'//NEW_LINE('A')//'no'
   assert_equal( 'Whatever.' , hey(multi_line_string) )
 end test
