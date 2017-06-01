@@ -5,7 +5,18 @@
   "active": false,
   "test_pattern": "TODO",
   "exercises": [
-
+  {
+      "slug": "hello_world",
+      "difficulty": 1,
+      "topics": [
+      ]
+  },
+  {
+      "slug": "bob",
+      "difficulty": 1,
+      "topics": [
+      ]
+  }
   ],
   "deprecated": [
 
