@@ -33,7 +33,7 @@ test-assignment: ## run single test using ASSIGNMENTS: test-assignment ASSIGNMEN
 #	@cat ./exercises/$(ASSIGNMENT)/$(TSTFILE) | sed '/markTestSkipped()/d' > $(OUTDIR)/$(TSTFILE)
 	@cat ./exercises/$(ASSIGNMENT)/$(TSTFILE) > $(OUTDIR)/$(TSTFILE)
 	@cp ./exercises/$(ASSIGNMENT)/$(EXAMPLE) $(OUTDIR)/$(ASSIGNMENT).$(FILEEXT)
-	@pushd $(OUTDIR) && funit && popd
+	@cd $(OUTDIR) && funit
 
 test: ## run all tests
 	@for assignment in $(ASSIGNMENTS); do ASSIGNMENT=$$assignment $(MAKE) -s test-assignment || exit 1; done
