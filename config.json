@@ -16,6 +16,12 @@
       "difficulty": 1,
       "topics": [
       ]
+  },
+  {
+      "slug": "hamming",
+      "difficulty": 1,
+      "topics": [
+      ]
   }
   ],
   "deprecated": [
