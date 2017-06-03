@@ -3,10 +3,11 @@
   "language": "Fortran",
   "repository": "https://github.com/exercism/xfortran",
   "active": false,
-  "test_pattern": "TODO",
+  "test_pattern": ".*\\.fun",
+  "solution_pattern": "example.f90",
   "exercises": [
   {
-      "slug": "hello_world",
+      "slug": "hello-world",
       "difficulty": 1,
       "topics": [
       ]

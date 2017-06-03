@@ -11,7 +11,8 @@ OUTDIR := $(shell mktemp -d "$(TMPDIR)/$(ASSIGNMENT).XXXXXXXXXX")
 FILEEXT := "f90"
 TESTEXT := "fun"
 EXAMPLE := "example.$(FILEEXT)"
-TSTFILE := "$(ASSIGNMENT).$(TESTEXT)"
+TESTNAME := $(shell echo $(ASSIGNMENT) | sed -e "s/-/_/g")
+TSTFILE := "$(TESTNAME).$(TESTEXT)"
 
 # compiler flags
 export FSFLAG := "-I"
@@ -30,8 +31,10 @@ install-test: ## install test dependency: funit
 
 test-assignment: ## run single test using ASSIGNMENTS: test-assignment ASSIGNMENT=wordy
 	@echo "running tests for: $(ASSIGNMENT)"
+	@echo "$(OUTDIR)"
+	@echo "$(TSTFILE)"
 	@cat ./exercises/$(ASSIGNMENT)/$(TSTFILE) | sed 's/Xtest/test/' > $(OUTDIR)/$(TSTFILE)
-	@cp ./exercises/$(ASSIGNMENT)/$(EXAMPLE) $(OUTDIR)/$(ASSIGNMENT).$(FILEEXT)
+	@cp ./exercises/$(ASSIGNMENT)/$(EXAMPLE) $(OUTDIR)/$(TESTNAME).$(FILEEXT)
 	@cd $(OUTDIR) && funit
 
 test: ## run all tests
