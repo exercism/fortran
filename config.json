@@ -35,6 +35,12 @@
       "difficulty": 1,
       "topics": [
       ]
+  },
+  {
+      "slug": "difference-of-squares",
+      "difficulty": 1,
+      "topics": [
+      ]
   }
   ],
   "deprecated": [
