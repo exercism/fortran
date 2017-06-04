@@ -31,8 +31,6 @@ install-test: ## install test dependency: funit
 
 test-assignment: ## run single test using ASSIGNMENTS: test-assignment ASSIGNMENT=wordy
 	@echo "running tests for: $(ASSIGNMENT)"
-	@echo "$(OUTDIR)"
-	@echo "$(TSTFILE)"
 	@cat ./exercises/$(ASSIGNMENT)/$(TSTFILE) | sed 's/Xtest/test/' > $(OUTDIR)/$(TSTFILE)
 	@cp ./exercises/$(ASSIGNMENT)/$(EXAMPLE) $(OUTDIR)/$(TESTNAME).$(FILEEXT)
 	@cd $(OUTDIR) && funit
