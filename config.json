@@ -6,48 +6,55 @@
   "test_pattern": ".*\\.fun",
   "solution_pattern": "example.f90",
   "exercises": [
-  {
+    {
       "slug": "hello-world",
       "difficulty": 1,
       "topics": [
+
       ]
-  },
-  {
+    },
+    {
       "slug": "bob",
       "difficulty": 1,
       "topics": [
+
       ]
-  },
-  {
+    },
+    {
       "slug": "hamming",
       "difficulty": 1,
       "topics": [
+
       ]
-  },
-  {
+    },
+    {
       "slug": "rna-transcription",
       "difficulty": 1,
       "topics": [
+
       ]
-  },
-  {
+    },
+    {
       "slug": "raindrops",
       "difficulty": 1,
       "topics": [
+
       ]
-  },
-  {
+    },
+    {
       "slug": "difference-of-squares",
       "difficulty": 1,
       "topics": [
+
       ]
-  },
-  {
+    },
+    {
       "slug": "pangram",
       "difficulty": 1,
       "topics": [
+
       ]
-  }
+    }
   ],
   "deprecated": [
 
