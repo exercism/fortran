@@ -1,6 +1,6 @@
 # Exercism Fortran Track
 
-[![Build Status](https://travis-ci.org/exercism/xfortran.svg?branch=master)](https://travis-ci.org/exercism/xfortran)
+[![Build Status](https://travis-ci.org/exercism/fortran.svg?branch=master)](https://travis-ci.org/exercism/fortran)
 
 Exercism exercises in Fortran.
 
