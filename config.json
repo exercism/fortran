@@ -1,7 +1,5 @@
 {
-  "slug": "fortran",
   "language": "Fortran",
-  "repository": "https://github.com/exercism/fortran",
   "active": false,
   "test_pattern": ".*\\.fun",
   "solution_pattern": "example.f90",
