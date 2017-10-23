@@ -1,81 +1,65 @@
 {
-  "language": "Fortran",
   "active": false,
-  "test_pattern": ".*\\.fun",
-  "solution_pattern": "example.f90",
   "exercises": [
     {
-      "uuid": "b71d9258-78ef-4986-b9ed-ebf93b72d399",
+      "core": false,
+      "difficulty": 1,
       "slug": "hello-world",
-      "core": false,
+      "topics": null,
       "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-
-      ]
+      "uuid": "b71d9258-78ef-4986-b9ed-ebf93b72d399"
     },
     {
-      "uuid": "c0657767-1d7f-4262-b932-50ab53b9c220",
+      "core": false,
+      "difficulty": 1,
       "slug": "bob",
-      "core": false,
+      "topics": null,
       "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-
-      ]
+      "uuid": "c0657767-1d7f-4262-b932-50ab53b9c220"
     },
     {
-      "uuid": "c4b23221-b6a8-452c-9816-c30501fc690f",
+      "core": false,
+      "difficulty": 1,
       "slug": "hamming",
-      "core": false,
+      "topics": null,
       "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-
-      ]
+      "uuid": "c4b23221-b6a8-452c-9816-c30501fc690f"
     },
     {
-      "uuid": "6fa09622-b92d-42ae-aeba-b68717c0b51c",
+      "core": false,
+      "difficulty": 1,
       "slug": "rna-transcription",
-      "core": false,
+      "topics": null,
       "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-
-      ]
+      "uuid": "6fa09622-b92d-42ae-aeba-b68717c0b51c"
     },
     {
-      "uuid": "15bab787-1566-45e9-9e26-0bb7f57bbcd5",
+      "core": false,
+      "difficulty": 1,
       "slug": "raindrops",
-      "core": false,
+      "topics": null,
       "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-
-      ]
+      "uuid": "15bab787-1566-45e9-9e26-0bb7f57bbcd5"
     },
     {
-      "uuid": "dd6c972e-3c85-4a92-b8e5-d58ea3cadfa0",
+      "core": false,
+      "difficulty": 1,
       "slug": "difference-of-squares",
-      "core": false,
+      "topics": null,
       "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-
-      ]
+      "uuid": "dd6c972e-3c85-4a92-b8e5-d58ea3cadfa0"
     },
     {
-      "uuid": "c9100446-6e8a-4171-9c1c-61f2b86ba24f",
-      "slug": "pangram",
       "core": false,
-      "unlocked_by": null,
       "difficulty": 1,
-      "topics": [
-
-      ]
+      "slug": "pangram",
+      "topics": null,
+      "unlocked_by": null,
+      "uuid": "c9100446-6e8a-4171-9c1c-61f2b86ba24f"
     }
   ],
-  "foregone": [
-
-  ]
+  "foregone": [],
+  "language": "Fortran",
+  "solution_pattern": "example.f90",
+  "test_pattern": ".*\\.fun"
 }
