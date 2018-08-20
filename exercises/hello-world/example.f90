@@ -1,9 +1,17 @@
-module hello_world
+
+
+module HelloMod
+  implicit none
+  save
+  private 
+  public hello
+  
 contains
-  function hello()
-    character(12) :: hello
-    hello = 'Hello World'
 
-  end function hello
+function hello()
+  character(len=100) :: hello
+  hello="Hello, World!"
+  write(*,*) hello
+end function
 
-end module hello_world
+end module 

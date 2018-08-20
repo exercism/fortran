@@ -1,16 +1,13 @@
----
-language: c
-
-before_install:
-  - sudo apt-get install gfortran
-  - sudo apt-get install ruby-full
+dist: trusty
+sudo: false 
+language: fortran
 
 install:
-  - sudo gem install funit
-
+  - sudo apt-get -y install gfortran
+  - sudo apt-get -y install cmake
 script:
-  - make test
   - bin/fetch-configlet
   - bin/configlet lint .
+  - cmake -G "Unix Makefiles"
+  - make
 
-sudo: required
