@@ -1,7 +1,10 @@
 dist: trusty
 sudo: false 
 language: fortran
-
+branches:
+  only:
+  - fortran-cmake
+  
 install:
   - sudo apt-get -y install gfortran
   - sudo apt-get -y install cmake

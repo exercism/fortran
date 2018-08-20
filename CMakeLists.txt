@@ -1,14 +1,11 @@
 cmake_minimum_required(VERSION 2.8.11)
-project(exercism CXX)
+project(exercism Fortran)
 
 function(travis_fixup dir)
     string(REPLACE "-" "_" file ${dir})
     set(subdir ${CMAKE_CURRENT_SOURCE_DIR}/exercises/${dir})
-    if(EXISTS ${subdir}/example.h)
-        file(RENAME ${subdir}/example.h ${subdir}/${file}.h)
-    endif()
-    if(EXISTS ${subdir}/example.cpp)
-        file(RENAME ${subdir}/example.cpp ${subdir}/${file}.cpp)
+    if(EXISTS ${subdir}/example.f90)
+        file(RENAME ${subdir}/example.f90 ${subdir}/${file}.f90)
     endif()
 endfunction()
 
@@ -62,3 +59,4 @@ foreach(exercise
         COMMAND ${CMAKE_COMMAND} --build .
         WORKING_DIRECTORY ${exercise_dir})
 endforeach()
+
