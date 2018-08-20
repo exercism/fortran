@@ -11,7 +11,7 @@ endfunction()
 
 foreach(exercise
   hello-world
-#    bob
+  bob
 #    word-count
 #    hamming
 #    anagram

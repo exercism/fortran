@@ -1,9 +1,11 @@
 module bob
+implicit none
 contains
   function is_uppercase(str)
     logical :: is_uppercase
     character(*) :: str
     character :: chr
+    integer :: i
 
     is_uppercase = .FALSE.
 
