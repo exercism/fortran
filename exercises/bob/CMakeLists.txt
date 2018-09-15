@@ -7,6 +7,9 @@ cmake_minimum_required(VERSION 2.8.11)
 # Name the project after the exercise
 project(${exercise} Fortran)
 
+# set debug build default
+set(CMAKE_BIULD_TYPE Debug)
+
 # Configure to run all the tests?
 if(${EXERCISM_RUN_ALL_TESTS})
     add_definitions(-DEXERCISM_RUN_ALL_TESTS)
@@ -22,10 +25,12 @@ else()
 endif()
 
 # Build executable from sources and headers
-add_executable(${exercise} ${exercise_f90} ${file}_test.f90 )
+add_executable(${exercise} ${exercise_f90} TesterMain.f90 ${file}_test.f90 )
 
-include(CTest)
-add_test (TestFortran ${exercise} )
 
 # Run the tests on every build
-add_custom_command(TARGET ${exercise} POST_BUILD COMMAND ctest )
+
+
+include(CTest)
+
+add_test (${exercise}_test ${exercise} )

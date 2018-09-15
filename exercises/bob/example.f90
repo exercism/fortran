@@ -1,23 +1,20 @@
 module bob
-implicit none
+  implicit none
 contains
   function is_uppercase(str)
     logical :: is_uppercase
-    character(*) :: str
+    character(len=*),intent(in) :: str
     character :: chr
     integer :: i
-
     is_uppercase = .FALSE.
-
-    do i = 1,len(str)
+    do i = 1,len_trim(str)
       chr = str(i:i)
       if (chr >= 'a' .AND. chr <= 'z') then
-          is_uppercase = .FALSE.
-          return
+        is_uppercase = .FALSE.
+        return
       else if (chr >= 'A' .AND. chr <= 'Z') then
-          is_uppercase = .TRUE.
+        is_uppercase = .TRUE.
       end if
-
     end do
   end function is_uppercase
 
@@ -25,39 +22,33 @@ contains
     logical :: is_question
     character(*) :: str
     character :: chr
-
-    chr = str(len(str):len(str))
+    integer :: i 
+    i = len_trim(str)
+    chr = str(i:i)
     is_question = (chr .EQ. '?')
   end function is_question
 
   function is_blank(str)
     logical :: is_blank
     character(*) :: str
-    integer :: i
-    is_blank = .TRUE.
-
-    do i = 1,len(str)
-      if ( str(i:i) .NE. ' ' ) then
-        is_blank = .FALSE.
-        return
-      end if
-    end do
-
+    is_blank = len_trim(adjustl(str)) == 0
   end function is_blank
 
-  function hey(statement)
-    character(100) :: hey
-    character(*) :: statement
+  function heyBob(statement)
+    character(100) :: heyBob
+    character(len=*), intent(in) :: statement
 
-    if ( is_uppercase(statement) ) then
-      hey = 'Whoa chill out!'
+    if ( is_uppercase(statement) .and.is_question(statement) ) then
+      heyBob = "Calm down, I know what I'm doing!"
+    else if ( is_uppercase(statement) ) then
+      heyBob = 'Whoa, chill out!'
     else if ( is_question(statement) ) then
-      hey = 'Sure.'
+      heyBob = 'Sure.'
     else if ( is_blank(statement) ) then
-      hey = 'Fine. Be that way!'
+      heyBob = 'Fine. Be that way!'
     else
-      hey = 'Whatever.'
+      heyBob = 'Whatever.'
     end if
 
-  end function hey
+  end function heyBob
 end module bob
