@@ -87,8 +87,3 @@ improve the CMake support.
 
 [CMake 2.8.11 or later](http://www.cmake.org/) is required to use the provided build recipe.
 
-
-### funit
-
-
-https://rubygems.org/gems/funit/versions/0.12.4
