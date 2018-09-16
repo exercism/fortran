@@ -3,7 +3,7 @@
   "active": false,
   "blurb": "",
   "solution_pattern": "example.f90",
-  "test_pattern": ".*\\.fun",
+  "test_pattern": ".*\\_test.f90",
   "exercises": [
     {
       "slug": "hello-world",
