@@ -25,7 +25,7 @@ else()
 endif()
 
 # Build executable from sources and headers
-add_executable(${exercise} ${exercise_f90} TesterMain.f90 ${file}_test.f90 )
+add_executable(${exercise}.exe ${file}_test.f90 TesterMain.f90 ${exercise_f90} )
 
 
 # Run the tests on every build
@@ -33,4 +33,5 @@ add_executable(${exercise} ${exercise_f90} TesterMain.f90 ${file}_test.f90 )
 
 include(CTest)
 
-add_test (${exercise}_test ${exercise} )
+add_test (${exercise}_test ${exercise}.exe )
+

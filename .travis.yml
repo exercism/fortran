@@ -1,16 +1,17 @@
 dist: trusty
 sudo: false 
-language: fortran
+#language: fortran
+language: C
 branches:
   only:
   - fortran-cmake
   
 install:
-  - sudo apt-get -y install gfortran
-  - sudo apt-get -y install cmake
+  - sudo apt-get -y install gfortran cmake
 script:
   - bin/fetch-configlet
   - bin/configlet lint .
   - cmake -G "Unix Makefiles"
   - make
+  - ctest -V
 

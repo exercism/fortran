@@ -2,7 +2,6 @@
     
 program bob_test_main
   use TesterMain
-  use bob_test
   use bob
   implicit none
 

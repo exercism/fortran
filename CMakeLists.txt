@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8.11)
 project(exercism Fortran)
+include(CTest)  
 
 function(travis_fixup dir)
     string(REPLACE "-" "_" file ${dir})
@@ -52,11 +53,10 @@ foreach(exercise
 )
     set(exercise_dir exercises/${exercise})
     travis_fixup(${exercise})
+    add_subdirectory(${exercise_dir})
     execute_process(
         COMMAND ${CMAKE_COMMAND} -DEXERCISM_RUN_ALL_TESTS:BOOL=1 -G ${CMAKE_GENERATOR} .
         WORKING_DIRECTORY ${exercise_dir})
-    add_custom_target(${exercise} ALL
-        COMMAND ${CMAKE_COMMAND} --build .
-        WORKING_DIRECTORY ${exercise_dir})
+        
 endforeach()
 
