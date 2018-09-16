@@ -1,10 +1,16 @@
 
 
 import json
+import argparse
+
+def fix_and_quote_fortran_multiline(txt):
+    if isinstance(txt, str):
+        txt=txt.replace('\n', '"// & \n    & "')
+        return '"%s"'%txt
+    else:
+        return txt
 
 
-def fix_fortran_multiline(txt):
-    return txt.replace('\n', '"// & \n    & "')
 
 def create_test(test_name, json_name):
     f = open (json_name)
@@ -14,7 +20,6 @@ def create_test(test_name, json_name):
     
 program EXERCISE_test_main
   use TesterMain
-  use EXERCISE_test
   use EXERCISE
   implicit none
 
@@ -26,14 +31,16 @@ program EXERCISE_test_main
     for tnum,c in enumerate(j['cases']):
         # {'description': 'non-question ending with whitespace', 'property': 'response', 'input': {'heyBob': 'This is a statement ending with whitespace      '}, 'expected': 'Whatever.'}
         description = c['description']
-        fcall = list(c['input'].keys())[0]
-        inp = '{}("{}")'.format( fcall, c['input'][fcall] )
-        expected = c['expected']
-        
-        inp = fix_fortran_multiline(inp)
-        expected = fix_fortran_multiline(expected)
-        si.append('  ! Test %d: %s'%(tnum+1, description))
-        si.append('  call assert_equal("{}", {}, "{}")'.format(expected, inp, description))
+        fcall = c['property']
+        args = [v for k,v in c['input'].items()]
+        inp = '{}({}'.format( fcall, fix_and_quote_fortran_multiline(args[0]))
+        for a in args[1:]:
+            inp='{}, {}'.format(inp, fix_and_quote_fortran_multiline(a))
+        inp='{})'.format(inp)
+        expected = c['expected']        
+        expected = fix_and_quote_fortran_multiline(expected) 
+        si.append('  ! Test %d: %s'%(tnum+1, description))        
+        si.append('  call assert_equal({}, {}, "{}")'.format(expected, inp, description))
     
     si.append(' ')
     si.append('  call test_end()')
@@ -47,6 +54,20 @@ program EXERCISE_test_main
     of.close()
 
 if __name__ == '__main__':
-    create_test('bob_test.f90', "bob.json")
+
+    parser = argparse.ArgumentParser(description='Create test.f90')
+    
+    parser.add_argument("-j", "--json",
+              dest='json',
+              required=True,
+              help="json file with test spec ")
+    parser.add_argument("-t", "--target",
+              dest='target',
+              required=True,
+              help="Target file, eg. <exercise>_test.f90 ")
+    args = parser.parse_args()
+
+    print (args ) 
+    create_test(args.target, args.json)
 
 

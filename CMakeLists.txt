@@ -14,7 +14,7 @@ foreach(exercise
   hello-world
   bob
 #    word-count
-#    hamming
+  hamming
 #    anagram
 #    food-chain
 #    beer-song
