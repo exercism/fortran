@@ -1,6 +1,6 @@
 
 
-module HelloMod
+module hello_world
   implicit none
   save
   private 
