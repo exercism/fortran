@@ -31,7 +31,7 @@ foreach(exercise
 #    triangle
 #    clock
 #    raindrops
-#    difference-of-squares
+    difference-of-squares
 #    roman-numerals
 #    nth-prime
 #    sieve

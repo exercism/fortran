@@ -1,5 +1,6 @@
-module difference_of_squares
-  contains
+module DifferenceOfSquares
+  implicit none
+ contains
   integer function square_of_sum(n)
     implicit none
     integer :: i,n
@@ -11,7 +12,7 @@ module difference_of_squares
     end do
 
     square_of_sum = square_of_sum * square_of_sum
-  end function square_of_sum
+  end function 
 
   integer function sum_of_squares(n)
     implicit none
@@ -23,13 +24,13 @@ module difference_of_squares
       sum_of_squares = sum_of_squares + i**2
     end do
 
-  end function sum_of_squares
+  end function 
 
-  integer function difference(n)
+  integer function difference_of_squares(n)
     implicit none
     integer :: n
 
-    difference = square_of_sum(n) - sum_of_squares(n)
-  end function difference
+    difference_of_squares = square_of_sum(n) - sum_of_squares(n)
+  end function 
 
-end module difference_of_squares
+end module DifferenceOfSquares
