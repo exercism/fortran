@@ -19,7 +19,7 @@ foreach(exercise
 #    food-chain
 #    beer-song
 #    nucleotide-count
-#    rna-transcription
+    rna-transcription
 #    phone-number
 #    grade-school
 #    robot-name
