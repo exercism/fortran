@@ -30,7 +30,7 @@ foreach(exercise
 #    gigasecond
 #    triangle
 #    clock
-#    raindrops
+    raindrops
     difference-of-squares
 #    roman-numerals
 #    nth-prime
