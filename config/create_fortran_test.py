@@ -10,41 +10,31 @@ def fix_and_quote_fortran_multiline(txt):
     else:
         return txt
 
-def create_single_test_version140(j):
+def write_testcase(c, tnum):    
     si=[]
-    for tnum,c in enumerate(j['cases']):
         # {'description': 'non-question ending with whitespace', 'property': 'response', 'input': {'heyBob': 'This is a statement ending with whitespace      '}, 'expected': 'Whatever.'}
-        description = c['description']
-        fcall = c['property']
-        args = [v for k,v in c['input'].items()]
-        inp = '{}({}'.format( fcall, fix_and_quote_fortran_multiline(args[0]))
-        for a in args[1:]:
-            inp='{}, {}'.format(inp, fix_and_quote_fortran_multiline(a))
-        inp='{})'.format(inp)
-        expected = c['expected']        
-        expected = fix_and_quote_fortran_multiline(expected) 
-        si.append('  ! Test %d: %s'%(tnum+1, description))        
-        si.append('  call assert_equal({}, {}, "{}")'.format(expected, inp, description))
+    description = c['description']
+    fcall = c['property']
+    args = [v for k,v in c['input'].items()]
+    inp = '{}({}'.format( fcall, fix_and_quote_fortran_multiline(args[0]))
+    for a in args[1:]:
+        inp='{}, {}'.format(inp, fix_and_quote_fortran_multiline(a))
+    inp='{})'.format(inp)
+    expected = c['expected']        
+    expected = fix_and_quote_fortran_multiline(expected) 
+    si.append('  ! Test %d: %s'%(tnum+1, description))        
+    si.append('  call assert_equal({}, {}, "{}")'.format(expected, inp, description))
     return si
 
 
-def create_single_test_version120(j):
+def create_single_test(j):
     si=[]
-    for tcnum,cc in enumerate(j['cases']):
-        si.append('  ! Test %s'%(cc['description']))        
-        for tnum,c in enumerate(cc['cases']):
-            # {'description': 'non-question ending with whitespace', 'property': 'response', 'input': {'heyBob': 'This is a statement ending with whitespace      '}, 'expected': 'Whatever.'}
-            description = c['description']
-            fcall = c['property']
-            args = [v for k,v in c['input'].items()]
-            inp = '{}({}'.format( fcall, fix_and_quote_fortran_multiline(args[0]))
-            for a in args[1:]:
-                inp='{}, {}'.format(inp, fix_and_quote_fortran_multiline(a))
-            inp='{})'.format(inp)
-            expected = c['expected']        
-            expected = fix_and_quote_fortran_multiline(expected) 
-            si.append('  ! Test %d: %s'%(tnum+1, description))        
-            si.append('  call assert_equal({}, {}, "{}")'.format(expected, inp, description))
+    for tnum,c in enumerate(j['cases']):
+        # {'description': 'non-question ending with whitespace', 'property': 'response', 'input': {'heyBob': 'This is a statement ending with whitespace      '}, 'expected': 'Whatever.'}
+        if 'cases' in c:
+            si.extend(create_single_test(c))
+        else:
+            si.extend(write_testcase(c, tnum))
     return si
 
     
@@ -66,10 +56,7 @@ program EXERCISE_test_main
     exercise = exercise.replace('-','_')
     s=s.replace('EXERCISE', exercise )
     si=s.splitlines()
-    if j['version']=="1.4.0":
-        si.extend(create_single_test_version140(j))
-    elif j['version']=="1.2.0":
-        si.extend(create_single_test_version120(j))
+    si.extend(create_single_test(j))
 
     si.append(' ')
     si.append('  call test_end()')

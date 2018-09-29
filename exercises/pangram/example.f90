@@ -1,4 +1,6 @@
 module pangram
+  implicit none
+
 contains
   logical function is_pangram(sentance)
     implicit none

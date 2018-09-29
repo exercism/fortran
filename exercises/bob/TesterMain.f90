@@ -19,6 +19,7 @@ module TesterMain
     module procedure assert_equal_str
     module procedure assert_equal_int
     module procedure assert_equal_dble
+    module procedure assert_equal_bool    
   end interface
 
 
