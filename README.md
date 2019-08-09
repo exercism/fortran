@@ -6,7 +6,33 @@ Exercism exercises in Fortran.
 
 ## Setup
 
-The simplest way to install Fortran is ...
+Assuming that you have CMake and Fortran running you should be able to run the following commands in a shell:
+
+(in case of Intel Fortran source ifortvars first)
+
+### Linux and MacOS
+
+```bash
+mkdir Debug
+cd Debug
+cmake -DCMAKE_BUILD_TYPE="Debug" ..
+make
+ctest -V
+```
+
+### Windows
+
+```Batchfile
+mkdir Debug
+cd Debug
+cmake -DCMAKE_BUILD_TYPE="Debug" -G"NMake Makefiles" ..
+nmake
+ctest -V
+```
+
+For more information see [Installation instructions](docs/INSTALLATION.md)
+
+
 
 ## Contributing
 
@@ -69,4 +95,3 @@ Please keep the following in mind:
 - Please do not commit any configuration files or directories inside the exercise other than ...
 
 - Be sure to add it to the appropriate place in the `config.json` file. Also, please run `bin/fetch-configlet && bin/configlet` to ensure the exercise is configured correctly.
-
