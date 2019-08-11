@@ -30,7 +30,7 @@
 !
 ! It should be used in test-code with 
 !
-!   call assert_equal( input, expected, message)
+!   call assert_equal(input, expected, message)
 !
 ! where input/expected may be one of: string(len=80), logical, integer or double precision 
 ! 
