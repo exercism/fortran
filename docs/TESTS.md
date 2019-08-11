@@ -6,7 +6,7 @@ prints messages for each failing test and reports a non-zero exit status
 when tests fail.
 
 *Note:* Your code is being tested against the test suite every time you build
-your project. If your code does not pass the one or more tests but is valid C++
+your project. If your code does not pass the one or more tests but is valid Fortran
 code, it will still be compiled.
 
 Running a test is done with the command ctest and use '-V' to get verbose output:
