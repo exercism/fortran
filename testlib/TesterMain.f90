@@ -165,7 +165,7 @@ contains
     write(d_to_s, *) d
   end function
 
-! Logical/bolean to string
+! Logical/boolean to string
   function b_to_s(b)
     logical, intent(in) :: b
     character(len=5) :: b_to_s
