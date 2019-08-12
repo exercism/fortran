@@ -62,13 +62,13 @@ brew install gfortran cmake
 #### Windows
 
 With Windows you have a number of options:
-- [Windows Subsystem for Linux (WSL)](##### Windows Subsystem for Linux (WSL))
-- [Windows with MingW GNU Fortran](##### Windows with MingW GNU Fortran)
-- [Windows with Visual Studio with nMake and Intel Fortran](##### Windows with Visual Studio with nMake and Intel Fortran)
+- [Windows Subsystem for Linux (WSL)](#####-Windows-Subsystem-for-Linux-(WSL))
+- [Windows with MingW GNU Fortran](#####-Windows-with-MingW-GNU-Fortran)
+- [Windows with Visual Studio with NMake and Intel Fortran](#####-Windows-with-Visual-Studio-with-NMake-and-Intel-Fortran)
 
 ##### Windows Subsystem for Linux (WSL)
 
-If you have Windows 10 and Windows Subsystem for Linux (WSL)[https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux]. If you have Ubuntu 16.04 or later as subsystem, open an ubuntu Bash shell and follow the [Linux](#### Linux) instructions.
+If you have Windows 10 and Windows Subsystem for Linux (WSL)[https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux]. If you have Ubuntu 16.04 or later as subsystem, open an ubuntu Bash shell and follow the [Linux](####-Linux) instructions.
 
 ##### Windows with MingW GNU Fortran
 
@@ -85,13 +85,13 @@ This will install MingW (GFortran and GCC) to `C:\tools\mingw64` and CMake to `C
 set PATH=%PATH%;C:\tools\mingw64\bin;C:\Program Files\CMake\bin
 ```
 
-##### Windows with Visual Studio with nMake and Intel Fortran
+##### Windows with Visual Studio with NMake and Intel Fortran
 
-See [Intel Fortran](### Intel Fortran)
+See [Intel Fortran](###-Intel-Fortran)
 
 ### Intel Fortran
 
-For Intel Fortran you have to first initialize the fortran compiler. On windows with Intel Fortran 2019 and Visual Studio 2017 the command line would be:
+For [Intel Fortran](https://software.intel.com/en-us/fortran-compilers) you have to first initialize the fortran compiler. On windows with Intel Fortran 2019 and Visual Studio 2017 the command line would be:
 
 ```Batchfile
 "c:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2019\windows\bin\ifortvars.bat" intel64 vs2017
@@ -103,11 +103,11 @@ This sources the paths for Intel Fortran and cmake should pick it up correctly. 
 mkdir Debug
 cd Debug
 cmake -G"NMake Makefiles" -DCMAKE_BUILD_TYPE="Debug" ..
-nmake
+NMake
 ctest -V
 ```
 
-The commands above will create a Debug directory (not necessary, but good practice) and build (nmake) the executables and test them (ctest).
+The commands above will create a Debug directory (not necessary, but good practice) and build (NMake) the executables and test them (ctest).
 
 For other versions of Intel Fortran you want to search your installation for `ifortvars.bat` on windows and on linux/macOS `ifortvars.sh`. Execute the script in a shell without options and a help will explain which options you have. On linux/macOS the commands would be:
 
