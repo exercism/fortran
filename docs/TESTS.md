@@ -86,7 +86,6 @@ When all build errors are fixed run the tests:
 ```
 $ ctest -V
 ```
-
 #### Windows with Visual Studio 2017
 
 The generator name for CMake is `Visual Studio 15`.  The same generator

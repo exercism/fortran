@@ -61,6 +61,17 @@ brew install gfortran cmake
 
 #### Windows
 
+With Windows you have a number of options:
+- [Windows Subsystem for Linux (WSL)](##### Windows Subsystem for Linux (WSL))
+- [Windows with MingW GNU Fortran](##### Windows with MingW GNU Fortran)
+- [Windows with Visual Studio with nMake and Intel Fortran](##### Windows with Visual Studio with nMake and Intel Fortran)
+
+##### Windows Subsystem for Linux (WSL)
+
+If you have Windows 10 and Windows Subsystem for Linux (WSL)[https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux]. If you have Ubuntu 16.04 or later as subsystem, open an ubuntu Bash shell and follow the [Linux](#### Linux) instructions.
+
+##### Windows with MingW GNU Fortran
+
 Windows users can get GNU Fortran through [MingW](http://www.mingw.org/). The easiest way is to first install [chocolatey](https://chocolatey.org).
 nd then type in a administrator cmd shell:
 
@@ -73,6 +84,10 @@ This will install MingW (GFortran and GCC) to `C:\tools\mingw64` and CMake to `C
 ```Batchfile
 set PATH=%PATH%;C:\tools\mingw64\bin;C:\Program Files\CMake\bin
 ```
+
+##### Windows with Visual Studio with nMake and Intel Fortran
+
+See [Intel Fortran](### Intel Fortran)
 
 ### Intel Fortran
 
