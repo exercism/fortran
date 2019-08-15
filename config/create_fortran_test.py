@@ -8,7 +8,7 @@
 # so take special care handling these.
 #
 # 
-# Prerequsites
+# Prerequisites
 # - Working cmake and fortran compiler
 # - Python3.x (it may work with Python2 but I have not tested)
 # - latest version of https://github.com/exercism/problem-specifications.git
