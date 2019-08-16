@@ -1,8 +1,8 @@
 module hello_world
 contains
   function hello()
-    character(12) :: hello
-    hello = 'Hello World'
+    character(13) :: hello
+    hello = 'Hello, World!'
 
   end function hello
 
