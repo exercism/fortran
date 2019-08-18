@@ -61,7 +61,7 @@ brew install gfortran cmake
 
 #### Windows
 
-With Windows you have a number of options:
+With Windows there are a number of options:
 - [Windows Subsystem for Linux (WSL)](#####-Windows-Subsystem-for-Linux-(WSL))
 - [Windows with MingW GNU Fortran](#####-Windows-with-MingW-GNU-Fortran)
 - [Windows with Visual Studio with NMake and Intel Fortran](#####-Windows-with-Visual-Studio-with-NMake-and-Intel-Fortran)
