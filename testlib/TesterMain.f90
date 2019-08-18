@@ -34,7 +34,7 @@
 !
 ! where input/expected may be one of: string(len=80), logical, integer or double precision 
 ! 
-! When used like below number of failed test is counted and summarized in 'test_end' routine
+! When used like below number of failed test is counted and summarized in 'test_report' routine
 !
 !------------------------------------------------------------------
 !   EXAMPLE from exercise bob  
@@ -49,7 +49,7 @@
 !
 !... more tests ...
 !
-!  call test_end()
+!  call test_report()
 ! 
 !end program
 !
@@ -85,7 +85,7 @@ module TesterMain
 contains
 
 !------------------------------------------------------------------
-  subroutine test_end()
+  subroutine test_report()
     call logger('Test summary: '//trim(adjustl(i_to_s(TESTS_FAILED)))//' of '//trim(adjustl(i_to_s(TESTS_RUN)))//' tests failed')
     if (TESTS_FAILED==0) then
       STOP 0
