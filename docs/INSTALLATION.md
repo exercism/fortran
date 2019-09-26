@@ -11,7 +11,10 @@ This language track requires a compiler with [Fortran 2003](https://en.wikipedia
 support. All major compilers released in the last few years should
 be compatible, so as long as you are on a fairly recent version you should be fine.
 
-The following will describe installation of [GNU Fortran](https://gcc.gnu.org/fortran/) or GFortran. Other fortran compilers are listed [here](https://en.wikipedia.org/wiki/List_of_compilers#Fortran_compilers). Intel Fortran is a popular proprietary choice for high performance applications. Most exercises will work with Intel Fortran, but are only tested with GNU Fortran so your mileage may vary.
+The following will describe installation of [GNU Fortran](https://gcc.gnu.org/fortran/) or GFortran.
+Other fortran compilers are listed [here](https://en.wikipedia.org/wiki/List_of_compilers#Fortran_compilers).
+Intel Fortran is a popular proprietary choice for high performance applications.
+Most exercises will work with Intel Fortran, but are only tested with GNU Fortran so your mileage may vary.
 
 
 ### Prerequisite: CMake
