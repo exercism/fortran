@@ -24,7 +24,6 @@ Working through each exercise is a process of:
  * Refactor your implementation to enhance readability, reduce duplication, etc.
  * Uncomment the next test
 
-=======
 ### Helper script for creating fortran tests: create\_fortran\_test.py
 
 A easy way to to get started with an exercise test is to use the script
