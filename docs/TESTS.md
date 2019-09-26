@@ -68,7 +68,6 @@ $ make
 $ ctest -V
 ```
 
->>>>>>> Stashed changes
 ### Creating the Initial Build with CMake
 
 Each exercise will bring a `CMakeLists.txt` file along with the unit
