@@ -68,7 +68,8 @@ With Windows there are a number of options:
 
 ##### Windows Subsystem for Linux (WSL)
 
-If you have Windows 10 and Windows Subsystem for Linux (WSL)[https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux]. If you have Ubuntu 16.04 or later as subsystem, open an ubuntu Bash shell and follow the [Linux](####-Linux) instructions.
+Windows 10 introduces the Windows Subsystem for Linux (WSL)[https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux].
+If you have Ubuntu 16.04 or later as the subsystem, open an Ubuntu Bash shell and follow the [Linux](####-Linux) instructions.
 
 ##### Windows with MingW GNU Fortran
 
