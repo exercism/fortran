@@ -76,7 +76,8 @@ If you have Ubuntu 16.04 or later as the subsystem, open an Ubuntu Bash shell an
 
 ##### Windows with MingW GNU Fortran
 
-Windows users can get GNU Fortran through [MingW](http://www.mingw.org/). The easiest way is to first install [chocolatey](https://chocolatey.org).
+Windows users can get GNU Fortran through [MingW](http://www.mingw.org/).
+The easiest way is to first install [chocolatey](https://chocolatey.org).
 nd then type in a administrator cmd shell:
 
 ```Batchfile
