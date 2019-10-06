@@ -22,7 +22,7 @@ contains
     logical :: is_question
     character(*) :: str
     character :: chr
-    integer :: i 
+    integer :: i
     i = len_trim(str)
     chr = str(i:i)
     is_question = (chr .EQ. '?')
@@ -34,21 +34,21 @@ contains
     is_blank = len_trim(adjustl(str)) == 0
   end function is_blank
 
-  function heyBob(statement)
-    character(100) :: heyBob
+  function hey(statement)
+    character(100) :: hey
     character(len=*), intent(in) :: statement
 
     if ( is_uppercase(statement) .and.is_question(statement) ) then
-      heyBob = "Calm down, I know what I'm doing!"
+      hey = "Calm down, I know what I'm doing!"
     else if ( is_uppercase(statement) ) then
-      heyBob = 'Whoa, chill out!'
+      hey = 'Whoa, chill out!'
     else if ( is_question(statement) ) then
-      heyBob = 'Sure.'
+      hey = 'Sure.'
     else if ( is_blank(statement) ) then
-      heyBob = 'Fine. Be that way!'
+      hey = 'Fine. Be that way!'
     else
-      heyBob = 'Whatever.'
+      hey = 'Whatever.'
     end if
 
-  end function heyBob
+  end function hey
 end module bob

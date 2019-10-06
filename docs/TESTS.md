@@ -6,10 +6,11 @@ prints messages for each failing test and reports a non-zero exit status
 when tests fail.
 
 *Note:* Your code is being tested against the test suite every time you build
-your project. If your code does not pass the one or more tests but is valid Fortran
-code, it will still be compiled.
+your project. If your code does not pass the one or more tests but is
+valid Fortran code, it will still be compiled.
 
-Running a test is done with the command ctest and use '-V' to get verbose output:
+Running a test is done with the command ctest and use '-V' to get
+verbose output:
 ```
 $ ctest -V
 ```
@@ -24,6 +25,50 @@ Working through each exercise is a process of:
  * Refactor your implementation to enhance readability, reduce duplication, etc.
  * Uncomment the next test
 
+### Helper script for creating fortran tests: create\_fortran\_test.py
+
+A easy way to to get started with an exercise test is to use the script
+bin/create\_fortran\_test.py
+
+Use this script to create and initial <exercise>\_test.f90 file
+which can be used as a skeleton for your test.
+Typically, you will have to replace the 'response'-function in the
+generated file with the correct function call.
+
+Also note that Fortran has issues with special characters such as `\n` and `\t`
+so take special care handling these.
+
+#### Prerequsites
+- Working cmake and fortran compiler
+- Python3.x (You can make it may work with Python2, but I have not made the
+effort to make it backwards compatible)
+- latest version of https://github.com/exercism/problem-specifications.git
+
+#### Work flow for creating a new test
+- pull latest changes from exercism/problem-specifications
+- run this script for the example you want to create
+- copy config/CMakeLists.txt for exercise directory
+- implement working exercise
+- fix potential problematic tests (see eg. exercise/bob "Test 20" and "Test 24")
+- ensure ctest validates without errors
+- open a pull request with your changes
+
+For bob example:
+
+```bash
+$ python3 config/create_fortran_test.py -j ../../../exercism/problem-specifications/exercises/bob/canonical-data.json -t exercises/bob/bob_test.f90
+Namespace(json='../../../exercism/problem-specifications/exercises/bob/canonical-data.json', target='exercises/bob/bob_test.f90')
+Wrote : exercises/bob/bob_test.f90
+$ cp config/CMakeLists.txt exercises/bob/.
+$ cd exercises/bob
+$ touch bob.f90
+$ mkdir Debug
+$ cd Debug
+$ cmake ..
+$ make
+$ ctest -V
+```
+
 ### Creating the Initial Build with CMake
 
 Each exercise will bring a `CMakeLists.txt` file along with the unit
@@ -35,7 +80,7 @@ the exercise.
 For instance, the exercise `bob` expects an implementation in `bob.f90`
 file.
 
-**Create your initial implementation files before running CMake.**  
+**Create your initial implementation files before running CMake.**
 If you do not have file `bob.f90` when running
 CMake for exercise `bob`, then CMake will generate an error about files
 not being found.  **These files can be empty, but they must exist.**

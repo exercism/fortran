@@ -1,71 +1,90 @@
 
 ! This test was created from ..\..\exercism\problem-specifications\exercises\bob\canonical-data.json
-! version: 1.4.0 
+! version: 1.4.0.
 !
-
+! This is the main test program to test your implementaion which is done in
+!   bob.f90
+!
+! If the file does not exist create it.
+!
+! To build your program first create a build directory, eg. Debug and change into it
+! > mkdir Debug
+! > cd Debug
+! Now, to configure the build you run
+! > cmake ..
+! Which creates the build files (Makefiles etc.) needed to build and test your program.
+! Now build your program with
+! > make
+! If your build is successfull run the test
+! > ctest -V
+! If the build fails or the tests, modify the implementation in hello_world.f90 and rerun
+! the "make" and the "ctest -V" commands.
+!
+! Now proceed to the test section and one test after the other, ensure your implementation
+! passes this test.
 
 
 program bob_test_main
   use TesterMain
-  use bob 
+  use bob
   implicit none
 
-    
+
   ! Test 1: stating something
-  call assert_equal("Whatever.", heyBob("Tom-ay-to, tom-aaaah-to."), "stating something")
+  call assert_equal("Whatever.", hey("Tom-ay-to, tom-aaaah-to."), "stating something")
   ! Test 2: shouting
-  call assert_equal("Whoa, chill out!", heyBob("WATCH OUT!"), "shouting")
+  call assert_equal("Whoa, chill out!", hey("WATCH OUT!"), "shouting")
   ! Test 3: shouting gibberish
-  call assert_equal("Whoa, chill out!", heyBob("FCECDFCAAB"), "shouting gibberish")
+  call assert_equal("Whoa, chill out!", hey("FCECDFCAAB"), "shouting gibberish")
   ! Test 4: asking a question
-  call assert_equal("Sure.", heyBob("Does this cryogenic chamber make me look fat?"), "asking a question")
+  call assert_equal("Sure.", hey("Does this cryogenic chamber make me look fat?"), "asking a question")
   ! Test 5: asking a numeric question
-  call assert_equal("Sure.", heyBob("You are, what, like 15?"), "asking a numeric question")
+  call assert_equal("Sure.", hey("You are, what, like 15?"), "asking a numeric question")
   ! Test 6: asking gibberish
-  call assert_equal("Sure.", heyBob("fffbbcbeab?"), "asking gibberish")
+  call assert_equal("Sure.", hey("fffbbcbeab?"), "asking gibberish")
   ! Test 7: talking forcefully
-  call assert_equal("Whatever.", heyBob("Let's go make out behind the gym!"), "talking forcefully")
+  call assert_equal("Whatever.", hey("Let's go make out behind the gym!"), "talking forcefully")
   ! Test 8: using acronyms in regular speech
-  call assert_equal("Whatever.", heyBob("It's OK if you don't want to go to the DMV."), "using acronyms in regular speech")
+  call assert_equal("Whatever.", hey("It's OK if you don't want to go to the DMV."), "using acronyms in regular speech")
   ! Test 9: forceful question
-  call assert_equal("Calm down, I know what I'm doing!", heyBob("WHAT THE HELL WERE YOU THINKING?"), "forceful question")
+  call assert_equal("Calm down, I know what I'm doing!", hey("WHAT THE HELL WERE YOU THINKING?"), "forceful question")
   ! Test 10: shouting numbers
-  call assert_equal("Whoa, chill out!", heyBob("1, 2, 3 GO!"), "shouting numbers")
+  call assert_equal("Whoa, chill out!", hey("1, 2, 3 GO!"), "shouting numbers")
   ! Test 11: no letters
-  call assert_equal("Whatever.", heyBob("1, 2, 3"), "no letters")
+  call assert_equal("Whatever.", hey("1, 2, 3"), "no letters")
   ! Test 12: question with no letters
-  call assert_equal("Sure.", heyBob("4?"), "question with no letters")
+  call assert_equal("Sure.", hey("4?"), "question with no letters")
   ! Test 13: shouting with special characters
-  call assert_equal("Whoa, chill out!", heyBob("ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!"), "shouting with special characters")
+  call assert_equal("Whoa, chill out!", hey("ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!"), "shouting with special characters")
   ! Test 14: shouting with no exclamation mark
-  call assert_equal("Whoa, chill out!", heyBob("I HATE THE DMV"), "shouting with no exclamation mark")
+  call assert_equal("Whoa, chill out!", hey("I HATE THE DMV"), "shouting with no exclamation mark")
   ! Test 15: statement containing question mark
-  call assert_equal("Whatever.", heyBob("Ending with ? means a question."), "statement containing question mark")
+  call assert_equal("Whatever.", hey("Ending with ? means a question."), "statement containing question mark")
   ! Test 16: non-letters with question
-  call assert_equal("Sure.", heyBob(":) ?"), "non-letters with question")
+  call assert_equal("Sure.", hey(":) ?"), "non-letters with question")
   ! Test 17: prattling on
-  call assert_equal("Sure.", heyBob("Wait! Hang on. Are you going to be OK?"), "prattling on")
+  call assert_equal("Sure.", hey("Wait! Hang on. Are you going to be OK?"), "prattling on")
   ! Test 18: silence
-  call assert_equal("Fine. Be that way!", heyBob(""), "silence")
+  call assert_equal("Fine. Be that way!", hey(""), "silence")
   ! Test 19: prolonged silence
-  call assert_equal("Fine. Be that way!", heyBob("          "), "prolonged silence")
+  call assert_equal("Fine. Be that way!", hey("          "), "prolonged silence")
   ! Test 20: alternate silence
-  !call assert_equal("Fine. Be that way!", heyBob("										"), "alternate silence")
+  !call assert_equal("Fine. Be that way!", hey("										"), "alternate silence")
   ! Test 21: multiple line question
-  call assert_equal("Whatever.", heyBob(""// & 
-    & "Does this cryogenic chamber make me look fat?"// & 
+  call assert_equal("Whatever.", hey(""// &
+    & "Does this cryogenic chamber make me look fat?"// &
     & "No."), "multiple line question")
   ! Test 22: starting with whitespace
-  call assert_equal("Whatever.", heyBob("         hmmmmmmm..."), "starting with whitespace")
+  call assert_equal("Whatever.", hey("         hmmmmmmm..."), "starting with whitespace")
   ! Test 23: ending with whitespace
-  call assert_equal("Sure.", heyBob("Okay if like my  spacebar  quite a bit?   "), "ending with whitespace")
+  call assert_equal("Sure.", hey("Okay if like my  spacebar  quite a bit?   "), "ending with whitespace")
   ! Test 24: other whitespace
-  !call assert_equal("Fine. Be that way!", heyBob(""// & 
+  !call assert_equal("Fine. Be that way!", hey(""// &
   !  & "  !	"), "other whitespace")
   ! Test 25: non-question ending with whitespace
-  call assert_equal("Whatever.", heyBob("This is a statement ending with whitespace      "), "non-question ending with whitespace")
- 
-  call test_end()
- 
+  call assert_equal("Whatever.", hey("This is a statement ending with whitespace      "), "non-question ending with whitespace")
+
+  call test_report()
+
 end program
- 
+
