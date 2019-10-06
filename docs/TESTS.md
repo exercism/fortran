@@ -34,7 +34,7 @@ which can be used as a skeleton for your test. Typically, you will
 have to replace the 'response'-function in the generated file with the right
 function call.
 
-Also note that fortran has issues with special characters such as \n and \t
+Also note that Fortran has issues with special characters such as `\n` and `\t`
 so take special care handling these.
 
 #### Prerequsites
