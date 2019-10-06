@@ -2,7 +2,7 @@
 
 See docs/TEST.md for usage of this script
 
-Use this script to create and initial <exercise>_test.f90 file
+Use this script to create an initial <exercise>_test.f90 file
 which can be used as a skeleton for your test. Typically, you will
 have to replace 'response' in the generated file with the right
 function call.
