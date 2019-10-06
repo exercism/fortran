@@ -50,7 +50,7 @@
 !... more tests ...
 !
 !  call test_report()
-! 
+!
 !end program
 !
 !

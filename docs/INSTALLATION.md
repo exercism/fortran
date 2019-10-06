@@ -94,7 +94,7 @@ choco install mingw cmake
 ```
 
 This will install MingW (GFortran and GCC) to `C:\tools\mingw64` and
-CMake to `C:\Program Files\CMake`. Then add the `bin` directories of
+CMake to `C:\Program Files\CMake`.  Then add the `bin` directories of
 these installations to the PATH, ie.:
 
 ```Batchfile
