@@ -109,7 +109,7 @@ See [Intel Fortran](###-Intel-Fortran)
 
 For [Intel Fortran](https://software.intel.com/en-us/fortran-compilers)
 you have to first initialize the fortran compiler. On windows with Intel
-Fortran 2019 and Visual Studio 2017 the command line would be:
+Fortran 2019 and Visual Studio 2017 the command line should be:
 
 ```Batchfile
 "c:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2019\windows\bin\ifortvars.bat" intel64 vs2017
