@@ -134,7 +134,7 @@ good practice) and build (NMake) the executables and test them (ctest).
 For other versions of Intel Fortran you want to search your installation
 for `ifortvars.bat` on windows and on linux/macOS `ifortvars.sh`.
 Execute the script in a shell without options and a help will explain
-which options you have. On linux/macOS the commands would be:
+which options you have. On Linux or MacOS the commands would be:
 
 ```bash
 . /opt/intel/parallel_studio_xe_2016.1.056/compilers_and_libraries_2016/linux/bin/ifortvars.sh intel64
