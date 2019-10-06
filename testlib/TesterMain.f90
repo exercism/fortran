@@ -32,9 +32,9 @@
 !
 !   call assert_equal(input, expected, message)
 !
-! where input/expected may be one of: string(len=80), logical, integer or double precision 
-! 
-! When used like below number of failed test is counted and summarized in 'test_report' routine
+! where input/expected may be one of: string(len=80), logical, integer or double precision.
+!
+! When used like below, the number of failed test is counted and summarized in 'test_report' routine.
 !
 !------------------------------------------------------------------
 !   EXAMPLE from exercise bob
@@ -50,7 +50,7 @@
 !... more tests ...
 !
 !  call test_report()
-! 
+!
 !end program
 !
 !

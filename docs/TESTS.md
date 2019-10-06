@@ -6,10 +6,11 @@ prints messages for each failing test and reports a non-zero exit status
 when tests fail.
 
 *Note:* Your code is being tested against the test suite every time you build
-your project. If your code does not pass the one or more tests but is valid Fortran
-code, it will still be compiled.
+your project. If your code does not pass the one or more tests but is
+valid Fortran code, it will still be compiled.
 
-Running a test is done with the command ctest and use '-V' to get verbose output:
+Running a test is done with the command ctest and use '-V' to get
+verbose output:
 ```
 $ ctest -V
 ```
@@ -30,11 +31,11 @@ A easy way to to get started with an exercise test is to use the script
 bin/create\_fortran\_test.py
 
 Use this script to create and initial <exercise>\_test.f90 file
-which can be used as a skeleton for your test. Typically, you will
-have to replace the 'response'-function in the generated file with the right
-function call.
+which can be used as a skeleton for your test.
+Typically, you will have to replace the 'response'-function in the
+generated file with the correct function call.
 
-Also note that fortran has issues with special characters such as \n and \t
+Also note that Fortran has issues with special characters such as `\n` and `\t`
 so take special care handling these.
 
 #### Prerequsites
