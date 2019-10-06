@@ -116,7 +116,7 @@ Fortran 2019 and Visual Studio 2017 the command line should be:
 ```
 
 This sources the paths for Intel Fortran and cmake should pick it up
-correctly. Also, on windows you should specify the cmake generator
+correctly. Also, on Windows you should specify the cmake generator
 `NMake` for a command line build, eg.
 
 ```Batchfile
