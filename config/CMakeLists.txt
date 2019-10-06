@@ -25,7 +25,7 @@ else()
 endif()
 
 # Build executable from sources and headers
-add_executable(${exercise} ${file}_test.f90 ${exercise_f90} )
+add_executable(${exercise} ${exercise_f90} ${file}_test.f90  )
 
 if (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/testlib) 
 	file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../../testlib DESTINATION  ${CMAKE_CURRENT_SOURCE_DIR} PATTERN *)
