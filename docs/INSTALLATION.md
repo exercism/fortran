@@ -9,8 +9,7 @@ installed on your system:
 
 This language track requires a compiler with [Fortran
 2003](https://en.wikipedia.org/wiki/Fortran#Fortran_2003) support. All
-major compilers released in the last few years should be compatible, so
-as long as you are on a fairly recent version you should be fine.
+major compilers released in the last few years should be compatible.
 
 The following will describe installation of [GNU
 Fortran](https://gcc.gnu.org/fortran/) or GFortran. Other fortran
