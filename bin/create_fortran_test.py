@@ -44,7 +44,7 @@ import json
 import argparse
 
 def fix_and_quote_fortran_multiline(txt):
-    """Fortran cant handle multiple, so adding continuation character '&'
+    """Fortran can't handle multiple, so adding continuation character '&'
     if necessary"""
     if isinstance(txt, str):
         txt = txt.replace('\n', '"// & \n    & "')
