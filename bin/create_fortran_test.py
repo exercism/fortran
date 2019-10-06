@@ -90,7 +90,7 @@ def create_single_test(j):
 
 
 def create_test(test_name, json_name):
-    """Main function writing header and footer of the fortran test file"""
+    """Main function writing header and footer of the Fortran test file"""
     j = None
     with open(json_name) as f:
         j = json.load(f)
