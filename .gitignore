@@ -1,2 +1,6 @@
 bin/configlet
 bin/configlet.exe
+
+# make and testing artifacts
+Debug
+exercises/*/*_build_all.f90
