@@ -78,7 +78,7 @@ def write_testcase(c, tnum):
 
 
 def create_single_test(j):
-    """Walk thru the json cases and recursively write the testcases"""
+    """Walk through the json cases and recursively write the test cases"""
     si = []
     for tnum, c in enumerate(j['cases']):
         if 'cases' in c:
