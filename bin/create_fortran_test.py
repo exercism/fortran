@@ -78,7 +78,7 @@ def write_testcase(c, tnum):
 
 
 def create_single_test(j):
-    """ Walk thru the json cases and recursively write the testcases"""
+    """Walk through the json cases and recursively write the test cases"""
     si = []
     for tnum, c in enumerate(j['cases']):
         if 'cases' in c:
@@ -99,29 +99,27 @@ def create_test(test_name, json_name):
     exercise = exercise.replace('-', '_')
     header = """
 ! This test was created from %s
-! version: %s 
+! version: %s
 !
-
 """%(json_name, exercise_version)
 
     program = """
-
 program %s_test_main
   use TesterMain
-  use %s 
+  use %s
   implicit none
 
-    """%(exercise, exercise)
+"""%(exercise, exercise)
 
     s = header + program
     si = s.splitlines()
     si.extend(create_single_test(j))
 
-    si.append(' ')
-    si.append('  call test_end()')
-    si.append(' ')
+    si.append('')
+    si.append('  call test_report()')
+    si.append('')
     si.append('end program')
-    si.append(' ')
+    si.append('')
     #json.dumps(j)
     with open(test_name, 'w') as of:
         for ss in si:
@@ -134,11 +132,11 @@ if __name__ == '__main__':
     parser.add_argument("-j", "--json",
                         dest='json',
                         required=True,
-                        help="json file with test spec ")
+                        help="json file with test spec")
     parser.add_argument("-t", "--target",
                         dest='target',
                         required=True,
-                        help="Target file, eg. <exercise>_test.f90 ")
+                        help="Target file, eg. <exercise>_test.f90")
     args = parser.parse_args()
 
     print(args)
