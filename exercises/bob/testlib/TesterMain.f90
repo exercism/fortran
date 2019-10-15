@@ -2,7 +2,7 @@
 !
 ! USAGE:
 !
-! This is a custom-module built for testing of exercism.io Fortran track exercises.
+! This is a custom module built for testing of exercism.io Fortran track exercises.
 !
 ! It should be used in test-code with
 !
