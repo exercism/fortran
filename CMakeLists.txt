@@ -4,6 +4,18 @@ include(CTest)
 
 set(EXERCISM_RUN_ALL_TESTS 1)
 
+# Activate Fortran compiler warnings
+if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel") # Intel fortran
+  if(WIN32)
+    set (CMAKE_Fortran_FLAGS "/warn:all")
+  else()
+    set (CMAKE_Fortran_FLAGS "-warn all")
+  endif()
+endif()
+if(CMAKE_Fortran_COMPILER_ID MATCHES "GNU") # GFrotran
+  set (CMAKE_Fortran_FLAGS "-std=f2008 -W -Wall -Wextra -pedantic")
+endif()
+
 function(travis_fixup exercise)
   string(REPLACE "-" "_" file ${exercise})
   set(subdir ${CMAKE_CURRENT_SOURCE_DIR}/exercises/${exercise})
