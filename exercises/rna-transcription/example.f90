@@ -1,27 +1,27 @@
 module rna_transcription
-  contains
-  function complement(dna)
-      implicit none
+implicit none
+contains
+  function to_rna(dna)
       character(*) :: dna
-      character(len(dna)) :: complement
+      character(len(dna)) :: to_rna
       integer :: i
 
       do i = 1,len(dna)
         select case (dna(i:i))
             case ('G')
-                complement(i:i) = 'C'
+                to_rna(i:i) = 'C'
             case ('C')
-                complement(i:i) = 'G'
+                to_rna(i:i) = 'G'
             case ('T')
-                complement(i:i) = 'A'
+                to_rna(i:i) = 'A'
             case ('A')
-                complement(i:i) = 'U'
+                to_rna(i:i) = 'U'
             case default
-                complement = ''
+                to_rna = ''
                 return
         end select
       end do
 
-  end function complement
+  end function to_rna
 end module rna_transcription
 
