@@ -13,6 +13,18 @@ set(CMAKE_BIULD_TYPE Debug)
 # Get a source filename from the exercise name by replacing -'s with _'s
 string(REPLACE "-" "_" file ${exercise})
 
+# Activate Fortran compiler warnings
+if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel") # Intel fortran
+  if(WIN32)
+    set (CMAKE_Fortran_FLAGS "/warn:all")
+  else()
+    set (CMAKE_Fortran_FLAGS "-warn all")
+  endif()
+endif()
+if(CMAKE_Fortran_COMPILER_ID MATCHES "GNU") # GFrotran
+  set (CMAKE_Fortran_FLAGS "-std=f2008 -W -Wall -Wextra -pedantic")
+endif()
+
 # Configure to run all the tests?
 if(${EXERCISM_RUN_ALL_TESTS})
     add_definitions(-DEXERCISM_RUN_ALL_TESTS)
