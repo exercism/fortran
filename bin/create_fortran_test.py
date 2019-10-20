@@ -72,6 +72,10 @@ def write_testcase(c, tnum):
     inp = '{})'.format(inp)
     expected = c['expected']
     expected = fix_and_quote_fortran_multiline(expected)
+    if expected == True:
+        expected = '.true.'
+    if expected == False:
+        expected = '.false.'
     si.append('  ! Test %d: %s'%(tnum+1, description))
     si.append('  call assert_equal({}, {}, "{}")'.format(expected, inp, description))
     return si
