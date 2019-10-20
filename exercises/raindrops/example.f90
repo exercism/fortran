@@ -1,5 +1,6 @@
 module raindrops
-  contains
+implicit none
+contains
   function convert(i)
     implicit none
     integer :: i
