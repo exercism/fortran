@@ -120,14 +120,14 @@ correctly. Also, on Windows you should specify the cmake generator
 `NMake` for a command line build, eg.
 
 ```Batchfile
-mkdir Debug
-cd Debug
+mkdir build
+cd build
 cmake -G"NMake Makefiles" ..
 NMake
 ctest -V
 ```
 
-The commands above will create a Debug directory (not necessary, but
+The commands above will create a `build` directory (not necessary, but
 good practice) and build (NMake) the executables and test them (ctest).
 
 For other versions of Intel Fortran you want to search your installation
@@ -137,8 +137,8 @@ which options you have. On Linux or MacOS the commands would be:
 
 ```bash
 . /opt/intel/parallel_studio_xe_2016.1.056/compilers_and_libraries_2016/linux/bin/ifortvars.sh intel64
-mkdir Debug
-cd Debug
+mkdir build
+cd build
 cmake ..
 make
 ctest -V

@@ -7,9 +7,9 @@
 !
 ! If the file does not exist create it.
 !
-! To build your program first create a build directory, eg. Debug and change into it
-! > mkdir Debug
-! > cd Debug
+! To build your program first create a build directory, eg. build and change into it
+! > mkdir build
+! > cd build
 ! Now, to configure the build you run
 ! > cmake ..
 ! Which creates the build files (Makefiles etc.) needed to build and test your program.

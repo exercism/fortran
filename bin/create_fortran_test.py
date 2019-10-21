@@ -33,8 +33,8 @@ Wrote : exercises/bob/bob_test.f90
 $ cp config/CMakeLists.txt exercises/bob/.
 $ cd exercises/bob
 $ touch bob.f90
-$ mkdir Debug
-$ cd Debug
+$ mkdir build
+$ cd build
 $ cmake ..
 $ make
 $ ctest -V
