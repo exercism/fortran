@@ -6,7 +6,7 @@ prints messages for each failing test and reports a non-zero exit status
 when tests fail.
 
 The test file will have the name `<exercise>_test.f90`, so for exercise
-bob the file containing the tests is `bob_test.f90`. Each test will have
+"Bob" the file containing the tests is `bob_test.f90`. Each test will have
 a comment describing the test and then the actual test starting with
 `call assert_equal` eg.
 
