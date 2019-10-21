@@ -157,7 +157,7 @@ $ ctest -V
 
 The tests depends on a small library called `testlib` which is downloaded from github the first time the build is configured with cmake.
 
-In case the download fails download can be done manually, eg.
+In case the download fails, the download can be done manually, eg.
 
 ```
 mkdir testlib
