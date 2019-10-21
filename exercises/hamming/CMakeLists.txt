@@ -31,11 +31,20 @@ if(${EXERCISM_RUN_ALL_TESTS})
     set(exercise_f90 ${file}_build_all.f90)
 else()
     # if building in exercise folder add testlib
+    set(testlib_path ${CMAKE_CURRENT_SOURCE_DIR}/testlib)
+    if (NOT EXISTS ${testlib_path})
+      if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../../testlib) # in git repo locally?
+        file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../../testlib DESTINATION  ${CMAKE_CURRENT_SOURCE_DIR} PATTERN *)
+      else() # get from git with http
+        message("Downloading testlib from https://raw.githubusercontent.com/exercism/fortran/master")
+        file(MAKE_DIRECTORY ${testlib_path} )
+        file(DOWNLOAD https://raw.githubusercontent.com/exercism/fortran/master/testlib/TesterMain.f90 ${testlib_path}/TesterMain.f90 SHOW_PROGRESS)
+        file(DOWNLOAD https://raw.githubusercontent.com/exercism/fortran/master/testlib/CMakeLists.txt ${testlib_path}/CMakeLists.txt SHOW_PROGRESS)
+      endif()
+    endif()
+    # add lib to build
     add_subdirectory(testlib)
     include_directories(testlib ${CMAKE_CURRENT_BINARY_DIR}/testlib)
-    if (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/testlib)
-      file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../../testlib DESTINATION  ${CMAKE_CURRENT_SOURCE_DIR} PATTERN *)
-    endif(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/testlib)
     if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${file}.f90)
         set(exercise_f90 ${file}.f90)
     endif()

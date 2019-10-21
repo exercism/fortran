@@ -5,16 +5,22 @@ console executable that runs the tests.  Running the test executable
 prints messages for each failing test and reports a non-zero exit status
 when tests fail.
 
-*Note:* Your code is being tested against the test suite every time you build
-your project. If your code does not pass the one or more tests but is
-valid Fortran code, it will still be compiled.
+The test file will have the name `<exercise>_test.f90`, so for exercise
+"Bob" the file containing the tests is `bob_test.f90`. Each test will have
+a comment describing the test and then the actual test starting with
+`call assert_equal` eg.
 
-Running a test is done with the command ctest and use '-V' to get
-verbose output:
 ```
-$ ctest -V
+  ! Test 16: non-letters with question
+  call assert_equal("Sure.", hey(":) ?"), "non-letters with question")
 ```
 
+To disable a test, simply comment it out with a `'!'`, eg.
+
+```
+  ! Test 16: non-letters with question
+  ! call assert_equal("Sure.", hey(":) ?"), "non-letters with question")
+```
 
 Working through each exercise is a process of:
 
@@ -25,49 +31,6 @@ Working through each exercise is a process of:
  * Refactor your implementation to enhance readability, reduce duplication, etc.
  * Uncomment the next test
 
-### Helper script for creating fortran tests: create\_fortran\_test.py
-
-A easy way to to get started with an exercise test is to use the script
-bin/create\_fortran\_test.py
-
-Use this script to create and initial <exercise>\_test.f90 file
-which can be used as a skeleton for your test.
-Typically, you will have to replace the 'response'-function in the
-generated file with the correct function call.
-
-Also note that Fortran has issues with special characters such as `\n` and `\t`
-so take special care handling these.
-
-#### Prerequsites
-- Working cmake and fortran compiler
-- Python3.x (You can make it may work with Python2, but I have not made the
-effort to make it backwards compatible)
-- latest version of https://github.com/exercism/problem-specifications.git
-
-#### Work flow for creating a new test
-- pull latest changes from exercism/problem-specifications
-- run this script for the example you want to create
-- copy config/CMakeLists.txt for exercise directory
-- implement working exercise
-- fix potential problematic tests (see eg. exercise/bob "Test 20" and "Test 24")
-- ensure ctest validates without errors
-- open a pull request with your changes
-
-For bob example:
-
-```bash
-$ python3 config/create_fortran_test.py -j ../../../exercism/problem-specifications/exercises/bob/canonical-data.json -t exercises/bob/bob_test.f90
-Namespace(json='../../../exercism/problem-specifications/exercises/bob/canonical-data.json', target='exercises/bob/bob_test.f90')
-Wrote : exercises/bob/bob_test.f90
-$ cp config/CMakeLists.txt exercises/bob/.
-$ cd exercises/bob
-$ touch bob.f90
-$ mkdir Debug
-$ cd Debug
-$ cmake ..
-$ make
-$ ctest -V
-```
 
 ### Creating the Initial Build with CMake
 
@@ -77,21 +40,22 @@ You should not need to edit this file.  The provided recipe assumes that
 your implementation exists in a source file named after
 the exercise.
 
-For instance, the exercise `bob` expects an implementation in `bob.f90`
-file.
+For instance, the exercise "Bob" expects an implementation in `bob.f90` file.
 
 **Create your initial implementation files before running CMake.**
-If you do not have file `bob.f90` when running
-CMake for exercise `bob`, then CMake will generate an error about files
-not being found.  **These files can be empty, but they must exist.**
+If you do not have file `bob.f90` when running CMake for exercise "Bob", then CMake will generate an error about files not being found.
+**These files can be empty, but they must exist.**
 
 Using this recipe, CMake can generate a suitable project for your environment
 by running `cmake -G` with a suitable generator and the location of the
 directory for the exercise.  CMake will generate a build script appropriate
 for your operating system.  To keep those generated files separate from
-your exercise source code, it is common to create a directory called `build`
-to hold these generated build files, as well as the compiled code.  This
-will keep your exercise folder uncluttered and tidy.
+your exercise source code, it is common to create a directory called `Debug` or `build`
+to hold these generated build files, as well as the compiled code.
+
+This will keep your exercise folder uncluttered and tidy.
+
+**Note: The first time `cmake` is called, the [testlib](###-Testlib) will be downloaded automatically. The `testlib` is needed for the unit tests to work.
 
 Since you will be running CMake to create the build instructions for each
 assignment, you might want to create a bash script (Linux/MacOS) or
@@ -189,3 +153,17 @@ When all build errors are fixed run the tests:
 ```
 $ ctest -V
 ```
+### Testlib
+
+The tests depends on a small library called `testlib` which is downloaded from github the first time the build is configured with cmake.
+
+In case the download fails, the download can be done manually, eg.
+
+```
+mkdir testlib
+cd testlib
+wget https://raw.githubusercontent.com/exercism/fortran/master/testlib/CMakeLists.txt
+wget https://raw.githubusercontent.com/exercism/fortran/master/testlib/TesterMain.f90
+```
+
+
