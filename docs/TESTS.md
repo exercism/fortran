@@ -50,7 +50,7 @@ Using this recipe, CMake can generate a suitable project for your environment
 by running `cmake -G` with a suitable generator and the location of the
 directory for the exercise.  CMake will generate a build script appropriate
 for your operating system.  To keep those generated files separate from
-your exercise source code, it is common to create a directory called `Debug` or `build`
+your exercise source code, it is common to create a directory called `build`
 to hold these generated build files, as well as the compiled code.
 
 This will keep your exercise folder uncluttered and tidy.
@@ -79,8 +79,8 @@ Assuming the current exercise is `bob` and we're in the exercise folder:
 
 ```
 $ touch bob.f90
-$ mkdir Debug
-$ cd Debug
+$ mkdir build
+$ cd build
 $ cmake -G "Unix Makefiles" ..
 $ make
 ```

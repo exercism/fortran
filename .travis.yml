@@ -7,8 +7,8 @@ install:
 script:
   - bin/fetch-configlet
   - bin/configlet lint .
-  - mkdir Debug
-  - cd Debug
+  - mkdir build
+  - cd build
   - cmake -G "Unix Makefiles" ..
   - make
   - ctest -V

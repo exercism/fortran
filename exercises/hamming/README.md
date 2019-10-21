@@ -50,11 +50,11 @@ contains
 end module hamming
 ```
 
-Now create a build directory (eg. `mkdir Debug`), change into it and run `cmake ..`  to configure the build.
+Now create a build directory (eg. `mkdir build`), change into it and run `cmake ..`  to configure the build.
 
 Note, that the first time you call `cmake ..` it will download the `testlib` automatically which is used in `hamming_test.f90`.
 
-The `testib` can also be downloaded manually from github see 
+The `testib` can also be downloaded manually from github. For more information see [Running the tests](https://exercism.io/tracks/fortran/tests).
 
 Now build (eg. `make`)  and run tests with `ctest -V`. For a detailed description see [Running the Tests](https://exercism.io/tracks/fortran/tests).
 

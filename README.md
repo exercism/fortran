@@ -13,9 +13,9 @@ Assuming that you have CMake and Fortran running you should be able to run the f
 ### Linux and MacOS
 
 ```bash
-mkdir Debug
-cd Debug
-cmake -DCMAKE_BUILD_TYPE="Debug" ..
+mkdir build
+cd build
+cmake ..
 make
 ctest -V
 ```
@@ -23,9 +23,9 @@ ctest -V
 ### Windows
 
 ```Batchfile
-mkdir Debug
-cd Debug
-cmake -DCMAKE_BUILD_TYPE="Debug" -G"NMake Makefiles" ..
+mkdir build
+cd build
+cmake -G"NMake Makefiles" ..
 nmake
 ctest -V
 ```

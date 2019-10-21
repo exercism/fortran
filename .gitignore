@@ -2,5 +2,5 @@ bin/configlet
 bin/configlet.exe
 
 # make and testing artifacts
-Debug
+build
 exercises/*/*_build_all.f90
