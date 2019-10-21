@@ -40,7 +40,7 @@ You should not need to edit this file.  The provided recipe assumes that
 your implementation exists in a source file named after
 the exercise.
 
-For instance, the exercise `bob` expects an implementation in `bob.f90` file.
+For instance, the exercise "Bob" expects an implementation in `bob.f90` file.
 
 **Create your initial implementation files before running CMake.**
 If you do not have file `bob.f90` when running CMake for exercise "Bob", then CMake will generate an error about files not being found.
