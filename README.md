@@ -55,11 +55,9 @@ We simulate Test-Driven Development (TDD) by implementing the tests in order of 
 - helps triangulate a solution to be more generic, or
 - requires new functionality incrementally.
 
-Test files should use the following format:
+### Fortran Track ###
 
-```
-# include the body of an example test
-```
+Test files for the Fortran track should be created with the Python3 script `bin/create_fortran_test.py` which is documented [here](docs/MAINTAINERS.md).
 
 ## Submitting a Pull Request ##
 
