@@ -22,7 +22,7 @@ effort to make it backwards compatible)
 - copy `config/CMakeLists.txt` for exercise directory
 - implement working exercise
 - fix potential problematic tests (see eg. exercise/bob "Test 20" and "Test 24")
-- ensure ctest validates without errors
+- ensure `ctest` command validates without errors
 - open a pull request with your changes
 
 For bob example:
