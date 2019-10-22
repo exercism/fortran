@@ -17,7 +17,7 @@ effort to make it backwards compatible)
 - latest version of https://github.com/exercism/problem-specifications.git
 
 #### Work flow for creating a new test
-- pull latest changes from exercism/problem-specifications
+- pull latest changes from `exercism/problem-specifications`
 - run this script for the example you want to create
 - copy `config/CMakeLists.txt` for exercise directory
 - implement working exercise
