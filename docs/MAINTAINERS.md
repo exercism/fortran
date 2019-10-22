@@ -19,7 +19,7 @@ effort to make it backwards compatible)
 #### Work flow for creating a new test
 - pull latest changes from exercism/problem-specifications
 - run this script for the example you want to create
-- copy config/CMakeLists.txt for exercise directory
+- copy `config/CMakeLists.txt` for exercise directory
 - implement working exercise
 - fix potential problematic tests (see eg. exercise/bob "Test 20" and "Test 24")
 - ensure ctest validates without errors
