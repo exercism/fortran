@@ -1,17 +1,17 @@
 ## For maintainers
 
-### Helper script for creating fortran tests: create\_fortran\_test.py
+### Helper script for creating Fortran tests: create\_fortran\_test.py
 
 An easy way to create an exercise test is to use the script
 `bin/create\_fortran\_test.py`
 
-Use this script to create an initial <exercise>\_test.f90 file which can be used as a skeleton for your test.
+Use this script to create an initial <exercise>\_test.f90 file which can be used as a template for your test.
 Typically, you will have to replace the 'response'-function in the generated file with the correct function call.
 
 Also note that Fortran has issues with special characters such as `\n` and `\t` so take special care handling these.
 
 #### Prerequsites
-- Working cmake and fortran compiler
+- Working CMake and Fortran compiler
 - Python3.x (You can make it may work with Python2, but I have not made the
 effort to make it backwards compatible)
 - latest version of https://github.com/exercism/problem-specifications.git
