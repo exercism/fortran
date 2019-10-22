@@ -3,7 +3,7 @@
 ### Helper script for creating fortran tests: create\_fortran\_test.py
 
 An easy way to create an exercise test is to use the script
-bin/create\_fortran\_test.py
+`bin/create\_fortran\_test.py`
 
 Use this script to create an initial <exercise>\_test.f90 file which can be used as a skeleton for your test.
 Typically, you will have to replace the 'response'-function in the generated file with the correct function call.
