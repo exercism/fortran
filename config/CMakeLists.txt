@@ -16,13 +16,13 @@ string(REPLACE "-" "_" file ${exercise})
 # Activate Fortran compiler warnings
 if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel") # Intel fortran
   if(WIN32)
-    set (CMAKE_Fortran_FLAGS "/warn:all")
+    set (CCMAKE_Fortran_FLAG ${CCMAKE_Fortran_FLAGS} "/warn:all")
   else()
-    set (CMAKE_Fortran_FLAGS "-warn all")
+    set (CMAKE_Fortran_FLAGS ${CCMAKE_Fortran_FLAGS} "-warn all")
   endif()
 endif()
 if(CMAKE_Fortran_COMPILER_ID MATCHES "GNU") # GFrotran
-  set (CMAKE_Fortran_FLAGS "-std=f2008 -W -Wall -Wextra -pedantic")
+  set (CMAKE_Fortran_FLAGS ${CCMAKE_Fortran_FLAGS} "-std=f2008 -W -Wall -Wextra -pedantic")
 endif()
 
 # Configure to run all the tests?
