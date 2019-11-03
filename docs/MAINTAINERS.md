@@ -19,7 +19,7 @@ effort to make it backwards compatible)
 #### Work flow for creating a new test
 - pull latest changes from `exercism/problem-specifications`
 - run this script for the example you want to create
-- copy `config/CMakeLists.txt` for exercise directory
+- copy `config/CMakeLists.txt` to exercise directory (You can use `bin/update-cmake-files` for this)
 - implement working exercise
 - fix potential problematic tests (see eg. exercise/bob "Test 20" and "Test 24")
 - ensure `ctest` command validates without errors
@@ -40,3 +40,6 @@ $ cmake ..
 $ make
 $ ctest -V
 ```
+
+#### Changing `CMakeLists.txt`
+When changing the cmake file, update the master copy in `config/` and use `bin/update-cmake-files` to copy it to all exercise directories.
