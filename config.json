@@ -63,6 +63,15 @@
       "unlocked_by": null,
       "difficulty": 1,
       "topics": []
+    },
+    {
+      "slug": "acronym",
+      "uuid": "126acd3f-9ad5-46be-ae29-188fdbd7adf7",
+      "core": false,
+      "unlocked_by": null,
+      "difficulty": 1,
+      "topics": []
     }
+
   ]
 }
