@@ -42,6 +42,7 @@ $ ctest -V
 
 import json
 import argparse
+import os
 
 def fix_and_quote_fortran_multiline(txt):
     """Fortran can't handle multiple, so adding continuation character '&'
@@ -71,11 +72,14 @@ def write_testcase(c, tnum):
         inp = '{}, {}'.format(inp, fix_and_quote_fortran_multiline(a))
     inp = '{})'.format(inp)
     expected = c['expected']
-    expected = fix_and_quote_fortran_multiline(expected)
     if expected == True:
         expected = '.true.'
-    if expected == False:
+    elif expected == False:
         expected = '.false.'
+    elif expected == 'error':
+        expected = '.false.'
+    else:
+        expected = fix_and_quote_fortran_multiline(expected)
     si.append('  ! Test %d: %s'%(tnum+1, description))
     si.append('  call assert_equal({}, {}, "{}")'.format(expected, inp, description))
     return si
@@ -91,6 +95,23 @@ def create_single_test(j):
             si.extend(write_testcase(c, tnum))
     return si
 
+
+def create_stub(exercise, stub_file_name):
+    stub_lines = """
+module %s
+  implicit none
+contains
+
+  logical function dummy()
+    dummy=.true.
+  end function
+
+end module
+"""%(exercise)
+
+    with open(stub_file_name, 'w') as f:
+        f.write(stub_lines)
+    print(f'wrote stub : {stub_file_name}')
 
 
 def create_test(test_name, json_name):
@@ -129,6 +150,10 @@ program %s_test_main
         for ss in si:
             of.write('%s\n'%ss)
 
+    print('Wrote : ' + test_name)
+    stub_file_name=os.path.join(os.path.dirname(test_name), exercise+'.f90')
+    create_stub(exercise, stub_file_name)
+
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Create test.f90')
@@ -147,5 +172,4 @@ if __name__ == '__main__':
 
     create_test(args.target, args.json)
 
-    print('Wrote : ' + args.target)
 
