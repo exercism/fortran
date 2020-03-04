@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 2.8.11)
 project(${exercise} Fortran)
 
 # set debug build default
-set(CMAKE_BIULD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Debug)
 
 # Get a source filename from the exercise name by replacing -'s with _'s
 string(REPLACE "-" "_" file ${exercise})
