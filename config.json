@@ -31,6 +31,14 @@
       "topics": []
     },
     {
+      "slug": "nth-prime",
+      "uuid": "423a13d3-8e2a-483a-8da5-50bfa76c04f4",
+      "core": false,
+      "unlocked_by": null,
+      "difficulty": 1,
+      "topics": []
+    },
+    {
       "slug": "rna-transcription",
       "uuid": "6fa09622-b92d-42ae-aeba-b68717c0b51c",
       "core": false,
@@ -72,6 +80,5 @@
       "difficulty": 1,
       "topics": []
     }
-
   ]
 }
