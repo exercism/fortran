@@ -1,8 +1,6 @@
-
 ! This test was created from ../../exercism/problem-specifications/exercises/nth-prime/canonical-data.json
 ! version: 2.1.0
 !
-
 program nth_prime_test_main
   use TesterMain
   use nth_prime

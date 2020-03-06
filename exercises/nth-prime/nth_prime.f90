@@ -1,4 +1,3 @@
-
 module nth_prime
   implicit none
 contains
