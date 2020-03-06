@@ -5,8 +5,8 @@ install:
   - sudo apt-get -y install gfortran cmake
 
 script:
-  - bin/fetch-configlet
-  - bin/configlet lint .
+  - ./bin/fetch-configlet
+  - ./bin/configlet lint .
   - mkdir build
   - cd build
   - cmake -G "Unix Makefiles" ..
