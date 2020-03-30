@@ -12,7 +12,11 @@
       "auto_approve": true,
       "unlocked_by": null,
       "difficulty": 1,
-      "topics": []
+      "topics": [
+        "conditionals",
+        "optional_values",
+        "text_formatting"
+      ]
     },
     {
       "slug": "bob",
@@ -20,7 +24,11 @@
       "core": false,
       "unlocked_by": null,
       "difficulty": 1,
-      "topics": []
+      "topics": [
+        "conditionals",
+        "equality",
+        "strings"
+      ]
     },
     {
       "slug": "hamming",
@@ -28,7 +36,26 @@
       "core": false,
       "unlocked_by": null,
       "difficulty": 1,
-      "topics": []
+      "topics": [
+        "bitwise_operations",
+        "integers",
+        "type_conversion"      
+      ]
+    },
+    {
+      "slug": "matrix",
+      "uuid": "5d4b176a-d656-4975-a937-ef3e4e830d3f",
+      "core": false,
+      "unlocked_by": null,
+      "difficulty": 1,
+      "topics": [
+        "algorithms",
+        "conditionals",
+        "lists",
+        "loops",
+        "matrices",
+        "sets"
+      ]
     },
     {
       "slug": "nth-prime",
@@ -36,7 +63,12 @@
       "core": false,
       "unlocked_by": null,
       "difficulty": 1,
-      "topics": []
+      "topics": [
+        "algorithms",
+        "lists",
+        "loops",
+        "math"
+      ]
     },
     {
       "slug": "rna-transcription",
@@ -44,7 +76,14 @@
       "core": false,
       "unlocked_by": null,
       "difficulty": 1,
-      "topics": []
+      "topics": [
+        "conditionals",
+        "logic",
+        "loops",
+        "maps",
+        "strings",
+        "transforming"
+      ]
     },
     {
       "slug": "raindrops",
@@ -52,7 +91,11 @@
       "core": false,
       "unlocked_by": null,
       "difficulty": 1,
-      "topics": []
+      "topics": [
+        "algorithms",
+        "loops",
+        "math"
+      ]
     },
     {
       "slug": "difference-of-squares",
@@ -70,7 +113,14 @@
       "core": false,
       "unlocked_by": null,
       "difficulty": 1,
-      "topics": []
+      "topics": [
+        "algorithms",
+        "conditionals",
+        "filtering",
+        "logic",
+        "loops",
+        "strings"
+      ]
     },
     {
       "slug": "acronym",
@@ -78,7 +128,12 @@
       "core": false,
       "unlocked_by": null,
       "difficulty": 1,
-      "topics": []
+      "topics": [
+        "conditionals",
+        "logic",
+        "loops",
+        "math"
+      ]
     }
   ]
 }
