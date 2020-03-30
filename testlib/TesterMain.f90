@@ -35,28 +35,26 @@
 !------------------------------------------------------------------
 module TesterMain
 !------------------------------------------------------------------
+
   implicit none
+  save
+  public
 
   integer :: TESTS_RUN = 0
   integer :: TESTS_FAILED = 0
   integer, parameter :: MAX_STRING_LEN = 80
-  character(len=MAX_STRING_LEN) :: input_str
-  character(len=MAX_STRING_LEN) :: expected_str
-  integer :: input_int
-  integer :: expected_int
-  logical :: input_bool
-  logical :: expected_bool
-  double precision :: input_dble
-  double precision :: expected_dble
   double precision, parameter :: TOL = 1.0D-8
 
   interface assert_equal
     module procedure assert_equal_str
     module procedure assert_equal_int
+    module procedure assert_equal_int_arr
     module procedure assert_equal_dble
     module procedure assert_equal_bool
   end interface
-
+!  interface  assert_equal_int_arr
+!    module procedure assert_equal_int_arr2
+!  end interface
 
 contains
 
@@ -111,6 +109,33 @@ contains
   end subroutine
 
 !------------------------------------------------------------------
+  subroutine assert_equal_int_arr(e_int_arr, i_int_arr, msg_arr)
+    integer, intent(in) :: e_int_arr(2), i_int_arr(2)
+    character(len=*), intent(in) :: msg_arr
+    logical :: assert_test
+    integer :: i
+    TESTS_RUN=TESTS_RUN+1
+    assert_test = .false.
+    assert_test = size(e_int_arr) == size(i_int_arr)
+    if (.not. assert_test) then
+      call test_fail_msg(msg_arr)
+      call elogger('Arrays are not the same size!')
+      call elogger('Expected "'//trim(adjustl(ia_to_s(e_int_arr)))//'" but got "' &
+      & //trim(adjustl(ia_to_s(i_int_arr)))//'"' )
+    else
+      do i=1,size(e_int_arr)
+        assert_test = i_int_arr(i) == e_int_arr(i)
+        if (.not. assert_test) exit
+      enddo
+    endif
+    if (.not. assert_test) then
+      call test_fail_msg(msg_arr)
+      call elogger('Expected "'//trim(adjustl(ia_to_s(e_int_arr)))//'" but got "' &
+      & //trim(adjustl(ia_to_s(i_int_arr)))//'"' )
+    endif
+  end subroutine
+
+!------------------------------------------------------------------
   subroutine assert_equal_dble(e_dble,i_dble,msg)
     double precision, intent(in) :: e_dble,i_dble
     character(len=*), intent(in), optional :: msg
@@ -127,11 +152,18 @@ contains
 !------------------------------------------------------------------
 ! utilities
 !------------------------------------------------------------------
-! Interger to string
+! Integer to string
   function i_to_s(i)
     integer, intent(in) :: i
     character(len=MAX_STRING_LEN) :: i_to_s
     write(i_to_s, *) i
+  end function
+
+! Integer array to string
+  function ia_to_s(i)
+    integer, dimension(:), intent(in) :: i
+    character(len=MAX_STRING_LEN) :: ia_to_s
+    write(ia_to_s, *) i
   end function
 
 ! Double precision to string
