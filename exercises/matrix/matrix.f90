@@ -9,6 +9,7 @@ contains
     integer, intent(in) :: m_dim(2)
     integer, intent(in) :: i
     integer,dimension(m_dim(2)) :: r
+    integer :: A(m_dim(1),m_dim(2))
     r(:) = 0
   end function
 
@@ -17,7 +18,8 @@ contains
     integer, intent(in) :: m_dim(2)
     integer, intent(in) :: j
     integer, dimension(m_dim(1)) :: c
+    integer :: A(m_dim(1),m_dim(2))
     c(:) = 0
   end function
-  
+
 end module

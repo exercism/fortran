@@ -23,18 +23,18 @@ contains
     call read_m(m,m_dim, A)
     c(:) = A(j,:)
   end function
-  
-  subroutine read_m(m,m_dim, A)    
+
+  subroutine read_m(m,m_dim, A)
     character(len=*), dimension(:) :: m
     integer, intent(in) :: m_dim(2)
     integer :: A(m_dim(1),m_dim(2))
     integer :: i
-    
+
     do i=1,m_dim(2)
       read(m(i),*) A(:,i)
     enddo
-    write(*,*) A
-    
-  end subroutine 
+    !write(*,*) A
+
+  end subroutine
 
 end module
