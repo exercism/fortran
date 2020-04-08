@@ -4,18 +4,20 @@ module matrix
 
 contains
 
-  function row(m,i) result(r)
-    integer, dimension(:,:) :: m
+  function row(m, m_dim, i) result(r)
+    character(len=*), dimension(:) :: m
+    integer, intent(in) :: m_dim(2)
     integer, intent(in) :: i
-    integer :: r(size(m,1))
+    integer,dimension(m_dim(2)) :: r
     r(:) = 0
   end function
 
-  function column(m,j) result(c)
-    integer, dimension(:,:) :: m
+  function column(m, m_dim, j) result(c)
+    character(len=*), dimension(:) :: m
+    integer, intent(in) :: m_dim(2)
     integer, intent(in) :: j
-    integer, dimension(size(m,2)) :: c
+    integer, dimension(m_dim(1)) :: c
     c(:) = 0
   end function
-
+  
 end module
