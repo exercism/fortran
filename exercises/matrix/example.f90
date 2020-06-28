@@ -28,13 +28,14 @@ contains
     character(len=*) :: m
     integer, intent(in) :: m_dim(2)
     integer :: A(m_dim(1),m_dim(2))
-    integer :: ai(m_dim(1)*m_dim(2))
+    !integer :: ai(m_dim(1),m_dim(2))
     integer :: i
-
+    integer, parameter :: funit=21
+    open(funit, file=m)
     do i=1,m_dim(2)
-      read(m,*) ai
+      read(funit,*) A(:,i)
     enddo
-    A=reshape(ai, m_dim)
+    close(funit)
     !write(*,*) A
 
   end subroutine
