@@ -110,7 +110,7 @@ contains
 
 !------------------------------------------------------------------
   subroutine assert_equal_int_arr(e_int_arr, i_int_arr, msg_arr)
-    integer, intent(in) :: e_int_arr(2), i_int_arr(2)
+    integer, dimension(:), intent(in) :: e_int_arr, i_int_arr
     character(len=*), intent(in) :: msg_arr
     logical :: assert_test
     integer :: i
