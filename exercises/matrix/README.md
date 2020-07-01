@@ -3,12 +3,12 @@
 Given a string representing a matrix of numbers, return the rows and columns of
 that matrix.
 
-So given a string with embedded newlines like:
+So given a list of strings:
 
 ```text
-9 8 7
-5 3 2
-6 6 7
+9, 8, 7
+5, 3, 2
+6, 6, 7
 ```
 
 representing this matrix:
@@ -40,6 +40,9 @@ And its columns:
 - 8, 3, 6
 - 7, 2, 7
 
+### Hint
+
+Comma separated strings `(character(len=*))` can be easily read in fortran by defining an integer array and using the intrisic `read` function.
 
 ## Source
 
