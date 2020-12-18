@@ -119,7 +119,7 @@ def create_test(test_name, json_name):
     j = None
     with open(json_name) as f:
         j = json.load(f)
-    exercise_version = j['version']
+    exercise_version = j['version'] if 'version' in j else None
     exercise = j['exercise']
     exercise = exercise.replace('-', '_')
     header = """
