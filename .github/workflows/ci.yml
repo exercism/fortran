@@ -1,0 +1,27 @@
+name: fortran / main
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install project dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y gfortran cmake
+
+      - name: Run exercism/fortran ci (runs tests) for all exercises
+        run: |
+          mkdir build
+          cd build
+          cmake -G "Unix Makefiles" ..
+          make
+          ctest -v
