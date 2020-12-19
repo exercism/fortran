@@ -125,14 +125,12 @@ def create_test(test_name, json_name):
     j = None
     with open(json_name) as f:
         j = json.load(f)
-    exercise_version = j['version'] if 'version' in j else None
     exercise = j['exercise']
     exercise = exercise.replace('-', '_')
     header = """
 ! This test was created from %s
-! version: %s
 !
-"""%(json_name, exercise_version)
+"""%(json_name)
 
     program = """
 program %s_test_main
