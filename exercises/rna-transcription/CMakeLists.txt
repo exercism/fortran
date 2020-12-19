@@ -22,7 +22,7 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel") # Intel fortran
   endif()
 endif()
 if(CMAKE_Fortran_COMPILER_ID MATCHES "GNU") # GFrotran
-  set (CMAKE_Fortran_FLAGS ${CCMAKE_Fortran_FLAGS} "-std=f2008 -W -Wall -Wextra -pedantic")
+  set (CMAKE_Fortran_FLAGS ${CCMAKE_Fortran_FLAGS} "-std=f2008 -W -Wall -Wextra -pedantic -fbacktrace")
 endif()
 
 # Configure to run all the tests?
@@ -50,6 +50,12 @@ else()
     endif()
 endif()
 
+# Get test_files if exercise needs it
+file(GLOB test_files test_files/*.*)
+foreach(test_file ${test_files})
+    message("Copying ${test_file} to binary directory for example ${file}")
+    configure_file(${test_file} . COPYONLY)
+endforeach()
 
 # Build executable from sources and headers
 add_executable(${exercise} ${exercise_f90} ${file}_test.f90  )
