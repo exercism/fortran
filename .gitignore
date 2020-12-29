@@ -5,4 +5,4 @@ bin/configlet.exe
 build
 exercises/*/*_build_all.f90
 .vscode
-
+*.mod
