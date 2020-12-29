@@ -39,7 +39,7 @@
       "topics": [
         "bitwise_operations",
         "integers",
-        "type_conversion"      
+        "type_conversion"
       ]
     },
     {
@@ -134,6 +134,20 @@
         "loops",
         "math"
       ]
+    },
+    {
+      "slug": "collatz-conjecture",
+      "uuid": "056c0605-8e8f-423c-b726-4daf6dc30b4c",
+      "core": false,
+      "unlocked_by": null,
+      "difficulty": 1,
+      "topics": [
+        "conditionals",
+        "logic",
+        "loops",
+        "math"
+      ]
     }
+
   ]
 }

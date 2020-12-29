@@ -66,6 +66,8 @@ def write_testcase(c, tnum):
     #   'expected': 'Whatever.'}
     description = c['description']
     fcall = c['property']
+    uuid = c['uuid']
+    error = c['expected']['error'] if type(c['expected']) is dict and 'error' in c['expected'] else None
     fargs = [v for v in c['input'].values()]
     inp = '{}({}'.format(fcall, fix_and_quote_fortran_multiline(fargs[0]))
     for a in fargs[1:]:
@@ -81,6 +83,10 @@ def write_testcase(c, tnum):
     else:
         expected = fix_and_quote_fortran_multiline(expected)
     si.append('  ! Test %d: %s'%(tnum+1, description))
+    si.append('  ! UUID %d: %s'%(tnum+1, uuid))
+    if error:
+        expected = 'ERROR'
+        si.append('  ! ERROR: %s'%(error))
     si.append('  call assert_equal({}, {}, "{}")'.format(expected, inp, description))
     return si
 
@@ -119,14 +125,12 @@ def create_test(test_name, json_name):
     j = None
     with open(json_name) as f:
         j = json.load(f)
-    exercise_version = j['version']
     exercise = j['exercise']
     exercise = exercise.replace('-', '_')
     header = """
 ! This test was created from %s
-! version: %s
 !
-"""%(json_name, exercise_version)
+"""%(json_name)
 
     program = """
 program %s_test_main
