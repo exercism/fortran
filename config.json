@@ -20,8 +20,6 @@
     {
       "slug": "acronym",
       "uuid": "126acd3f-9ad5-46be-ae29-188fdbd7adf7",
-      "core": false,
-      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "conditionals",
@@ -33,8 +31,6 @@
     {
       "slug": "bob",
       "uuid": "c0657767-1d7f-4262-b932-50ab53b9c220",
-      "core": false,
-      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "conditionals",
@@ -45,8 +41,6 @@
     {
       "slug": "collatz-conjecture",
       "uuid": "056c0605-8e8f-423c-b726-4daf6dc30b4c",
-      "core": false,
-      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "conditionals",
@@ -58,8 +52,6 @@
     {
       "slug": "difference-of-squares",
       "uuid": "dd6c972e-3c85-4a92-b8e5-d58ea3cadfa0",
-      "core": false,
-      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "math"
@@ -68,8 +60,6 @@
     {
       "slug": "hamming",
       "uuid": "c4b23221-b6a8-452c-9816-c30501fc690f",
-      "core": false,
-      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "bitwise_operations",
@@ -80,9 +70,6 @@
     {
       "slug": "hello-world",
       "uuid": "b71d9258-78ef-4986-b9ed-ebf93b72d399",
-      "core": false,
-      "auto_approve": true,
-      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "conditionals",
@@ -93,8 +80,6 @@
     {
       "slug": "matrix",
       "uuid": "5d4b176a-d656-4975-a937-ef3e4e830d3f",
-      "core": false,
-      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "algorithms",
@@ -108,8 +93,6 @@
     {
       "slug": "nth-prime",
       "uuid": "423a13d3-8e2a-483a-8da5-50bfa76c04f4",
-      "core": false,
-      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "algorithms",
@@ -121,8 +104,6 @@
     {
       "slug": "pangram",
       "uuid": "c9100446-6e8a-4171-9c1c-61f2b86ba24f",
-      "core": false,
-      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "algorithms",
@@ -136,8 +117,6 @@
     {
       "slug": "raindrops",
       "uuid": "15bab787-1566-45e9-9e26-0bb7f57bbcd5",
-      "core": false,
-      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "algorithms",
@@ -148,8 +127,6 @@
     {
       "slug": "rna-transcription",
       "uuid": "6fa09622-b92d-42ae-aeba-b68717c0b51c",
-      "core": false,
-      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "conditionals",
