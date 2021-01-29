@@ -2,6 +2,7 @@
   "language": "Fortran",
   "active": false,
   "blurb": "",
+  "version": 3,
   "solution_pattern": "example.f90",
   "test_pattern": ".*\\_test.f90",
   "exercises": [
@@ -148,6 +149,5 @@
         "math"
       ]
     }
-
   ]
 }
