@@ -1,5 +1,6 @@
 {
   "language": "Fortran",
+  "slug": "fortran",
   "active": false,
   "status": {
     "concept_exercises": false,
