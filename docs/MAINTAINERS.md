@@ -28,8 +28,8 @@ effort to make it backwards compatible)
 For bob example:
 
 ```bash
-$ python3 config/create_fortran_test.py -j ../../../exercism/problem-specifications/exercises/bob/canonical-data.json -t exercises/bob/bob_test.f90
-Namespace(json='../../../exercism/problem-specifications/exercises/bob/canonical-data.json', target='exercises/bob/bob_test.f90')
+$ python3 config/create_fortran_test.py -j https://github.com/exercism/v3/blob/main/exercism/problem-specifications/exercises/bob/canonical-data.json -t exercises/bob/bob_test.f90
+Namespace(json='https://github.com/exercism/v3/blob/main/exercism/problem-specifications/exercises/bob/canonical-data.json', target='exercises/bob/bob_test.f90')
 Wrote : exercises/bob/bob_test.f90
 $ cp config/CMakeLists.txt exercises/bob/.
 $ cd exercises/bob
