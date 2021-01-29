@@ -17,6 +17,7 @@
   "solution_pattern": "example.f90",
   "test_pattern": ".*\\_test.f90",
   "exercises": {
+    "concept": [],
     "practice": [
       {
         "slug": "acronym",
