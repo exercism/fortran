@@ -23,6 +23,7 @@
         "slug": "acronym",
         "name": "Acronym",
         "uuid": "126acd3f-9ad5-46be-ae29-188fdbd7adf7",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -36,6 +37,7 @@
         "slug": "bob",
         "name": "Bob",
         "uuid": "c0657767-1d7f-4262-b932-50ab53b9c220",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -48,6 +50,7 @@
         "slug": "collatz-conjecture",
         "name": "Collatz Conjecture",
         "uuid": "056c0605-8e8f-423c-b726-4daf6dc30b4c",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -61,6 +64,7 @@
         "slug": "difference-of-squares",
         "name": "Difference Of Squares",
         "uuid": "dd6c972e-3c85-4a92-b8e5-d58ea3cadfa0",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -71,6 +75,7 @@
         "slug": "hamming",
         "name": "Hamming",
         "uuid": "c4b23221-b6a8-452c-9816-c30501fc690f",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -83,6 +88,7 @@
         "slug": "hello-world",
         "name": "Hello World",
         "uuid": "b71d9258-78ef-4986-b9ed-ebf93b72d399",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -95,6 +101,7 @@
         "slug": "matrix",
         "name": "Matrix",
         "uuid": "5d4b176a-d656-4975-a937-ef3e4e830d3f",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -110,6 +117,7 @@
         "slug": "nth-prime",
         "name": "Nth Prime",
         "uuid": "423a13d3-8e2a-483a-8da5-50bfa76c04f4",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -123,6 +131,7 @@
         "slug": "pangram",
         "name": "Pangram",
         "uuid": "c9100446-6e8a-4171-9c1c-61f2b86ba24f",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -138,6 +147,7 @@
         "slug": "raindrops",
         "name": "Raindrops",
         "uuid": "15bab787-1566-45e9-9e26-0bb7f57bbcd5",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
@@ -150,6 +160,7 @@
         "slug": "rna-transcription",
         "name": "Rna Transcription",
         "uuid": "6fa09622-b92d-42ae-aeba-b68717c0b51c",
+        "practices": [],
         "prerequisites": [],
         "difficulty": 1,
         "topics": [
