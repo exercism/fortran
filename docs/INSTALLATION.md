@@ -5,7 +5,7 @@ installed on your system:
 * a modern Fortran compiler
 * the CMake cross-platform build system
 
-### Prerequisite: A Modern Fortran Compiler
+## Prerequisite: A Modern Fortran Compiler
 
 This language track requires a compiler with [Fortran
 2003](https://en.wikipedia.org/wiki/Fortran#Fortran_2003) support. All
@@ -21,7 +21,7 @@ exercises will work with Intel Fortran, but are only tested with GNU
 Fortran so your mileage may vary.
 
 
-### Prerequisite: CMake
+## Prerequisite: CMake
 
 CMake is an open source cross-platform build system that generates build
 scripts for your native build system (`make`, Visual Studio, Xcode, etc.).
@@ -46,7 +46,7 @@ improve the CMake support.
 [CMake 2.8.11 or later](http://www.cmake.org/) is required to use the provided build recipe.
 
 
-#### Linux
+### Linux
 
 Ubuntu 16.04 and later have compatible compilers in the package manager, so
 installing the necessary compiler can be done with
@@ -58,7 +58,7 @@ sudo apt-get install gfortran cmake
 For other distributions, you should be able to acquire the compiler through your
 package manager.
 
-#### MacOS
+### MacOS
 
 MacOS users can install GCC with [Homebrew](http://brew.sh/) via
 
@@ -66,7 +66,7 @@ MacOS users can install GCC with [Homebrew](http://brew.sh/) via
 brew install gfortran cmake
 ```
 
-#### Windows
+### Windows
 
 With Windows there are a number of options:
 - [Windows Subsystem for Linux
@@ -75,14 +75,14 @@ With Windows there are a number of options:
 - [Windows with Visual Studio with NMake and Intel
   Fortran](#####-Windows-with-Visual-Studio-with-NMake-and-Intel-Fortran)
 
-##### Windows Subsystem for Linux (WSL)
+#### Windows Subsystem for Linux (WSL)
 
 Windows 10 introduces the [Windows Subsystem for Linux
 (WSL)](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux).  If
 you have Ubuntu 16.04 or later as the subsystem, open an Ubuntu Bash
 shell and follow the [Linux](####-Linux) instructions.
 
-##### Windows with MingW GNU Fortran
+#### Windows with MingW GNU Fortran
 
 Windows users can get GNU Fortran through
 [MingW](http://www.mingw.org/).
@@ -101,7 +101,7 @@ these installations to the PATH, ie.:
 set PATH=%PATH%;C:\tools\mingw64\bin;C:\Program Files\CMake\bin
 ```
 
-##### Windows with Visual Studio with NMake and Intel Fortran
+#### Windows with Visual Studio with NMake and Intel Fortran
 
 See [Intel Fortran](###-Intel-Fortran)
 
