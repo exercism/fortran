@@ -1,4 +1,4 @@
-## For maintainers
+# For maintainers
 
 ### Helper script for creating Fortran tests: create\_fortran\_test.py
 
