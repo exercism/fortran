@@ -16,6 +16,20 @@
   },
   "solution_pattern": "example.f90",
   "test_pattern": ".*\\_test.f90",
+  "files": {
+    "solution": [
+      "%{snake_slug}.f90"
+    ],
+    "test": [
+      "%{snake_slug}_test.f90"
+    ],
+    "example": [
+      "example.f90"
+    ],
+    "exemplar": [
+      ""
+    ]
+  },
   "exercises": {
     "concept": [],
     "practice": [
