@@ -1,9 +1,15 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "acronym.f90"
+    ],
+    "test": [
+      "acronym_test.f90"
+    ],
+    "example": [
+      "example.f90"
+    ]
   },
   "source": "Julien Vanier",
   "source_url": "https://github.com/monkbroc"
