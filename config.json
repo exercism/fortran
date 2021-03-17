@@ -18,16 +18,16 @@
   "test_pattern": ".*\\_test.f90",
   "files": {
     "solution": [
-      "path/to/%{kebab_slug}.ext"
+      "%{snake_slug}.f90"
     ],
     "test": [
-      "path/to/%{kebab_slug}.ext"
+      "%{snake_slug}_test.f90"
     ],
     "example": [
-      "path/to/%{kebab_slug}.ext"
+      "example.f90"
     ],
     "exemplar": [
-      "path/to/%{kebab_slug}.ext"
+      ""
     ]
   },
   "exercises": {
