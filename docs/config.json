@@ -1,0 +1,25 @@
+{
+  "docs": [
+    {
+      "uuid": "d7d72b7a-c236-4574-8e86-8657a9249c18",
+      "slug": "installation",
+      "path": "docs/INSTALLATION.md",
+      "title": "Installing Fortran locally",
+      "blurb": "Learn how to install Fortran locally to solve Exercism's exercises on your own machine"
+    },
+    {
+      "uuid": "0c6fcea1-db21-4111-83d7-c96c1495745f",
+      "slug": "tests",
+      "path": "docs/TESTS.md",
+      "title": "Testing on the Fortran track",
+      "blurb": "Learn how to test your Fortran exercises on Exercism"
+    },
+    {
+      "uuid": "546bf7ea-e7c1-4b8b-8e02-9a90ce66cb84",
+      "slug": "resources",
+      "path": "docs/RESOURCES.md",
+      "title": "Useful Fortran resources",
+      "blurb": "A collection of useful resources to help you master Fortran"
+    }
+  ]
+}
