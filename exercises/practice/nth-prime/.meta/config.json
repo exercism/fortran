@@ -1,6 +1,8 @@
 {
   "blurb": "Given a number n, determine what the nth prime is.",
-  "authors": [],
+  "authors": [
+    "pclausen"
+  ],
   "files": {
     "solution": [
       "nth_prime.f90"
