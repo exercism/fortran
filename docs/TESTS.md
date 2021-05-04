@@ -1,3 +1,5 @@
+# Tests
+
 Each exercise supplies the unit tests and a CMake build recipe.  You
 provide the implementation.
 Each test file is meant to link against your implementation to provide a
@@ -32,7 +34,7 @@ Working through each exercise is a process of:
  * Uncomment the next test
 
 
-### Creating the Initial Build with CMake
+## Creating the Initial Build with CMake
 
 Each exercise will bring a `CMakeLists.txt` file along with the unit
 tests.  It contains the canned CMake recipe to handle the build for you.
@@ -72,7 +74,7 @@ code using the appropriate command for your environment:
 
 Examples of running CMake for different environments are shown below.
 
-#### Linux\MacOS with Make
+### Linux\MacOS with Make
 
 The generator name for CMake is `Unix Makefiles`.
 Assuming the current exercise is `bob` and we're in the exercise folder:
@@ -95,7 +97,7 @@ When all build errors are fixed run the tests:
 ```
 $ ctest -V
 ```
-#### Windows with Visual Studio 2017
+### Windows with Visual Studio 2017
 
 The generator name for CMake is `Visual Studio 15`.  The same generator
 supports all IDE editions of Visual Studio 2017: Community, Professional,
@@ -113,7 +115,7 @@ This example shows creating empty files for the implementation before
 running CMake.
 
 
-#### Windows with MingW
+### Windows with MingW
 
 The generator name for CMake is `MinGW Makefiles`. Assuming the current
 exercise is `bob` and we're in the exercise folder:
@@ -132,7 +134,7 @@ Simply type make in the build directory to compile the tests. This should
 generate compile time errors. Once the errors are fixed run `make` again.
 When all build errors are fixed run the tests:
 
-#### MacOS with Xcode
+### MacOS with Xcode
 
 The generator name for CMake is `Xcode`.
 Assuming the current exercise is `bob` and we're in the exercise folder:

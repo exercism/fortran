@@ -1,6 +1,6 @@
-## For maintainers
+# For maintainers
 
-### Helper script for creating Fortran tests: create\_fortran\_test.py
+## Helper script for creating Fortran tests: create\_fortran\_test.py
 
 An easy way to create an exercise test is to use the script
 `bin/create\_fortran\_test.py`
@@ -10,13 +10,13 @@ Typically, you will have to replace the 'response'-function in the generated fil
 
 Also note that Fortran has issues with special characters such as `\n` and `\t` so take special care handling these.
 
-#### Prerequsites
+### Prerequsites
 - Working CMake and Fortran compiler
 - Python3.x (You can make it may work with Python2, but I have not made the
 effort to make it backwards compatible)
 - latest version of https://github.com/exercism/problem-specifications.git
 
-#### Work flow for creating a new test
+### Work flow for creating a new test
 - pull latest changes from `exercism/problem-specifications`
 - run this script for the example you want to create
 - copy `config/CMakeLists.txt` to exercise directory (You can use `bin/update-cmake-files` for this)
@@ -41,5 +41,5 @@ $ make
 $ ctest -V
 ```
 
-#### Changing `CMakeLists.txt`
+### Changing `CMakeLists.txt`
 When changing the cmake file, update the master copy in `config/` and use `bin/update-cmake-files` to copy it to all exercise directories.
