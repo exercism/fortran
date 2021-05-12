@@ -2,6 +2,7 @@
 
 [![Configlet Status](https://github.com/exercism/fortran/workflows/configlet/badge.svg)]
 [![Exercise Test Status](https://github.com/exercism/fortran/workflows/fortran%20%2F%20main/badge.svg)]
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/pclausen/fortran)
 
 Exercism exercises in Fortran.
 
