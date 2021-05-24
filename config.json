@@ -1,153 +1,217 @@
 {
   "language": "Fortran",
-  "active": false,
-  "blurb": "",
-  "solution_pattern": "example.f90",
-  "test_pattern": ".*\\_test.f90",
-  "exercises": [
-    {
-      "slug": "hello-world",
-      "uuid": "b71d9258-78ef-4986-b9ed-ebf93b72d399",
-      "core": false,
-      "auto_approve": true,
-      "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-        "conditionals",
-        "optional_values",
-        "text_formatting"
-      ]
-    },
-    {
-      "slug": "bob",
-      "uuid": "c0657767-1d7f-4262-b932-50ab53b9c220",
-      "core": false,
-      "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-        "conditionals",
-        "equality",
-        "strings"
-      ]
-    },
-    {
-      "slug": "hamming",
-      "uuid": "c4b23221-b6a8-452c-9816-c30501fc690f",
-      "core": false,
-      "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-        "bitwise_operations",
-        "integers",
-        "type_conversion"
-      ]
-    },
-    {
-      "slug": "matrix",
-      "uuid": "5d4b176a-d656-4975-a937-ef3e4e830d3f",
-      "core": false,
-      "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-        "algorithms",
-        "conditionals",
-        "lists",
-        "loops",
-        "matrices",
-        "sets"
-      ]
-    },
-    {
-      "slug": "nth-prime",
-      "uuid": "423a13d3-8e2a-483a-8da5-50bfa76c04f4",
-      "core": false,
-      "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-        "algorithms",
-        "lists",
-        "loops",
-        "math"
-      ]
-    },
-    {
-      "slug": "rna-transcription",
-      "uuid": "6fa09622-b92d-42ae-aeba-b68717c0b51c",
-      "core": false,
-      "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-        "conditionals",
-        "logic",
-        "loops",
-        "maps",
-        "strings",
-        "transforming"
-      ]
-    },
-    {
-      "slug": "raindrops",
-      "uuid": "15bab787-1566-45e9-9e26-0bb7f57bbcd5",
-      "core": false,
-      "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-        "algorithms",
-        "loops",
-        "math"
-      ]
-    },
-    {
-      "slug": "difference-of-squares",
-      "uuid": "dd6c972e-3c85-4a92-b8e5-d58ea3cadfa0",
-      "core": false,
-      "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-        "math"
-      ]
-    },
-    {
-      "slug": "pangram",
-      "uuid": "c9100446-6e8a-4171-9c1c-61f2b86ba24f",
-      "core": false,
-      "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-        "algorithms",
-        "conditionals",
-        "filtering",
-        "logic",
-        "loops",
-        "strings"
-      ]
-    },
-    {
-      "slug": "acronym",
-      "uuid": "126acd3f-9ad5-46be-ae29-188fdbd7adf7",
-      "core": false,
-      "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-        "conditionals",
-        "logic",
-        "loops",
-        "math"
-      ]
-    },
-    {
-      "slug": "collatz-conjecture",
-      "uuid": "056c0605-8e8f-423c-b726-4daf6dc30b4c",
-      "core": false,
-      "unlocked_by": null,
-      "difficulty": 1,
-      "topics": [
-        "conditionals",
-        "logic",
-        "loops",
-        "math"
-      ]
-    }
-
-  ]
+  "slug": "fortran",
+  "version": 3,
+  "active": true,
+  "blurb": "Fortran is one of the oldest languages still in use today, latest revision is 2018. The name Fortran is derived from FORmula TRANslation. It still shines for numerical high performance computing.",
+  "status": {
+    "concept_exercises": false,
+    "test_runner": false,
+    "representer": false,
+    "analyzer": false
+  },
+  "solution_pattern": "%{snake_slug}.f90",
+  "test_pattern": "%{snake_slug}_test.f90",
+  "test_runner": {
+    "average_run_time": 3.0
+  },
+  "online_editor": {
+    "indent_style": "space",
+    "indent_size": 2,
+    "ace_editor_language": "fortran",
+    "highlightjs_language": "fortran"
+  },
+  "tags": [
+    "paradigm/imperative",
+    "paradigm/procedural",
+    "typing/strong",
+    "execution_mode/compiled",
+    "platform/windows",
+    "platform/mac",
+    "platform/linux",
+    "runtime/language_specific",
+    "used_for/scientific_calculations"
+  ],
+  "concepts": [],
+  "exercises": {
+    "concept": [],
+    "practice": [
+      {
+        "slug": "hello-world",
+        "name": "Hello World",
+        "uuid": "b71d9258-78ef-4986-b9ed-ebf93b72d399",
+        "core": false,
+        "auto_approve": true,
+        "unlocked_by": null,
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],        
+        "topics": [
+          "conditionals",
+          "optional_values",
+          "text_formatting"
+        ]
+      },
+      {
+        "slug": "bob",
+        "name": "Bob",
+        "uuid": "c0657767-1d7f-4262-b932-50ab53b9c220",
+        "core": false,
+        "unlocked_by": null,
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],        
+        "topics": [
+          "conditionals",
+          "equality",
+          "strings"
+        ]
+      },
+      {
+        "slug": "hamming",
+        "name": "Hamming",
+        "uuid": "c4b23221-b6a8-452c-9816-c30501fc690f",
+        "core": false,
+        "unlocked_by": null,
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],        
+        "topics": [
+          "bitwise_operations",
+          "integers",
+          "type_conversion"
+        ]
+      },
+      {
+        "slug": "matrix",
+        "name": "Matrix",
+        "uuid": "5d4b176a-d656-4975-a937-ef3e4e830d3f",
+        "core": false,
+        "unlocked_by": null,
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],        
+        "topics": [
+          "algorithms",
+          "conditionals",
+          "lists",
+          "loops",
+          "matrices",
+          "sets"
+        ]
+      },
+      {
+        "slug": "nth-prime",
+        "name": "Nth Prime",
+        "uuid": "423a13d3-8e2a-483a-8da5-50bfa76c04f4",
+        "core": false,
+        "unlocked_by": null,
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],        
+        "topics": [
+          "algorithms",
+          "lists",
+          "loops",
+          "math"
+        ]
+      },
+      {
+        "slug": "rna-transcription",
+        "name": "Rna Transcription",
+        "uuid": "6fa09622-b92d-42ae-aeba-b68717c0b51c",
+        "core": false,
+        "unlocked_by": null,
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],        
+        "topics": [
+          "conditionals",
+          "logic",
+          "loops",
+          "maps",
+          "strings",
+          "transforming"
+        ]
+      },
+      {
+        "slug": "raindrops",
+        "name": "Raindrops",
+        "uuid": "15bab787-1566-45e9-9e26-0bb7f57bbcd5",
+        "core": false,
+        "unlocked_by": null,
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],        
+        "topics": [
+          "algorithms",
+          "loops",
+          "math"
+        ]
+      },
+      {
+        "slug": "difference-of-squares",
+        "name": "Difference Of Squares",
+        "uuid": "dd6c972e-3c85-4a92-b8e5-d58ea3cadfa0",
+        "core": false,
+        "unlocked_by": null,
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],        
+        "topics": [
+          "math"
+        ]
+      },
+      {
+        "slug": "pangram",
+        "name": "Pangram",
+        "uuid": "c9100446-6e8a-4171-9c1c-61f2b86ba24f",
+        "core": false,
+        "unlocked_by": null,
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],        
+        "topics": [
+          "algorithms",
+          "conditionals",
+          "filtering",
+          "logic",
+          "loops",
+          "strings"
+        ]
+      },
+      {
+        "slug": "acronym",
+        "name": "Acronym",
+        "uuid": "126acd3f-9ad5-46be-ae29-188fdbd7adf7",
+        "core": false,
+        "unlocked_by": null,
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],        
+        "topics": [
+          "conditionals",
+          "logic",
+          "loops",
+          "math"
+        ]
+      },
+      {
+        "slug": "collatz-conjecture",
+        "name": "Collatz Conjecture",
+        "uuid": "056c0605-8e8f-423c-b726-4daf6dc30b4c",
+        "core": false,
+        "unlocked_by": null,
+        "difficulty": 1,        
+        "practices": [],
+        "prerequisites": [],        
+        "topics": [
+          "conditionals",
+          "logic",
+          "loops",
+          "math"
+        ]
+      }
+    ]
+  }
 }
