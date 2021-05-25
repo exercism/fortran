@@ -10,11 +10,12 @@
     "representer": false,
     "analyzer": false
   },
-  "solution_pattern": "%{snake_slug}.f90",
-  "test_pattern": "%{snake_slug}_test.f90",
-  "test_runner": {
-    "average_run_time": 3.0
-  },
+  "files": {
+    "solution": ["%{snake_slug}.f90"],
+    "test": ["%{snake_slug}_test.f90"],
+    "example": [".meta/%{snake_slug}.f90"],
+    "exemplar": [".meta/%{snake_slug}.f90"]
+  },  
   "online_editor": {
     "indent_style": "space",
     "indent_size": 2,
