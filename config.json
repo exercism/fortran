@@ -2,7 +2,7 @@
   "language": "Fortran",
   "slug": "fortran",
   "version": 3,
-  "active": true,
+  "active": false,
   "blurb": "Fortran is one of the oldest languages still in use today, latest revision is 2018. The name Fortran is derived from FORmula TRANslation. It still shines for numerical high performance computing.",
   "status": {
     "concept_exercises": false,
