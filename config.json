@@ -11,10 +11,10 @@
     "analyzer": false
   },
   "files": {
-    "solution": ["%{snake_slug}.f90"],
+    "solution": [".meta/example.f90"],
     "test": ["%{snake_slug}_test.f90"],
-    "example": [".meta/example.f90"],
-    "exemplar": [".meta/example.f90"]
+    "example": ["%{snake_slug}.f90"],
+    "exemplar": ["%{snake_slug}.f90"]
   },
   "online_editor": {
     "indent_style": "space",

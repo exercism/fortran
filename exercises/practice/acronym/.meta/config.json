@@ -3,13 +3,13 @@
   "authors": [],
   "files": {
     "solution": [
-      "acronym.f90"
+      ".meta/example.f90"
     ],
     "test": [
       "acronym_test.f90"
     ],
     "example": [
-      "example.f90"
+      "acronym.f90"
     ]
   },
   "source": "Julien Vanier",

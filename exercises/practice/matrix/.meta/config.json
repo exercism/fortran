@@ -3,13 +3,13 @@
   "authors": [],
   "files": {
     "solution": [
-      "matrix.f90"
+      ".meta/example.f90"
     ],
     "test": [
       "matrix_test.f90"
     ],
     "example": [
-      "example.f90"
+      "matrix.f90"
     ]
   },
   "source": "Warmup to the `saddle-points` warmup.",

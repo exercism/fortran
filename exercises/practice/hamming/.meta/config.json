@@ -3,13 +3,13 @@
   "authors": [],
   "files": {
     "solution": [
-      "hamming.f90"
+      ".meta/example.f90"
     ],
     "test": [
       "hamming_test.f90"
     ],
     "example": [
-      "example.f90"
+      "hamming.f90"
     ]
   },
   "source": "The Calculating Point Mutations problem at Rosalind",

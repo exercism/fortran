@@ -3,13 +3,13 @@
   "authors": [],
   "files": {
     "solution": [
-      "hello_world.f90"
+      ".meta/example.f90"
     ],
     "test": [
       "hello_world_test.f90"
     ],
     "example": [
-      "example.f90"
+      "hello_world.f90"
     ]
   },
   "source": "This is an exercise to introduce users to using Exercism",

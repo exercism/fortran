@@ -3,13 +3,13 @@
   "authors": [],
   "files": {
     "solution": [
-      "nth_prime.f90"
+      ".meta/example.f90"
     ],
     "test": [
       "nth_prime_test.f90"
     ],
     "example": [
-      "example.f90"
+      "nth_prime.f90"
     ]
   },
   "source": "A variation on Problem 7 at Project Euler",
