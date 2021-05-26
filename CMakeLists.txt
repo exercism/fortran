@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.11)
+cmake_minimum_required(VERSION 3.0.0)
 project(exercism Fortran)
 include(CTest)
 
@@ -19,8 +19,8 @@ endif()
 function(travis_fixup exercise)
   string(REPLACE "-" "_" file ${exercise})
   set(subdir ${CMAKE_CURRENT_SOURCE_DIR}/exercises/${exercise})
-  if(EXISTS ${subdir}/example.f90)
-    configure_file( ${subdir}/example.f90 ${subdir}/${file}_build_all.f90)
+  if(EXISTS ${subdir}/.meta/example.f90)
+    configure_file( ${subdir}/.meta/example.f90 ${subdir}/${file}_build_all.f90)
   endif()
 endfunction()
 
