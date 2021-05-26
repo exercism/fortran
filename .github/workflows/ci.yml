@@ -7,8 +7,9 @@ on:
   workflow_dispatch:
 
 jobs:
+
   linux-min:
-    name: Linux Min Config
+    name: Linux Minimum
     runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@v2.3.4
@@ -26,7 +27,7 @@ jobs:
           ctest -V
 
   linux-latest:
-    name: Linux Latest Config
+    name: Linux Latest
     needs: [linux-min]
     runs-on: ubuntu-latest
     steps:
@@ -65,3 +66,17 @@ jobs:
         ctest -V
       env:
         FC: /usr/local/Cellar/gcc/11.1.0/bin/gfortran
+
+  windows:
+    name: Windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - name: Run exercism/fortran ci (runs tests) for all exercises
+        shell: powershell
+        run: |
+          mkdir build
+          cd build
+          cmake -G "MinGW Makefiles" ..
+          cmake --build .
+          ctest -V
