@@ -1,125 +1,77 @@
 {
   "language": "Fortran",
   "slug": "fortran",
+  "version": 3,
   "active": false,
+  "blurb": "Fortran is one of the oldest languages still in use today, latest revision is 2018. The name Fortran is derived from FORmula TRANslation. It still shines for numerical high performance computing.",
   "status": {
     "concept_exercises": false,
     "test_runner": false,
     "representer": false,
     "analyzer": false
   },
-  "blurb": "",
-  "version": 3,
+  "files": {
+    "solution": ["%{snake_slug}.f90"],
+    "test": ["%{snake_slug}_test.f90"],
+    "example": [".meta/%{snake_slug}.f90"],
+    "exemplar": [".meta/%{snake_slug}.f90"]
+  },
   "online_editor": {
     "indent_style": "space",
-    "indent_size": 4,
+    "indent_size": 2,
     "ace_editor_language": "fortran",
     "highlightjs_language": "fortran"
   },
-  "solution_pattern": "example.f90",
-  "test_pattern": ".*\\_test.f90",
-  "files": {
-    "solution": [
-      "%{snake_slug}.f90"
-    ],
-    "test": [
-      "%{snake_slug}_test.f90"
-    ],
-    "example": [
-      "example.f90"
-    ],
-    "exemplar": [
-      ""
-    ]
-  },
+  "tags": [
+    "paradigm/imperative",
+    "paradigm/procedural",
+    "typing/strong",
+    "execution_mode/compiled",
+    "platform/windows",
+    "platform/mac",
+    "platform/linux",
+    "runtime/language_specific",
+    "used_for/scientific_calculations"
+  ],
+  "key_features": [],
+  "concepts": [],
   "exercises": {
     "concept": [],
     "practice": [
       {
-        "slug": "acronym",
-        "name": "Acronym",
-        "uuid": "126acd3f-9ad5-46be-ae29-188fdbd7adf7",
+        "slug": "hello-world",
+        "name": "Hello World",
+        "uuid": "b71d9258-78ef-4986-b9ed-ebf93b72d399",
+        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1,
-        "topics": [
-          "conditionals",
-          "logic",
-          "loops",
-          "math"
-        ]
+        "topics": ["conditionals", "optional_values", "text_formatting"]
       },
       {
         "slug": "bob",
         "name": "Bob",
         "uuid": "c0657767-1d7f-4262-b932-50ab53b9c220",
+        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1,
-        "topics": [
-          "conditionals",
-          "equality",
-          "strings"
-        ]
-      },
-      {
-        "slug": "collatz-conjecture",
-        "name": "Collatz Conjecture",
-        "uuid": "056c0605-8e8f-423c-b726-4daf6dc30b4c",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 1,
-        "topics": [
-          "conditionals",
-          "logic",
-          "loops",
-          "math"
-        ]
-      },
-      {
-        "slug": "difference-of-squares",
-        "name": "Difference Of Squares",
-        "uuid": "dd6c972e-3c85-4a92-b8e5-d58ea3cadfa0",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 1,
-        "topics": [
-          "math"
-        ]
+        "topics": ["conditionals", "equality", "strings"]
       },
       {
         "slug": "hamming",
         "name": "Hamming",
         "uuid": "c4b23221-b6a8-452c-9816-c30501fc690f",
+        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1,
-        "topics": [
-          "bitwise_operations",
-          "integers",
-          "type_conversion"
-        ]
-      },
-      {
-        "slug": "hello-world",
-        "name": "Hello World",
-        "uuid": "b71d9258-78ef-4986-b9ed-ebf93b72d399",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 1,
-        "topics": [
-          "conditionals",
-          "optional_values",
-          "text_formatting"
-        ]
+        "topics": ["bitwise_operations", "integers", "type_conversion"]
       },
       {
         "slug": "matrix",
         "name": "Matrix",
         "uuid": "5d4b176a-d656-4975-a937-ef3e4e830d3f",
+        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1,
         "topics": [
           "algorithms",
           "conditionals",
@@ -133,23 +85,52 @@
         "slug": "nth-prime",
         "name": "Nth Prime",
         "uuid": "423a13d3-8e2a-483a-8da5-50bfa76c04f4",
+        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "topics": ["algorithms", "lists", "loops", "math"]
+      },
+      {
+        "slug": "rna-transcription",
+        "name": "Rna Transcription",
+        "uuid": "6fa09622-b92d-42ae-aeba-b68717c0b51c",
         "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
         "topics": [
-          "algorithms",
-          "lists",
+          "conditionals",
+          "logic",
           "loops",
-          "math"
+          "maps",
+          "strings",
+          "transforming"
         ]
+      },
+      {
+        "slug": "raindrops",
+        "name": "Raindrops",
+        "uuid": "15bab787-1566-45e9-9e26-0bb7f57bbcd5",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics": ["algorithms", "loops", "math"]
+      },
+      {
+        "slug": "difference-of-squares",
+        "name": "Difference Of Squares",
+        "uuid": "dd6c972e-3c85-4a92-b8e5-d58ea3cadfa0",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics": ["math"]
       },
       {
         "slug": "pangram",
         "name": "Pangram",
         "uuid": "c9100446-6e8a-4171-9c1c-61f2b86ba24f",
+        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1,
         "topics": [
           "algorithms",
           "conditionals",
@@ -160,37 +141,23 @@
         ]
       },
       {
-        "slug": "raindrops",
-        "name": "Raindrops",
-        "uuid": "15bab787-1566-45e9-9e26-0bb7f57bbcd5",
+        "slug": "acronym",
+        "name": "Acronym",
+        "uuid": "126acd3f-9ad5-46be-ae29-188fdbd7adf7",
+        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1,
-        "topics": [
-          "algorithms",
-          "loops",
-          "math"
-        ]
+        "topics": ["conditionals", "logic", "loops", "math"]
       },
       {
-        "slug": "rna-transcription",
-        "name": "Rna Transcription",
-        "uuid": "6fa09622-b92d-42ae-aeba-b68717c0b51c",
+        "slug": "collatz-conjecture",
+        "name": "Collatz Conjecture",
+        "uuid": "056c0605-8e8f-423c-b726-4daf6dc30b4c",
+        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1,
-        "topics": [
-          "conditionals",
-          "logic",
-          "loops",
-          "maps",
-          "strings",
-          "transforming"
-        ]
+        "topics": ["conditionals", "logic", "loops", "math"]
       }
     ]
-  },
-  "concepts": [],
-  "key_features": [],
-  "tags": []
+  }
 }
