@@ -15,7 +15,7 @@
     "test": ["%{snake_slug}_test.f90"],
     "example": [".meta/%{snake_slug}.f90"],
     "exemplar": [".meta/%{snake_slug}.f90"]
-  },  
+  },
   "online_editor": {
     "indent_style": "space",
     "indent_size": 2,
@@ -33,6 +33,7 @@
     "runtime/language_specific",
     "used_for/scientific_calculations"
   ],
+  "key_features": [],
   "concepts": [],
   "exercises": {
     "concept": [],
@@ -43,12 +44,8 @@
         "uuid": "b71d9258-78ef-4986-b9ed-ebf93b72d399",
         "difficulty": 1,
         "practices": [],
-        "prerequisites": [],        
-        "topics": [
-          "conditionals",
-          "optional_values",
-          "text_formatting"
-        ]
+        "prerequisites": [],
+        "topics": ["conditionals", "optional_values", "text_formatting"]
       },
       {
         "slug": "bob",
@@ -56,12 +53,8 @@
         "uuid": "c0657767-1d7f-4262-b932-50ab53b9c220",
         "difficulty": 1,
         "practices": [],
-        "prerequisites": [],        
-        "topics": [
-          "conditionals",
-          "equality",
-          "strings"
-        ]
+        "prerequisites": [],
+        "topics": ["conditionals", "equality", "strings"]
       },
       {
         "slug": "hamming",
@@ -69,12 +62,8 @@
         "uuid": "c4b23221-b6a8-452c-9816-c30501fc690f",
         "difficulty": 1,
         "practices": [],
-        "prerequisites": [],        
-        "topics": [
-          "bitwise_operations",
-          "integers",
-          "type_conversion"
-        ]
+        "prerequisites": [],
+        "topics": ["bitwise_operations", "integers", "type_conversion"]
       },
       {
         "slug": "matrix",
@@ -82,7 +71,7 @@
         "uuid": "5d4b176a-d656-4975-a937-ef3e4e830d3f",
         "difficulty": 1,
         "practices": [],
-        "prerequisites": [],        
+        "prerequisites": [],
         "topics": [
           "algorithms",
           "conditionals",
@@ -98,13 +87,8 @@
         "uuid": "423a13d3-8e2a-483a-8da5-50bfa76c04f4",
         "difficulty": 1,
         "practices": [],
-        "prerequisites": [],        
-        "topics": [
-          "algorithms",
-          "lists",
-          "loops",
-          "math"
-        ]
+        "prerequisites": [],
+        "topics": ["algorithms", "lists", "loops", "math"]
       },
       {
         "slug": "rna-transcription",
@@ -112,7 +96,7 @@
         "uuid": "6fa09622-b92d-42ae-aeba-b68717c0b51c",
         "difficulty": 1,
         "practices": [],
-        "prerequisites": [],        
+        "prerequisites": [],
         "topics": [
           "conditionals",
           "logic",
@@ -128,12 +112,8 @@
         "uuid": "15bab787-1566-45e9-9e26-0bb7f57bbcd5",
         "difficulty": 1,
         "practices": [],
-        "prerequisites": [],        
-        "topics": [
-          "algorithms",
-          "loops",
-          "math"
-        ]
+        "prerequisites": [],
+        "topics": ["algorithms", "loops", "math"]
       },
       {
         "slug": "difference-of-squares",
@@ -141,10 +121,8 @@
         "uuid": "dd6c972e-3c85-4a92-b8e5-d58ea3cadfa0",
         "difficulty": 1,
         "practices": [],
-        "prerequisites": [],        
-        "topics": [
-          "math"
-        ]
+        "prerequisites": [],
+        "topics": ["math"]
       },
       {
         "slug": "pangram",
@@ -152,7 +130,7 @@
         "uuid": "c9100446-6e8a-4171-9c1c-61f2b86ba24f",
         "difficulty": 1,
         "practices": [],
-        "prerequisites": [],        
+        "prerequisites": [],
         "topics": [
           "algorithms",
           "conditionals",
@@ -168,27 +146,17 @@
         "uuid": "126acd3f-9ad5-46be-ae29-188fdbd7adf7",
         "difficulty": 1,
         "practices": [],
-        "prerequisites": [],        
-        "topics": [
-          "conditionals",
-          "logic",
-          "loops",
-          "math"
-        ]
+        "prerequisites": [],
+        "topics": ["conditionals", "logic", "loops", "math"]
       },
       {
         "slug": "collatz-conjecture",
         "name": "Collatz Conjecture",
         "uuid": "056c0605-8e8f-423c-b726-4daf6dc30b4c",
-        "difficulty": 1,        
+        "difficulty": 1,
         "practices": [],
-        "prerequisites": [],        
-        "topics": [
-          "conditionals",
-          "logic",
-          "loops",
-          "math"
-        ]
+        "prerequisites": [],
+        "topics": ["conditionals", "logic", "loops", "math"]
       }
     ]
   }

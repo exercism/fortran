@@ -1,0 +1,17 @@
+{
+  "blurb": "Determine if a sentence is a pangram.",
+  "authors": [],
+  "files": {
+    "solution": [
+      "pangram.f90"
+    ],
+    "test": [
+      "pangram_test.f90"
+    ],
+    "example": [
+      "example.f90"
+    ]
+  },
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Pangram"
+}
