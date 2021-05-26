@@ -66,7 +66,6 @@ def write_testcase(c, tnum):
     #   'expected': 'Whatever.'}
     description = c['description']
     fcall = c['property']
-    uuid = c['uuid']
     error = c['expected']['error'] if type(c['expected']) is dict and 'error' in c['expected'] else None
     fargs = [v for v in c['input'].values()]
     inp = '{}({}'.format(fcall, fix_and_quote_fortran_multiline(fargs[0]))
@@ -83,7 +82,6 @@ def write_testcase(c, tnum):
     else:
         expected = fix_and_quote_fortran_multiline(expected)
     si.append('  ! Test %d: %s'%(tnum+1, description))
-    si.append('  ! UUID %d: %s'%(tnum+1, uuid))
     if error:
         expected = 'ERROR'
         si.append('  ! ERROR: %s'%(error))
@@ -130,7 +128,7 @@ def create_test(test_name, json_name):
     header = """
 ! This test was created from %s
 !
-"""%(json_name)
+"""%(os.path.relpath(json_name))
 
     program = """
 program %s_test_main

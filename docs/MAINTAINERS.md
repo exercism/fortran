@@ -15,9 +15,12 @@ Also note that Fortran has issues with special characters such as `\n` and `\t` 
 - Python3.x (You can make it may work with Python2, but I have not made the
 effort to make it backwards compatible)
 - latest version of https://github.com/exercism/problem-specifications.git
+- git
+
 
 ### Work flow for creating a new test
-- pull latest changes from `exercism/problem-specifications`
+- pull latest changes from `exercism/problem-specifications` eg git clone git@github.com:exercism/problem-specifications.git
+- Create a new branch for creating a new exercise, eg git checkout -b exercise-bob
 - run this script for the example you want to create
 - copy `config/CMakeLists.txt` to exercise directory (You can use `bin/update-cmake-files` for this)
 - implement working exercise
@@ -28,11 +31,11 @@ effort to make it backwards compatible)
 For bob example:
 
 ```bash
-$ python3 config/create_fortran_test.py -j https://github.com/exercism/v3/blob/main/exercism/problem-specifications/exercises/bob/canonical-data.json -t exercises/bob/bob_test.f90
-Namespace(json='https://github.com/exercism/v3/blob/main/exercism/problem-specifications/exercises/bob/canonical-data.json', target='exercises/bob/bob_test.f90')
-Wrote : exercises/bob/bob_test.f90
-$ cp config/CMakeLists.txt exercises/bob/.
-$ cd exercises/bob
+$ python bin/create_fortran_test.py -j ../problem-specifications/main/exercises/bob/canonical-data.json -t exercises/practice/bob/bob_test.f90
+Namespace(json='../problem-specifications/main/exercises/bob/canonical-data.json', target='exercises/practice/bob/bob_test.f90')
+Wrote : exercises/practice/bob/bob_test.f90
+$ cp config/CMakeLists.txt exercises/practice/bob/.
+$ cd exercises/practice/bob
 $ touch bob.f90
 $ mkdir build
 $ cd build
@@ -43,3 +46,10 @@ $ ctest -V
 
 ### Changing `CMakeLists.txt`
 When changing the cmake file, update the master copy in `config/` and use `bin/update-cmake-files` to copy it to all exercise directories.
+
+## Solution
+
+When you have a solution copy that solution into ".meta" directory as "example.f90".
+
+Perhaps you want to leave a skeleton implementation of the function or subroutine that helps the student and leave the file with the exercise name in the exercise directory.
+
