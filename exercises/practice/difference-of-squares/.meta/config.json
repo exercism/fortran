@@ -3,13 +3,13 @@
   "authors": [],
   "files": {
     "solution": [
-      ".meta/example.f90"
+      "difference_of_squares.f90"
     ],
     "test": [
       "difference_of_squares_test.f90"
     ],
     "example": [
-      "difference_of_squares.f90"
+      ".meta/example.f90"
     ]
   },
   "source": "Problem 6 at Project Euler",

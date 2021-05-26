@@ -3,13 +3,13 @@
   "authors": [],
   "files": {
     "solution": [
-      ".meta/example.f90"
+      "rna_transcription.f90"
     ],
     "test": [
       "rna_transcription_test.f90"
     ],
     "example": [
-      "rna_transcription.f90"
+      ".meta/example.f90"
     ]
   },
   "source": "Hyperphysics",
