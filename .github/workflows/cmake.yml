@@ -6,6 +6,6 @@ jobs:
   compare-to-master:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2.3.4
       - name: "Compare cmake files to master copy"
         run: ./bin/compare-cmake-files-to-master
