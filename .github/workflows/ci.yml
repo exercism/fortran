@@ -7,8 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  ci:
-    runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -24,4 +23,17 @@ jobs:
           cd build
           cmake -G "Unix Makefiles" ..
           make
-          ctest -v
+          ctest -V
+
+  runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@2.3.4
+
+      - name: Run exercism/fortran ci (runs tests) for all exercises
+        run: |
+          mkdir build
+          cd build
+          cmake -G "MinGW Makefiles" ..
+          cmake --build .
+          ctest -V
