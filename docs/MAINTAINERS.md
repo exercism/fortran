@@ -26,6 +26,13 @@ effort to make it backwards compatible)
 - implement working exercise
 - fix potential problematic tests (see eg. exercise/bob "Test 20" and "Test 24")
 - ensure `ctest` command validates without errors
+- copy your solution to .meta/example.f90 and remove the actual implemetatio from exercise file, eg. bob.f90
+- update .docs and .meta directories
+    * cp ../problem-specifications/exercises/bob/description.md exercises/practice/bob/.docs/instructions.md
+        * replace "# Description" with "# Instructions"
+    * fill .meta/tests.toml manually (until an automated way exists)
+    * fill .meta/config.json manually (until an automated way exists)
+        * Use ../problem-specifications/exercises/bob/metadata.yml 
 - open a pull request with your changes
 
 For bob example:

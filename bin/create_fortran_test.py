@@ -27,12 +27,11 @@ Work flow for creating a new test
 
 For bob example:
 
-$ python3 bin/create_fortran_test.py -j ../../../exercism/problem-specifications/exercises/bob/canonical-data.json -t exercises/bob/bob_test.f90
-Namespace(json='../../../exercism/problem-specifications/exercises/bob/canonical-data.json', target='exercises/bob/bob_test.f90')
-Wrote : exercises/bob/bob_test.f90
-$ cp config/CMakeLists.txt exercises/bob/.
-$ cd exercises/bob
-$ touch bob.f90
+$ python3 bin/create_fortran_test.py -j ../problem-specifications/exercises/practice/bob/canonical-data.json -t exercises/practice/bob/bob_test.f90
+Namespace(json='../problem-specifications/exercises/practice/bob/canonical-data.json', target='exercises/practice/bob/bob_test.f90')
+Wrote : exercises/practice/bob/bob_test.f90
+$ cp config/CMakeLists.txt exercises/practice/bob/.
+$ cd exercises/practice/bob
 $ mkdir build
 $ cd build
 $ cmake ..
@@ -155,6 +154,26 @@ program %s_test_main
     print('Wrote : ' + test_name)
     stub_file_name=os.path.join(os.path.dirname(test_name), exercise+'.f90')
     create_stub(exercise, stub_file_name)
+
+# nice to have
+# TODO
+def add_meta_and_doc_file(test_name, json_name):
+    """
+    create 
+    
+        .meta/tests.toml 
+        .meta/config.json
+        .docs/instructions.md  (based on ../problem-specifications/exercises/[EXERCISE]/description.md)
+
+    for test_name
+
+    Not yet implemented.
+    """
+    test_dir_name = os.path.dirname(test_name)
+    meta_dir = os.path.join( test_dir_name, '.meta')
+    doc_dir = os.path.join( test_dir_name, '.docs')
+    return None
+
 
 if __name__ == '__main__':
 
