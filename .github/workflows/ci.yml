@@ -8,20 +8,58 @@ on:
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
+    linux-min:
+      name: Linux Min Config
+      runs-on: ubuntu-16.04
+      steps:
+        - uses: actions/checkout@v2
+        - name: Install project dependencies
+          run: |
+            sudo apt-get update -q
+            sudo apt-get install -y gfortran cmake
 
-    steps:
+        - name: Run exercism/fortran ci (runs tests) for all exercises
+          run: |
+            mkdir build
+            cd build
+            cmake ..
+            cmake --build .
+            ctest -V
+
+    linux-latest:
+      name: Linux Latest Config
+      needs: [linux-min]
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: Install project dependencies
+          run: |
+            sudo apt-get update -q
+            sudo apt-get install -y gfortran cmake
+
+        - name: Run exercism/fortran ci (runs tests) for all exercises
+          run: |
+            mkdir build
+            cd build
+            cmake ..
+            cmake --build .
+            ctest -V
+
+
+
+    mac:
+      name: MacOS
+      needs: [linux-min]
+      runs-on: macOS-latest
+      steps:
       - uses: actions/checkout@v2
-
       - name: Install project dependencies
         run: |
-          sudo apt-get update -q
-          sudo apt-get install -y gfortran cmake
-
+          brew install gcc cmake
       - name: Run exercism/fortran ci (runs tests) for all exercises
-        run: |
-          mkdir build
-          cd build
-          cmake -G "Unix Makefiles" ..
-          make
-          ctest -v
+          run: |
+            mkdir build
+            cd build
+            cmake ..
+            cmake --build .
+            ctest -V

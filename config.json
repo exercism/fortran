@@ -13,8 +13,8 @@
   "files": {
     "solution": ["%{snake_slug}.f90"],
     "test": ["%{snake_slug}_test.f90"],
-    "example": [".meta/%{snake_slug}.f90"],
-    "exemplar": [".meta/%{snake_slug}.f90"]
+    "example": [".meta/example.f90"],
+    "exemplar": [".meta/example.f90"]
   },
   "online_editor": {
     "indent_style": "space",
