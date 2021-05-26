@@ -57,6 +57,8 @@ jobs:
         brew install gcc cmake
     - name: Run exercism/fortran ci (runs tests) for all exercises
       run: |
+        which gcc
+        which fortran
         mkdir build
         cd build
         cmake ..
