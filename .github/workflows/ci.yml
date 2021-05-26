@@ -58,7 +58,7 @@ jobs:
     - name: Run exercism/fortran ci (runs tests) for all exercises
       run: |
         which gcc
-        which fortran
+        which gfortran
         mkdir build
         cd build
         cmake ..
