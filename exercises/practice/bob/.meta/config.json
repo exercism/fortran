@@ -1,6 +1,13 @@
 {
   "blurb": "Bob is a lackadaisical teenager. In conversation, his responses are very limited.",
-  "authors": [],
+  "authors": [
+    "sentientmonkey"
+  ],
+  "contributors": [
+    "kotp",
+    "pclausen",
+    "sjwarner"
+  ],
   "files": {
     "solution": [
       "bob.f90"
