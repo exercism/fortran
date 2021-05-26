@@ -63,3 +63,5 @@ jobs:
         cmake ..
         cmake --build .
         ctest -V
+      env:
+        FC: /usr/local/Cellar/gcc/11.1.0/bin/gfortran
