@@ -58,8 +58,6 @@ jobs:
         brew list gfortran || brew cask install gfortran
     - name: Run exercism/fortran ci (runs tests) for all exercises
       run: |
-        which gcc
-        which gfortran
         mkdir build
         cd build
         cmake ..
