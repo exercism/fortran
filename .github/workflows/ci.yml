@@ -7,21 +7,74 @@ on:
   workflow_dispatch:
 
 jobs:
-  ci:
-    runs-on: ubuntu-latest
 
+  linux-min:
+    name: Linux Minimum
+    runs-on: ubuntu-16.04
     steps:
-      - uses: actions/checkout@v2
-
+      - uses: actions/checkout@v2.3.4
       - name: Install project dependencies
         run: |
-          sudo apt-get update -q
           sudo apt-get install -y gfortran cmake
 
       - name: Run exercism/fortran ci (runs tests) for all exercises
         run: |
           mkdir build
           cd build
-          cmake -G "Unix Makefiles" ..
-          make
-          ctest -v
+          cmake ..
+          cmake --build .
+          ctest -V
+
+  linux-latest:
+    name: Linux Latest
+    needs: [linux-min]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - name: Install project dependencies
+        run: |
+          sudo apt-get install -y gfortran cmake
+
+      - name: Run exercism/fortran ci (runs tests) for all exercises
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          cmake --build .
+          ctest -V
+
+
+
+  mac:
+    name: MacOS
+    needs: [linux-min]
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v2.3.4
+    - name: Install project dependencies
+      run: |
+        brew list cmake || brew cask install cmake
+        brew list gfortran || brew cask install gfortran
+    - name: Run exercism/fortran ci (runs tests) for all exercises
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        cmake --build .
+        ctest -V
+      env:
+        FC: /usr/local/Cellar/gcc/11.1.0/bin/gfortran
+
+  windows:
+    name: Windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - name: Run exercism/fortran ci (runs tests) for all exercises
+        shell: powershell
+        run: |
+          mkdir build
+          cd build
+          cmake -G "MinGW Makefiles" ..
+          cmake --build .
+          ctest -V

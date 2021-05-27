@@ -1,6 +1,13 @@
 {
   "blurb": "Given a DNA strand, return its RNA Complement Transcription.",
-  "authors": [],
+  "authors": [
+    "sentientmonkey"
+  ],
+  "contributors": [
+    "kotp",
+    "pclausen",
+    "sjwarner"
+  ],
   "files": {
     "solution": [
       "rna_transcription.f90"
@@ -9,7 +16,7 @@
       "rna_transcription_test.f90"
     ],
     "example": [
-      "example.f90"
+      ".meta/example.f90"
     ]
   },
   "source": "Hyperphysics",

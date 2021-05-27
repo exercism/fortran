@@ -1,6 +1,8 @@
 {
   "blurb": "Given a string representing a matrix of numbers, return the rows and columns of that matrix.",
-  "authors": [],
+  "authors": [
+    "pclausen"
+  ],
   "files": {
     "solution": [
       "matrix.f90"
@@ -9,7 +11,7 @@
       "matrix_test.f90"
     ],
     "example": [
-      "example.f90"
+      ".meta/example.f90"
     ]
   },
   "source": "Warmup to the `saddle-points` warmup.",

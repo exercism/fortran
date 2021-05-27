@@ -33,8 +33,8 @@ else()
     # if building in exercise folder add testlib
     set(testlib_path ${CMAKE_CURRENT_SOURCE_DIR}/testlib)
     if (NOT EXISTS ${testlib_path})
-      if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../../testlib) # in git repo locally?
-        file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../../testlib DESTINATION  ${CMAKE_CURRENT_SOURCE_DIR} PATTERN *)
+      if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../../../testlib) # in git repo locally?
+        file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../../../testlib DESTINATION  ${CMAKE_CURRENT_SOURCE_DIR} PATTERN *)
       else() # get from git with http
         message("Downloading testlib from https://raw.githubusercontent.com/exercism/fortran/master")
         file(MAKE_DIRECTORY ${testlib_path} )
