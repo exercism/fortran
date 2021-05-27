@@ -15,7 +15,6 @@ jobs:
       - uses: actions/checkout@v2.3.4
       - name: Install project dependencies
         run: |
-          sudo apt-get update -q
           sudo apt-get install -y gfortran cmake
 
       - name: Run exercism/fortran ci (runs tests) for all exercises
@@ -34,7 +33,6 @@ jobs:
       - uses: actions/checkout@v2.3.4
       - name: Install project dependencies
         run: |
-          sudo apt-get update -q
           sudo apt-get install -y gfortran cmake
 
       - name: Run exercism/fortran ci (runs tests) for all exercises
