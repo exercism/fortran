@@ -9,7 +9,7 @@
       "armstrong_numbers_test.f90"
     ],
     "example": [
-      "example.f90"
+      ".meta/example.f90"
     ]
   },
   "source": "Wikipedia",
