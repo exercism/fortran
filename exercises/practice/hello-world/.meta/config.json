@@ -15,7 +15,7 @@
       "hello_world_test.f90"
     ],
     "example": [
-      "example.f90"
+      ".meta/example.f90"
     ]
   },
   "source": "This is an exercise to introduce users to using Exercism",

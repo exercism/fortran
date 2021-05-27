@@ -1,6 +1,6 @@
 #!/bin/bash
 
-changed_files=$(diff -q --from-file=config/CMakeLists.txt exercises/*/CMakeLists.txt)
+changed_files=$(diff -q --from-file=config/CMakeLists.txt exercises/*/*/CMakeLists.txt)
 
 if [ -n "$changed_files" ]; then
     echo "$changed_files"

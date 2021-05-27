@@ -16,7 +16,7 @@
       "rna_transcription_test.f90"
     ],
     "example": [
-      "example.f90"
+      ".meta/example.f90"
     ]
   },
   "source": "Hyperphysics",
