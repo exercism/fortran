@@ -51,12 +51,12 @@
     {
       "icon": "TODO",
       "title": "Stable",
-      "content": "The Fortran standard values stability and backwards compatibility, Fortran programs can run for decades."
+      "content": "The Fortran values stability and backwards compatibility, Fortran programs can run for decades."
     },
     {
       "icon": "TODO",
       "title": "Math",
-      "content": "The name of Fortran derived from Formula Translation and great for linear algebra and math, native support for arrays and complex numbers"
+      "content": "The name of Fortran derived from Formula Translation. Natively supports arrays and complex numbers"
     },
     {
       "icon": "TODO",
