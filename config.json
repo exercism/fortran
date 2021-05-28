@@ -158,6 +158,19 @@
         "topics": ["conditionals", "logic", "loops", "math"]
       },
       {
+        "slug": "armstrong-numbers",
+        "name": "Armstrong numbers",
+        "uuid": "b752faa1-2262-4be1-9699-1d684f6d479a",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics": [
+          "comparisons",
+          "numbers",
+          "strings"
+        ]
+      },
+      {
         "slug": "yacht",
         "name": "Yacht",
         "uuid": "26d9bb69-fb20-4563-8ad7-e5a0ad1392a3",

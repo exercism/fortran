@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for dir in exercises/*/; do
+for dir in exercises/*/*/; do
     cp config/CMakeLists.txt "$dir"/CMakeLists.txt
 done
 
