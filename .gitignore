@@ -4,5 +4,6 @@ bin/configlet.exe
 # make and testing artifacts
 build
 exercises/practice/*/*_build_all.f90
+exercises/practice/*/testlib
 .vscode
 *.mod

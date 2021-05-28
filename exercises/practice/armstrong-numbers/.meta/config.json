@@ -1,0 +1,17 @@
+{
+  "blurb": "Determine if a number is an Armstrong number.",
+  "authors": ["pclausen"],
+  "files": {
+    "solution": [
+      "armstrong_numbers.f90"
+    ],
+    "test": [
+      "armstrong_numbers_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Narcissistic_number"
+}

@@ -19,7 +19,6 @@
   "online_editor": {
     "indent_style": "space",
     "indent_size": 2,
-    "ace_editor_language": "fortran",
     "highlightjs_language": "fortran"
   },
   "tags": [
@@ -33,7 +32,38 @@
     "runtime/language_specific",
     "used_for/scientific_calculations"
   ],
-  "key_features": [],
+  "key_features": [
+    {
+      "icon": "TODO",
+      "title": "Scientific computing",
+      "content": "Fortran is used heavily in scientific computing and engineering."
+    },
+    {
+      "icon": "TODO",
+      "title": "Cross-platform",
+      "content": "Fortran is portable and can run on almost any platform."
+    },
+    {
+      "icon": "TODO",
+      "title": "Performant",
+      "content": "Fortran has been consistently rated as one of the highest performing languages for energy and time."
+    },
+    {
+      "icon": "TODO",
+      "title": "Stable",
+      "content": "The Fortran values stability and backwards compatibility, Fortran programs can run for decades."
+    },
+    {
+      "icon": "TODO",
+      "title": "Math",
+      "content": "The name of Fortran derived from Formula Translation. Natively supports arrays and complex numbers."
+    },
+    {
+      "icon": "TODO",
+      "title": "Efficient",
+      "content": "Fortran has been optimized for decades to execute efficiently."
+    }
+  ],
   "concepts": [],
   "exercises": {
     "concept": [],
@@ -157,7 +187,36 @@
         "practices": [],
         "prerequisites": [],
         "topics": ["conditionals", "logic", "loops", "math"]
-      }
+      },
+      {
+        "slug": "armstrong-numbers",
+        "name": "Armstrong numbers",
+        "uuid": "b752faa1-2262-4be1-9699-1d684f6d479a",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics": [
+          "comparisons",
+          "numbers",
+          "strings"
+        ]
+      },
+      {
+        "slug": "yacht",
+        "name": "Yacht",
+        "uuid": "26d9bb69-fb20-4563-8ad7-e5a0ad1392a3",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics" : [
+          "bools",
+          "conditionals",
+          "comparisons",
+          "numbers",
+          "sequences",
+          "strings"
+        ]
+      }      
     ]
   }
 }
