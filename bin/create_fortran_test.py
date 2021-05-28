@@ -158,7 +158,7 @@ program %s_test_main
     create_stub(exercise, stub_file_name)
 
 
-def add_meta_and_doc_file(test_name, json_name):
+def add_meta_and_doc_file(test_file_name, json_name):
     """
     create 
     
@@ -166,11 +166,12 @@ def add_meta_and_doc_file(test_name, json_name):
         .meta/config.json
         .docs/instructions.md  (based on ../problem-specifications/exercises/[EXERCISE]/description.md)
 
-    for test_name
+    for test_file_name
 
     Not yet implemented.
     """
-    test_dir_name = os.path.dirname(test_name)
+    test_dir_name = os.path.dirname(test_file_name)
+    test_name = os.path.basename(test_dir_name)
     meta_dir = os.path.join( test_dir_name, '.meta')
     test_toml = os.path.join( meta_dir, 'tests.toml')
     write_tests_toml(json_name, test_toml)
@@ -226,10 +227,10 @@ def write_config_json(test_name, meta_yaml, local_config_json, authors=['pclause
                 "%s.f90"%test_name
             ],
             "test": [
-              "%s_test.f90"%test_name
+                "%s_test.f90"%test_name
             ],
             "example": [
-              ".meta/example.f90"
+                ".meta/example.f90"
             ]
         }
     } )
