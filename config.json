@@ -164,6 +164,7 @@
         "uuid": "26d9bb69-fb20-4563-8ad7-e5a0ad1392a3",
         "difficulty": 1,
         "practices": [],
+        "prerequisites": [],
         "topics" : [
           "bools",
           "conditionals",
