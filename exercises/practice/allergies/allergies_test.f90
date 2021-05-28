@@ -88,23 +88,25 @@ program allergies_test_main
   ! Test 5: allergic to everything
   call assert_equal(.true., allergicTo("cats", 255), "allergic to everything")
   ! Test 1: no allergies
-  call assert_equal([], list(0), "no allergies")
+  call assert_equal(' ', allergicList(0), "no allergies")
   ! Test 2: just eggs
-  call assert_equal(['eggs'], list(1), "just eggs")
+  call assert_equal('eggs', allergicList(1), "just eggs")
   ! Test 3: just peanuts
-  call assert_equal(['peanuts'], list(2), "just peanuts")
+  call assert_equal('peanuts', allergicList(2), "just peanuts")
   ! Test 4: just strawberries
-  call assert_equal(['strawberries'], list(8), "just strawberries")
+  call assert_equal('strawberries', allergicList(8), "just strawberries")
   ! Test 5: eggs and peanuts
-  call assert_equal(['eggs', 'peanuts'], list(3), "eggs and peanuts")
+  call assert_equal('eggs peanuts', allergicList(3), "eggs and peanuts")
   ! Test 6: more than eggs but not peanuts
-  call assert_equal(['eggs', 'shellfish'], list(5), "more than eggs but not peanuts")
+  call assert_equal('eggs shellfish', allergicList(5), "more than eggs but not peanuts")
   ! Test 7: lots of stuff
-  call assert_equal(['strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats'], list(248), "lots of stuff")
+  call assert_equal('strawberries tomatoes chocolate pollen cats', allergicList(248), "lots of stuff")
   ! Test 8: everything
-  call assert_equal(['eggs', 'peanuts', 'shellfish', 'strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats'], list(255), "everything")
+  call assert_equal('eggs peanuts shellfish strawberries tomatoes chocolate pollen cats', & 
+    & allergicList(255), "everything")
   ! Test 9: no allergen score parts
-  call assert_equal(['eggs', 'shellfish', 'strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats'], list(509), "no allergen score parts")
+  call assert_equal('eggs shellfish strawberries tomatoes chocolate pollen cats', &
+    & allergicList(509), "no allergen score parts")
 
   call test_report()
 

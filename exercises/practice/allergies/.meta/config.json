@@ -7,10 +7,10 @@
     ],
     "files": {
         "solution": [
-            "exercises\\practice\\allergies\\allergies_test.f90.f90"
+            "exercises/practice/allergies/allergies_test.f90.f90"
         ],
         "test": [
-            "exercises\\practice\\allergies\\allergies_test.f90_test.f90"
+            "exercises/practice/allergies/allergies_test.f90_test.f90"
         ],
         "example": [
             ".meta/example.f90"
