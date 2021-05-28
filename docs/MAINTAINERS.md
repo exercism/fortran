@@ -56,7 +56,6 @@ When changing the cmake file, update the master copy in `config/` and use `bin/u
 
 ## Solution
 
-When you have a solution copy that solution into ".meta" directory as "example.f90".
+When you have a solution, copy that solution into ".meta" directory as "example.f90".
 
 Perhaps you want to leave a skeleton implementation of the function or subroutine that helps the student and leave the file with the exercise name in the exercise directory.
-
