@@ -263,12 +263,23 @@ def write_tests_toml(json_name, test_toml):
 
 """
         of.write(comment)
-        for tnum, c in enumerate(j['cases']):
-            if 'cases' in c:
-                assert(False)
-            of.write('[%s]\n'%c['uuid'])
-            of.write('description = "%s"\n\n'%c['description'])
+        uuids_descs = get_uuid_and_description(j['cases'])
+        for uuid, desc in uuids_descs:
+            of.write('[%s]\n'%uuid)
+            of.write('description = "%s"\n\n'%desc)
     print('wrote %s'%test_toml)
+
+def get_uuid_and_description(cases):
+    uuids_descs = []
+    #print(cases)
+    for c in cases:
+        if 'cases' in c:
+            uuids_descs2 = get_uuid_and_description(c['cases'])
+            uuids_descs.extend(uuids_descs2)
+        #print(c)
+        if 'uuid' in c:
+            uuids_descs.append( (c['uuid'], c['description']) )
+    return uuids_descs
 
 
 if __name__ == '__main__':
