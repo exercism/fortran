@@ -157,6 +157,19 @@
         "practices": [],
         "prerequisites": [],
         "topics": ["conditionals", "logic", "loops", "math"]
+      },
+      {
+        "slug": "armstrong-numbers",
+        "name": "Armstrong numbers",
+        "uuid": "b752faa1-2262-4be1-9699-1d684f6d479a",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics": [
+          "comparisons",
+          "numbers",
+          "strings"
+        ]
       }
     ]
   }
