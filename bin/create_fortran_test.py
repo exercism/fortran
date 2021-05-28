@@ -42,6 +42,8 @@ $ ctest -V
 import json
 import argparse
 import os
+import re 
+
 
 def fix_and_quote_fortran_multiline(txt):
     """Fortran can't handle multiple, so adding continuation character '&'
@@ -155,8 +157,7 @@ program %s_test_main
     stub_file_name=os.path.join(os.path.dirname(test_name), exercise+'.f90')
     create_stub(exercise, stub_file_name)
 
-# nice to have
-# TODO
+
 def add_meta_and_doc_file(test_name, json_name):
     """
     create 
@@ -171,8 +172,103 @@ def add_meta_and_doc_file(test_name, json_name):
     """
     test_dir_name = os.path.dirname(test_name)
     meta_dir = os.path.join( test_dir_name, '.meta')
+    test_toml = os.path.join( meta_dir, 'tests.toml')
+    write_tests_toml(json_name, test_toml)
+
     doc_dir = os.path.join( test_dir_name, '.docs')
+    desc_file = os.path.join( os.path.dirname(json_name),  'description.md')
+    instruction_file =  os.path.join(doc_dir, 'instructions.md')
+    write_instructions(desc_file, instruction_file)
+    
+    meta_yaml = os.path.join( os.path.dirname(json_name),  'metadata.yml')
+    local_config_json = os.path.join(meta_dir, 'config.json')
+    write_config_json(test_name, meta_yaml, local_config_json)
+
     return None
+
+def write_instructions(desc_file, instruction_file):
+    lines = open(desc_file).readlines()
+    with open(instruction_file, 'w') as of:
+        for li in lines:
+            of.write(li.replace('# Description','# Instructions'))
+    print('wrote %s'%instruction_file)
+
+
+def write_config_json(test_name, meta_yaml, local_config_json, authors=['pclausen'] ):
+    """
+    {
+  "blurb": "Convert a long phrase to its acronym",
+  "authors": [
+    "pclausen"
+  ],
+  "files": {
+    "solution": [
+      "acronym.f90"
+    ],
+    "test": [
+      "acronym_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "source": "Julien Vanier",
+  "source_url": "https://github.com/monkbroc"
+}
+"""
+
+    config_dict = get_meta_info(meta_yaml)
+
+    config_dict.update( {
+        "authors": authors,
+        "files": {
+            "solution": [
+                "%s.f90"%test_name
+            ],
+            "test": [
+              "%s_test.f90"%test_name
+            ],
+            "example": [
+              ".meta/example.f90"
+            ]
+        }
+    } )
+
+    with open(local_config_json, 'w') as of:
+        json.dump(config_dict, of, indent=4)
+    print('wrote %s'%local_config_json)
+
+
+def get_meta_info(meta_yaml):
+    lines = open(meta_yaml).readlines()
+    lines[0] ="{"
+    lines.append("}")
+    lines[3] = lines[3].strip() # avoid comma in last line
+    lines2 = [re.sub(r'^(\w+):',r'"\1":', li)
+        for li in lines ]
+    lines3 = [li.replace('\n',',') for li in lines2 ]    
+    meta_info = json.loads(''.join(lines3))
+    return meta_info    
+
+
+
+def write_tests_toml(json_name, test_toml):
+    j = None
+    with open(json_name) as f:
+        j = json.load(f)
+    with open(test_toml,'w') as of:
+        comment="""# This is an auto-generated file. Regular comments will be removed when this
+# file is regenerated. Regenerating will not touch any manually added keys,
+# so comments can be added in a "comment" key.
+
+"""
+        of.write(comment)
+        for tnum, c in enumerate(j['cases']):
+            if 'cases' in c:
+                assert(False)
+            of.write('[%s]\n'%c['uuid'])
+            of.write('description = "%s"\n\n'%c['description'])
+    print('wrote %s'%test_toml)
 
 
 if __name__ == '__main__':
@@ -191,6 +287,16 @@ if __name__ == '__main__':
 
     print(args)
 
-    create_test(args.target, args.json)
+    # create dirs if not there
+    test_dir_name=os.path.dirname(args.target)
+    test_dirs = [ test_dir_name,
+        os.path.join( test_dir_name, '.meta'),
+        os.path.join( test_dir_name, '.docs') ]
+    for td in test_dirs:
+        if not os.path.isdir(td):
+            os.mkdir(td) 
+            print('created %s'%td)
 
+    create_test(args.target, args.json)
+    add_meta_and_doc_file(args.target, args.json)
 
