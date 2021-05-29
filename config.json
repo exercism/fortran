@@ -216,6 +216,22 @@
           "sequences",
           "strings"
         ]
+      },
+      {
+        "slug": "triangle",
+        "name": "Triangle",
+        "uuid": "58e138e9-55d8-49fa-b05d-70a6aa627b21",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics" : [
+          "bools",
+          "conditionals",
+          "comparisons",
+          "numbers",
+          "sequences",
+          "interfaces"
+        ]
       }      
     ]
   }
