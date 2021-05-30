@@ -216,7 +216,21 @@
           "sequences",
           "strings"
         ]
-      }      
+      },
+      {
+        "slug": "queen-attack",
+        "name": "Queen Attack",
+        "uuid": "0383afd8-8e78-43d8-82ed-fac5f4073532",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics" : [
+          "bools",
+          "conditionals",
+          "comparisons",
+          "numbers"
+        ]
+      }
     ]
   }
 }
