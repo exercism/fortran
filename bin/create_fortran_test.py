@@ -192,8 +192,8 @@ def add_meta_and_doc_file(test_file_name, json_name):
     return None
 
 def write_instructions(desc_file, instruction_file):
-    lines = open(desc_file).readlines()
-    with open(instruction_file, 'w') as of:
+    lines = open(desc_file, encoding='utf-8').readlines()
+    with open(instruction_file, 'w', encoding='utf-8') as of:
         for li in lines:
             of.write(li.replace('# Description','# Instructions'))
     print('wrote %s'%instruction_file)
