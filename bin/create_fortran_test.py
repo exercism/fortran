@@ -94,12 +94,12 @@ def create_single_test(j):
     si = []
     global TEST_NUMBER
     # there is a better way to do this by I dont have a good idea...
-    print('A', TEST_NUMBER)
+    #print('A', TEST_NUMBER)
     for c in j['cases']:
         if 'cases' in c:
             si.extend(create_single_test(c))
         else:
-            print('B', TEST_NUMBER)
+            #print('B', TEST_NUMBER)
             TEST_NUMBER = TEST_NUMBER +1
             si.extend(write_testcase(c,TEST_NUMBER))
     return si
