@@ -44,7 +44,6 @@ import argparse
 import os
 import re 
 
-
 def fix_and_quote_fortran_multiline(txt):
     """Fortran can't handle multiple, so adding continuation character '&'
     if necessary"""
@@ -53,10 +52,10 @@ def fix_and_quote_fortran_multiline(txt):
         return '"%s"'%txt
     return txt
 
-def write_testcase(c, tnum):
+def write_testcase(c, TEST_NUMBER):
     """Putting the test case together.
     Format:
-    ! Test <tnum>: (description of test)
+    ! Test <TEST_NUMBER>: (description of test)
     call assert.... (actual test case)
     """
     si = []
@@ -82,22 +81,27 @@ def write_testcase(c, tnum):
         expected = '.false.'
     else:
         expected = fix_and_quote_fortran_multiline(expected)
-    si.append('  ! Test %d: %s'%(tnum+1, description))
+    si.append('  ! Test %d: %s'%(TEST_NUMBER, description))
     if error:
         expected = 'ERROR'
         si.append('  ! ERROR: %s'%(error))
     si.append('  call assert_equal({}, {}, "{}")'.format(expected, inp, description))
     return si
 
-
+TEST_NUMBER=0
 def create_single_test(j):
     """Walk through the json cases and recursively write the test cases"""
     si = []
-    for tnum, c in enumerate(j['cases']):
+    global TEST_NUMBER
+    # there is a better way to do this by I dont have a good idea...
+    print('A', TEST_NUMBER)
+    for c in j['cases']:
         if 'cases' in c:
             si.extend(create_single_test(c))
         else:
-            si.extend(write_testcase(c, tnum))
+            print('B', TEST_NUMBER)
+            TEST_NUMBER = TEST_NUMBER +1
+            si.extend(write_testcase(c,TEST_NUMBER))
     return si
 
 
