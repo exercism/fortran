@@ -175,7 +175,7 @@ def add_meta_and_doc_file(test_file_name, json_name):
     Not yet implemented.
     """
     test_dir_name = os.path.dirname(test_file_name)
-    test_name = os.path.basename(test_dir_name)
+    exercise_name = os.path.basename(test_dir_name).replace('-', '_')
     meta_dir = os.path.join( test_dir_name, '.meta')
     test_toml = os.path.join( meta_dir, 'tests.toml')
     write_tests_toml(json_name, test_toml)
@@ -187,7 +187,7 @@ def add_meta_and_doc_file(test_file_name, json_name):
     
     meta_yaml = os.path.join( os.path.dirname(json_name),  'metadata.yml')
     local_config_json = os.path.join(meta_dir, 'config.json')
-    write_config_json(test_name, meta_yaml, local_config_json)
+    write_config_json(exercise_name, meta_yaml, local_config_json)
 
     return None
 
@@ -199,7 +199,7 @@ def write_instructions(desc_file, instruction_file):
     print('wrote %s'%instruction_file)
 
 
-def write_config_json(test_name, meta_yaml, local_config_json, authors=['pclausen'] ):
+def write_config_json(exercise_name, meta_yaml, local_config_json, authors=['pclausen'] ):
     """
     {
   "blurb": "Convert a long phrase to its acronym",
@@ -228,10 +228,10 @@ def write_config_json(test_name, meta_yaml, local_config_json, authors=['pclause
         "authors": authors,
         "files": {
             "solution": [
-                "%s.f90"%test_name
+                "%s.f90"%exercise_name
             ],
             "test": [
-                "%s_test.f90"%test_name
+                "%s_test.f90"%exercise_name
             ],
             "example": [
                 ".meta/example.f90"
