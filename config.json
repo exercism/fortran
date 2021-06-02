@@ -209,7 +209,7 @@
         "practices": [],
         "prerequisites": [],
         "topics" : [
-          "bools",
+          "logicals",
           "conditionals",
           "comparisons",
           "numbers",
@@ -225,7 +225,7 @@
         "practices": [],
         "prerequisites": [],
         "topics" : [
-          "bools",
+          "logicals",
           "conditionals",
           "comparisons",
           "numbers",
