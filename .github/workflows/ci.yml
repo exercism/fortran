@@ -53,10 +53,12 @@ jobs:
     - uses: actions/checkout@v2.3.4
     - name: Install project dependencies
       run: |
-        brew list cmake || brew cask install cmake
-        brew list gfortran || brew cask install gfortran
+        echo "Trying to find latest gfortran version in /usr/local/Cellar/gcc"
+        echo "gfortran $(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )"
+        echo "FC=$(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )" >> $GITHUB_ENV
     - name: Run exercism/fortran ci (runs tests) for all exercises
       run: |
+        echo "FC=$FC"
         mkdir build
         cd build
         cmake ..
