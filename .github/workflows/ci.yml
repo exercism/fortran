@@ -51,10 +51,6 @@ jobs:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v2.3.4
-    - name: Install project dependencies
-      run: |
-        brew list cmake || brew cask install cmake
-        brew list gfortran || brew cask install gfortran
     - name: Run exercism/fortran ci (runs tests) for all exercises
       run: |
         mkdir build
@@ -63,7 +59,7 @@ jobs:
         cmake --build .
         ctest -V
       env:
-        FC: /usr/local/Cellar/gcc/11.1.0/bin/gfortran
+        FC: /usr/local/bin/gfortran
 
   windows:
     name: Windows
