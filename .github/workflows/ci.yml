@@ -52,11 +52,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2.3.4
     - name: Set env
-      run: echo "FC=$(which gfortran)" >> $GITHUB_ENV
+      run: |
+        echo "which gfortran $(which gfortran)"
+        echo "FC=$(which gfortran)" >> $GITHUB_ENV
     - name: Run exercism/fortran ci (runs tests) for all exercises
       run: |
         echo "FC=$FC"
-        echo "which gfortran $(which gfortran)
+        echo "which gfortran $(which gfortran)"
         mkdir build
         cd build
         cmake ..
