@@ -209,14 +209,29 @@
         "practices": [],
         "prerequisites": [],
         "topics" : [
-          "bools",
+          "logicals",
           "conditionals",
           "comparisons",
           "numbers",
           "sequences",
           "strings"
         ]
-      }      
+      },
+      {
+        "slug": "allergies",
+        "name": "Allergies",
+        "uuid": "52b1856c-7570-4d75-aaa9-e1cff3cb6155",
+        "difficulty": 3,
+        "practices": [],
+        "prerequisites": [],
+        "topics" : [
+          "logicals",
+          "conditionals",
+          "comparisons",
+          "numbers",
+          "bitwise_operations"
+        ]
+      } 
     ]
   }
 }
