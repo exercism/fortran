@@ -177,9 +177,7 @@ def add_meta_and_doc_file(test_file_name, json_name):
     test_dir_name = os.path.dirname(test_file_name)
     exercise_name = os.path.basename(test_dir_name).replace('-', '_')
     meta_dir = os.path.join( test_dir_name, '.meta')
-    test_toml = os.path.join( meta_dir, 'tests.toml')
-    write_tests_toml(json_name, test_toml)
-
+    
     doc_dir = os.path.join( test_dir_name, '.docs')
     desc_file = os.path.join( os.path.dirname(json_name),  'description.md')
     instruction_file =  os.path.join(doc_dir, 'instructions.md')
@@ -247,44 +245,14 @@ def write_config_json(exercise_name, meta_yaml, local_config_json, authors=['pcl
 def get_meta_info(meta_yaml):
     lines = open(meta_yaml).readlines()
     lines[0] ="{"
+    lines[-1] = lines[-1].strip() # avoid comma to replaced with \n in last line
     lines.append("}")
-    lines[3] = lines[3].strip() # avoid comma in last line
     lines2 = [re.sub(r'^(\w+):',r'"\1":', li)
         for li in lines ]
-    lines3 = [li.replace('\n',',') for li in lines2 ]    
+    lines3 = [li.replace('\n',',') for li in lines2 ]
     meta_info = json.loads(''.join(lines3))
     return meta_info    
 
-
-
-def write_tests_toml(json_name, test_toml):
-    j = None
-    with open(json_name) as f:
-        j = json.load(f)
-    with open(test_toml,'w') as of:
-        comment="""# This is an auto-generated file. Regular comments will be removed when this
-# file is regenerated. Regenerating will not touch any manually added keys,
-# so comments can be added in a "comment" key.
-
-"""
-        of.write(comment)
-        uuids_descs = get_uuid_and_description(j['cases'])
-        for uuid, desc in uuids_descs:
-            of.write('[%s]\n'%uuid)
-            of.write('description = "%s"\n\n'%desc)
-    print('wrote %s'%test_toml)
-
-def get_uuid_and_description(cases):
-    uuids_descs = []
-    #print(cases)
-    for c in cases:
-        if 'cases' in c:
-            uuids_descs2 = get_uuid_and_description(c['cases'])
-            uuids_descs.extend(uuids_descs2)
-        #print(c)
-        if 'uuid' in c:
-            uuids_descs.append( (c['uuid'], c['description']) )
-    return uuids_descs
 
 
 if __name__ == '__main__':
