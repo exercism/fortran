@@ -91,10 +91,7 @@ def write_testcase(c, TEST_NUMBER):
     si.append('  call assert_equal({}, {}, "{}")'.format(expected, inp, description))
     return si
 
-
-def create_single_test(j):
-    """Walk through the json cases and recursively write the test cases"""
-    
+def flatten_test_cases(j):
     # unpack nested cases
     nested_cases = j['cases']
     flattened_cases = []
@@ -107,6 +104,14 @@ def create_single_test(j):
                 flattened_cases.extend(cases)
             else:
                 flattened_cases.append(cases)
+
+    return flattened_cases
+
+
+def create_single_test(j):
+    """Walk through the json cases and recursively write the test cases"""
+    
+    flattened_cases  = flatten_test_cases(j)
     
     si = []
     for i,c in enumerate(flattened_cases):
