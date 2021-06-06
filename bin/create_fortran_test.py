@@ -68,7 +68,10 @@ def write_testcase(c, TEST_NUMBER):
     fcall = c['property']
     error = c['expected']['error'] if type(c['expected']) is dict and 'error' in c['expected'] else None
     fargs = [v for v in c['input'].values()]
-    inp = '{}({}'.format(fcall, fix_and_quote_fortran_multiline(fargs[0]))
+    if fargs:
+        inp = '{}({}'.format(fcall, fix_and_quote_fortran_multiline(fargs[0]))
+    else:
+        inp = '{}({}'.format(fcall, fix_and_quote_fortran_multiline(" ")) # empty array
     for a in fargs[1:]:
         inp = '{}, {}'.format(inp, fix_and_quote_fortran_multiline(a))
     inp = '{})'.format(inp)
