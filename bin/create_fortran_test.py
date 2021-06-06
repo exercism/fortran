@@ -195,23 +195,24 @@ def add_meta_and_doc_file(test_file_name, json_name):
     doc_dir = os.path.join( test_dir_name, '.docs')
     desc_file = os.path.join( os.path.dirname(json_name),  'description.md')
     instruction_file =  os.path.join(doc_dir, 'instructions.md')
-    write_instructions(desc_file, instruction_file)
+    desc_file_lines = open(desc_file, encoding='utf-8').readlines()
+    write_instructions(desc_file_lines, instruction_file)
     
     meta_yaml = os.path.join( os.path.dirname(json_name),  'metadata.yml')
     local_config_json = os.path.join(meta_dir, 'config.json')
-    write_config_json(exercise_name, meta_yaml, local_config_json)
+    config_dict = get_meta_info(meta_yaml)
+    write_config_json(exercise_name, config_dict, local_config_json)
 
     return None
 
-def write_instructions(desc_file, instruction_file):
-    lines = open(desc_file, encoding='utf-8').readlines()
+def write_instructions(desc_file_lines, instruction_file):
     with open(instruction_file, 'w', encoding='utf-8') as of:
-        for li in lines:
+        for li in desc_file_lines:
             of.write(li.replace('# Description','# Instructions'))
     print('wrote %s'%instruction_file)
 
 
-def write_config_json(exercise_name, meta_yaml, local_config_json, authors=['pclausen'] ):
+def write_config_json(exercise_name, config_dict, local_config_json, authors=['pclausen'] ):
     """
     {
   "blurb": "Convert a long phrase to its acronym",
@@ -233,8 +234,6 @@ def write_config_json(exercise_name, meta_yaml, local_config_json, authors=['pcl
   "source_url": "https://github.com/monkbroc"
 }
 """
-
-    config_dict = get_meta_info(meta_yaml)
 
     config_dict.update( {
         "authors": authors,
