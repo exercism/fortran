@@ -92,7 +92,7 @@ def write_testcase(c, TEST_NUMBER):
     return si
 
 TEST_NUMBER=0
-def create_single_test(j):
+def create_single_test1(j):
     """Walk through the json cases and recursively write the test cases"""
     si = []
     global TEST_NUMBER
@@ -107,6 +107,24 @@ def create_single_test(j):
             si.extend(write_testcase(c,TEST_NUMBER))
     return si
 
+def create_single_test(j):
+    """Walk through the json cases and recursively write the test cases"""
+    
+    # unpack nested cases
+    nested_cases = j['cases']
+    flattened_cases = []
+
+    while len(nested_cases) > 0:
+        cases = nested_cases.pop()
+        if 'cases' in cases:
+            map(nested_cases.append, cases['cases'])
+        else:
+            map(flattened_cases.append, cases)
+    
+    si = []
+    for i,c in enumerate(flattened_cases):
+        si.extend(create_single_test(c,i))
+    return si
 
 def create_stub(exercise, stub_file_name):
     stub_lines = """
