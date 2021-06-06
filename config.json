@@ -245,6 +245,18 @@
           "numbers",
           "bitwise_operations"
         ]
+      },
+      {
+        "slug": "grains",
+        "name": "Grains",
+        "uuid": "859da858-c6c2-4509-b32e-0fb4e461e1a5",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics" : [
+          "numbers",
+          "math"
+        ]
       }
     ]
   }
