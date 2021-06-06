@@ -91,21 +91,6 @@ def write_testcase(c, TEST_NUMBER):
     si.append('  call assert_equal({}, {}, "{}")'.format(expected, inp, description))
     return si
 
-TEST_NUMBER=0
-def create_single_test1(j):
-    """Walk through the json cases and recursively write the test cases"""
-    si = []
-    global TEST_NUMBER
-    # there is a better way to do this by I dont have a good idea...
-    #print('A', TEST_NUMBER)
-    for c in j['cases']:
-        if 'cases' in c:
-            si.extend(create_single_test(c))
-        else:
-            #print('B', TEST_NUMBER)
-            TEST_NUMBER = TEST_NUMBER +1
-            si.extend(write_testcase(c,TEST_NUMBER))
-    return si
 
 def create_single_test(j):
     """Walk through the json cases and recursively write the test cases"""
@@ -113,17 +98,19 @@ def create_single_test(j):
     # unpack nested cases
     nested_cases = j['cases']
     flattened_cases = []
-
     while len(nested_cases) > 0:
         cases = nested_cases.pop()
         if 'cases' in cases:
-            map(nested_cases.append, cases['cases'])
+            nested_cases.append(cases['cases'])
         else:
-            map(flattened_cases.append, cases)
+            if isinstance(cases, list):
+                flattened_cases.extend(cases)
+            else:
+                flattened_cases.append(cases)
     
     si = []
     for i,c in enumerate(flattened_cases):
-        si.extend(create_single_test(c,i))
+        si.extend(write_testcase(c,i))
     return si
 
 def create_stub(exercise, stub_file_name):
