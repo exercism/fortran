@@ -169,13 +169,14 @@ def add_meta_and_doc_file(test_file_name, json_name):
     """
     create 
     
-        .meta/tests.toml 
         .meta/config.json
         .docs/instructions.md  (based on ../problem-specifications/exercises/[EXERCISE]/description.md)
 
     for test_file_name
 
-    Not yet implemented.
+    The file .meta/tests.toml will be created with:
+        configlet sync
+
     """
     test_dir_name = os.path.dirname(test_file_name)
     exercise_name = os.path.basename(test_dir_name).replace('-', '_')
