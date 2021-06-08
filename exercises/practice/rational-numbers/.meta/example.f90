@@ -35,30 +35,30 @@ contains
     div = reduce(div)
   end function
 
-  function rabs(r1)
-    integer,dimension(2) :: rabs, r1
-    rabs(1) = abs(r1(1))
-    rabs(2) = abs(r1(2))
+  function rational_abs(r1)
+    integer,dimension(2) :: rational_abs, r1
+    rational_abs(1) = abs(r1(1))
+    rational_abs(2) = abs(r1(2))
   end function
 
 
-  function exprational(r1, ex)
-    integer,dimension(2) :: exprational, r1
+  function rational_to_pow(r1, ex)
+    integer,dimension(2) :: rational_to_pow, r1
     integer :: ex
     !(a1 * b2 + a2 * b1) / (b1 * b2)
-    exprational(1) = r1(1)**ex
-    exprational(2) = r1(2)**ex
+    rational_to_pow(1) = r1(1)**ex
+    rational_to_pow(2) = r1(2)**ex
   end function
 
   
-  function expreal(ex,r1)
+  function real_to_rational_pow(ex,r1)
     integer,dimension(2) ::  r1
-    real :: expreal,ex
+    real :: real_to_rational_pow,ex
     !(a1 * b2 + a2 * b1) / (b1 * b2)
     if ( r1(1)==0 ) then
-      expreal=0.0
+      real_to_rational_pow=0.0
     else  
-      expreal = ex**(real(r1(1))/real(r1(2)))
+      real_to_rational_pow = ex**(real(r1(1))/real(r1(2)))
     endif
   end function
 

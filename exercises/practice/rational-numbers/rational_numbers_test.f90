@@ -44,39 +44,46 @@ program rational_numbers_test_main
   ! Test 18: Divide a rational number by 1
   call assert_equal([1, 2], div([1, 2], [1, 1]), "Divide a rational number by 1")
   ! Test 19: Absolute value of a positive rational number
-  call assert_equal([1, 2], rabs([1, 2]), "Absolute value of a positive rational number")
+  call assert_equal([1, 2], rational_abs([1, 2]), "Absolute value of a positive rational number")
   ! Test 20: Absolute value of a positive rational number with negative numerator and denominator
-  call assert_equal([1, 2], rabs([-1, -2]), "Absolute value of a positive rational number with negative numerator and denominator")
+  call assert_equal([1, 2], rational_abs([-1, -2]), &
+    & "Absolute value of a positive rational number with negative numerator and denominator")
   ! Test 21: Absolute value of a negative rational number
-  call assert_equal([1, 2], rabs([-1, 2]), "Absolute value of a negative rational number")
+  call assert_equal([1, 2], rational_abs([-1, 2]), "Absolute value of a negative rational number")
   ! Test 22: Absolute value of a negative rational number with negative denominator
-  call assert_equal([1, 2], rabs([1, -2]), "Absolute value of a negative rational number with negative denominator")
+  call assert_equal([1, 2], rational_abs([1, -2]), &
+    & "Absolute value of a negative rational number with negative denominator")
   ! Test 23: Absolute value of zero
-  call assert_equal([0, 1], rabs([0, 1]), "Absolute value of zero")
+  call assert_equal([0, 1], rational_abs([0, 1]), "Absolute value of zero")
   ! Test 24: Raise a positive rational number to a positive integer power
-  call assert_equal([1, 8], exprational([1, 2], 3), "Raise a positive rational number to a positive integer power")
+  call assert_equal([1, 8], rational_to_pow([1, 2], 3), &
+    & "Raise a positive rational number to a positive integer power")
   ! Test 25: Raise a negative rational number to a positive integer power
-  call assert_equal([-1, 8], exprational([-1, 2], 3), "Raise a negative rational number to a positive integer power")
+  call assert_equal([-1, 8], rational_to_pow([-1, 2], 3), &
+    & "Raise a negative rational number to a positive integer power")
   ! Test 26: Raise zero to an integer power
-  call assert_equal([0, 1], exprational([0, 1], 5), "Raise zero to an integer power")
+  call assert_equal([0, 1], rational_to_pow([0, 1], 5), "Raise zero to an integer power")
   ! Test 27: Raise one to an integer power
-  call assert_equal([1, 1], exprational([1, 1], 4), "Raise one to an integer power")
+  call assert_equal([1, 1], rational_to_pow([1, 1], 4), "Raise one to an integer power")
   ! Test 28: Raise a positive rational number to the power of zero
-  call assert_equal([1, 1], exprational([1, 2], 0), "Raise a positive rational number to the power of zero")
+  call assert_equal([1, 1], rational_to_pow([1, 2], 0), "Raise a positive rational number to the power of zero")
   ! Test 29: Raise a negative rational number to the power of zero
-  call assert_equal([1, 1], exprational([-1, 2], 0), "Raise a negative rational number to the power of zero")
+  call assert_equal([1, 1], rational_to_pow([-1, 2], 0), "Raise a negative rational number to the power of zero")
   ! Test 30: Raise a real number to a positive rational number
-  call assert_equal(8.**(4./3.), expreal(8., [4, 3]), "Raise a real number to a positive rational number")
+  call assert_equal(8.0**(4./3.), real_to_rational_pow(8., [4, 3]), &
+    & "Raise a real number to a positive rational number")
   ! Test 31: Raise a real number to a negative rational number
-  call assert_equal(0.3333333333333333, expreal(9., [-1, 2]), "Raise a real number to a negative rational number")
+  call assert_equal(0.3333333333333333, real_to_rational_pow(9., [-1, 2]), &
+    & "Raise a real number to a negative rational number")
   ! Test 32: Raise a real number to a zero rational number
-  call assert_equal(0.0, expreal(2., [0, 1]), "Raise a real number to a zero rational number")
+  call assert_equal(0.0, real_to_rational_pow(2., [0, 1]), "Raise a real number to a zero rational number")
   ! Test 33: Reduce a positive rational number to lowest terms
   call assert_equal([1, 2], reduce([2, 4]), "Reduce a positive rational number to lowest terms")
   ! Test 34: Reduce a negative rational number to lowest terms
   call assert_equal([-2, 3], reduce([-4, 6]), "Reduce a negative rational number to lowest terms")
   ! Test 35: Reduce a rational number with a negative denominator to lowest terms
-  call assert_equal([-1, 3], reduce([3, -9]), "Reduce a rational number with a negative denominator to lowest terms")
+  call assert_equal([-1, 3], reduce([3, -9]), &
+    & "Reduce a rational number with a negative denominator to lowest terms")
   ! Test 36: Reduce zero to lowest terms
   call assert_equal([0, 1], reduce([0, 6]), "Reduce zero to lowest terms")
   ! Test 37: Reduce an integer to lowest terms

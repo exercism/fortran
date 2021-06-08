@@ -23,20 +23,20 @@ contains
     ! Your code here
   end function
 
-  function rabs(r1)
-    integer,dimension(2) :: rabs, r1
+  function rational_abs(r1)
+    integer,dimension(2) :: rational_abs, r1
     ! Your code here    
   end function
 
-  function exprational(r1, ex)
-    integer,dimension(2) :: exprational, r1
+  function rational_to_pow(r1, ex)
+    integer,dimension(2) :: rational_to_pow, r1
     integer :: ex
     ! Your code here
   end function
 
-  function expreal(ex,r1)
+  function real_to_rational_pow(ex,r1)
     integer,dimension(2) ::  r1
-    real :: expreal,ex
+    real :: real_to_rational_pow,ex
     ! Your code here
   end function
 
