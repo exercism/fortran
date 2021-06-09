@@ -51,7 +51,7 @@ jobs:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v2.3.4
-    - name: Install project dependencies
+    - name: Set env
       run: |
         echo "Trying to find latest gfortran version in /usr/local/Cellar/gcc"
         echo "gfortran $(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )"

@@ -218,10 +218,24 @@
         ]
       },
       {
-        "slug": "triangle",
-        "name": "Triangle",
-        "uuid": "58e138e9-55d8-49fa-b05d-70a6aa627b21",
+        "slug": "queen-attack",
+        "name": "Queen Attack",
+        "uuid": "0383afd8-8e78-43d8-82ed-fac5f4073532",
         "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics" : [
+          "bools",
+          "conditionals",
+          "comparisons",
+          "numbers"
+        ]
+      },
+      {
+        "slug": "allergies",
+        "name": "Allergies",
+        "uuid": "52b1856c-7570-4d75-aaa9-e1cff3cb6155",
+        "difficulty": 3,
         "practices": [],
         "prerequisites": [],
         "topics" : [
@@ -232,6 +246,22 @@
           "sequences",
           "interfaces"
         ]
+      },
+      {
+        "slug": "triangle",
+        "name": "Triangle",
+        "uuid": "58e138e9-55d8-49fa-b05d-70a6aa627b21",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],        
+        "topics" : [
+          "bools",
+          "conditionals",
+          "comparisons",
+          "numbers",
+          "sequences",
+          "interfaces"
+        ]        
       }
     ]
   }
