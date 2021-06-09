@@ -225,7 +225,7 @@
         "practices": [],
         "prerequisites": [],
         "topics" : [
-          "bools",
+          "logicals",
           "conditionals",
           "comparisons",
           "numbers"
@@ -253,7 +253,7 @@
         "uuid": "58e138e9-55d8-49fa-b05d-70a6aa627b21",
         "difficulty": 1,
         "practices": [],
-        "prerequisites": [],        
+        "prerequisites": [],
         "topics" : [
           "bools",
           "conditionals",
@@ -261,7 +261,22 @@
           "numbers",
           "sequences",
           "interfaces"
-        ]        
+        ]
+      },
+      {
+        "slug": "rational-numbers",
+        "name": "Rational Numbers",
+        "uuid": "8cb180f8-2810-429c-8996-acdfd120b737",
+        "difficulty": 3,
+        "practices": [],
+        "prerequisites": [],
+        "topics" : [
+          "logicals",
+          "conditionals",
+          "loops",
+          "comparisons",
+          "numbers"
+        ]
       }
     ]
   }
