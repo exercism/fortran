@@ -261,6 +261,21 @@
           "comparisons",
           "numbers"
         ]
+      },
+      {
+        "slug": "perfect-numbers",
+        "name": "Perfect Numbers",
+        "uuid": "81b492ae-0a1f-4247-bd21-7da5fa911104",        
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics" : [
+          "logicals",
+          "conditionals",
+          "loops",
+          "comparisons",
+          "numbers"
+        ]
       }
     ]
   }
