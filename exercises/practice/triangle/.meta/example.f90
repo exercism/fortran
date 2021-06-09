@@ -25,64 +25,64 @@ module triangle
     intol = abs(a-b)<TOL
   end function
 
-  logical function is_trianle_real(traingle_edges)
+  logical function is_trianle_real(edges)
     ! sum of 2 sides > other side
-    real,dimension(3) :: traingle_edges
-    is_trianle_real = sum(traingle_edges(1:2))>traingle_edges(3) .and. sum(traingle_edges(2:3))>traingle_edges(1) &
-      &  .and. traingle_edges(1)+traingle_edges(3)>traingle_edges(2)
+    real,dimension(3) :: edges
+    is_trianle_real = sum(edges(1:2))>edges(3) .and. sum(edges(2:3))>edges(1) &
+      &  .and. edges(1)+edges(3)>edges(2)
   end function
-  logical function is_trianle_int(traingle_edges)
+  logical function is_trianle_int(edges)
     ! sum of 2 sides > other side
-    integer,dimension(3) :: traingle_edges
-    is_trianle_int = sum(traingle_edges(1:2))>traingle_edges(3) .and. sum(traingle_edges(2:3))>traingle_edges(1) &
-     & .and. traingle_edges(1)+traingle_edges(3)>traingle_edges(2)
+    integer,dimension(3) :: edges
+    is_trianle_int = sum(edges(1:2))>edges(3) .and. sum(edges(2:3))>edges(1) &
+     & .and. edges(1)+edges(3)>edges(2)
   end function
 
-  logical function equilateral_real(traingle_edges)
-    real,dimension(3) :: traingle_edges
-    equilateral_real= is_trianle_real(traingle_edges) .and. intol(traingle_edges(1),traingle_edges(2)) &
-      & .and. intol(traingle_edges(1),traingle_edges(3)) .and. .not. intol(traingle_edges(1),0.0)
+  logical function equilateral_real(edges)
+    real,dimension(3) :: edges
+    equilateral_real= is_trianle_real(edges) .and. intol(edges(1),edges(2)) &
+      & .and. intol(edges(1),edges(3)) .and. .not. intol(edges(1),0.0)
   end function
 
-  logical function equilateral_int(traingle_edges)
-    integer,dimension(3) :: traingle_edges
-    equilateral_int=is_trianle_int(traingle_edges) .and. traingle_edges(1)==traingle_edges(2) &
-      &  .and.traingle_edges(1)==traingle_edges(3) .and. traingle_edges(1)/=0
+  logical function equilateral_int(edges)
+    integer,dimension(3) :: edges
+    equilateral_int=is_trianle_int(edges) .and. edges(1)==edges(2) &
+      &  .and.edges(1)==edges(3) .and. edges(1)/=0
   end function
 
-  logical function isosceles_real(traingle_edges)
-    real,dimension(3) :: traingle_edges
+  logical function isosceles_real(edges)
+    real,dimension(3) :: edges
     isosceles_real=.false.
-    if (equilateral_real(traingle_edges))then
+    if (equilateral_real(edges))then
       isosceles_real = .true.
       return
     endif
-    isosceles_real = is_trianle_real(traingle_edges) .and. intol(traingle_edges(1),traingle_edges(2))  &
-      & .or. intol(traingle_edges(1),traingle_edges(3)) .or. intol(traingle_edges(2),traingle_edges(3))
+    isosceles_real = is_trianle_real(edges) .and. intol(edges(1),edges(2))  &
+      & .or. intol(edges(1),edges(3)) .or. intol(edges(2),edges(3))
   end function
 
-  logical function isosceles_int(traingle_edges)
-    integer,dimension(3) :: traingle_edges
+  logical function isosceles_int(edges)
+    integer,dimension(3) :: edges
     isosceles_int=.false.
-    if (equilateral_int(traingle_edges))then
+    if (equilateral_int(edges))then
       isosceles_int = .true.
       return
     endif
-    isosceles_int =is_trianle_int(traingle_edges) .and. (traingle_edges(1)==traingle_edges(2) &
-      & .or. traingle_edges(1)==traingle_edges(3) .or. traingle_edges(2)==traingle_edges(3))
+    isosceles_int =is_trianle_int(edges) .and. (edges(1)==edges(2) &
+      & .or. edges(1)==edges(3) .or. edges(2)==edges(3))
   end function
 
 
-  logical function scalene_real(traingle_edges)
-    real,dimension(3) :: traingle_edges
-    scalene_real = is_trianle_real(traingle_edges) .and. .not. isosceles(traingle_edges) &
-      &  .and. .not. equilateral(traingle_edges)
+  logical function scalene_real(edges)
+    real,dimension(3) :: edges
+    scalene_real = is_trianle_real(edges) .and. .not. isosceles(edges) &
+      &  .and. .not. equilateral(edges)
   end function
 
-  logical function scalene_int(traingle_edges)
-    integer,dimension(3) :: traingle_edges
-    scalene_int = is_trianle_int(traingle_edges) .and. .not. isosceles(traingle_edges) &
-      & .and. .not. equilateral(traingle_edges)
+  logical function scalene_int(edges)
+    integer,dimension(3) :: edges
+    scalene_int = is_trianle_int(edges) .and. .not. isosceles(edges) &
+      & .and. .not. equilateral(edges)
   end function
 
 

@@ -19,34 +19,34 @@ module triangle
 
  contains
 
-  logical function equilateral_real(traingle_edges)
-    real,dimension(3) :: traingle_edges
+  logical function equilateral_real(edges)
+    real,dimension(3) :: edges
     equilateral_real = .false.
   end function
 
-  logical function equilateral_int(traingle_edges)
-    integer,dimension(3) :: traingle_edges
+  logical function equilateral_int(edges)
+    integer,dimension(3) :: edges
     equilateral_int = .false.
   end function
 
-  logical function isosceles_real(traingle_edges)
-    real,dimension(3) :: traingle_edges
+  logical function isosceles_real(edges)
+    real,dimension(3) :: edges
     isosceles_real = .false.
   end function
 
-  logical function isosceles_int(traingle_edges)
-    integer,dimension(3) :: traingle_edges
+  logical function isosceles_int(edges)
+    integer,dimension(3) :: edges
     isosceles_int = .false.
   end function
 
 
-  logical function scalene_real(traingle_edges)
-    real,dimension(3) :: traingle_edges
+  logical function scalene_real(edges)
+    real,dimension(3) :: edges
     scalene_real = .false.
   end function
 
-  logical function scalene_int(traingle_edges)
-    integer,dimension(3) :: traingle_edges
+  logical function scalene_int(edges)
+    integer,dimension(3) :: edges
     scalene_int = .false.
   end function
 
