@@ -25,28 +25,28 @@ module triangle
     intol = abs(a-b)<TOL
   end function
 
-  logical function is_trianle_real(edges)
+  logical function is_triangle_real(edges)
     ! sum of 2 sides > other side
     real,dimension(3) :: edges
-    is_trianle_real = sum(edges(1:2))>edges(3) .and. sum(edges(2:3))>edges(1) &
+    is_triangle_real = sum(edges(1:2))>edges(3) .and. sum(edges(2:3))>edges(1) &
       &  .and. edges(1)+edges(3)>edges(2)
   end function
-  logical function is_trianle_int(edges)
+  logical function is_triangle_int(edges)
     ! sum of 2 sides > other side
     integer,dimension(3) :: edges
-    is_trianle_int = sum(edges(1:2))>edges(3) .and. sum(edges(2:3))>edges(1) &
+    is_triangle_int = sum(edges(1:2))>edges(3) .and. sum(edges(2:3))>edges(1) &
      & .and. edges(1)+edges(3)>edges(2)
   end function
 
   logical function equilateral_real(edges)
     real,dimension(3) :: edges
-    equilateral_real= is_trianle_real(edges) .and. intol(edges(1),edges(2)) &
+    equilateral_real= is_triangle_real(edges) .and. intol(edges(1),edges(2)) &
       & .and. intol(edges(1),edges(3)) .and. .not. intol(edges(1),0.0)
   end function
 
   logical function equilateral_int(edges)
     integer,dimension(3) :: edges
-    equilateral_int=is_trianle_int(edges) .and. edges(1)==edges(2) &
+    equilateral_int=is_triangle_int(edges) .and. edges(1)==edges(2) &
       &  .and.edges(1)==edges(3) .and. edges(1)/=0
   end function
 
@@ -57,7 +57,7 @@ module triangle
       isosceles_real = .true.
       return
     endif
-    isosceles_real = is_trianle_real(edges) .and. intol(edges(1),edges(2))  &
+    isosceles_real = is_triangle_real(edges) .and. intol(edges(1),edges(2))  &
       & .or. intol(edges(1),edges(3)) .or. intol(edges(2),edges(3))
   end function
 
@@ -68,20 +68,20 @@ module triangle
       isosceles_int = .true.
       return
     endif
-    isosceles_int =is_trianle_int(edges) .and. (edges(1)==edges(2) &
+    isosceles_int =is_triangle_int(edges) .and. (edges(1)==edges(2) &
       & .or. edges(1)==edges(3) .or. edges(2)==edges(3))
   end function
 
 
   logical function scalene_real(edges)
     real,dimension(3) :: edges
-    scalene_real = is_trianle_real(edges) .and. .not. isosceles(edges) &
+    scalene_real = is_triangle_real(edges) .and. .not. isosceles(edges) &
       &  .and. .not. equilateral(edges)
   end function
 
   logical function scalene_int(edges)
     integer,dimension(3) :: edges
-    scalene_int = is_trianle_int(edges) .and. .not. isosceles(edges) &
+    scalene_int = is_triangle_int(edges) .and. .not. isosceles(edges) &
       & .and. .not. equilateral(edges)
   end function
 
