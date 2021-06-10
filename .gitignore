@@ -1,6 +1,6 @@
 bin/configlet
 bin/configlet.exe
-
+__pycache__
 # make and testing artifacts
 build
 exercises/practice/*/*_build_all.f90
