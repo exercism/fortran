@@ -50,6 +50,7 @@ module TesterMain
     module procedure assert_equal_int
     module procedure assert_equal_int_arr
     module procedure assert_equal_dble
+    module procedure assert_equal_real
     module procedure assert_equal_bool
   end interface
 !  interface  assert_equal_int_arr
@@ -149,6 +150,21 @@ contains
     endif
   end subroutine
 
+  !------------------------------------------------------------------
+  subroutine assert_equal_real(e_real,i_real,msg)
+    real, intent(in) :: e_real,i_real
+    character(len=*), intent(in), optional :: msg
+    logical :: assert_test
+    TESTS_RUN=TESTS_RUN+1
+    assert_test = abs(i_real - e_real) < TOL
+    if (.not. assert_test) then
+      call test_fail_msg(msg)
+      call elogger('Expected "'//trim(adjustl(r_to_s(e_real)))//'" but got "'&
+      & //trim(adjustl(r_to_s(i_real)))//'"')
+    endif
+  end subroutine
+
+
 !------------------------------------------------------------------
 ! utilities
 !------------------------------------------------------------------
@@ -171,6 +187,13 @@ contains
     double precision, intent(in) :: d
     character(len=MAX_STRING_LEN) :: d_to_s
     write(d_to_s, *) d
+  end function
+
+! Real to string
+  function r_to_s(d)
+    real, intent(in) :: d
+    character(len=MAX_STRING_LEN) :: r_to_s
+    write(r_to_s, *) d
   end function
 
 ! Logical/boolean to string

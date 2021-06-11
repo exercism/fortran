@@ -225,8 +225,9 @@
         "practices": [],
         "prerequisites": [],
         "topics" : [
-          "bools",
+          "logicals",
           "conditionals",
+          "loops",
           "comparisons",
           "numbers"
         ]
@@ -247,6 +248,21 @@
         ]
       },
       {
+        "slug": "rational-numbers",
+        "name": "Rational Numbers",
+        "uuid": "8cb180f8-2810-429c-8996-acdfd120b737",        
+        "difficulty": 3,
+        "practices": [],
+        "prerequisites": [],
+        "topics" : [
+          "logicals",
+          "conditionals",
+          "loops",
+          "comparisons",
+          "numbers"
+        ]
+      },
+      {
         "slug": "high-scores",
         "name": "High Scores",
         "uuid": "d4c9aef2-b71e-41d9-897e-defb3e1ee304",
@@ -259,6 +275,21 @@
           "numbers",
           "arrays",
           "maximum"
+        ]
+      },
+      {
+        "slug": "perfect-numbers",
+        "name": "Perfect Numbers",
+        "uuid": "81b492ae-0a1f-4247-bd21-7da5fa911104",        
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics" : [
+          "logicals",
+          "conditionals",
+          "loops",
+          "comparisons",
+          "numbers"
         ]
       }
     ]
