@@ -42,6 +42,7 @@ $ ctest -V
 import json
 import argparse
 import os
+import re 
 
 def fix_and_quote_fortran_multiline(txt):
     """Fortran can't handle multiple, so adding continuation character '&'
@@ -51,10 +52,10 @@ def fix_and_quote_fortran_multiline(txt):
         return '"%s"'%txt
     return txt
 
-def write_testcase(c, tnum):
+def write_testcase(c, TEST_NUMBER):
     """Putting the test case together.
     Format:
-    ! Test <tnum>: (description of test)
+    ! Test <TEST_NUMBER>: (description of test)
     call assert.... (actual test case)
     """
     si = []
@@ -67,7 +68,10 @@ def write_testcase(c, tnum):
     fcall = c['property']
     error = c['expected']['error'] if type(c['expected']) is dict and 'error' in c['expected'] else None
     fargs = [v for v in c['input'].values()]
-    inp = '{}({}'.format(fcall, fix_and_quote_fortran_multiline(fargs[0]))
+    if fargs:
+        inp = '{}({}'.format(fcall, fix_and_quote_fortran_multiline(fargs[0]))
+    else:
+        inp = '{}({}'.format(fcall, fix_and_quote_fortran_multiline(" ")) # empty array
     for a in fargs[1:]:
         inp = '{}, {}'.format(inp, fix_and_quote_fortran_multiline(a))
     inp = '{})'.format(inp)
@@ -80,24 +84,39 @@ def write_testcase(c, tnum):
         expected = '.false.'
     else:
         expected = fix_and_quote_fortran_multiline(expected)
-    si.append('  ! Test %d: %s'%(tnum+1, description))
+    si.append('  ! Test %d: %s'%(TEST_NUMBER, description))
     if error:
         expected = 'ERROR'
         si.append('  ! ERROR: %s'%(error))
     si.append('  call assert_equal({}, {}, "{}")'.format(expected, inp, description))
     return si
 
+def flatten_test_cases(j):
+    # unpack nested cases
+    nested_cases = j['cases']
+    flattened_cases = []
+    while len(nested_cases) > 0:
+        cases = nested_cases.pop()
+        if 'cases' in cases:
+            nested_cases.append(cases['cases'])
+        else:
+            if isinstance(cases, list):
+                flattened_cases.extend(cases)
+            else:
+                flattened_cases.append(cases)
+
+    return flattened_cases
+
 
 def create_single_test(j):
     """Walk through the json cases and recursively write the test cases"""
+    
+    flattened_cases  = flatten_test_cases(j)
+    
     si = []
-    for tnum, c in enumerate(j['cases']):
-        if 'cases' in c:
-            si.extend(create_single_test(c))
-        else:
-            si.extend(write_testcase(c, tnum))
+    for i,c in enumerate(flattened_cases):
+        si.extend(write_testcase(c,i))
     return si
-
 
 def create_stub(exercise, stub_file_name):
     stub_lines = """
@@ -155,24 +174,98 @@ program %s_test_main
     stub_file_name=os.path.join(os.path.dirname(test_name), exercise+'.f90')
     create_stub(exercise, stub_file_name)
 
-# nice to have
-# TODO
-def add_meta_and_doc_file(test_name, json_name):
+
+def add_meta_and_doc_file(test_file_name, json_name):
     """
     create 
     
-        .meta/tests.toml 
         .meta/config.json
         .docs/instructions.md  (based on ../problem-specifications/exercises/[EXERCISE]/description.md)
 
-    for test_name
+    for test_file_name
 
-    Not yet implemented.
+    The file .meta/tests.toml will be created with:
+        configlet sync
+
     """
-    test_dir_name = os.path.dirname(test_name)
+    test_dir_name = os.path.dirname(test_file_name)
+    exercise_name = os.path.basename(test_dir_name).replace('-', '_')
     meta_dir = os.path.join( test_dir_name, '.meta')
+    
     doc_dir = os.path.join( test_dir_name, '.docs')
+    desc_file = os.path.join( os.path.dirname(json_name),  'description.md')
+    instruction_file =  os.path.join(doc_dir, 'instructions.md')
+    desc_file_lines = open(desc_file, encoding='utf-8').readlines()
+    write_instructions(desc_file_lines, instruction_file)
+    
+    meta_yaml = os.path.join( os.path.dirname(json_name),  'metadata.yml')
+    local_config_json = os.path.join(meta_dir, 'config.json')
+    config_dict = get_meta_info(meta_yaml)
+    write_config_json(exercise_name, config_dict, local_config_json)
+
     return None
+
+def write_instructions(desc_file_lines, instruction_file):
+    with open(instruction_file, 'w', encoding='utf-8') as of:
+        for li in desc_file_lines:
+            of.write(li.replace('# Description','# Instructions'))
+    print('wrote %s'%instruction_file)
+
+
+def write_config_json(exercise_name, config_dict, local_config_json, authors=['pclausen'] ):
+    """
+    {
+  "blurb": "Convert a long phrase to its acronym",
+  "authors": [
+    "pclausen"
+  ],
+  "files": {
+    "solution": [
+      "acronym.f90"
+    ],
+    "test": [
+      "acronym_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "source": "Julien Vanier",
+  "source_url": "https://github.com/monkbroc"
+}
+"""
+
+    config_dict.update( {
+        "authors": authors,
+        "files": {
+            "solution": [
+                "%s.f90"%exercise_name
+            ],
+            "test": [
+                "%s_test.f90"%exercise_name
+            ],
+            "example": [
+                ".meta/example.f90"
+            ]
+        }
+    } )
+
+    with open(local_config_json, 'w') as of:
+        json.dump(config_dict, of, indent=4)
+    print('wrote %s'%local_config_json)
+
+
+def get_meta_info(meta_yaml):
+    lines = open(meta_yaml).readlines()
+    lines[0] ="{"
+    lines[-1] = lines[-1].strip() # avoid comma to replaced with \n in last line
+    lines.append("}")
+    lines2 = [re.sub(r'^(\w+):',r'"\1":', li)
+        for li in lines ]
+    lines3 = [li.replace('\n',',') for li in lines2 ]
+    meta_info = json.loads(''.join(lines3))
+    return meta_info    
+
 
 
 if __name__ == '__main__':
@@ -191,6 +284,16 @@ if __name__ == '__main__':
 
     print(args)
 
-    create_test(args.target, args.json)
+    # create dirs if not there
+    test_dir_name=os.path.dirname(args.target)
+    test_dirs = [ test_dir_name,
+        os.path.join( test_dir_name, '.meta'),
+        os.path.join( test_dir_name, '.docs') ]
+    for td in test_dirs:
+        if not os.path.isdir(td):
+            os.mkdir(td) 
+            print('created %s'%td)
 
+    create_test(args.target, args.json)
+    add_meta_and_doc_file(args.target, args.json)
 
