@@ -263,6 +263,21 @@
         ]
       },
       {
+        "slug": "high-scores",
+        "name": "High Scores",
+        "uuid": "d4c9aef2-b71e-41d9-897e-defb3e1ee304",
+        "difficulty": 3,
+        "practices": [],
+        "prerequisites": [],
+        "topics" : [
+          "conditionals",
+          "comparisons",
+          "numbers",
+          "arrays",
+          "maximum"
+        ]
+      },
+      {
         "slug": "perfect-numbers",
         "name": "Perfect Numbers",
         "uuid": "81b492ae-0a1f-4247-bd21-7da5fa911104",        
