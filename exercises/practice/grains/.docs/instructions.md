@@ -15,6 +15,8 @@ Write code that shows:
 - how many grains were on a given square, and
 - the total number of grains on the chessboard
 
+The function for an individual square will take an integer value (`n`) and both functions will return a double precision value.
+
 ## For bonus points
 
 Did you get the tests passing and the code clean? If you want to, these
