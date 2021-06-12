@@ -5,14 +5,13 @@ import glob
 import create_fortran_test
 
 
-
-jsons=glob.glob( '../../exercism/problem-specifications/exercises/*/*.json')
+jsons = glob.glob('../../exercism/problem-specifications/exercises/*/*.json')
 
 for j in jsons:
-    exname=os.path.basename(os.path.dirname(j))
-    exname_us=exname.replace('-','_')
-    expath=os.path.join('new_exercises',exname)
-    ex_test_path=os.path.join(expath, exname_us+'_test.f90')
+    exname = os.path.basename(os.path.dirname(j))
+    exname_us = exname.replace('-', '_')
+    expath = os.path.join('new_exercises', exname)
+    ex_test_path = os.path.join(expath, exname_us+'_test.f90')
     if os.path.isdir(expath):
         print(f'Found {expath}, not creating this exercise')
     else:

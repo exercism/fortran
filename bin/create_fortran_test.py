@@ -42,15 +42,17 @@ $ ctest -V
 import json
 import argparse
 import os
-import re 
+import re
+
 
 def fix_and_quote_fortran_multiline(txt):
     """Fortran can't handle multiple, so adding continuation character '&'
     if necessary"""
     if isinstance(txt, str):
         txt = txt.replace('\n', '"// & \n    & "')
-        return '"%s"'%txt
+        return '"%s"' % txt
     return txt
+
 
 def write_testcase(c, TEST_NUMBER):
     """Putting the test case together.
@@ -66,12 +68,14 @@ def write_testcase(c, TEST_NUMBER):
     #   'expected': 'Whatever.'}
     description = c['description']
     fcall = c['property']
-    error = c['expected']['error'] if type(c['expected']) is dict and 'error' in c['expected'] else None
+    error = c['expected']['error'] if type(
+        c['expected']) is dict and 'error' in c['expected'] else None
     fargs = [v for v in c['input'].values()]
     if fargs:
         inp = '{}({}'.format(fcall, fix_and_quote_fortran_multiline(fargs[0]))
     else:
-        inp = '{}({}'.format(fcall, fix_and_quote_fortran_multiline(" ")) # empty array
+        inp = '{}({}'.format(
+            fcall, fix_and_quote_fortran_multiline(" "))  # empty array
     for a in fargs[1:]:
         inp = '{}, {}'.format(inp, fix_and_quote_fortran_multiline(a))
     inp = '{})'.format(inp)
@@ -84,12 +88,14 @@ def write_testcase(c, TEST_NUMBER):
         expected = '.false.'
     else:
         expected = fix_and_quote_fortran_multiline(expected)
-    si.append('  ! Test %d: %s'%(TEST_NUMBER, description))
+    si.append('  ! Test %d: %s' % (TEST_NUMBER, description))
     if error:
         expected = 'ERROR'
-        si.append('  ! ERROR: %s'%(error))
-    si.append('  call assert_equal({}, {}, "{}")'.format(expected, inp, description))
+        si.append('  ! ERROR: %s' % (error))
+    si.append('  call assert_equal({}, {}, "{}")'.format(
+        expected, inp, description))
     return si
+
 
 def flatten_test_cases(j):
     # unpack nested cases
@@ -110,13 +116,14 @@ def flatten_test_cases(j):
 
 def create_single_test(j):
     """Walk through the json cases and recursively write the test cases"""
-    
-    flattened_cases  = flatten_test_cases(j)
-    
+
+    flattened_cases = flatten_test_cases(j)
+
     si = []
-    for i,c in enumerate(flattened_cases):
-        si.extend(write_testcase(c,i))
+    for i, c in enumerate(flattened_cases):
+        si.extend(write_testcase(c, i))
     return si
+
 
 def create_stub(exercise, stub_file_name):
     stub_lines = """
@@ -129,7 +136,7 @@ contains
   end function
 
 end module
-"""%(exercise)
+""" % (exercise)
 
     with open(stub_file_name, 'w') as f:
         f.write(stub_lines)
@@ -146,7 +153,7 @@ def create_test(test_name, json_name):
     header = """
 ! This test was created from %s
 !
-"""%(os.path.relpath(json_name))
+""" % (os.path.relpath(json_name))
 
     program = """
 program %s_test_main
@@ -154,7 +161,7 @@ program %s_test_main
   use %s
   implicit none
 
-"""%(exercise, exercise)
+""" % (exercise, exercise)
 
     s = header + program
     si = s.splitlines()
@@ -165,20 +172,20 @@ program %s_test_main
     si.append('')
     si.append('end program')
     si.append('')
-    #json.dumps(j)
+    # json.dumps(j)
     with open(test_name, 'w') as of:
         for ss in si:
-            of.write('%s\n'%ss)
+            of.write('%s\n' % ss)
 
     print('Wrote : ' + test_name)
-    stub_file_name=os.path.join(os.path.dirname(test_name), exercise+'.f90')
+    stub_file_name = os.path.join(os.path.dirname(test_name), exercise+'.f90')
     create_stub(exercise, stub_file_name)
 
 
 def add_meta_and_doc_file(test_file_name, json_name):
     """
     create 
-    
+
         .meta/config.json
         .docs/instructions.md  (based on ../problem-specifications/exercises/[EXERCISE]/description.md)
 
@@ -190,29 +197,30 @@ def add_meta_and_doc_file(test_file_name, json_name):
     """
     test_dir_name = os.path.dirname(test_file_name)
     exercise_name = os.path.basename(test_dir_name).replace('-', '_')
-    meta_dir = os.path.join( test_dir_name, '.meta')
-    
-    doc_dir = os.path.join( test_dir_name, '.docs')
-    desc_file = os.path.join( os.path.dirname(json_name),  'description.md')
-    instruction_file =  os.path.join(doc_dir, 'instructions.md')
+    meta_dir = os.path.join(test_dir_name, '.meta')
+
+    doc_dir = os.path.join(test_dir_name, '.docs')
+    desc_file = os.path.join(os.path.dirname(json_name),  'description.md')
+    instruction_file = os.path.join(doc_dir, 'instructions.md')
     desc_file_lines = open(desc_file, encoding='utf-8').readlines()
     write_instructions(desc_file_lines, instruction_file)
-    
-    meta_yaml = os.path.join( os.path.dirname(json_name),  'metadata.yml')
+
+    meta_yaml = os.path.join(os.path.dirname(json_name),  'metadata.yml')
     local_config_json = os.path.join(meta_dir, 'config.json')
     config_dict = get_meta_info(meta_yaml)
     write_config_json(exercise_name, config_dict, local_config_json)
 
     return None
 
+
 def write_instructions(desc_file_lines, instruction_file):
     with open(instruction_file, 'w', encoding='utf-8') as of:
         for li in desc_file_lines:
-            of.write(li.replace('# Description','# Instructions'))
-    print('wrote %s'%instruction_file)
+            of.write(li.replace('# Description', '# Instructions'))
+    print('wrote %s' % instruction_file)
 
 
-def write_config_json(exercise_name, config_dict, local_config_json, authors=['pclausen'] ):
+def write_config_json(exercise_name, config_dict, local_config_json, authors=['pclausen']):
     """
     {
   "blurb": "Convert a long phrase to its acronym",
@@ -235,37 +243,37 @@ def write_config_json(exercise_name, config_dict, local_config_json, authors=['p
 }
 """
 
-    config_dict.update( {
+    config_dict.update({
         "authors": authors,
         "files": {
             "solution": [
-                "%s.f90"%exercise_name
+                "%s.f90" % exercise_name
             ],
             "test": [
-                "%s_test.f90"%exercise_name
+                "%s_test.f90" % exercise_name
             ],
             "example": [
                 ".meta/example.f90"
             ]
         }
-    } )
+    })
 
     with open(local_config_json, 'w') as of:
         json.dump(config_dict, of, indent=4)
-    print('wrote %s'%local_config_json)
+    print('wrote %s' % local_config_json)
 
 
 def get_meta_info(meta_yaml):
     lines = open(meta_yaml).readlines()
-    lines[0] ="{"
-    lines[-1] = lines[-1].strip() # avoid comma to replaced with \n in last line
+    lines[0] = "{"
+    # avoid comma to replaced with \n in last line
+    lines[-1] = lines[-1].strip()
     lines.append("}")
-    lines2 = [re.sub(r'^(\w+):',r'"\1":', li)
-        for li in lines ]
-    lines3 = [li.replace('\n',',') for li in lines2 ]
+    lines2 = [re.sub(r'^(\w+):', r'"\1":', li)
+              for li in lines]
+    lines3 = [li.replace('\n', ',') for li in lines2]
     meta_info = json.loads(''.join(lines3))
-    return meta_info    
-
+    return meta_info
 
 
 if __name__ == '__main__':
@@ -285,15 +293,14 @@ if __name__ == '__main__':
     print(args)
 
     # create dirs if not there
-    test_dir_name=os.path.dirname(args.target)
-    test_dirs = [ test_dir_name,
-        os.path.join( test_dir_name, '.meta'),
-        os.path.join( test_dir_name, '.docs') ]
+    test_dir_name = os.path.dirname(args.target)
+    test_dirs = [test_dir_name,
+                 os.path.join(test_dir_name, '.meta'),
+                 os.path.join(test_dir_name, '.docs')]
     for td in test_dirs:
         if not os.path.isdir(td):
-            os.mkdir(td) 
-            print('created %s'%td)
+            os.mkdir(td)
+            print('created %s' % td)
 
     create_test(args.target, args.json)
     add_meta_and_doc_file(args.target, args.json)
-
