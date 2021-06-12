@@ -5,7 +5,6 @@ module grains
 
 contains
 
-  ! Using double precision return type instead of int to avoid overflow in int
   double precision function square(n)
     integer :: n
     square = -1.d0
