@@ -296,7 +296,7 @@
       {
         "slug": "perfect-numbers",
         "name": "Perfect Numbers",
-        "uuid": "81b492ae-0a1f-4247-bd21-7da5fa911104",        
+        "uuid": "81b492ae-0a1f-4247-bd21-7da5fa911104",
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
@@ -306,6 +306,18 @@
           "loops",
           "comparisons",
           "numbers"
+        ]
+      },
+      {
+        "slug": "grains",
+        "name": "Grains",
+        "uuid": "859da858-c6c2-4509-b32e-0fb4e461e1a5",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics" : [
+          "numbers",
+          "math"
         ]
       }
     ]
