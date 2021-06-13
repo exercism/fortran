@@ -45,6 +45,12 @@ module TesterMain
   integer, parameter :: MAX_STRING_LEN = 80
   double precision, parameter :: TOL = 1.0D-8
 
+  ! output file for fortran-test-runner
+  ! only write if ENV variable
+  ! EXERCISM_FORTRAN_JSON=1
+  character(len=*), parameter :: TEST_JSON_FILE = "result.json"
+  integer, parameter :: TEST_JSON_FILE_UNIT = 12
+
   interface assert_equal
     module procedure assert_equal_str
     module procedure assert_equal_int
@@ -53,15 +59,69 @@ module TesterMain
     module procedure assert_equal_real
     module procedure assert_equal_bool
   end interface
-!  interface  assert_equal_int_arr
-!    module procedure assert_equal_int_arr2
-!  end interface
 
 contains
 
-!------------------------------------------------------------------
+  !------------------------------------------------------------------
+  subroutine write_json(assert_test, msg)
+    ! -------------------------------
+    logical :: assert_test
+    character(len=*), intent(in), optional :: msg
+    ! -------------------------------
+    character(len=MAX_STRING_LEN) :: exercism_fortran_json
+    character(len=MAX_STRING_LEN) :: test_name
+    logical :: exist
+
+    call get_environment_variable("EXERCISM_FORTRAN_JSON", exercism_fortran_json)
+    if (trim(exercism_fortran_json) /= '1') then
+      return
+    end if
+    inquire(file=TEST_JSON_FILE, exist=exist)
+    if (exist) then
+      open(unit=TEST_JSON_FILE_UNIT, file=TEST_JSON_FILE, status="old", position="append", action="write")
+    else
+      open(unit=TEST_JSON_FILE_UNIT, file=TEST_JSON_FILE, status="new", action="write")
+      ! write header
+      write(TEST_JSON_FILE_UNIT,*) '{'
+      write(TEST_JSON_FILE_UNIT,*) '  "tests": ['
+    end if
+    if (TESTS_RUN>1) then
+      write(TEST_JSON_FILE_UNIT,*) '    ,'
+    end if
+    test_name = 'Test '//trim(adjustl(i_to_s(TESTS_RUN)))//':'
+    if (present(msg)) then
+      write(TEST_JSON_FILE_UNIT,*) '    { "name"  : "'//trim(test_name)//' '//trim(msg)//'",'
+    else
+      write(TEST_JSON_FILE_UNIT,*) '    { "name"  : "'//trim(test_name)//'",'
+    end if
+    if (assert_test) then
+      write(TEST_JSON_FILE_UNIT,*) '      "status": "pass" }'
+    else
+      write(TEST_JSON_FILE_UNIT,*) '      "status": "fail" }'
+    end if
+
+  end subroutine
+
+
+  !------------------------------------------------------------------
   subroutine test_report()
+    logical :: exist
+    character(len=MAX_STRING_LEN) :: exercism_fortran_json
+
     call logger('Test summary: '//trim(adjustl(i_to_s(TESTS_FAILED)))//' of '//trim(adjustl(i_to_s(TESTS_RUN)))//' tests failed')
+    call get_environment_variable("EXERCISM_FORTRAN_JSON", exercism_fortran_json)
+    inquire(file=TEST_JSON_FILE, exist=exist)
+    if (trim(exercism_fortran_json) == '1' .and. exist) then
+      open(unit=TEST_JSON_FILE_UNIT, file=TEST_JSON_FILE, status="old", position="append", action="write")
+      write(TEST_JSON_FILE_UNIT,*)   '  ],'
+      write(TEST_JSON_FILE_UNIT,*)   '  "version": 2,'
+      if (TESTS_FAILED==0) then
+        write(TEST_JSON_FILE_UNIT,*) '  "status": "pass"'
+      else
+        write(TEST_JSON_FILE_UNIT,*) '  "status": "fail"'
+      end if
+      write(TEST_JSON_FILE_UNIT,*)   '}'
+    end if
     if (TESTS_FAILED==0) then
       STOP 0
     else
@@ -69,23 +129,29 @@ contains
     endif
   end subroutine
 
-!------------------------------------------------------------------
+  !------------------------------------------------------------------
   subroutine assert_equal_bool(e_bool,i_bool,msg)
+    ! -------------------------------
     logical, intent(in) :: e_bool, i_bool
     character(len=*), intent(in), optional :: msg
+    ! -------------------------------
     logical :: assert_test
+
     TESTS_RUN=TESTS_RUN+1
     assert_test = i_bool .eqv. e_bool
     if (.not. assert_test) then
       call test_fail_msg(msg)
       call elogger('Expected "'//trim(b_to_s(e_bool))//'" but got "'//trim(b_to_s(i_bool))//'"')
     endif
+    call write_json(assert_test, msg)
   end subroutine
 
-!------------------------------------------------------------------
+  !------------------------------------------------------------------
   subroutine assert_equal_str(estr,istr,msg)
+    ! -------------------------------
     character(len=*), intent(in) :: estr,istr
     character(len=*), intent(in), optional :: msg
+    ! -------------------------------
     logical :: assert_test
     TESTS_RUN=TESTS_RUN+1
     assert_test = istr == estr
@@ -93,13 +159,17 @@ contains
       call test_fail_msg(msg)
       call elogger('Expected "'//trim(estr)//'" but got "'//trim(istr)//'"')
     endif
+    call write_json(assert_test, msg)
   end subroutine
 
-!------------------------------------------------------------------
+  !------------------------------------------------------------------
   subroutine assert_equal_int(e_int,i_int,msg)
+    ! -------------------------------
     integer, intent(in) :: e_int,i_int
     character(len=*), intent(in), optional :: msg
+    ! -------------------------------
     logical :: assert_test
+
     TESTS_RUN=TESTS_RUN+1
     assert_test = i_int == e_int
     if (.not. assert_test) then
@@ -107,14 +177,18 @@ contains
       call elogger('Expected "'//trim(adjustl(i_to_s(e_int)))//'" but got "' &
       & //trim(adjustl(i_to_s(i_int)))//'"' )
     endif
+    call write_json(assert_test, msg)
   end subroutine
 
-!------------------------------------------------------------------
+  !------------------------------------------------------------------
   subroutine assert_equal_int_arr(e_int_arr, i_int_arr, msg_arr)
+    ! -------------------------------
     integer, dimension(:), intent(in) :: e_int_arr, i_int_arr
     character(len=*), intent(in) :: msg_arr
+    ! -------------------------------
     logical :: assert_test
     integer :: i
+
     TESTS_RUN=TESTS_RUN+1
     assert_test = .false.
     assert_test = size(e_int_arr) == size(i_int_arr)
@@ -134,12 +208,15 @@ contains
       call elogger('Expected "'//trim(adjustl(ia_to_s(e_int_arr)))//'" but got "' &
       & //trim(adjustl(ia_to_s(i_int_arr)))//'"' )
     endif
+    call write_json(assert_test, msg_arr)
   end subroutine
 
-!------------------------------------------------------------------
+  !------------------------------------------------------------------
   subroutine assert_equal_dble(e_dble,i_dble,msg)
+    ! -------------------------------
     double precision, intent(in) :: e_dble,i_dble
     character(len=*), intent(in), optional :: msg
+    ! -------------------------------
     logical :: assert_test
     TESTS_RUN=TESTS_RUN+1
     assert_test = dabs(i_dble - e_dble) < TOL
@@ -148,12 +225,15 @@ contains
       call elogger('Expected "'//trim(adjustl(d_to_s(e_dble)))//'" but got "'&
       & //trim(adjustl(d_to_s(i_dble)))//'"')
     endif
+    call write_json(assert_test, msg)
   end subroutine
 
   !------------------------------------------------------------------
   subroutine assert_equal_real(e_real,i_real,msg)
+    ! -------------------------------
     real, intent(in) :: e_real,i_real
     character(len=*), intent(in), optional :: msg
+    ! -------------------------------
     logical :: assert_test
     TESTS_RUN=TESTS_RUN+1
     assert_test = abs(i_real - e_real) < TOL
@@ -162,6 +242,7 @@ contains
       call elogger('Expected "'//trim(adjustl(r_to_s(e_real)))//'" but got "'&
       & //trim(adjustl(r_to_s(i_real)))//'"')
     endif
+    call write_json(assert_test, msg)
   end subroutine
 
 
