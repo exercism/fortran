@@ -48,7 +48,7 @@ module TesterMain
   ! output file for fortran-test-runner
   ! only write if ENV variable
   ! EXERCISM_FORTRAN_JSON=1
-  character(len=*), parameter :: TEST_JSON_FILE = "result.json"
+  character(len=*), parameter :: TEST_JSON_FILE = "results.json"
   integer, parameter :: TEST_JSON_FILE_UNIT = 12
 
   interface assert_equal
