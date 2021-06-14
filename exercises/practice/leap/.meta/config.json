@@ -13,7 +13,7 @@
             "leap_test.f90"
         ],
         "example": [
-            ".meta/leap_example.f90"
+            ".meta/example.f90"
         ]
     }
 }
