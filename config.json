@@ -232,6 +232,14 @@
         ]
       },
       {
+	"slug": "leap",
+	"name": "Leap",
+	"uuid": "609a16cb-6b46-4697-addb-b8e4793c56a2",
+	"difficulty": 2,
+	"practices": ["conditionals", "equality"],
+	"prerequisites": ["conditionals", "equality"]
+      },
+      {
         "slug": "allergies",
         "name": "Allergies",
         "uuid": "52b1856c-7570-4d75-aaa9-e1cff3cb6155",
