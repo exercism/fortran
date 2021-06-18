@@ -327,6 +327,18 @@
           "numbers",
           "math"
         ]
+      },
+      {
+        "slug": "space-age",
+        "name": "Space age",
+        "uuid": "01a79e36-786b-45a1-83dd-2a883f0527eb",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics" : [
+          "numbers",
+          "math"
+        ]
       }
     ]
   }
