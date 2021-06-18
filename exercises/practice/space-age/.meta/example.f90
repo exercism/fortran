@@ -3,16 +3,16 @@ module orbital_constants
   implicit none
   
   ! Earth: orbital period 1.0 Earth years, 365.25 Earth days, or 31557600 seconds
-  double precision, parameter, private :: earth_year_seconds = 31557600.d0
+  double precision, parameter, public :: earth_year_seconds = 31557600.d0
   
   ! A planet's orbit as measured in Earth years
-  double precision, parameter, private :: mercury_earth_years = 0.2408467d0
-  double precision, parameter, private :: venus_earth_years = 0.61519726d0
-  double precision, parameter, private :: mars_earth_years = 1.8808158d0
-  double precision, parameter, private :: jupiter_earth_years = 11.862615d0
-  double precision, parameter, private :: saturn_earth_years = 29.447498d0
-  double precision, parameter, private :: uranus_earth_years = 84.016846d0
-  double precision, parameter, private :: neptune_earth_years = 164.79132d0
+  double precision, parameter, public :: mercury_earth_years = 0.2408467d0
+  double precision, parameter, public :: venus_earth_years = 0.61519726d0
+  double precision, parameter, public :: mars_earth_years = 1.8808158d0
+  double precision, parameter, public :: jupiter_earth_years = 11.862615d0
+  double precision, parameter, public :: saturn_earth_years = 29.447498d0
+  double precision, parameter, public :: uranus_earth_years = 84.016846d0
+  double precision, parameter, public :: neptune_earth_years = 164.79132d0
 
 end module orbital_constants
 
