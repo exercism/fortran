@@ -24,11 +24,12 @@ contains
   double precision function age_in_years(planet, seconds)
     character(len=*), intent(in) :: planet
     double precision, intent(in) :: seconds
-    double precision, intent(out) :: age_in_years = 0.d0
-
-    ! A multiplier for a number of Earth years for the given planet
-    double precision :: n_earth_years = 0.d0
     
+    ! A multiplier for a number of Earth years for the given planet
+    double precision :: n_earth_years = 1.d0
+    
+    age_in_years = 0.d0
+
     select case (planet)
     case ("Mercury")
       n_earth_years = mercury_earth_years
