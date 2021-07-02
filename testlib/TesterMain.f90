@@ -182,7 +182,7 @@ contains
   subroutine assert_equal_bool(e_bool,i_bool,test_description)
     ! -------------------------------
     logical, intent(in) :: e_bool, i_bool
-    character(len=*), intent(in), optional :: test_description
+    character(len=*), intent(in) :: test_description
     ! -------------------------------
     logical :: assert_test
     character(len=MAX_STRING_LEN) :: expected_msg
@@ -203,7 +203,7 @@ contains
   subroutine assert_equal_str(estr,istr,test_description)
     ! -------------------------------
     character(len=*), intent(in) :: estr,istr
-    character(len=*), intent(in), optional :: test_description
+    character(len=*), intent(in) :: test_description
     ! -------------------------------
     logical :: assert_test
     character(len=MAX_STRING_LEN) :: expected_msg
@@ -224,7 +224,7 @@ contains
   subroutine assert_equal_int(e_int,i_int,test_description)
     ! -------------------------------
     integer, intent(in) :: e_int,i_int
-    character(len=*), intent(in), optional :: test_description
+    character(len=*), intent(in) :: test_description
     ! -------------------------------
     logical :: assert_test
     character(len=MAX_STRING_LEN) :: expected_msg
@@ -282,7 +282,7 @@ contains
   subroutine assert_equal_dble(e_dble,i_dble,test_description)
     ! -------------------------------
     double precision, intent(in) :: e_dble,i_dble
-    character(len=*), intent(in), optional :: test_description
+    character(len=*), intent(in) :: test_description
     ! -------------------------------
     logical :: assert_test
     character(len=MAX_STRING_LEN) :: expected_msg
@@ -304,7 +304,7 @@ contains
   subroutine assert_equal_real(e_real,i_real,test_description)
     ! -------------------------------
     real, intent(in) :: e_real,i_real
-    character(len=*), intent(in), optional :: test_description
+    character(len=*), intent(in) :: test_description
     ! -------------------------------
     logical :: assert_test
     character(len=MAX_STRING_LEN) :: expected_msg
@@ -390,13 +390,9 @@ end function
 
 ! Fail message and incrementing the module global TESTS_FAILED
   subroutine test_fail_msg(msg)
-    character(len=*), optional :: msg
+    character(len=*) :: msg
     TESTS_FAILED=TESTS_FAILED+1
-    if (present(msg)) then
-      call elogger('Test '//trim(adjustl(i_to_s(TESTS_RUN)))//': '//msg)
-    else
-      call elogger('Test '//trim(adjustl(i_to_s(TESTS_RUN))))
-    end if
+    call elogger('Test '//trim(adjustl(i_to_s(TESTS_RUN)))//': '//msg)
   end subroutine
 
 
