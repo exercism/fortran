@@ -1,9 +1,8 @@
 module hello_world
-  implicit none
 contains
-
   function hello()
     character(13) :: hello
+    hello = 'Goodbye, Mars!'
 
   end function hello
 
