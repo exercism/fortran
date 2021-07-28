@@ -37,32 +37,32 @@
   ],
   "key_features": [
     {
-      "icon": "TODO",
+      "icon": "scientific",
       "title": "Scientific computing",
       "content": "Fortran is used heavily in scientific computing and engineering."
     },
     {
-      "icon": "TODO",
+      "icon": "cross-platform",
       "title": "Cross-platform",
       "content": "Fortran is portable and can run on almost any platform."
     },
     {
-      "icon": "TODO",
+      "icon": "fast",
       "title": "Performant",
       "content": "Fortran has been consistently rated as one of the highest performing languages for energy and time."
     },
     {
-      "icon": "TODO",
+      "icon": "stable",
       "title": "Stable",
       "content": "The Fortran values stability and backwards compatibility, Fortran programs can run for decades."
     },
     {
-      "icon": "TODO",
+      "icon": "multi-paradigm",
       "title": "Math",
       "content": "The name of Fortran derived from Formula Translation. Natively supports arrays and complex numbers."
     },
     {
-      "icon": "TODO",
+      "icon": "powerful",
       "title": "Efficient",
       "content": "Fortran has been optimized for decades to execute efficiently."
     }
