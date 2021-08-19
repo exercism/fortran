@@ -7,4 +7,4 @@
 - [CMake Documentation](https://cmake.org/cmake/help/latest/)
 - [Intel Fortran](https://software.intel.com/en-us/fortran-compilers)
 - [Visual Studio](https://visualstudio.microsoft.com/)
-
+- [Fortran discourse channel](https://fortran-lang.discourse.group/)
