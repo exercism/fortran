@@ -350,14 +350,14 @@ end function
   function d_to_s(d)
     double precision, intent(in) :: d
     character(len=MAX_STRING_LEN) :: d_to_s
-    write(d_to_s, *) d
+    write(d_to_s, '(G13.6)') d
   end function
 
 ! Real to string
   function r_to_s(d)
     real, intent(in) :: d
     character(len=MAX_STRING_LEN) :: r_to_s
-    write(r_to_s, *) d
+    write(r_to_s, '(G13.6)') d
   end function
 
 ! Logical/boolean to string

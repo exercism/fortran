@@ -16,51 +16,81 @@
     }
     ,
     {
-      "name"     : "Test 3: OK double",
-      "test_code": "Test 3: OK double",
+      "name"     : "Test 3: OK int array",
+      "test_code": "Test 3: OK int array",
       "task_id"  : 3,
       "status"   : "pass"
     }
     ,
     {
-      "name"     : "Test 4: FAIL double",
-      "test_code": "Test 4: FAIL double",
+      "name"     : "Test 4: FAIL int",
+      "test_code": "Test 4: FAIL int",
       "task_id"  : 4,
       "status"   : "fail",
-      "message"  : "Expected < 1.00000000000000 > but got < 2.00000000000000 >"
+      "message"  : "Expected < 1           2           3 > but got < 1           2          -3 >"
     }
     ,
     {
-      "name"     : "Test 5: OK logical",
-      "test_code": "Test 5: OK logical",
+      "name"     : "Test 5: OK double",
+      "test_code": "Test 5: OK double",
       "task_id"  : 5,
       "status"   : "pass"
     }
     ,
     {
-      "name"     : "Test 6: FAIL logical",
-      "test_code": "Test 6: FAIL logical",
+      "name"     : "Test 6: FAIL double",
+      "test_code": "Test 6: FAIL double",
       "task_id"  : 6,
       "status"   : "fail",
-      "message"  : "Expected < True > but got < False >"
+      "message"  : "Expected < 1.00000 > but got < 2.00000 >"
     }
     ,
     {
-      "name"     : "Test 7: OK string",
-      "test_code": "Test 7: OK string",
+      "name"     : "Test 7: OK real",
+      "test_code": "Test 7: OK real",
       "task_id"  : 7,
       "status"   : "pass"
     }
     ,
     {
-      "name"     : "Test 8: FAIL string",
-      "test_code": "Test 8: FAIL string",
+      "name"     : "Test 8: FAIL real",
+      "test_code": "Test 8: FAIL real",
       "task_id"  : 8,
+      "status"   : "fail",
+      "message"  : "Expected < 1.00000 > but got < 2.00000 >"
+    }
+    ,
+    {
+      "name"     : "Test 9: OK logical",
+      "test_code": "Test 9: OK logical",
+      "task_id"  : 9,
+      "status"   : "pass"
+    }
+    ,
+    {
+      "name"     : "Test 10: FAIL logical",
+      "test_code": "Test 10: FAIL logical",
+      "task_id"  : 10,
+      "status"   : "fail",
+      "message"  : "Expected < True > but got < False >"
+    }
+    ,
+    {
+      "name"     : "Test 11: OK string",
+      "test_code": "Test 11: OK string",
+      "task_id"  : 11,
+      "status"   : "pass"
+    }
+    ,
+    {
+      "name"     : "Test 12: FAIL string",
+      "test_code": "Test 12: FAIL string",
+      "task_id"  : 12,
       "status"   : "fail",
       "message"  : "Expected < my string > but got < not my string >"
     }
   ],
   "version": 2,
   "status" : "fail",
-  "message": "Test summary: 4 of 8 tests failed"
+  "message": "Test summary: 6 of 12 tests failed"
 }

@@ -30,6 +30,6 @@ add_test (testlib_unittest testlib_unittest )
 set_tests_properties(testlib_unittest PROPERTIES WILL_FAIL true ENVIRONMENT EXERCISM_FORTRAN_JSON=1 )
 
 add_test(testlib_unittest_cmp
-  ${CMAKE_COMMAND} -E compare_files
+  ${CMAKE_COMMAND} -E compare_files --ignore-eol
   results.json
   ${CMAKE_CURRENT_SOURCE_DIR}/results.json)
