@@ -9,7 +9,7 @@ program testlib_unittest
   call assert_equal(1, 1, 'OK int')
   call assert_equal(1, 2, 'FAIL int')
   call assert_equal([1,2,3], [1,2,3], 'OK int array')
-  call assert_equal([1,2,3], [1,2,-3], 'FAIL int')
+  call assert_equal([1,2,3], [1,2,-3], 'FAIL int array')
   call assert_equal(1.d0, 1.d0, 'OK double')
   call assert_equal(1.d0, 2.d0, 'FAIL double')
   call assert_equal(1.0, 1.0, 'OK real')
