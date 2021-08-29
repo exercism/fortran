@@ -77,11 +77,12 @@ contains
 
     test_info = 'Test '//trim(adjustl(i_to_s(TESTS_RUN)))//': '//trim(test_description)
 
-    write(TEST_JSON_FILE_UNIT,*) '    {'
-    write(TEST_JSON_FILE_UNIT,*) '      "name"     : "'//trim(test_info)//'",'
-    write(TEST_JSON_FILE_UNIT,*) '      "test_code": "'//trim(test_info)//'",'
-    write(TEST_JSON_FILE_UNIT,*) '      "status"   : "pass",'
-    write(TEST_JSON_FILE_UNIT,*) '    }'
+    write(TEST_JSON_FILE_UNIT,'(A)') '    {'
+    write(TEST_JSON_FILE_UNIT,'(A)') '      "name"     : "'//trim(test_info)//'",'
+    write(TEST_JSON_FILE_UNIT,'(A)') '      "test_code": "'//trim(test_info)//'",'
+    write(TEST_JSON_FILE_UNIT,'(A)') '      "task_id"  : '//trim(adjustl(i_to_s(TESTS_RUN)))//','    
+    write(TEST_JSON_FILE_UNIT,'(A)') '      "status"   : "pass"'
+    write(TEST_JSON_FILE_UNIT,'(A)') '    }'
   end subroutine
 
   !------------------------------------------------------------------
@@ -99,37 +100,34 @@ contains
     call open_and_write_json_test_header()
 
     test_info = 'Test '//trim(adjustl(i_to_s(TESTS_RUN)))//': '//trim(test_description)
-
-    write(TEST_JSON_FILE_UNIT,*)   '    {'
-    write(TEST_JSON_FILE_UNIT,*)   '      "name"     : "'//trim(test_info)//'",'
-    write(TEST_JSON_FILE_UNIT,*)   '      "test_code": "'//trim(test_info)//'",'
-    write(TEST_JSON_FILE_UNIT,*)   '      "status"   : "fail",'
-    write(TEST_JSON_FILE_UNIT,*)   '      "message"  : "'//trim(msg)//'"'
-    write(TEST_JSON_FILE_UNIT,*)   '    }'
+    ! use format '(A)' for longer than 80 chars line not to break
+    write(TEST_JSON_FILE_UNIT,'(A)')   '    {'
+    write(TEST_JSON_FILE_UNIT,'(A)')   '      "name"     : "'//trim(test_info)//'",'
+    write(TEST_JSON_FILE_UNIT,'(A)')   '      "test_code": "'//trim(test_info)//'",'
+    write(TEST_JSON_FILE_UNIT,'(A)')   '      "task_id"  : '//trim(adjustl(i_to_s(TESTS_RUN)))//','    
+    write(TEST_JSON_FILE_UNIT,'(A)')   '      "status"   : "fail",'
+    write(TEST_JSON_FILE_UNIT,'(A)')   '      "message"  : "'//trim(msg)//'"'
+    write(TEST_JSON_FILE_UNIT,'(A)')   '    }'
 
   end subroutine
 
 
   !------------------------------------------------------------------
   subroutine open_and_write_json_test_header()
-    ! -------------------------------
-    logical :: exist
-    ! -------------------------------
 
     if (.not. exercism_fortran_json_env_is_set() ) then
       return
     end if
-    inquire(file=TEST_JSON_FILE, exist=exist)
-    if (exist) then
+    if ( TESTS_RUN /= 1 ) then
       open(unit=TEST_JSON_FILE_UNIT, file=TEST_JSON_FILE, status="old", position="append", action="write")
     else
-      open(unit=TEST_JSON_FILE_UNIT, file=TEST_JSON_FILE, status="new", action="write")
+      open(unit=TEST_JSON_FILE_UNIT, file=TEST_JSON_FILE, status="replace", action="write")
       ! write header
-      write(TEST_JSON_FILE_UNIT,*) '{'
-      write(TEST_JSON_FILE_UNIT,*) '  "tests": ['
+      write(TEST_JSON_FILE_UNIT,'(A)') '{'
+      write(TEST_JSON_FILE_UNIT,'(A)') '  "tests": ['
     end if
     if (TESTS_RUN>1) then
-      write(TEST_JSON_FILE_UNIT,*) '    ,'
+      write(TEST_JSON_FILE_UNIT,'(A)') '    ,'
     end if
   end subroutine 
 
@@ -141,17 +139,17 @@ contains
     end if
 
     open(unit=TEST_JSON_FILE_UNIT, file=TEST_JSON_FILE, status="old", position="append", action="write")
-    write(TEST_JSON_FILE_UNIT,*)   '  ],'
-    write(TEST_JSON_FILE_UNIT,*)   '  "version": 2,'
+    write(TEST_JSON_FILE_UNIT,'(A)')   '  ],'
+    write(TEST_JSON_FILE_UNIT,'(A)')   '  "version": 2,'
     if (TESTS_FAILED==0) then
-      write(TEST_JSON_FILE_UNIT,*) '  "status" : "pass"'
+      write(TEST_JSON_FILE_UNIT,'(A)') '  "status" : "pass"'
     else
-      write(TEST_JSON_FILE_UNIT,*) '  "status" : "fail"'
+      write(TEST_JSON_FILE_UNIT,'(A)') '  "status" : "fail",'
       ! only write message on fail:
-      write(TEST_JSON_FILE_UNIT,*) '  "message": "Test summary: '// &
-      & trim(adjustl(i_to_s(TESTS_FAILED)))//' of '//trim(adjustl(i_to_s(TESTS_RUN)))//' tests failed",'
+      write(TEST_JSON_FILE_UNIT,'(A)') '  "message": "Test summary: '// &
+      & trim(adjustl(i_to_s(TESTS_FAILED)))//' of '//trim(adjustl(i_to_s(TESTS_RUN)))//' tests failed"'
     end if
-    write(TEST_JSON_FILE_UNIT,*)   '}'
+    write(TEST_JSON_FILE_UNIT,'(A)')   '}'
     close(TEST_JSON_FILE_UNIT)
 
   end subroutine

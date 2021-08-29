@@ -27,8 +27,13 @@ function(travis_fixup exercise)
   endif()
 endfunction()
 
+# remove this file created by fortls which makes intel fortran build not work
+file(REMOVE testlib/testermain.mod)
+
 add_subdirectory(testlib)
 include_directories(testlib ${CMAKE_CURRENT_BINARY_DIR}/testlib)
+
+add_subdirectory(testlib_unittest)
 
 file(GLOB exercise_list ${practicedir}/*/CMakeLists.txt)
 
