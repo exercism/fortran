@@ -56,7 +56,7 @@ contains
     real :: real_to_rational_pow,ex
     !(a1 * b2 + a2 * b1) / (b1 * b2)
     if ( r1(1)==0 ) then
-      real_to_rational_pow=0.0
+      real_to_rational_pow=1.0
     else  
       real_to_rational_pow = ex**(real(r1(1))/real(r1(2)))
     endif
