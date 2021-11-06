@@ -3,6 +3,7 @@ bin/configlet.exe
 __pycache__
 # make and testing artifacts
 build
+build_intel
 exercises/practice/*/*_build_all.f90
 exercises/practice/*/testlib
 .vscode
