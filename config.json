@@ -14,7 +14,7 @@
     "solution": [".meta/example.f90"],
     "test": ["%{snake_slug}_test.f90"],
     "example": ["%{snake_slug}.f90"],
-    "exemplar": ["%{snake_slug}.f90"]
+    "exemplar": ["exemplar.f90"]
   },
   "online_editor": {
     "indent_style": "space",

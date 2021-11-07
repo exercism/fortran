@@ -22,7 +22,7 @@ program matrix_test_main
     & (/"1, 2, 3", &
     &   "4, 5, 6", &
     &   "7, 8, 9", &
-    &   "8, 7, 6"/), (/ 3, 4 /), 4), &
+    &   "8, 7, 6"/), (/ 4, 3 /), 4), &
     &  "can extract row from non-square matrix with no corresponding column")
   ! Test 5: extract column from one number matrix
   !!call assert_equal_int_arr(1, column(1, 1), "extract column from one number matrix")
@@ -36,7 +36,7 @@ program matrix_test_main
   call assert_equal((/4, 8, 6/), column( &
     & (/"1, 2, 3, 4", &
     &   "5, 6, 7, 8", &
-    &   "9, 8, 7, 6"/), (/4,3/), 4), &
+    &   "9, 8, 7, 6"/), (/3,4/), 4), &
     & "can extract column from non-square matrix with no corresponding row")
   ! Test 8: extract column where numbers have different widths
   call assert_equal((/1903, 3, 479/), column( &
