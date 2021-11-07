@@ -76,7 +76,7 @@ program rational_numbers_test_main
   call assert_equal(0.3333333333333333, real_to_rational_pow(9., [-1, 2]), &
     & "Raise a real number to a negative rational number")
   ! Test 32: Raise a real number to a zero rational number
-  call assert_equal(0.0, real_to_rational_pow(2., [0, 1]), "Raise a real number to a zero rational number")
+  call assert_equal(1.0, real_to_rational_pow(2., [0, 1]), "Raise a real number to a zero rational number")
   ! Test 33: Reduce a positive rational number to lowest terms
   call assert_equal([1, 2], reduce([2, 4]), "Reduce a positive rational number to lowest terms")
   ! Test 34: Reduce a negative rational number to lowest terms
