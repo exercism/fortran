@@ -149,7 +149,7 @@ contains
       write(TEST_JSON_FILE_UNIT,*) '  "status" : "fail",'
       ! only write message on fail:
       write(TEST_JSON_FILE_UNIT,*) '  "message": "Test summary: '// &
-      & trim(adjustl(i_to_s(TESTS_FAILED)))//' of '//trim(adjustl(i_to_s(TESTS_RUN)))//' tests failed",'
+      & trim(adjustl(i_to_s(TESTS_FAILED)))//' of '//trim(adjustl(i_to_s(TESTS_RUN)))//' tests failed"'
     end if
     write(TEST_JSON_FILE_UNIT,*)   '}'
     close(TEST_JSON_FILE_UNIT)
