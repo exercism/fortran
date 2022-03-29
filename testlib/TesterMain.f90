@@ -80,7 +80,7 @@ contains
     write(TEST_JSON_FILE_UNIT,*) '    {'
     write(TEST_JSON_FILE_UNIT,*) '      "name"     : "'//trim(test_info)//'",'
     write(TEST_JSON_FILE_UNIT,*) '      "test_code": "'//trim(test_info)//'",'
-    write(TEST_JSON_FILE_UNIT,*) '      "status"   : "pass",'
+    write(TEST_JSON_FILE_UNIT,*) '      "status"   : "pass"'
     write(TEST_JSON_FILE_UNIT,*) '    }'
   end subroutine
 
@@ -146,7 +146,7 @@ contains
     if (TESTS_FAILED==0) then
       write(TEST_JSON_FILE_UNIT,*) '  "status" : "pass"'
     else
-      write(TEST_JSON_FILE_UNIT,*) '  "status" : "fail"'
+      write(TEST_JSON_FILE_UNIT,*) '  "status" : "fail",'
       ! only write message on fail:
       write(TEST_JSON_FILE_UNIT,*) '  "message": "Test summary: '// &
       & trim(adjustl(i_to_s(TESTS_FAILED)))//' of '//trim(adjustl(i_to_s(TESTS_RUN)))//' tests failed",'
