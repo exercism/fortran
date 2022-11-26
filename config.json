@@ -125,7 +125,7 @@
       },
       {
         "slug": "rna-transcription",
-        "name": "Rna Transcription",
+        "name": "RNA Transcription",
         "uuid": "6fa09622-b92d-42ae-aeba-b68717c0b51c",
         "difficulty": 1,
         "practices": [],
@@ -150,7 +150,7 @@
       },
       {
         "slug": "difference-of-squares",
-        "name": "Difference Of Squares",
+        "name": "Difference of Squares",
         "uuid": "dd6c972e-3c85-4a92-b8e5-d58ea3cadfa0",
         "difficulty": 1,
         "practices": [],
@@ -193,7 +193,7 @@
       },
       {
         "slug": "armstrong-numbers",
-        "name": "Armstrong numbers",
+        "name": "Armstrong Numbers",
         "uuid": "b752faa1-2262-4be1-9699-1d684f6d479a",
         "difficulty": 1,
         "practices": [],
@@ -333,7 +333,7 @@
       },
       {
         "slug": "space-age",
-        "name": "Space age",
+        "name": "Space Age",
         "uuid": "01a79e36-786b-45a1-83dd-2a883f0527eb",
         "difficulty": 1,
         "practices": [],
