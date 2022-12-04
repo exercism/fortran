@@ -1,18 +1,18 @@
 {
-    "blurb": "Manage a player's High Score list.",
-    "source": "Tribute to the eighties' arcade game Frogger",
-    "authors": [
-        "pclausen"
+  "authors": [
+    "pclausen"
+  ],
+  "files": {
+    "solution": [
+      "high_scores.f90"
     ],
-    "files": {
-        "solution": [
-            "high_scores.f90"
-        ],
-        "test": [
-            "high_scores_test.f90"
-        ],
-        "example": [
-            ".meta/example.f90"
-        ]
-    }
+    "test": [
+      "high_scores_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "blurb": "Manage a player's High Score list.",
+  "source": "Tribute to the eighties' arcade game Frogger"
 }

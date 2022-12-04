@@ -1,19 +1,19 @@
 {
-    "blurb": "Given a person's allergy score, determine whether or not they're allergic to a given item, and their full list of allergies.",
-    "source": "Jumpstart Lab Warm-up",
-    "source_url": "http://jumpstartlab.com",
-    "authors": [
-        "pclausen"
+  "authors": [
+    "pclausen"
+  ],
+  "files": {
+    "solution": [
+      "allergies.f90"
     ],
-    "files": {
-        "solution": [
-            "allergies.f90"
-        ],
-        "test": [
-            "allergies_test.f90"
-        ],
-        "example": [
-            ".meta/example.f90"
-        ]
-    }
+    "test": [
+      "allergies_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "blurb": "Given a person's allergy score, determine whether or not they're allergic to a given item, and their full list of allergies.",
+  "source": "Jumpstart Lab Warm-up",
+  "source_url": "http://jumpstartlab.com"
 }

@@ -1,19 +1,19 @@
 {
-    "blurb": "Calculate the number of grains of wheat on a chessboard given that the number on each square doubles.",
-    "source": "JavaRanch Cattle Drive, exercise 6",
-    "source_url": "http://www.javaranch.com/grains.jsp",
-    "authors": [
-        "pclausen"
+  "authors": [
+    "pclausen"
+  ],
+  "files": {
+    "solution": [
+      "grains.f90"
     ],
-    "files": {
-        "solution": [
-            "grains.f90"
-        ],
-        "test": [
-            "grains_test.f90"
-        ],
-        "example": [
-            ".meta/example.f90"
-        ]
-    }
+    "test": [
+      "grains_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "blurb": "Calculate the number of grains of wheat on a chessboard given that the number on each square doubles.",
+  "source": "JavaRanch Cattle Drive, exercise 6",
+  "source_url": "http://www.javaranch.com/grains.jsp"
 }
