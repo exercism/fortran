@@ -34,9 +34,9 @@ contains
     ! Your code here
   end function
 
-  function real_to_rational_pow(ex,r1)
-    integer,dimension(2) ::  r1
-    real :: real_to_rational_pow,ex
+  function real_to_rational_pow(base,ex_r1)
+    integer,dimension(2) ::  ex_r1
+    real :: real_to_rational_pow,base
     ! Your code here
   end function
 
