@@ -42,7 +42,9 @@ $ ctest -V
 import json
 import argparse
 import os
+import pathlib
 import re
+import toml
 
 
 def fix_and_quote_fortran_multiline(txt):
@@ -99,28 +101,20 @@ def write_testcase(c, TEST_NUMBER):
 
 def flatten_test_cases(j):
     # unpack nested cases
-    nested_cases = j['cases']
-    flattened_cases = []
-    while len(nested_cases) > 0:
-        cases = nested_cases.pop()
-        if 'cases' in cases:
-            nested_cases.append(cases['cases'])
-        else:
-            if isinstance(cases, list):
-                flattened_cases.extend(cases)
-            else:
-                flattened_cases.append(cases)
-
-    return flattened_cases
+    if 'cases' in j:
+        for i in j['cases']:
+            yield from flatten_test_cases(i)
+    else:
+        yield j
 
 
 def create_single_test(j):
     """Walk through the json cases and recursively write the test cases"""
 
-    flattened_cases = flatten_test_cases(j)
+    flattened_cases = list(flatten_test_cases(j))
 
     si = []
-    for i, c in enumerate(flattened_cases):
+    for i, c in enumerate(flattened_cases, start=1):
         si.extend(write_testcase(c, i))
     return si
 
@@ -206,8 +200,14 @@ def add_meta_and_doc_file(test_file_name, json_name):
     write_instructions(desc_file_lines, instruction_file)
 
     meta_yaml = os.path.join(os.path.dirname(json_name),  'metadata.yml')
+    meta_toml = os.path.join(os.path.dirname(json_name),  'metadata.toml')
+    if os.path.exists(meta_toml):
+        config_dict = toml.loads(pathlib.Path(meta_toml).read_text())
+    elif os.path.exists(meta_yaml):
+        config_dict = get_meta_info(meta_yaml)
+    else:
+        raise ValueError("Unable to find metadata file (yml or toml)")
     local_config_json = os.path.join(meta_dir, 'config.json')
-    config_dict = get_meta_info(meta_yaml)
     write_config_json(exercise_name, config_dict, local_config_json)
 
     return None
