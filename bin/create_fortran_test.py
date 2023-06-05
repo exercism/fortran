@@ -27,7 +27,7 @@ Workflow for creating a new test
 
 For bob example:
 
-$ python3 bin/create_fortran_test.py -j ../problem-specifications/exercises/bob/canonical-data.json -t exercises/practice/bob/bob_test.f90
+$ python3 bin/create_fortran_test.py -e bob
 Namespace(json='../problem-specifications/exercises/bob/canonical-data.json', target='exercises/practice/bob/bob_test.f90')
 Wrote : exercises/practice/bob/bob_test.f90
 $ cp config/CMakeLists.txt exercises/practice/bob/.
@@ -272,25 +272,22 @@ def get_meta_info(meta_yaml):
     meta_info = json.loads(''.join(lines3))
     return meta_info
 
-
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(description='Create test.f90')
+    parser = argparse.ArgumentParser(description='Create exercise')
+    parser.add_argument("slug", help="The slug of the exercise (e.g. 'bob')")
 
-    parser.add_argument("-j", "--json",
-                        dest='json',
-                        required=True,
-                        help="json file with test spec")
-    parser.add_argument("-t", "--target",
-                        dest='target',
-                        required=True,
-                        help="Target file, eg. <exercise>_test.f90")
     args = parser.parse_args()
+    slug = args.slug
+    name = slug.replace("-", "_")
 
     print(args)
 
+    json_file_path = f"../problem-specifications/exercises/{slug}/canonical-data.json"
+    test_file_path = f"exercises/practice/{slug}/{name}_test.f90"
+     
     # create dirs if not there
-    test_dir_name = os.path.dirname(args.target)
+    test_dir_name = os.path.dirname(test_file_path)
     test_dirs = [test_dir_name,
                  os.path.join(test_dir_name, '.meta'),
                  os.path.join(test_dir_name, '.docs')]
@@ -299,5 +296,5 @@ if __name__ == '__main__':
             os.mkdir(td)
             print('created %s' % td)
 
-    create_test(args.target, args.json)
-    add_meta_and_doc_file(args.target, args.json)
+    create_test(test_file_path, json_file_path)
+    add_meta_and_doc_file(test_file_path, json_file_path)
