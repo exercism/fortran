@@ -11,12 +11,12 @@ Also note that Fortran has issues with special characters such as \n and \t
 so take special care handling these.
 
 
-Prerequsites
+Prerequisites
 - Working cmake and fortran compiler
-- Python3.x (it may work with Python2 but I have not tested)
-- latest version of https://github.com/exercism/problem-specifications.git
+- Python 3.x (it may work with Python 2.x, but that is untested)
+- Up-to-date local version of the https://github.com/exercism/problem-specifications.git repo
 
-Work flow for creating a new test
+Workflow for creating a new test
 - pull latest changes from exercism/problem-specifications
 - run this script for the example you want to create
 - copy config/CMakeLists.txt for exercise directory
@@ -27,8 +27,8 @@ Work flow for creating a new test
 
 For bob example:
 
-$ python3 bin/create_fortran_test.py -j ../problem-specifications/exercises/practice/bob/canonical-data.json -t exercises/practice/bob/bob_test.f90
-Namespace(json='../problem-specifications/exercises/practice/bob/canonical-data.json', target='exercises/practice/bob/bob_test.f90')
+$ python3 bin/create_fortran_test.py -j ../problem-specifications/exercises/bob/canonical-data.json -t exercises/practice/bob/bob_test.f90
+Namespace(json='../problem-specifications/exercises/bob/canonical-data.json', target='exercises/practice/bob/bob_test.f90')
 Wrote : exercises/practice/bob/bob_test.f90
 $ cp config/CMakeLists.txt exercises/practice/bob/.
 $ cd exercises/practice/bob
@@ -48,7 +48,7 @@ import toml
 
 
 def fix_and_quote_fortran_multiline(txt):
-    """Fortran can't handle multiple, so adding continuation character '&'
+    """Fortran can't handle multiline strings, so adding a continuation character '&'
     if necessary"""
     if isinstance(txt, str):
         txt = txt.replace('\n', '"// & \n    & "')
@@ -225,7 +225,6 @@ def write_config_json(exercise_name, config_dict, local_config_json, authors=['p
     {
   "blurb": "Convert a long phrase to its acronym",
   "authors": [
-    "pclausen"
   ],
   "files": {
     "solution": [
