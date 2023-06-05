@@ -389,6 +389,14 @@
           "numbers",
           "math"
         ]
+      },
+      {
+        "slug": "isogram",
+        "name": "Isogram",
+        "uuid": "92087a8c-f658-446e-aef6-4087cbd2fa06",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
       }
     ]
   }

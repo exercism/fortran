@@ -3,6 +3,13 @@ bin/configlet.exe
 __pycache__
 # make and testing artifacts
 build*
+
+# Ensure that all files without an extension are ignored,
+# which means: compiled binaries in this case
+exercises/practice/**/*
+!exercises/practice/**/
+!exercises/practice/**/*.*
+
 exercises/practice/*/*_build_all.f90
 exercises/practice/*/testlib
 exercises/practice/*/Testing
@@ -13,3 +20,5 @@ exercises/practice/*/*.cmake
 exercises/practice/*/DartConfiguration.tcl
 .vscode
 *.mod
+
+
