@@ -7,7 +7,6 @@ on:
   workflow_dispatch:
 
 jobs:
-
   linux-min:
     name: Linux Minimum
     runs-on: ubuntu-18.04
@@ -25,10 +24,9 @@ jobs:
           cmake --build .
           ctest -V
 
-  linux-latest:
-    name: Linux Latest
-    needs: [linux-min]
-    runs-on: ubuntu-latest
+  linux:
+    name: Linux
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: Install project dependencies
@@ -43,33 +41,30 @@ jobs:
           cmake --build .
           ctest -V
 
-
-
   mac:
     name: MacOS
-    needs: [linux-min]
-    runs-on: macOS-latest
+    runs-on: macos-12
     steps:
-    - uses: actions/checkout@v3
-    - name: Set env
-      run: |
-        echo "Trying to find latest gfortran version in /usr/local/Cellar/gcc"
-        echo "gfortran $(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )"
-        echo "FC=$(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )" >> $GITHUB_ENV
-    - name: Run exercism/fortran ci (runs tests) for all exercises
-      run: |
-        echo "FC=$FC"
-        mkdir build
-        cd build
-        cmake ..
-        cmake --build .
-        ctest -V
-#      env:
-#        FC: /usr/local/bin/gfortran
+      - uses: actions/checkout@v3
+      - name: Set env
+        run: |
+          echo "Trying to find latest gfortran version in /usr/local/Cellar/gcc"
+          echo "gfortran $(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )"
+          echo "FC=$(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )" >> $GITHUB_ENV
+      - name: Run exercism/fortran ci (runs tests) for all exercises
+        run: |
+          echo "FC=$FC"
+          mkdir build
+          cd build
+          cmake ..
+          cmake --build .
+          ctest -V
+  #      env:
+  #        FC: /usr/local/bin/gfortran
 
   windows:
     name: Windows
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v3
       - name: Run exercism/fortran ci (runs tests) for all exercises
