@@ -20,5 +20,3 @@ exercises/practice/*/*.cmake
 exercises/practice/*/DartConfiguration.tcl
 .vscode
 *.mod
-
-
