@@ -43,10 +43,13 @@ stub_file_path="${exercise_dir}/${snake_name}.f90"
 test_file_path="${exercise_dir}/${snake_name}_test.f90"
 example_file_path="${exercise_dir}/.meta/example.f90"
 canonical_data_file_path="${cache_dir}/exercises/${slug}/canonical-data.json"
+cmakelists_file_path="${exercise_dir}/CMakeLists.txt"
 
 touch "${stub_file_path}"
 touch "${test_file_path}"
 touch "${example_file_path}"
+
+cp config/CMakeLists.txt "${cmakelists_file_path}"
 
 # Update the new exercise files, which includes generating the tests
 python3 bin/update-new-exercise-files.py "${slug}" "${snake_name}" "${stub_file_path}" "${test_file_path}" "${example_file_path}" "${canonical_data_file_path}"
