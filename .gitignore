@@ -5,5 +5,11 @@ __pycache__
 build*
 exercises/practice/*/*_build_all.f90
 exercises/practice/*/testlib
+exercises/practice/*/Testing
+exercises/practice/*/Makefile
+exercises/practice/*/CMakeFiles
+exercises/practice/*/CMakeCache.txt
+exercises/practice/*/*.cmake
+exercises/practice/*/DartConfiguration.tcl
 .vscode
 *.mod
