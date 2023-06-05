@@ -1,22 +1,18 @@
 bin/configlet
 bin/configlet.exe
-__pycache__
-# make and testing artifacts
-build*
 
-# Ensure that all files without an extension are ignored,
-# which means: compiled binaries in this case
-exercises/practice/**/*
-!exercises/practice/**/
-!exercises/practice/**/*.*
-
+# We're using a very extensive ignore as there are many files we want to ignore,
+# included compiled binaries that have no extensions
+exercises/practice/*/**
+!exercises/practice/*/.docs/
+!exercises/practice/*/.docs/*
+!exercises/practice/*/.meta/
+!exercises/practice/*/.meta/*
+!exercises/practice/*/CMakeLists.txt
+!exercises/practice/*/**/*.f90
 exercises/practice/*/*_build_all.f90
-exercises/practice/*/testlib
-exercises/practice/*/Testing
-exercises/practice/*/Makefile
-exercises/practice/*/CMakeFiles
-exercises/practice/*/CMakeCache.txt
-exercises/practice/*/*.cmake
-exercises/practice/*/DartConfiguration.tcl
-.vscode
+
 *.mod
+build/
+__pycache__/
+.vscode/
