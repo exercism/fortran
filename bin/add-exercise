@@ -29,11 +29,24 @@ jq --arg slug "${slug}" --arg uuid "${uuid}" --arg name "${name}" \
 # Sync the exercise
 bin/configlet sync --update --yes --tests include --filepaths --metadata --docs --exercise "${slug}"
 
+if [ $(uname) == "Darwin" ]; then
+    os_cache_dir="${HOME}/Library/Caches"
+else
+    os_cache_dir="${HOME}/.cache"
+fi
+
+cache_dir="${os_cache_dir}/exercism/configlet/problem-specifications"
+
 snake_name=$(echo "${slug}" | sed 's/-/_/g')
 exercise_dir="exercises/practice/${slug}"
+stub_file_path="${exercise_dir}/${snake_name}.f90"
+test_file_path="${exercise_dir}/${snake_name}_test.f90"
+example_file_path="${exercise_dir}/.meta/example.f90"
+canonical_data_file_path="${cache_dir}/exercises/${slug}/canonical-data.json"
 
-touch "${exercise_dir}/.meta/example.f90"
-touch "${exercise_dir}/${snake_name}.f90"
-touch "${exercise_dir}/${snake_name}_test.f90"
+touch "${stub_file_path}"
+touch "${test_file_path}"
+touch "${example_file_path}"
 
-# TODO: call create_fortran_test.py
+# Update the new exercise files, which includes generating the tests
+python3 bin/update-new-exercise-files.py "${slug}" "${snake_name}" "${stub_file_path}" "${test_file_path}" "${example_file_path}" "${canonical_data_file_path}"
