@@ -34,8 +34,6 @@ ctest -V
 
 For more information see [Installation instructions](docs/INSTALLATION.md)
 
-
-
 ## Contributing
 
 Thank you so much for contributing! :tada:
@@ -46,7 +44,7 @@ We welcome pull requests of all kinds. No contribution is too small.
 
 We encourage contributions that provide fixes and improvements to existing exercises. Please note that this track's exercises must conform to the standards determined in the [exercism/x-common](https://github.com/exercism/x-common) repo. Changes to the tests or documentation of a common exercise will often warrant a PR in that repo before it can be incorporated into this track's exercises. If you're unsure, then go ahead and open a GitHub issue, and we'll discuss the change.
 
-## Exercise Tests ##
+## Exercise Tests
 
 At the most basic level, Exercism is all about the tests. They drive the user's implementation forward and tell them when the exercise is complete.
 
@@ -57,11 +55,11 @@ We simulate Test-Driven Development (TDD) by implementing the tests in order of 
 - helps triangulate a solution to be more generic, or
 - requires new functionality incrementally.
 
-### Fortran Track ###
+### Fortran Track
 
 Test files for the Fortran track should be created with the Python3 script `bin/create_fortran_test.py` which is documented [here](docs/MAINTAINERS.md).
 
-## Submitting a Pull Request ##
+## Submitting a Pull Request
 
 Please keep the following in mind:
 
@@ -77,7 +75,7 @@ Please keep the following in mind:
 
 - All the tests for Fortran exercises can be run from the top level of the repo with ... Please run this command before submitting your PR.
 
-## Contributing a New Exercise ##
+## Contributing a New Exercise
 
 - All Exercism exercises must be defined in [x-common](https://github.com/exercism/x-common/tree/master/exercises) before they are implemented for a specific track. Please submit a PR there if your exercise is new to Exercism.
 
@@ -88,7 +86,7 @@ Please keep the following in mind:
 - Exercises should use only the Fortran core libraries.
 
 - Please do not add a README or README.md file to the exercise directory. The READMEs are constructed using shared metadata, which lives in the
-[exercism/x-common](https://github.com/exercism/x-common) repository. Further explanation can be found in [fixing-exercise-readmes](https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md)
+  [exercism/x-common](https://github.com/exercism/x-common) repository. Further explanation can be found in [fixing-exercise-readmes](https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md)
 
 - Each exercise should have a test suite, an example solution, a template file for the real implementation and ... (anything else that needs to go with each exercise for this track). The CI build expects files to be named using the following convention: (describe the Fortran convention for naming the various files that make up an exercise).
 

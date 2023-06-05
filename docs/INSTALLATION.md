@@ -2,8 +2,9 @@
 
 The Fortran language track requires that you have the following software
 installed on your system:
-* a modern Fortran compiler
-* the CMake cross-platform build system
+
+- a modern Fortran compiler
+- the CMake cross-platform build system
 
 ## Prerequisite: A Modern Fortran Compiler
 
@@ -12,14 +13,13 @@ This language track requires a compiler with [Fortran
 major compilers released in the last few years should be compatible.
 
 The following will describes installation of [GNU
-Fortran](https://gcc.gnu.org/fortran/) or GFortran.  Other fortran
+Fortran](https://gcc.gnu.org/fortran/) or GFortran. Other fortran
 compilers are listed
 [here](https://en.wikipedia.org/wiki/List_of_compilers#Fortran_compilers).
 [Intel Fortran](https://software.intel.com/en-us/fortran-compilers) is a
-popular proprietary choice for high performance applications.  Most
+popular proprietary choice for high performance applications. Most
 exercises will work with Intel Fortran, but are only tested with GNU
 Fortran so your mileage may vary.
-
 
 ## Prerequisite: CMake
 
@@ -27,24 +27,23 @@ CMake is an open source cross-platform build system that generates build
 scripts for your native build system (`make`, Visual Studio, Xcode, etc.).
 Exercism's Fortran track uses CMake to give you a ready-made build that:
 
-* compiles the tests
-* compiles your solution
-* links the test executable
-* automatically runs the tests as part of every build
-* fails the build if the any tests fail
+- compiles the tests
+- compiles your solution
+- links the test executable
+- automatically runs the tests as part of every build
+- fails the build if the any tests fail
 
 Using CMake allows exercism to provide a cross-platform build script that
 can generate project files for integrated development environments like
-Visual Studio and Xcode.  This allows you to focus on the problem and
+Visual Studio and Xcode. This allows you to focus on the problem and
 not worry about setting up a build for each exercise.
 
 Getting a portable build isn't easy and requires access to many kinds of
-systems.  If you encounter any problems with the supplied CMake recipe,
+systems. If you encounter any problems with the supplied CMake recipe,
 please [report the issue](https://github.com/exercism/fortran/issues) so we can
 improve the CMake support.
 
 [CMake 2.8.11 or later](http://www.cmake.org/) is required to use the provided build recipe.
-
 
 ### Linux
 
@@ -69,8 +68,9 @@ brew install gfortran cmake
 ### Windows
 
 With Windows there are a number of options:
+
 - [Windows Subsystem for Linux
-  (WSL)](#####-Windows-Subsystem-for-Linux-(WSL))
+  (WSL)](<#####-Windows-Subsystem-for-Linux-(WSL)>)
 - [Windows with MingW GNU Fortran](#####-Windows-with-MingW-GNU-Fortran)
 - [Windows with Visual Studio with NMake and Intel
   Fortran](#####-Windows-with-Visual-Studio-with-NMake-and-Intel-Fortran)
@@ -78,7 +78,7 @@ With Windows there are a number of options:
 #### Windows Subsystem for Linux (WSL)
 
 Windows 10 introduces the [Windows Subsystem for Linux
-(WSL)](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux).  If
+(WSL)](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux). If
 you have Ubuntu 16.04 or later as the subsystem, open an Ubuntu Bash
 shell and follow the [Linux](####-Linux) instructions.
 
@@ -94,7 +94,7 @@ choco install mingw cmake
 ```
 
 This will install MingW (GFortran and GCC) to `C:\tools\mingw64` and
-CMake to `C:\Program Files\CMake`.  Then add the `bin` directories of
+CMake to `C:\Program Files\CMake`. Then add the `bin` directories of
 these installations to the PATH, ie.:
 
 ```Batchfile
