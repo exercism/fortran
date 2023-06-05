@@ -96,6 +96,7 @@ def write_testcase(c, TEST_NUMBER):
         si.append('  ! ERROR: %s' % (error))
     si.append('  call assert_equal({}, {}, "{}")'.format(
         expected, inp, description))
+    si.append('')
     return si
 
 
@@ -144,9 +145,7 @@ def create_test(test_name, json_name):
         j = json.load(f)
     exercise = j['exercise']
     exercise = exercise.replace('-', '_')
-    header = """
-! This test was created from %s
-!
+    header = """! The tests were created from %s
 """ % (os.path.relpath(json_name))
 
     program = """
@@ -161,7 +160,6 @@ program %s_test_main
     si = s.splitlines()
     si.extend(create_single_test(j))
 
-    si.append('')
     si.append('  call test_report()')
     si.append('')
     si.append('end program')
