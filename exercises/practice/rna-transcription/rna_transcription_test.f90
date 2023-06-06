@@ -1,6 +1,5 @@
 
 ! This test was created from ../../exercism/problem-specifications/exercises/rna-transcription/canonical-data.json
-! version: 1.3.0
 !
 
 program rna_transcription_test_main

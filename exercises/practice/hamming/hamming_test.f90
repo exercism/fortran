@@ -1,6 +1,5 @@
 
 ! This test was created from ../../exercism/problem-specifications/exercises/hamming/canonical-data.json
-! version: 2.3.0
 !
 
 program hamming_test_main

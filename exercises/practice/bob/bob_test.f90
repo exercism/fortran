@@ -1,6 +1,5 @@
 
 ! This test was created from ..\..\exercism\problem-specifications\exercises\bob\canonical-data.json
-! version: 1.4.0.
 !
 ! This is the main test program to test your implementaion which is done in
 !   bob.f90

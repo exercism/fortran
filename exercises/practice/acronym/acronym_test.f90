@@ -1,6 +1,5 @@
 
 ! This test was created from ../../exercism/problem-specifications/exercises/acronym/canonical-data.json
-! version: 1.7.0
 !
 
 program acronym_test_main

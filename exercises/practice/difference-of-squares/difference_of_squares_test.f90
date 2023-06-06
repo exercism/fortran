@@ -1,6 +1,5 @@
 
 ! This test was created from /home/xr3/gitrepos/exercism/problem-specifications/exercises/difference-of-squares/canonical-data.json
-! version: 1.2.0
 !
 
 program difference_of_squares_test_main

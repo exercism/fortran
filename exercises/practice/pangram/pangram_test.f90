@@ -1,6 +1,5 @@
 
 ! This test was created from ../../exercism/problem-specifications/exercises/pangram/canonical-data.json
-! version: 2.0.0
 !
 
 program pangram_test_main

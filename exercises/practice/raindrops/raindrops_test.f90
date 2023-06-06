@@ -1,6 +1,5 @@
 
 ! This test was created from ../../exercism/problem-specifications/exercises/raindrops/canonical-data.json
-! version: 1.1.0
 !
 
 program raindrops_test_main

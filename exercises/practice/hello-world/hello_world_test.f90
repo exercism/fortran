@@ -1,5 +1,4 @@
 ! This test was created from ..\..\exercism\problem-specifications\exercises\hello-world\canonical-data.json
-! version: 1.1.0
 !
 ! This is the main test program to test your implementaion which is done in
 !   hello_world.f90
@@ -23,20 +22,20 @@
 ! passes this test.
 
 program hello_world_test_main
-  use TesterMain
-  use hello_world
+   use TesterMain
+   use hello_world
 
-  implicit none
+   implicit none
 
-  ! The hello_world.f90 must contain a module called "hello_world" and implement
-  ! the function "hello" which must return "Hello, World!".
+   ! The hello_world.f90 must contain a module called "hello_world" and implement
+   ! the function "hello" which must return "Hello, World!".
 
-  ! Test 1: Say Hi!
-  ! Explaination: This test expects "Hello, World!" to be returned from the function "hello()"
-  ! and the test description is "Say Hi!"
-  call assert_equal("Hello, World!", hello(), "Say Hi!")
+   ! Test 1: Say Hi!
+   ! Explaination: This test expects "Hello, World!" to be returned from the function "hello()"
+   ! and the test description is "Say Hi!"
+   call assert_equal("Hello, World!", hello(), "Say Hi!")
 
-  ! This last call is to create a test report.
-  call test_report()
+   ! This last call is to create a test report.
+   call test_report()
 end program
 

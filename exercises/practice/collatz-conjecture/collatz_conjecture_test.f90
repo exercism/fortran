@@ -1,6 +1,5 @@
 
 ! This test was created from E:\nosave\code\gitrepos\pclausen\problem-specifications\exercises\collatz-conjecture\canonical-data.json
-! version: None
 !
 
 program collatz_conjecture_test_main
