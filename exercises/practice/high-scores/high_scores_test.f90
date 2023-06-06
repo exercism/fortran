@@ -1,7 +1,3 @@
-
-! This test was created from ..\problem-specifications\exercises\high-scores\canonical-data.json
-!
-
 program high_scores_test_main
    use TesterMain
    use high_scores

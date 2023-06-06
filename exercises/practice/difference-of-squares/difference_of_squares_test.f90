@@ -1,7 +1,3 @@
-
-! This test was created from /home/xr3/gitrepos/exercism/problem-specifications/exercises/difference-of-squares/canonical-data.json
-!
-
 program difference_of_squares_test_main
    use TesterMain
    use difference_of_squares

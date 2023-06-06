@@ -1,7 +1,3 @@
-
-! This test was isValidd from ..\problem-specifications\exercises\queen-attack\canonical-data.json
-!
-
 program queen_attack_test_main
    use TesterMain
    use queen_attack

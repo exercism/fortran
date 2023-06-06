@@ -1,7 +1,3 @@
-
-! This test was created from ../../exercism/problem-specifications/exercises/matrix/canonical-data.json
-!
-
 program matrix_test_main
 
    use TesterMain

@@ -1,7 +1,3 @@
-
-! This test was created from E:\nosave\code\gitrepos\pclausen\problem-specifications\exercises\collatz-conjecture\canonical-data.json
-!
-
 program collatz_conjecture_test_main
    use TesterMain
    use collatz_conjecture

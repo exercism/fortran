@@ -1,7 +1,3 @@
-
-! This test was created from ..\problem-specifications\exercises\rational-numbers\canonical-data.json
-!
-
 program rational_numbers_test_main
    use TesterMain
    use rational_numbers

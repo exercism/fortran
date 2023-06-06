@@ -1,7 +1,3 @@
-
-! This test was created from ../../exercism/problem-specifications/exercises/hamming/canonical-data.json
-!
-
 program hamming_test_main
    use TesterMain
    use hamming

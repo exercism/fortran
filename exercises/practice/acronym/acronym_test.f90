@@ -1,7 +1,3 @@
-
-! This test was created from ../../exercism/problem-specifications/exercises/acronym/canonical-data.json
-!
-
 program acronym_test_main
    use TesterMain
    use acronym

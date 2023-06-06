@@ -1,7 +1,3 @@
-
-! This test was created from ../../exercism/problem-specifications/exercises/rna-transcription/canonical-data.json
-!
-
 program rna_transcription_test_main
    use TesterMain
    use rna_transcription

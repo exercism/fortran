@@ -1,7 +1,3 @@
-
-! This test was created from ../problem-specifications/exercises/space-age/canonical-data.json
-!
-
 program space_age_test_main
    use TesterMain
    use space_age

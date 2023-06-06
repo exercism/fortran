@@ -1,7 +1,3 @@
-
-! This test was created from ..\problem-specifications\exercises\allergies\canonical-data.json
-!
-
 program allergies_test_main
    use TesterMain
    use allergies

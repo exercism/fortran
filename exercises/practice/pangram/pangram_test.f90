@@ -1,7 +1,3 @@
-
-! This test was created from ../../exercism/problem-specifications/exercises/pangram/canonical-data.json
-!
-
 program pangram_test_main
    use TesterMain
    use pangram

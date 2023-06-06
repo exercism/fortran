@@ -1,7 +1,3 @@
-
-! This test was created from ../../exercism/problem-specifications/exercises/raindrops/canonical-data.json
-!
-
 program raindrops_test_main
    use TesterMain
    use raindrops

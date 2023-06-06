@@ -1,7 +1,3 @@
-
-! This test was created from ..\problem-specifications\exercises\perfect-numbers\canonical-data.json
-!
-
 program perfect_numbers_test_main
    use TesterMain
    use perfect_numbers

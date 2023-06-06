@@ -1,7 +1,3 @@
-
-! This test was created from ..\problem-specifications\exercises\armstrong-numbers\canonical-data.json
-!
-
 program armstrong_numbers_test_main
    use TesterMain
    use armstrong_numbers

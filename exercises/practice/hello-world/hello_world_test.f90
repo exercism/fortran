@@ -1,26 +1,3 @@
-! This test was created from ..\..\exercism\problem-specifications\exercises\hello-world\canonical-data.json
-!
-! This is the main test program to test your implementaion which is done in
-!   hello_world.f90
-!
-! If the file does not exist create it.
-!
-! To build your program first create a build directory, eg. build and change into it
-! > mkdir build
-! > cd build
-! Now, to configure the build you run
-! > cmake ..
-! Which creates the build files (Makefiles etc.) needed to build and test your program.
-! Now build your program with
-! > make
-! If your build is successfull run the test
-! > ctest -V
-! If the build fails or the tests, modify the implementation in hello_world.f90 and rerun
-! the "make" and the "ctest -V" commands.
-!
-! Now proceed to the test section and one test after the other, ensure your implementation
-! passes this test.
-
 program hello_world_test_main
    use TesterMain
    use hello_world

@@ -1,7 +1,3 @@
-
-! This test was created from ..\problem-specifications\exercises\grains\canonical-data.json
-!
-
 program grains_test_main
    use TesterMain
    use grains

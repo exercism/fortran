@@ -1,7 +1,3 @@
-
-! This test was created from ..\problem-specifications\exercises\triangle\canonical-data.json
-!
-
 program triangle_test_main
    use TesterMain
    use triangle

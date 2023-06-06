@@ -1,7 +1,3 @@
-
-! This test was created from ..\problem-specifications\exercises\yacht\canonical-data.json
-!
-
 program yacht_test_main
    use TesterMain
    use yacht
