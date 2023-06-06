@@ -1,6 +1,7 @@
 program difference_of_squares_test_main
    use TesterMain
    use difference_of_squares
+
    implicit none
 
    ! Test 1: square of sum 1

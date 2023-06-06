@@ -1,6 +1,7 @@
 program collatz_conjecture_test_main
    use TesterMain
    use collatz_conjecture
+
    implicit none
 
    ! Test 1: zero steps for one

@@ -1,6 +1,7 @@
 program yacht_test_main
    use TesterMain
    use yacht
+
    implicit none
 
    ! Test 1: Yacht

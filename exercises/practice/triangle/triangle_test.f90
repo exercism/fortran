@@ -1,6 +1,7 @@
 program triangle_test_main
    use TesterMain
    use triangle
+
    implicit none
 
    ! Test 1: all sides are equal

@@ -1,6 +1,7 @@
 program acronym_test_main
    use TesterMain
    use acronym
+
    implicit none
 
    ! Test 1: basic

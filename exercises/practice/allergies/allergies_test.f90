@@ -1,6 +1,7 @@
 program allergies_test_main
    use TesterMain
    use allergies
+
    implicit none
 
    ! Test 1: not allergic to anything

@@ -1,6 +1,7 @@
 program perfect_numbers_test_main
    use TesterMain
    use perfect_numbers
+
    implicit none
 
    ! Test 0: Zero is rejected (as it is not a positive integer)

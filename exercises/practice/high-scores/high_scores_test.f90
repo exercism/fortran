@@ -1,6 +1,7 @@
 program high_scores_test_main
    use TesterMain
    use high_scores
+
    implicit none
 
    ! Test 1: List of scores

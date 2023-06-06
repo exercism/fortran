@@ -1,6 +1,7 @@
 program rational_numbers_test_main
    use TesterMain
    use rational_numbers
+
    implicit none
 
    ! Test 1: Add two positive rational numbers

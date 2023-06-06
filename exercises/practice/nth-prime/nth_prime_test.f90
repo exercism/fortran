@@ -1,6 +1,7 @@
 program nth_prime_test_main
    use TesterMain
    use nth_prime
+
    implicit none
 
    ! Test 1: first prime

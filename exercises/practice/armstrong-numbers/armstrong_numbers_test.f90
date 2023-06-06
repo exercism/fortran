@@ -1,6 +1,7 @@
 program armstrong_numbers_test_main
    use TesterMain
    use armstrong_numbers
+
    implicit none
 
    ! Test 1: Zero is an Armstrong number

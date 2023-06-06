@@ -1,7 +1,9 @@
 program hamming_test_main
    use TesterMain
    use hamming
+
    implicit none
+
    integer distance
 
    ! Test 1: empty strands

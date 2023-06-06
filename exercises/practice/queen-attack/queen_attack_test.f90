@@ -1,6 +1,7 @@
 program queen_attack_test_main
    use TesterMain
    use queen_attack
+
    implicit none
 
    ! Test 1: queen with a valid position

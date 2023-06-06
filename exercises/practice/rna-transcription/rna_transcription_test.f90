@@ -1,6 +1,7 @@
 program rna_transcription_test_main
    use TesterMain
    use rna_transcription
+
    implicit none
 
    ! Test 1: Empty RNA sequence
