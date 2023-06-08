@@ -7,12 +7,11 @@ on:
   workflow_dispatch:
 
 jobs:
-
   linux-min:
     name: Linux Minimum
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
       - name: Install project dependencies
         run: |
           sudo apt-get install -y gfortran cmake
@@ -30,7 +29,7 @@ jobs:
     needs: [linux-min]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
       - name: Install project dependencies
         run: |
           sudo apt-get install -y gfortran cmake
@@ -43,35 +42,33 @@ jobs:
           cmake --build .
           ctest -V
 
-
-
   mac:
     name: MacOS
     needs: [linux-min]
     runs-on: macOS-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set env
-      run: |
-        echo "Trying to find latest gfortran version in /usr/local/Cellar/gcc"
-        echo "gfortran $(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )"
-        echo "FC=$(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )" >> $GITHUB_ENV
-    - name: Run exercism/fortran ci (runs tests) for all exercises
-      run: |
-        echo "FC=$FC"
-        mkdir build
-        cd build
-        cmake ..
-        cmake --build .
-        ctest -V
-#      env:
-#        FC: /usr/local/bin/gfortran
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+      - name: Set env
+        run: |
+          echo "Trying to find latest gfortran version in /usr/local/Cellar/gcc"
+          echo "gfortran $(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )"
+          echo "FC=$(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )" >> $GITHUB_ENV
+      - name: Run exercism/fortran ci (runs tests) for all exercises
+        run: |
+          echo "FC=$FC"
+          mkdir build
+          cd build
+          cmake ..
+          cmake --build .
+          ctest -V
+  #      env:
+  #        FC: /usr/local/bin/gfortran
 
   windows:
     name: Windows
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
       - name: Run exercism/fortran ci (runs tests) for all exercises
         shell: powershell
         run: |
