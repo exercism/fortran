@@ -28,10 +28,10 @@ Working through each exercise is a process of:
 
 - Creating the initial build with CMake
 - For each unit test:
-    - Satisfy compile errors to make the test fail.
-    - Implement just enough to make the test pass.
-    - Refactor your implementation to enhance readability, reduce duplication, etc.
-    - Uncomment the next test
+  - Satisfy compile errors to make the test fail.
+  - Implement just enough to make the test pass.
+  - Refactor your implementation to enhance readability, reduce duplication, etc.
+  - Uncomment the next test
 
 ## Creating the Initial Build with CMake
 
