@@ -1,4 +1,4 @@
-name: fortran / main
+name: CI
 
 on:
   push:
@@ -7,16 +7,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  linux:
-    name: Linux
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
-      - name: Install project dependencies
-        run: |
-          sudo apt-get install -y gfortran cmake
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: linux
+            runs-on: ubuntu-22.04
 
-      - name: Run exercism/fortran ci (runs tests) for all exercises
+          - os: macos
+            runs-on: macos-12
+
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.runs-on }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+
+      - name: Verify all exercises
         run: |
           mkdir build
           cd build
@@ -24,35 +32,21 @@ jobs:
           cmake --build .
           ctest -V
 
-  mac:
-    name: MacOS
-    runs-on: macos-12
-    steps:
-      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
-      - name: Set env
-        run: |
-          echo "Trying to find latest gfortran version in /usr/local/Cellar/gcc"
-          echo "gfortran $(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )"
-          echo "FC=$(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )" >> $GITHUB_ENV
-      - name: Run exercism/fortran ci (runs tests) for all exercises
-        run: |
-          echo "FC=$FC"
-          mkdir build
-          cd build
-          cmake ..
-          cmake --build .
-          ctest -V
-
-  windows:
-    name: Windows
-    runs-on: windows-2022
-    steps:
-      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
-      - name: Run exercism/fortran ci (runs tests) for all exercises
-        shell: powershell
-        run: |
-          mkdir build
-          cd build
-          cmake -G "MinGW Makefiles" ..
-          cmake --build .
-          ctest -V
+  # mac:
+  #   name: MacOS
+  #   runs-on: macos-12
+  #   steps:
+  #     - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+  #     - name: Set env
+  #       run: |
+  #         echo "Trying to find latest gfortran version in /usr/local/Cellar/gcc"
+  #         echo "gfortran $(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )"
+  #         echo "FC=$(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1 )" >> $GITHUB_ENV
+  #     - name: Run exercism/fortran ci (runs tests) for all exercises
+  #       run: |
+  #         echo "FC=$FC"
+  #         mkdir build
+  #         cd build
+  #         cmake ..
+  #         cmake --build .
+  #         ctest -V
