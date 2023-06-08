@@ -4,6 +4,6 @@ changed_files=$(diff -q --from-file=config/CMakeLists.txt exercises/*/*/CMakeLis
 
 if [ -n "$changed_files" ]; then
     echo "$changed_files"
-    echo "run bin/update-cmake-files to overwrite all exercise cmake files with the master copy"
+    echo "run bin/update-cmake-files to update the cmake file of all exercises"
     exit 1
 fi
