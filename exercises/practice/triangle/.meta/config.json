@@ -1,19 +1,19 @@
 {
-    "blurb": "Determine if a triangle is equilateral, isosceles, or scalene.",
-    "source": "The Ruby Koans triangle project, parts 1 & 2",
-    "source_url": "http://rubykoans.com",
-    "authors": [
-        "pclausen"
+  "authors": [
+    "pclausen"
+  ],
+  "files": {
+    "solution": [
+      "triangle.f90"
     ],
-    "files": {
-        "solution": [
-            "triangle.f90"
-        ],
-        "test": [
-            "triangle_test.f90"
-        ],
-        "example": [
-            ".meta/example.f90"
-        ]
-    }
+    "test": [
+      "triangle_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "blurb": "Determine if a triangle is equilateral, isosceles, or scalene.",
+  "source": "The Ruby Koans triangle project, parts 1 & 2",
+  "source_url": "http://rubykoans.com"
 }

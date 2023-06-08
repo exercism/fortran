@@ -1,19 +1,19 @@
 {
-    "blurb": "Implement rational numbers.",
-    "source": "Wikipedia",
-    "source_url": "https://en.wikipedia.org/wiki/Rational_number",
-    "authors": [
-        "pclausen"
+  "authors": [
+    "pclausen"
+  ],
+  "files": {
+    "solution": [
+      "rational_numbers.f90"
     ],
-    "files": {
-        "solution": [
-            "rational_numbers.f90"
-        ],
-        "test": [
-            "rational_numbers_test.f90"
-        ],
-        "example": [
-            ".meta/example.f90"
-        ]
-    }
+    "test": [
+      "rational_numbers_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "blurb": "Implement rational numbers.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Rational_number"
 }
