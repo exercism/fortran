@@ -1,4 +1,4 @@
-name: Check cmake
+name: cmake
 
 on:
   push:
@@ -7,11 +7,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  compare-to-master:
+  check-up-to-date:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
 
-      - name: Compare cmake files to master copy
-        run: ./bin/compare-cmake-files-to-master
+      - name: Check if all exercise cmake files are up to date
+        run: ./bin/check-cmake-files-up-to-date
