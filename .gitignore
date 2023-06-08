@@ -1,9 +1,18 @@
 bin/configlet
 bin/configlet.exe
-__pycache__
-# make and testing artifacts
-build*
+
+# We're using a very extensive ignore as there are many files we want to ignore,
+# included compiled binaries that have no extensions
+exercises/practice/*/**
+!exercises/practice/*/.docs/
+!exercises/practice/*/.docs/*
+!exercises/practice/*/.meta/
+!exercises/practice/*/.meta/*
+!exercises/practice/*/CMakeLists.txt
+!exercises/practice/*/**/*.f90
 exercises/practice/*/*_build_all.f90
-exercises/practice/*/testlib
-.vscode
+
 *.mod
+build/
+__pycache__/
+.vscode/
