@@ -11,7 +11,7 @@ jobs:
     name: Linux Minimum
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
       - name: Install project dependencies
         run: |
           sudo apt-get install -y gfortran cmake
@@ -28,7 +28,7 @@ jobs:
     name: Linux
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
       - name: Install project dependencies
         run: |
           sudo apt-get install -y gfortran cmake
@@ -45,7 +45,7 @@ jobs:
     name: MacOS
     runs-on: macos-12
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
       - name: Set env
         run: |
           echo "Trying to find latest gfortran version in /usr/local/Cellar/gcc"
@@ -66,7 +66,7 @@ jobs:
     name: Windows
     runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
       - name: Run exercism/fortran ci (runs tests) for all exercises
         shell: powershell
         run: |

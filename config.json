@@ -11,10 +11,18 @@
     "analyzer": false
   },
   "files": {
-    "solution": [".meta/example.f90"],
-    "test": ["%{snake_slug}_test.f90"],
-    "example": ["%{snake_slug}.f90"],
-    "exemplar": ["exemplar.f90"]
+    "solution": [
+      ".meta/example.f90"
+    ],
+    "test": [
+      "%{snake_slug}_test.f90"
+    ],
+    "example": [
+      "%{snake_slug}.f90"
+    ],
+    "exemplar": [
+      "exemplar.f90"
+    ]
   },
   "online_editor": {
     "indent_style": "space",
@@ -78,7 +86,11 @@
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "topics": ["conditionals", "optional_values", "text_formatting"]
+        "topics": [
+          "conditionals",
+          "optional_values",
+          "text_formatting"
+        ]
       },
       {
         "slug": "bob",
@@ -87,7 +99,11 @@
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "topics": ["conditionals", "equality", "strings"]
+        "topics": [
+          "conditionals",
+          "equality",
+          "strings"
+        ]
       },
       {
         "slug": "hamming",
@@ -96,7 +112,11 @@
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "topics": ["bitwise_operations", "integers", "type_conversion"]
+        "topics": [
+          "bitwise_operations",
+          "integers",
+          "type_conversion"
+        ]
       },
       {
         "slug": "matrix",
@@ -121,7 +141,12 @@
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "topics": ["algorithms", "lists", "loops", "math"]
+        "topics": [
+          "algorithms",
+          "lists",
+          "loops",
+          "math"
+        ]
       },
       {
         "slug": "rna-transcription",
@@ -146,7 +171,11 @@
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "topics": ["algorithms", "loops", "math"]
+        "topics": [
+          "algorithms",
+          "loops",
+          "math"
+        ]
       },
       {
         "slug": "difference-of-squares",
@@ -155,7 +184,9 @@
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "topics": ["math"]
+        "topics": [
+          "math"
+        ]
       },
       {
         "slug": "pangram",
@@ -180,7 +211,12 @@
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "topics": ["conditionals", "logic", "loops", "math"]
+        "topics": [
+          "conditionals",
+          "logic",
+          "loops",
+          "math"
+        ]
       },
       {
         "slug": "collatz-conjecture",
@@ -189,7 +225,12 @@
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "topics": ["conditionals", "logic", "loops", "math"]
+        "topics": [
+          "conditionals",
+          "logic",
+          "loops",
+          "math"
+        ]
       },
       {
         "slug": "armstrong-numbers",
@@ -211,7 +252,7 @@
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "topics" : [
+        "topics": [
           "logicals",
           "conditionals",
           "comparisons",
@@ -227,7 +268,7 @@
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "topics" : [
+        "topics": [
           "logicals",
           "conditionals",
           "comparisons",
@@ -235,12 +276,18 @@
         ]
       },
       {
-	"slug": "leap",
-	"name": "Leap",
-	"uuid": "609a16cb-6b46-4697-addb-b8e4793c56a2",
-	"difficulty": 2,
-	"practices": ["conditionals", "equality"],
-	"prerequisites": ["conditionals", "equality"]
+        "slug": "leap",
+        "name": "Leap",
+        "uuid": "609a16cb-6b46-4697-addb-b8e4793c56a2",
+        "difficulty": 2,
+        "practices": [
+          "conditionals",
+          "equality"
+        ],
+        "prerequisites": [
+          "conditionals",
+          "equality"
+        ]
       },
       {
         "slug": "allergies",
@@ -249,7 +296,7 @@
         "difficulty": 3,
         "practices": [],
         "prerequisites": [],
-        "topics" : [
+        "topics": [
           "bools",
           "conditionals",
           "comparisons",
@@ -265,7 +312,7 @@
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "topics" : [
+        "topics": [
           "bools",
           "conditionals",
           "comparisons",
@@ -281,7 +328,7 @@
         "difficulty": 3,
         "practices": [],
         "prerequisites": [],
-        "topics" : [
+        "topics": [
           "logicals",
           "conditionals",
           "loops",
@@ -296,7 +343,7 @@
         "difficulty": 3,
         "practices": [],
         "prerequisites": [],
-        "topics" : [
+        "topics": [
           "conditionals",
           "comparisons",
           "numbers",
@@ -311,7 +358,7 @@
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "topics" : [
+        "topics": [
           "logicals",
           "conditionals",
           "loops",
@@ -326,7 +373,7 @@
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "topics" : [
+        "topics": [
           "numbers",
           "math"
         ]
@@ -338,7 +385,7 @@
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "topics" : [
+        "topics": [
           "numbers",
           "math"
         ]
