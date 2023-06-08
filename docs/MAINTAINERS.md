@@ -1,6 +1,6 @@
 # For maintainers
 
-## Helper script for creating Fortran tests: create\_fortran\_test.py
+## Helper script for creating Fortran tests: create_fortran_test.py
 
 An easy way to create an exercise test is to use the script
 `bin/create\_fortran\_test.py`
@@ -11,14 +11,15 @@ Typically, you will have to replace the 'response'-function in the generated fil
 Also note that Fortran has issues with special characters such as `\n` and `\t` so take special care handling these.
 
 ### Prerequsites
+
 - Working CMake and Fortran compiler
 - Python3.x (You can make it may work with Python2, but I have not made the
-effort to make it backwards compatible)
+  effort to make it backwards compatible)
 - latest version of https://github.com/exercism/problem-specifications.git
 - git
 
-
 ### Work flow for creating a new test
+
 - pull latest changes from `exercism/problem-specifications` eg git clone git@github.com:exercism/problem-specifications.git
 - Create a new branch for creating a new exercise, eg git checkout -b exercise-bob
 - run this script for the example you want to create
@@ -28,11 +29,11 @@ effort to make it backwards compatible)
 - ensure `ctest` command validates without errors
 - copy your solution to .meta/example.f90 and remove the actual implemetatio from exercise file, eg. bob.f90
 - update .docs and .meta directories
-    * cp ../problem-specifications/exercises/bob/description.md exercises/practice/bob/.docs/instructions.md
-        * replace "# Description" with "# Instructions"
-    * fill .meta/tests.toml manually (until an automated way exists)
-    * fill .meta/config.json manually (until an automated way exists)
-        * Use ../problem-specifications/exercises/bob/metadata.yml 
+  - cp ../problem-specifications/exercises/bob/description.md exercises/practice/bob/.docs/instructions.md
+    - replace "# Description" with "# Instructions"
+  - fill .meta/tests.toml manually (until an automated way exists)
+  - fill .meta/config.json manually (until an automated way exists)
+    - Use ../problem-specifications/exercises/bob/metadata.yml
 - open a pull request with your changes
 
 For bob example:
@@ -52,6 +53,7 @@ $ ctest -V
 ```
 
 ### Changing `CMakeLists.txt`
+
 When changing the cmake file, update the master copy in `config/` and use `bin/update-cmake-files` to copy it to all exercise directories.
 
 ## Solution
