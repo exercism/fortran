@@ -15,6 +15,10 @@ command -v curl >/dev/null 2>&1 || {
     echo >&2 "curl is required but not installed. Please install it and make sure it's in your PATH."
     exit 1
 }
+python3 -c 'import toml' 2>/dev/null || {
+    echo >&2 "The python3 toml module is required: pip3 install toml"
+    exit 1
+}
 
 bin/fetch-configlet
 
@@ -29,7 +33,10 @@ jq --arg slug "${slug}" --arg uuid "${uuid}" --arg name "${name}" \
 # Sync the exercise
 bin/configlet sync --update --yes --tests include --filepaths --metadata --docs --exercise "${slug}"
 
-if [ $(uname) == "Darwin" ]; then
+
+if [ -n "${XDG_CACHE_HOME}" ] && [ -d "${XDG_CACHE_HOME}" ]; then
+    os_cache_dir="${XDG_CACHE_HOME}"
+elif [ "$(uname)" == "Darwin" ]; then
     os_cache_dir="${HOME}/Library/Caches"
 else
     os_cache_dir="${HOME}/.cache"
