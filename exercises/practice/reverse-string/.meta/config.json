@@ -1,14 +1,16 @@
 {
-  "authors": ["glennj"],
+  "authors": [
+    "glennj"
+  ],
   "files": {
     "solution": [
-      ".meta/example.f90"
+      "reverse_string.f90"
     ],
     "test": [
       "reverse_string_test.f90"
     ],
     "example": [
-      "reverse_string.f90"
+      ".meta/example.f90"
     ]
   },
   "blurb": "Reverse a string.",
