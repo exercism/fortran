@@ -4,13 +4,13 @@
   ],
   "files": {
     "solution": [
-      "example.f90"
+      "reverse_string.f90"
     ],
     "test": [
       "reverse_string_test.f90"
     ],
     "example": [
-      ".meta/reverse_string.f90"
+      ".meta/example.f90"
     ]
   },
   "blurb": "Reverse a string.",
