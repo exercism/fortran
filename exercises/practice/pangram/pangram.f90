@@ -2,8 +2,8 @@ module pangram
   implicit none
 contains
 
-  logical function is_pangram(sentance)
-    character(*) :: sentance
+  logical function is_pangram(sentence)
+    character(*) :: sentence
 
    end function is_pangram
 

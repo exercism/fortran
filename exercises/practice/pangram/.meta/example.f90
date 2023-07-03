@@ -1,16 +1,16 @@
 module pangram
 implicit none
 contains
-  logical function is_pangram(sentance)
+  logical function is_pangram(sentence)
     implicit none
-    character(*) :: sentance
+    character(*) :: sentence
     logical :: seen(26)
     integer :: i,val
 
     seen = .false.
 
-    do i = 1,len(sentance)
-      val = to_index(sentance(i:i))
+    do i = 1,len(sentence)
+      val = to_index(sentence(i:i))
       if ( val .ne. 0 ) then
         seen(val:val) = .true.
       end if
