@@ -30,7 +30,7 @@
     "highlightjs_language": "fortran"
   },
   "test_runner": {
-    "average_run_time": 2.0
+    "average_run_time": 2
   },
   "tags": [
     "paradigm/imperative",
