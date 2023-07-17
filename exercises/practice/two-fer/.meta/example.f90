@@ -10,7 +10,7 @@ contains
 
       if (present(name)) then
          allocate(character(len(name)) :: newname)
-         newname = trim(name)
+         newname = name
       else
          allocate(character(3) :: newname)
          newname = "you"
