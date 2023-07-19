@@ -1,13 +1,13 @@
 module luhn
-   implicit none
+  implicit none
 
 contains
 
-   function validate(number) result(valid)
-      character(*), intent(in) :: number
-      logical :: valid
+  function validate(number) result(valid)
+    character(*), intent(in) :: number
+    logical :: valid
 
-      valid = number == "123" ! Replace this line with your implementation
-   end function validate
+    valid = number == "123" ! Replace this line with your implementation
+  end function validate
 
 end module luhn
