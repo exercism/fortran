@@ -18,7 +18,7 @@ contains
             checksum = checksum + counter * digit
             counter = counter - 1
          else if (isbn(i:i) == 'X' .and. counter == 1) then
-            checksum = checksum + counter * 10
+            checksum = checksum + 10
             counter = counter - 1
          else if (isbn(i:i) /= '-') then
             valid = .false.
