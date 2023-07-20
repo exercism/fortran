@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "simisc"
+  ],
+  "files": {
+    "solution": [
+      "two_fer.f90"
+    ],
+    "test": [
+      "two_fer_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "blurb": "Create a sentence of the form \"One for X, one for me.\".",
+  "source_url": "https://github.com/exercism/problem-specifications/issues/757"
+}

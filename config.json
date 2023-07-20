@@ -399,6 +399,22 @@
         "difficulty": 2
       },
       {
+        "slug": "luhn",
+        "name": "Luhn",
+        "uuid": "99b47337-5bb0-4518-9fd5-44161a0ab3e9",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "two-fer",
+        "name": "Two-Fer",
+        "uuid": "0ee87521-e88e-4230-87da-26eba66db914",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
         "slug": "darts",
         "name": "Darts",
         "uuid": "4e7b84c0-5f6c-4bf3-b991-d7eae18ca05f",
