@@ -399,9 +399,25 @@
         "difficulty": 2
       },
       {
+        "slug": "luhn",
+        "name": "Luhn",
+        "uuid": "99b47337-5bb0-4518-9fd5-44161a0ab3e9",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
         "slug": "isbn-verifier",
         "name": "ISBN Verifier",
         "uuid": "a9880507-d14c-4fb1-8320-94c63a15b7d2",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "two-fer",
+        "name": "Two-Fer",
+        "uuid": "0ee87521-e88e-4230-87da-26eba66db914",
         "practices": [],
         "prerequisites": [],
         "difficulty": 1
