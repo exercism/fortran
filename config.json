@@ -12,13 +12,13 @@
   },
   "files": {
     "solution": [
-      ".meta/example.f90"
+      "%{snake_slug}.f90"
     ],
     "test": [
       "%{snake_slug}_test.f90"
     ],
     "example": [
-      "%{snake_slug}.f90"
+      ".meta/example.f90"
     ],
     "exemplar": [
       "exemplar.f90"
