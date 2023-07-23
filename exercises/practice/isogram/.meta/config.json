@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "simisc"
+  ],
+  "files": {
+    "solution": [
+      "isogram.f90"
+    ],
+    "test": [
+      "isogram_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "blurb": "Determine if a word or phrase is an isogram.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Isogram"
+}
