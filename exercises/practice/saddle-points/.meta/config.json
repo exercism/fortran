@@ -11,6 +11,9 @@
     ],
     "example": [
       ".meta/example.f90"
+    ],
+    "editor": [
+      "saddle_points_test_helper.f90"
     ]
   },
   "blurb": "Detect saddle points in a matrix.",

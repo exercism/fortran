@@ -58,7 +58,7 @@ foreach(test_file ${test_files})
 endforeach()
 
 # Build executable from sources and headers
-add_executable(${exercise} ${exercise_f90} ${file}_test.f90  )
+add_executable(${exercise} ${exercise_f90} ${file}_test.f90 ${file}_test_helper.f90)
 
 target_link_libraries(${exercise} TesterMain)
 
@@ -68,4 +68,3 @@ add_test (${exercise}_test ${exercise} )
 
 # Run the tests on every build
 #add_custom_target(test_${exercise} ALL DEPENDS ${exercise} COMMAND ${exercise})
-
