@@ -16,6 +16,11 @@ module linked_list
 
 contains
 
+  function new() result(list)
+    type(list_t) :: list
+
+  end function new
+
   subroutine push(list, val)
     type(list_t), intent(inout) :: list
     integer, intent(in) :: val

@@ -9,13 +9,13 @@ program linked_list_test_main
   integer :: temp_results(5)
 
   ! Test 1: pop gets element from the list
-  test_list = list_t()
+  test_list = new()
   call push(test_list, 7)
   call assert_equal(7, pop(test_list), &
     "pop gets element from the list")
 
   ! Test 2: push/pop respectively add/remove at the end of the list
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call push(test_list, 11)
   call push(test_list, 13)
@@ -25,13 +25,13 @@ program linked_list_test_main
     "push/pop respectively add/remove at the end of the list")
 
   ! Test 3: shift gets an element from the list
-  test_list = list_t()
+  test_list = new()
   call push(test_list, 17)
   call assert_equal(17, shift(test_list), &
     "shift gets an element from the list")
 
   ! Test 4: shift gets first element from the list
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call push(test_list, 23)
   call push(test_list, 5)
@@ -41,7 +41,7 @@ program linked_list_test_main
     "shift gets first element from the list")
 
   ! Test 5: unshift adds element at start of the list
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call unshift(test_list, 23)
   call unshift(test_list, 5)
@@ -51,7 +51,7 @@ program linked_list_test_main
     "unshift adds element at start of the list")
 
   ! Test 6: pop, push, shift, and unshift can be used in any order
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call push(test_list, 1)
   call push(test_list, 2)
@@ -67,12 +67,12 @@ program linked_list_test_main
     "pop, push, shift, and unshift can be used in any order")
 
   ! Test 7: count an empty list
-  test_list = list_t()
+  test_list = new()
   call assert_equal(0, length(test_list), &
     "count an empty list")
 
   ! Test 8: count a list with items
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call push(test_list, 37)
   call push(test_list, 1)
@@ -83,7 +83,7 @@ program linked_list_test_main
     "count a list with items")
 
   ! Test 9: count is correct after mutation
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call push(test_list, 31)
   temp_results(1) = length(test_list)
@@ -97,7 +97,7 @@ program linked_list_test_main
     "count is correct after mutation")
 
   ! Test 10: popping to empty doesn't break the list
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call push(test_list, 41)
   call push(test_list, 59)
@@ -112,7 +112,7 @@ program linked_list_test_main
     "popping to empty doesn't break the list")
 
   ! Test 11: shifting to empty doesn't break the list
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call push(test_list, 41)
   call push(test_list, 59)
@@ -127,14 +127,14 @@ program linked_list_test_main
     "shifting to empty doesn't break the list")
 
   ! Test 12: deletes the only element
-  test_list = list_t()
+  test_list = new()
   call push(test_list, 61)
   call delete(test_list, 61)
   call assert_equal(0, length(test_list), &
     "deletes the only element")
 
   ! Test 13: deletes the element with the specified value from the list
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call push(test_list, 71)
   call push(test_list, 83)
@@ -147,7 +147,7 @@ program linked_list_test_main
     "deletes the element with the specified value from the list")
 
   ! Test 14: deletes the element with the specified value from the list, re-assigns tail
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call push(test_list, 71)
   call push(test_list, 83)
@@ -160,7 +160,7 @@ program linked_list_test_main
     "deletes the element with the specified value from the list, re-assigns tail")
 
   ! Test 15: deletes the element with the specified value from the list, re-assigns head
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call push(test_list, 71)
   call push(test_list, 83)
@@ -173,7 +173,7 @@ program linked_list_test_main
     "deletes the element with the specified value from the list, re-assigns head")
 
   ! Test 16: deletes the first of two elements
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call push(test_list, 97)
   call push(test_list, 101)
@@ -186,7 +186,7 @@ program linked_list_test_main
     "deletes the first of two elements")
 
   ! Test 17: deletes the second of two elements
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call push(test_list, 97)
   call push(test_list, 101)
@@ -199,7 +199,7 @@ program linked_list_test_main
     "deletes the second of two elements")
 
   ! Test 18: delete does not modify the list if the element is not found
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call delete(test_list, 103)
   temp_results(1) = length(test_list)
@@ -211,7 +211,7 @@ program linked_list_test_main
     "delete does not modify the list if the element is not found")
 
   ! Test 19: deletes only the first occurrence
-  test_list = list_t()
+  test_list = new()
   temp_results = -1
   call push(test_list, 73)
   call push(test_list, 9)
