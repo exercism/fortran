@@ -407,6 +407,14 @@
         "difficulty": 1
       },
       {
+        "slug": "roman-numerals",
+        "name": "Roman Numerals",
+        "uuid": "9f587de2-a156-4ee1-83aa-0b6ce0a47c60",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
         "slug": "isbn-verifier",
         "name": "ISBN Verifier",
         "uuid": "a9880507-d14c-4fb1-8320-94c63a15b7d2",
