@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "simisc"
+  ],
+  "files": {
+    "solution": [
+      "linked_list.f90"
+    ],
+    "test": [
+      "linked_list_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "blurb": "Implement a doubly linked list.",
+  "source": "Classic computer science topic"
+}
