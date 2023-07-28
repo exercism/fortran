@@ -439,6 +439,14 @@
         "difficulty": 1
       },
       {
+        "slug": "sieve",
+        "name": "Sieve",
+        "uuid": "795a61fe-1c18-478c-beff-98ed7c608070",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
         "slug": "darts",
         "name": "Darts",
         "uuid": "4e7b84c0-5f6c-4bf3-b991-d7eae18ca05f",
