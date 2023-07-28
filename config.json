@@ -423,6 +423,14 @@
         "difficulty": 1
       },
       {
+        "slug": "sum-of-multiples",
+        "name": "Sum of Multiples",
+        "uuid": "848beda6-2e2c-4c7c-bc5c-e469d7fcc3c1",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
         "slug": "two-fer",
         "name": "Two-Fer",
         "uuid": "0ee87521-e88e-4230-87da-26eba66db914",
