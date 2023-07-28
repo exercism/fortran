@@ -68,11 +68,11 @@ contains
     character(len=*), intent(in) :: test_description
     ! -------------------------------
     character(len=MAX_STRING_LEN) :: test_info
-    
+
     if (.not. exercism_fortran_json_env_is_set() ) then
       return
     end if
-    
+
     call open_and_write_json_test_header()
 
     test_info = 'Test '//trim(adjustl(i_to_s(TESTS_RUN)))//': '//trim(test_description)
@@ -131,13 +131,13 @@ contains
     if (TESTS_RUN>1) then
       write(TEST_JSON_FILE_UNIT,*) '    ,'
     end if
-  end subroutine 
+  end subroutine
 
   !------------------------------------------------------------------
   subroutine close_and_write_json_footer()
 
     if ( .not. exercism_fortran_json_env_is_set() ) then
-      return 
+      return
     end if
 
     open(unit=TEST_JSON_FILE_UNIT, file=TEST_JSON_FILE, status="old", position="append", action="write")
@@ -249,32 +249,29 @@ contains
     ! -------------------------------
     logical :: assert_test
     character(len=MAX_STRING_LEN) :: expected_msg
-    integer :: i
 
     TESTS_RUN=TESTS_RUN+1
-    assert_test = .false.
+
     assert_test = size(e_int_arr) == size(i_int_arr)
-    expected_msg = ''
+
     if (.not. assert_test) then
       call test_fail_msg(test_description)
       call elogger('Arrays are not the same size!')
-      expected_msg = get_expected_msg( adjustl(ia_to_s(e_int_arr)), adjustl(ia_to_s(i_int_arr)))
-      call elogger( expected_msg )
-      call write_json_fail( test_description, expected_msg)
-
-    else
-      do i=1,size(e_int_arr)
-        assert_test = i_int_arr(i) == e_int_arr(i)
-        if (.not. assert_test) exit
-      enddo
+      expected_msg = get_expected_msg(adjustl(ia_to_s(e_int_arr)), adjustl(ia_to_s(i_int_arr)))
+      call elogger(expected_msg)
+      call write_json_fail(test_description, expected_msg)
+      return
     endif
+
+    assert_test = all(i_int_arr == e_int_arr)
+
     if (.not. assert_test) then
       call test_fail_msg(test_description)
       expected_msg = get_expected_msg(adjustl(ia_to_s(e_int_arr)), adjustl(ia_to_s(i_int_arr)))
-      call elogger( expected_msg )
-      call write_json_fail( test_description, expected_msg)
+      call elogger(expected_msg)
+      call write_json_fail(test_description, expected_msg)
     else
-      call write_json_success( test_description)
+      call write_json_success(test_description)
     endif
   end subroutine
 
@@ -326,13 +323,13 @@ contains
 !------------------------------------------------------------------
 ! utilities
 !------------------------------------------------------------------
-function get_expected_msg(expected, but_got)
-  character(len=MAX_STRING_LEN) :: get_expected_msg
-  character(len=*) :: expected
-  character(len=*) :: but_got
-  get_expected_msg  = 'Expected < '//trim(expected)//' > but got < '&
-      & //trim(but_got)//' >'
-end function 
+  function get_expected_msg(expected, but_got)
+    character(len=MAX_STRING_LEN) :: get_expected_msg
+    character(len=*) :: expected
+    character(len=*) :: but_got
+    get_expected_msg  = 'Expected < '//trim(expected)//' > but got < '&
+    & //trim(but_got)//' >'
+  end function
 
 ! Integer to string
   function i_to_s(i)
@@ -397,4 +394,3 @@ end function
 
 
 end module
-
