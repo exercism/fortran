@@ -388,6 +388,11 @@ contains
 
     if (present(delim)) then
       delim_loc = index(s(:max_length), delim, back=.true.)
+    else
+      delim_loc = 0
+    end if
+
+    if (delim_loc /= 0) then
       new_length = delim_loc + len(delim) - 1
     else
       new_length = max_length
