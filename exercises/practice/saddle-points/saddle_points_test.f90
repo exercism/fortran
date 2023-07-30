@@ -116,17 +116,15 @@ contains
     end if
   end subroutine assert_equal_pnt_arr
 
-  function pa_to_s(ps) result(ss)
-    type(point_t), intent(in) :: ps(:)
-    character(MAX_STRING_LEN) :: ss
-    character(5) :: s
-    integer :: i
+  function pa_to_s(p) result(s)
+    type(point_t), intent(in) :: p(:)
+    character(MAX_RESULT_STRING_LEN) :: s
+    integer :: status
 
-    ss = ''
-    do i = 1, size(ps)
-      write(s, '(A, I1, A, I1, A)') '(', ps(i)%row, ',', ps(i)%column, ')'
-      ss = trim(ss) // s
-    end do
+    write(s, '(*("(",i0,",",i0,")":","))', iostat=status) p
+    if (status /= 0) then
+      call truncate_array_string(s, '),')
+    end if
   end function pa_to_s
 
 end program saddle_points_test_main
