@@ -43,6 +43,7 @@ module TesterMain
   integer :: TESTS_RUN = 0
   integer :: TESTS_FAILED = 0
   integer, parameter :: MAX_STRING_LEN = 80
+  integer, parameter :: MAX_RESULT_STRING_LEN = 27 ! to fit into expected_msg
   double precision, parameter :: TOL = 1.0D-8
 
   ! output file for fortran-test-runner
@@ -327,48 +328,78 @@ contains
     character(len=MAX_STRING_LEN) :: get_expected_msg
     character(len=*) :: expected
     character(len=*) :: but_got
-    get_expected_msg  = 'Expected < '//trim(expected)//' > but got < '&
-    & //trim(but_got)//' >'
+    get_expected_msg  = 'Expected < ' // trim(expected) // &
+      ' > but got < ' // trim(but_got) // ' >'
   end function
 
 ! Integer to string
   function i_to_s(i)
     integer, intent(in) :: i
-    character(len=MAX_STRING_LEN) :: i_to_s
+    character(len=MAX_RESULT_STRING_LEN) :: i_to_s
     write(i_to_s, *) i
   end function
 
 ! Integer array to string
-  function ia_to_s(i)
-    integer, dimension(:), intent(in) :: i
-    character(len=MAX_STRING_LEN) :: ia_to_s
-    write(ia_to_s, *) i
-  end function
+  function ia_to_s(i) result(s)
+    integer, intent(in) :: i(:)
+    character(len=MAX_RESULT_STRING_LEN) :: s
+    integer :: status
+
+    write(s, '(*(i0:","))', iostat=status) i
+    if (status /= 0) then
+      call truncate_array_string(s, ',')
+    end if
+  end function ia_to_s
 
 ! Double precision to string
   function d_to_s(d)
     double precision, intent(in) :: d
-    character(len=MAX_STRING_LEN) :: d_to_s
+    character(len=MAX_RESULT_STRING_LEN) :: d_to_s
     write(d_to_s, *) d
   end function
 
 ! Real to string
   function r_to_s(d)
     real, intent(in) :: d
-    character(len=MAX_STRING_LEN) :: r_to_s
+    character(len=MAX_RESULT_STRING_LEN) :: r_to_s
     write(r_to_s, *) d
   end function
 
 ! Logical/boolean to string
   function b_to_s(b)
     logical, intent(in) :: b
-    character(len=MAX_STRING_LEN) :: b_to_s
+    character(len=5) :: b_to_s
     if (b) then
       b_to_s='True'
     else
       b_to_s='False'
     endif
   end function
+
+  ! Truncate string representation of an array
+  subroutine truncate_array_string(s, delim)
+    character(len=MAX_RESULT_STRING_LEN), intent(inout) :: s
+    character(len=*), intent(in), optional :: delim
+    character(len=3) :: ellipsis
+    integer :: max_length, new_length, delim_loc
+
+    ellipsis = '…'
+    max_length = len(s) - len_trim(ellipsis)
+
+    if (present(delim)) then
+      delim_loc = index(s(:max_length), delim, back=.true.)
+    else
+      delim_loc = 0
+    end if
+
+    if (delim_loc /= 0) then
+      new_length = delim_loc + len(delim) - 1
+    else
+      new_length = max_length
+    end if
+
+    s = s(:new_length) // ellipsis
+  end subroutine
 
 !------------------------------------------------------------------
 ! Logger
