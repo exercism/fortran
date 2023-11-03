@@ -21,7 +21,7 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel") # Intel fortran
     set (CMAKE_Fortran_FLAGS ${CCMAKE_Fortran_FLAGS} "-warn all")
   endif()
 endif()
-if(CMAKE_Fortran_COMPILER_ID MATCHES "GNU") # GFrotran
+if(CMAKE_Fortran_COMPILER_ID MATCHES "GNU") # GFortran
   set (CMAKE_Fortran_FLAGS ${CCMAKE_Fortran_FLAGS} "-std=f2008 -W -Wall -Wextra -pedantic -fbacktrace")
 endif()
 
