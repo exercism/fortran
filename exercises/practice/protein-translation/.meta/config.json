@@ -1,0 +1,16 @@
+{
+  "authors": ["D3usXMachina"],
+  "files": {
+    "solution": [
+      "protein_translation.f90"
+    ],
+    "test": [
+      "protein_translation_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "blurb": "Translate RNA sequences into proteins.",
+  "source": "Tyler Long"
+}
