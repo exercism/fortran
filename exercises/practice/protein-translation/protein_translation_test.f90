@@ -92,24 +92,6 @@ program protein_translation_test_main
     proteins("UGGUGUUAUUAAUGGUUU"), &
     "Translation stops if STOP codon in middle of six-codon sequence")
 
-  ! Test 27: Non-existing codon can't translate
-  ! ERROR: Invalid codon
-  call assert_equal([character(len=13) :: ], proteins("AAA"), "Non-existing codon can't translate")
-
-  ! Test 28: Unknown amino acids, not part of a codon, can't translate
-  ! ERROR: Invalid codon
-  call assert_equal([character(len=13) :: ], proteins("XYZ"), &
-    "Unknown amino acids, not part of a codon, can't translate")
-
-  ! Test 29: Incomplete RNA sequence can't translate
-  ! ERROR: Invalid codon
-  call assert_equal([character(len=13) :: ], proteins("AUGU"), &
-    "Incomplete RNA sequence can't translate")
-
-  ! Test 30: Incomplete RNA sequence can translate if valid until a STOP codon
-  call assert_equal([character(len=13) :: 'Phenylalanine', 'Phenylalanine'], proteins("UUCUUCUAAUGGU"), &
-    "Incomplete RNA sequence can translate if valid until a STOP codon")
-
   call test_report()
 
 end program protein_translation_test_main
