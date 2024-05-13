@@ -489,7 +489,16 @@
           "lists",
           "strings"
         ]
+      },
+      {
+        "slug": "binary-search",
+        "name": "Binary Search",
+        "uuid": "e8ecfec1-2fc2-4216-a468-ef8d63e69bee",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
       }
+
     ]
   }
 }

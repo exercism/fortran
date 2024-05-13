@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "SimaDovakin"
+  ],
+  "files": {
+    "solution": [
+      "binary_search.f90"
+    ],
+    "test": [
+      "binary_search_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "blurb": "Implement a binary search algorithm.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Binary_search_algorithm"
+}
