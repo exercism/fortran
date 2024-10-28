@@ -54,6 +54,7 @@ module TesterMain
 
   interface assert_equal
     module procedure assert_equal_str
+    module procedure assert_equal_str_arr
     module procedure assert_equal_int
     module procedure assert_equal_int_arr
     module procedure assert_equal_dble
@@ -222,6 +223,38 @@ contains
   end subroutine
 
   !------------------------------------------------------------------
+  subroutine assert_equal_str_arr(estrarr,istrarr,test_description)
+    ! -------------------------------
+    character(len=*), dimension(:), intent(in) :: estrarr, istrarr
+    character(len=*), intent(in) :: test_description
+    ! -------------------------------
+    logical :: assert_test
+    character(len=MAX_STRING_LEN) :: expected_msg
+    integer :: i
+
+    TESTS_RUN = TESTS_RUN + 1
+
+    assert_test = size(istrarr) == size(estrarr)
+    if (assert_test) then
+      do i = 1, size(istrarr)
+        if (istrarr(i) /= estrarr(i)) then
+          assert_test = .false.
+          exit
+        end if
+      end do
+    end if 
+
+    if (.not. assert_test) then
+      call test_fail_msg(test_description)
+      expected_msg = get_expected_msg(sa_to_s(estrarr), sa_to_s(istrarr))
+      call elogger(expected_msg)
+      call write_json_fail(test_description, expected_msg)
+    else
+      call write_json_success(test_description)
+    endif
+  end subroutine
+
+  !------------------------------------------------------------------
   subroutine assert_equal_int(e_int,i_int,test_description)
     ! -------------------------------
     integer, intent(in) :: e_int,i_int
@@ -338,6 +371,23 @@ contains
     character(len=MAX_RESULT_STRING_LEN) :: i_to_s
     write(i_to_s, *) i
   end function
+
+! String array to string
+  function sa_to_s(sa) result(s)
+    character(len=*), intent(in) :: sa(:)
+    character(len=MAX_RESULT_STRING_LEN) :: s
+    integer :: i, status
+
+    if (size(sa) == 0) then
+      s = ''
+      return
+    end if
+
+    write(s, '(*("""",a,"""":","))', iostat=status) (trim(sa(i)), i=1,size(sa))
+    if (status /= 0) then
+      call truncate_array_string(s, '",')
+    end if
+  end function sa_to_s
 
 ! Integer array to string
   function ia_to_s(i) result(s)
