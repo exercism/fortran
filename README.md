@@ -38,11 +38,11 @@ For more information see [Installation instructions](docs/INSTALLATION.md)
 
 Thank you so much for contributing! :tada:
 
-Please read about how to [get involved in a track](https://github.com/exercism/docs/tree/master/contributing-to-language-tracks). Be sure to read the Exercism [Code of Conduct](https://exercism.io/code-of-conduct).
+Please read about how to [contribute to Exercism](https://exercism.org/docs/building). Be sure to read the Exercism [Code of Conduct](https://exercism.org/docs/using/legal/code-of-conduct).
 
 We welcome pull requests of all kinds. No contribution is too small.
 
-We encourage contributions that provide fixes and improvements to existing exercises. Please note that this track's exercises must conform to the standards determined in the [exercism/x-common](https://github.com/exercism/x-common) repo. Changes to the tests or documentation of a common exercise will often warrant a PR in that repo before it can be incorporated into this track's exercises. If you're unsure, then go ahead and open a GitHub issue, and we'll discuss the change.
+We encourage contributions that provide fixes and improvements to existing exercises. Please note that this track's exercises must conform to the standards determined in the [exercism/problem-specifications](https://github.com/exercism/problem-specifications) repo. Changes to the tests or documentation of a common exercise will often warrant a PR in that repo before it can be incorporated into this track's exercises. If you're unsure, then go ahead and open a GitHub issue, and we'll discuss the change.
 
 ## Exercise Tests
 
@@ -67,7 +67,7 @@ Please keep the following in mind:
 
 - We welcome changes to code style, and wording. Please open a separate PR for these changes if possible.
 
-- Please open an issue before creating a PR that makes significant (breaking) changes to an existing exercise or makes changes across many exercises. It is best to discuss these changes before doing the work. Discussions related to exercises that are not track specific can be found in [exercism/discussions](https://github.com/exercism/discussions/issues).
+- Please open an issue before creating a PR that makes significant (breaking) changes to an existing exercise or makes changes across many exercises. It is best to discuss these changes before doing the work. Discussions related to exercises that are not track-specific can be found in [Exercism's forum](https://forum.exercism.org/).
 
 - Follow the coding standards for Fortran. (If there is a formatter for the track's language, add instructions for using it here.)
 
@@ -77,16 +77,15 @@ Please keep the following in mind:
 
 ## Contributing a New Exercise
 
-- All Exercism exercises must be defined in [x-common](https://github.com/exercism/x-common/tree/master/exercises) before they are implemented for a specific track. Please submit a PR there if your exercise is new to Exercism.
+- All Exercism exercises must be defined in [problem-specifications](https://github.com/exercism/problem-specifications/tree/main/exercises) before they are implemented for a specific track. Please submit a PR there if your exercise is new to Exercism.
 
-- Please make sure the new exercise conforms to specifications in the [exercism/x-common](https://github.com/exercism/x-common) repo.
+- Please make sure the new exercise conforms to specifications in the [exercism/problem-specifications](https://github.com/exercism/problem-specifications) repo.
 
 - Each exercise must stand on its own. Do not reference files outside the exercise directory. They will not be included when the user fetches the exercise.
 
 - Exercises should use only the Fortran core libraries.
 
-- Please do not add a README or README.md file to the exercise directory. The READMEs are constructed using shared metadata, which lives in the
-  [exercism/x-common](https://github.com/exercism/x-common) repository. Further explanation can be found in [fixing-exercise-readmes](https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md)
+- Please do not add a README or README.md file to the exercise directory. The READMEs are constructed using shared metadata, which lives in the [exercism/problem-specifications](https://github.com/exercism/problem-specifications) repository. Further explanation can be found in [Exercism's docs](https://exercism.org/docs/building/tracks/practice-exercises).
 
 - Each exercise should have a test suite, an example solution, a template file for the real implementation and ... (anything else that needs to go with each exercise for this track). The CI build expects files to be named using the following convention: (describe the Fortran convention for naming the various files that make up an exercise).
 
