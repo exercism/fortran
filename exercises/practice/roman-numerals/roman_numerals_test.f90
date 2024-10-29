@@ -80,10 +80,12 @@ program roman_numerals_test_main
   ! Test 25: 3001 is MMMI
   call assert_equal("MMMI", roman(3001), "3001 is MMMI")
 
-  ! Test 26: 3999 is MMMCMXCIX
+  ! Test 26: 3888 is MMMDCCCLXXXVIII
+  call assert_equal("MMMDCCCLXXXVIII", roman(3888), "3888 is MMMDCCCLXXXVIII")
+
+  ! Test 27: 3999 is MMMCMXCIX
   call assert_equal("MMMCMXCIX", roman(3999), "3999 is MMMCMXCIX")
 
   call test_report()
 
 end program
-
