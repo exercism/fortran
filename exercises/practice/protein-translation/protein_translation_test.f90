@@ -92,7 +92,11 @@ program protein_translation_test_main
     proteins("UGGUGUUAUUAAUGGUUU"), &
     "Translation stops if STOP codon in middle of six-codon sequence")
 
+  ! Test 27: Sequence of two non-STOP codons does not translate to a STOP codon
+  call assert_equal([character(len=13) :: 'Methionine', 'Methionine'], &
+    proteins("AUGAUG"), &
+    "Sequence of two non-STOP codons does not translate to a STOP codon")
+
   call test_report()
 
 end program protein_translation_test_main
-
