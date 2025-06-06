@@ -64,10 +64,11 @@ program bob_test_main
 
    ! Test 20: alternate silence
    !call assert_equal("Fine. Be that way!", hey("										"), "alternate silence")
+
    ! Test 21: multiple line question
    call assert_equal("Whatever.", hey(""// &
-   & "Does this cryogenic chamber make me look fat?"// &
-   & "No."), "multiple line question")
+   & "Does this cryogenic chamber make me look fat?"), "multiple line question")
+
    ! Test 22: starting with whitespace
    call assert_equal("Whatever.", hey("         hmmmmmmm..."), "starting with whitespace")
 
@@ -75,9 +76,10 @@ program bob_test_main
    call assert_equal("Sure.", hey("Okay if like my  spacebar  quite a bit?   "), "ending with whitespace")
 
    ! Test 24: other whitespace
-   !call assert_equal("Fine. Be that way!", hey(""// &
-   !  & "
-   !	"), "other whitespace")
+   call assert_equal("Fine. Be that way!", hey(""// &
+     & "
+   	"), "other whitespace")
+
    ! Test 25: non-question ending with whitespace
    call assert_equal("Whatever.", hey("This is a statement ending with whitespace      "), "non-question ending with whitespace")
 
