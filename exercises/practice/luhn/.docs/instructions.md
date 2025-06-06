@@ -3,9 +3,7 @@
 Determine whether a number is valid according to the [Luhn formula][luhn].
 
 The number will be provided as a string.
-The number will be provided as a string.
 
-## Validating a number
 ## Validating a number
 
 Strings of length 1 or less are not valid.
