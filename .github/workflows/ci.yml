@@ -24,10 +24,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
-      - name: Set path to gfortran
+      - name: Install GFortran (macOS)
         if: matrix.os == 'macos'
         run: |
-          echo "FC=$(ls /usr/local/Cellar/gcc/*/bin/gfortran | tail -n1)" >> $GITHUB_ENV
+          brew install gcc@15
+          echo "FC=$(brew --prefix gcc)/bin/gfortran" >> $GITHUB_ENV
 
       - name: Verify all exercises
         run: |
