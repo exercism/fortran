@@ -1,5 +1,10 @@
 module bob
   implicit none
+
+  character(len=1), parameter :: CARRIAGE_RETURN_CHAR = char(13)
+  character(len=1), parameter :: NEWLINE_CHAR = char(10)
+  character(len=1), parameter :: TAB_CHAR = char(9)
+
 contains
   function is_uppercase(str)
     logical :: is_uppercase
@@ -23,15 +28,30 @@ contains
     character(*) :: str
     character :: chr
     integer :: i
-    i = len_trim(str)
-    chr = str(i:i)
-    is_question = (chr .EQ. '?')
+    do i = len(str), 1, -1
+      chr = str(i:i)
+      if (chr /= ' ' .and. chr /= TAB_CHAR .and. &
+          chr /= NEWLINE_CHAR .and. chr /= CARRIAGE_RETURN_CHAR) then
+        is_question = (chr .EQ. '?')
+        return
+      end if
+    end do
+    is_question = .false.
   end function is_question
 
   function is_blank(str)
     logical :: is_blank
     character(*) :: str
-    is_blank = len_trim(adjustl(str)) == 0
+    character :: chr
+    integer :: i
+    is_blank = .TRUE.
+    do i = 1, len(str)
+      if (chr /= ' ' .and. chr /= TAB_CHAR .and. &
+          chr /= NEWLINE_CHAR .and. chr /= CARRIAGE_RETURN_CHAR) then
+        is_blank = .FALSE.
+        return
+      end if
+    end do
   end function is_blank
 
   function hey(statement)
