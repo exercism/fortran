@@ -13,10 +13,10 @@ jobs:
       matrix:
         include:
           - os: linux
-            runs-on: ubuntu-22.04
+            runs-on: ubuntu-24.04
 
           - os: macos
-            runs-on: macos-13
+            runs-on: macos-15
 
     name: ${{ matrix.os }}
     runs-on: ${{ matrix.runs-on }}
