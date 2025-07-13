@@ -4,6 +4,9 @@ program bob_test_main
 
    implicit none
 
+    character(len=1), parameter :: CARRIAGE_RETURN = CHAR(13)
+    character(len=1), parameter :: NEWLINE = CHAR(10)
+    character(len=1), parameter :: TAB = CHAR(9)
 
    ! Test 1: stating something
    call assert_equal("Whatever.", hey("Tom-ay-to, tom-aaaah-to."), "stating something")
@@ -63,11 +66,17 @@ program bob_test_main
    call assert_equal("Fine. Be that way!", hey("          "), "prolonged silence")
 
    ! Test 20: alternate silence
-   !call assert_equal("Fine. Be that way!", hey("										"), "alternate silence")
+   call assert_equal("Fine. Be that way!", hey(TAB // TAB // & 
+                                              & TAB // TAB // &
+                                              & TAB // TAB // & 
+                                              & TAB // TAB // &
+                                              & TAB // TAB), "alternate silence")
+
    ! Test 21: multiple line question
-   call assert_equal("Whatever.", hey(""// &
-   & "Does this cryogenic chamber make me look fat?"// &
-   & "No."), "multiple line question")
+   call assert_equal("Sure.", hey( NEWLINE // &
+   & "Does this cryogenic chamber make"// & 
+   & NEWLINE // "me look fat?"), "multiple line question")
+
    ! Test 22: starting with whitespace
    call assert_equal("Whatever.", hey("         hmmmmmmm..."), "starting with whitespace")
 
@@ -75,9 +84,8 @@ program bob_test_main
    call assert_equal("Sure.", hey("Okay if like my  spacebar  quite a bit?   "), "ending with whitespace")
 
    ! Test 24: other whitespace
-   !call assert_equal("Fine. Be that way!", hey(""// &
-   !  & "
-   !	"), "other whitespace")
+   call assert_equal("Fine. Be that way!", hey(NEWLINE // CARRIAGE_RETURN // " " // TAB), "other whitespace")
+
    ! Test 25: non-question ending with whitespace
    call assert_equal("Whatever.", hey("This is a statement ending with whitespace      "), "non-question ending with whitespace")
 
