@@ -20,7 +20,7 @@ contains
     integer :: i, n_protein, max_n_proteins
     
     max_n_proteins = len(rna)/3
-    allocate(protein_ids(0:max_n_proteins-1))
+    allocate(protein_ids(max_n_proteins))
 
     n_protein = 0
     do i = 1, len(rna), 3
