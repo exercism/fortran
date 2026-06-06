@@ -93,6 +93,41 @@
         ]
       },
       {
+        "slug": "acronym",
+        "name": "Acronym",
+        "uuid": "126acd3f-9ad5-46be-ae29-188fdbd7adf7",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics": [
+          "conditionals",
+          "logic",
+          "loops",
+          "math"
+        ]
+      },
+      {
+        "slug": "armstrong-numbers",
+        "name": "Armstrong Numbers",
+        "uuid": "b752faa1-2262-4be1-9699-1d684f6d479a",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics": [
+          "comparisons",
+          "numbers",
+          "strings"
+        ]
+      },
+      {
+        "slug": "binary-search",
+        "name": "Binary Search",
+        "uuid": "e8ecfec1-2fc2-4216-a468-ef8d63e69bee",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
         "slug": "bob",
         "name": "Bob",
         "uuid": "c0657767-1d7f-4262-b932-50ab53b9c220",
@@ -103,6 +138,51 @@
           "conditionals",
           "equality",
           "strings"
+        ]
+      },
+      {
+        "slug": "collatz-conjecture",
+        "name": "Collatz Conjecture",
+        "uuid": "056c0605-8e8f-423c-b726-4daf6dc30b4c",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics": [
+          "conditionals",
+          "logic",
+          "loops",
+          "math"
+        ]
+      },
+      {
+        "slug": "darts",
+        "name": "Darts",
+        "uuid": "4e7b84c0-5f6c-4bf3-b991-d7eae18ca05f",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "difference-of-squares",
+        "name": "Difference of Squares",
+        "uuid": "dd6c972e-3c85-4a92-b8e5-d58ea3cadfa0",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics": [
+          "math"
+        ]
+      },
+      {
+        "slug": "grains",
+        "name": "Grains",
+        "uuid": "859da858-c6c2-4509-b32e-0fb4e461e1a5",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics": [
+          "numbers",
+          "math"
         ]
       },
       {
@@ -117,6 +197,30 @@
           "integers",
           "type_conversion"
         ]
+      },
+      {
+        "slug": "isbn-verifier",
+        "name": "ISBN Verifier",
+        "uuid": "a9880507-d14c-4fb1-8320-94c63a15b7d2",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "isogram",
+        "name": "Isogram",
+        "uuid": "0c16dde4-a74a-49e0-8b2c-6fa4a104e7b9",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "luhn",
+        "name": "Luhn",
+        "uuid": "99b47337-5bb0-4518-9fd5-44161a0ab3e9",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
       },
       {
         "slug": "matrix",
@@ -149,46 +253,6 @@
         ]
       },
       {
-        "slug": "rna-transcription",
-        "name": "RNA Transcription",
-        "uuid": "6fa09622-b92d-42ae-aeba-b68717c0b51c",
-        "difficulty": 1,
-        "practices": [],
-        "prerequisites": [],
-        "topics": [
-          "conditionals",
-          "logic",
-          "loops",
-          "maps",
-          "strings",
-          "transforming"
-        ]
-      },
-      {
-        "slug": "raindrops",
-        "name": "Raindrops",
-        "uuid": "15bab787-1566-45e9-9e26-0bb7f57bbcd5",
-        "difficulty": 1,
-        "practices": [],
-        "prerequisites": [],
-        "topics": [
-          "algorithms",
-          "loops",
-          "math"
-        ]
-      },
-      {
-        "slug": "difference-of-squares",
-        "name": "Difference of Squares",
-        "uuid": "dd6c972e-3c85-4a92-b8e5-d58ea3cadfa0",
-        "difficulty": 1,
-        "practices": [],
-        "prerequisites": [],
-        "topics": [
-          "math"
-        ]
-      },
-      {
         "slug": "pangram",
         "name": "Pangram",
         "uuid": "c9100446-6e8a-4171-9c1c-61f2b86ba24f",
@@ -202,153 +266,6 @@
           "logic",
           "loops",
           "strings"
-        ]
-      },
-      {
-        "slug": "acronym",
-        "name": "Acronym",
-        "uuid": "126acd3f-9ad5-46be-ae29-188fdbd7adf7",
-        "difficulty": 1,
-        "practices": [],
-        "prerequisites": [],
-        "topics": [
-          "conditionals",
-          "logic",
-          "loops",
-          "math"
-        ]
-      },
-      {
-        "slug": "collatz-conjecture",
-        "name": "Collatz Conjecture",
-        "uuid": "056c0605-8e8f-423c-b726-4daf6dc30b4c",
-        "difficulty": 1,
-        "practices": [],
-        "prerequisites": [],
-        "topics": [
-          "conditionals",
-          "logic",
-          "loops",
-          "math"
-        ]
-      },
-      {
-        "slug": "armstrong-numbers",
-        "name": "Armstrong Numbers",
-        "uuid": "b752faa1-2262-4be1-9699-1d684f6d479a",
-        "difficulty": 1,
-        "practices": [],
-        "prerequisites": [],
-        "topics": [
-          "comparisons",
-          "numbers",
-          "strings"
-        ]
-      },
-      {
-        "slug": "yacht",
-        "name": "Yacht",
-        "uuid": "26d9bb69-fb20-4563-8ad7-e5a0ad1392a3",
-        "difficulty": 1,
-        "practices": [],
-        "prerequisites": [],
-        "topics": [
-          "logicals",
-          "conditionals",
-          "comparisons",
-          "numbers",
-          "sequences",
-          "strings"
-        ]
-      },
-      {
-        "slug": "queen-attack",
-        "name": "Queen Attack",
-        "uuid": "0383afd8-8e78-43d8-82ed-fac5f4073532",
-        "difficulty": 1,
-        "practices": [],
-        "prerequisites": [],
-        "topics": [
-          "logicals",
-          "conditionals",
-          "comparisons",
-          "numbers"
-        ]
-      },
-      {
-        "slug": "leap",
-        "name": "Leap",
-        "uuid": "609a16cb-6b46-4697-addb-b8e4793c56a2",
-        "difficulty": 2,
-        "practices": [
-          "conditionals",
-          "equality"
-        ],
-        "prerequisites": [
-          "conditionals",
-          "equality"
-        ]
-      },
-      {
-        "slug": "allergies",
-        "name": "Allergies",
-        "uuid": "52b1856c-7570-4d75-aaa9-e1cff3cb6155",
-        "difficulty": 3,
-        "practices": [],
-        "prerequisites": [],
-        "topics": [
-          "bools",
-          "conditionals",
-          "comparisons",
-          "numbers",
-          "sequences",
-          "interfaces"
-        ]
-      },
-      {
-        "slug": "triangle",
-        "name": "Triangle",
-        "uuid": "58e138e9-55d8-49fa-b05d-70a6aa627b21",
-        "difficulty": 1,
-        "practices": [],
-        "prerequisites": [],
-        "topics": [
-          "bools",
-          "conditionals",
-          "comparisons",
-          "numbers",
-          "sequences",
-          "interfaces"
-        ]
-      },
-      {
-        "slug": "rational-numbers",
-        "name": "Rational Numbers",
-        "uuid": "8cb180f8-2810-429c-8996-acdfd120b737",
-        "difficulty": 3,
-        "practices": [],
-        "prerequisites": [],
-        "topics": [
-          "logicals",
-          "conditionals",
-          "loops",
-          "comparisons",
-          "numbers"
-        ]
-      },
-      {
-        "slug": "high-scores",
-        "name": "High Scores",
-        "uuid": "d4c9aef2-b71e-41d9-897e-defb3e1ee304",
-        "difficulty": 3,
-        "practices": [],
-        "prerequisites": [],
-        "topics": [
-          "conditionals",
-          "comparisons",
-          "numbers",
-          "arrays",
-          "maximum"
         ]
       },
       {
@@ -367,16 +284,71 @@
         ]
       },
       {
-        "slug": "grains",
-        "name": "Grains",
-        "uuid": "859da858-c6c2-4509-b32e-0fb4e461e1a5",
+        "slug": "queen-attack",
+        "name": "Queen Attack",
+        "uuid": "0383afd8-8e78-43d8-82ed-fac5f4073532",
         "difficulty": 1,
         "practices": [],
         "prerequisites": [],
         "topics": [
-          "numbers",
+          "logicals",
+          "conditionals",
+          "comparisons",
+          "numbers"
+        ]
+      },
+      {
+        "slug": "raindrops",
+        "name": "Raindrops",
+        "uuid": "15bab787-1566-45e9-9e26-0bb7f57bbcd5",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics": [
+          "algorithms",
+          "loops",
           "math"
         ]
+      },
+      {
+        "slug": "rna-transcription",
+        "name": "RNA Transcription",
+        "uuid": "6fa09622-b92d-42ae-aeba-b68717c0b51c",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics": [
+          "conditionals",
+          "logic",
+          "loops",
+          "maps",
+          "strings",
+          "transforming"
+        ]
+      },
+      {
+        "slug": "roman-numerals",
+        "name": "Roman Numerals",
+        "uuid": "9f587de2-a156-4ee1-83aa-0b6ce0a47c60",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "saddle-points",
+        "name": "Saddle Points",
+        "uuid": "0a4da1c1-8c20-44ac-8d31-c99895102578",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "sieve",
+        "name": "Sieve",
+        "uuid": "795a61fe-1c18-478c-beff-98ed7c608070",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
       },
       {
         "slug": "space-age",
@@ -391,44 +363,28 @@
         ]
       },
       {
-        "slug": "reverse-string",
-        "name": "Reverse String",
-        "uuid": "f93103ae-b124-4081-8100-59fd5b626a4f",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 2
-      },
-      {
-        "slug": "luhn",
-        "name": "Luhn",
-        "uuid": "99b47337-5bb0-4518-9fd5-44161a0ab3e9",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 1
-      },
-      {
-        "slug": "roman-numerals",
-        "name": "Roman Numerals",
-        "uuid": "9f587de2-a156-4ee1-83aa-0b6ce0a47c60",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 1
-      },
-      {
-        "slug": "isbn-verifier",
-        "name": "ISBN Verifier",
-        "uuid": "a9880507-d14c-4fb1-8320-94c63a15b7d2",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 1
-      },
-      {
         "slug": "sum-of-multiples",
         "name": "Sum of Multiples",
         "uuid": "848beda6-2e2c-4c7c-bc5c-e469d7fcc3c1",
         "practices": [],
         "prerequisites": [],
         "difficulty": 1
+      },
+      {
+        "slug": "triangle",
+        "name": "Triangle",
+        "uuid": "58e138e9-55d8-49fa-b05d-70a6aa627b21",
+        "difficulty": 1,
+        "practices": [],
+        "prerequisites": [],
+        "topics": [
+          "bools",
+          "conditionals",
+          "comparisons",
+          "numbers",
+          "sequences",
+          "interfaces"
+        ]
       },
       {
         "slug": "two-fer",
@@ -439,44 +395,88 @@
         "difficulty": 1
       },
       {
-        "slug": "sieve",
-        "name": "Sieve",
-        "uuid": "795a61fe-1c18-478c-beff-98ed7c608070",
+        "slug": "yacht",
+        "name": "Yacht",
+        "uuid": "26d9bb69-fb20-4563-8ad7-e5a0ad1392a3",
+        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1
+        "topics": [
+          "logicals",
+          "conditionals",
+          "comparisons",
+          "numbers",
+          "sequences",
+          "strings"
+        ]
       },
       {
-        "slug": "darts",
-        "name": "Darts",
-        "uuid": "4e7b84c0-5f6c-4bf3-b991-d7eae18ca05f",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 1
+        "slug": "leap",
+        "name": "Leap",
+        "uuid": "609a16cb-6b46-4697-addb-b8e4793c56a2",
+        "difficulty": 2,
+        "practices": [
+          "conditionals",
+          "equality"
+        ],
+        "prerequisites": [
+          "conditionals",
+          "equality"
+        ]
       },
       {
-        "slug": "saddle-points",
-        "name": "Saddle Points",
-        "uuid": "0a4da1c1-8c20-44ac-8d31-c99895102578",
+        "slug": "reverse-string",
+        "name": "Reverse String",
+        "uuid": "f93103ae-b124-4081-8100-59fd5b626a4f",
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1
+        "difficulty": 2
       },
       {
-        "slug": "isogram",
-        "name": "Isogram",
-        "uuid": "0c16dde4-a74a-49e0-8b2c-6fa4a104e7b9",
+        "slug": "allergies",
+        "name": "Allergies",
+        "uuid": "52b1856c-7570-4d75-aaa9-e1cff3cb6155",
+        "difficulty": 3,
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1
+        "topics": [
+          "bools",
+          "conditionals",
+          "comparisons",
+          "numbers",
+          "sequences",
+          "interfaces"
+        ]
       },
       {
-        "slug": "linked-list",
-        "name": "Linked List",
-        "uuid": "ff677dc5-c9b9-4a2e-9e5d-7202d2ec979a",
+        "slug": "high-scores",
+        "name": "High Scores",
+        "uuid": "d4c9aef2-b71e-41d9-897e-defb3e1ee304",
+        "difficulty": 3,
         "practices": [],
         "prerequisites": [],
-        "difficulty": 8
+        "topics": [
+          "conditionals",
+          "comparisons",
+          "numbers",
+          "arrays",
+          "maximum"
+        ]
+      },
+      {
+        "slug": "rational-numbers",
+        "name": "Rational Numbers",
+        "uuid": "8cb180f8-2810-429c-8996-acdfd120b737",
+        "difficulty": 3,
+        "practices": [],
+        "prerequisites": [],
+        "topics": [
+          "logicals",
+          "conditionals",
+          "loops",
+          "comparisons",
+          "numbers"
+        ]
       },
       {
         "slug": "protein-translation",
@@ -491,12 +491,12 @@
         ]
       },
       {
-        "slug": "binary-search",
-        "name": "Binary Search",
-        "uuid": "e8ecfec1-2fc2-4216-a468-ef8d63e69bee",
+        "slug": "linked-list",
+        "name": "Linked List",
+        "uuid": "ff677dc5-c9b9-4a2e-9e5d-7202d2ec979a",
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1
+        "difficulty": 8
       }
     ]
   }
