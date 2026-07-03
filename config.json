@@ -1,14 +1,22 @@
 {
   "language": "Fortran",
   "slug": "fortran",
-  "version": 3,
   "active": true,
-  "blurb": "Fortran is one of the oldest languages still in use today, latest revision is 2018. The name Fortran is derived from FORmula TRANslation. It still shines for numerical high performance computing.",
   "status": {
     "concept_exercises": false,
     "test_runner": true,
     "representer": false,
     "analyzer": false
+  },
+  "blurb": "Fortran is one of the oldest languages still in use today, latest revision is 2018. The name Fortran is derived from FORmula TRANslation. It still shines for numerical high performance computing.",
+  "version": 3,
+  "online_editor": {
+    "indent_style": "space",
+    "indent_size": 2,
+    "highlightjs_language": "fortran"
+  },
+  "test_runner": {
+    "average_run_time": 2
   },
   "files": {
     "solution": [
@@ -24,68 +32,15 @@
       "exemplar.f90"
     ]
   },
-  "online_editor": {
-    "indent_style": "space",
-    "indent_size": 2,
-    "highlightjs_language": "fortran"
-  },
-  "test_runner": {
-    "average_run_time": 2
-  },
-  "tags": [
-    "paradigm/imperative",
-    "paradigm/procedural",
-    "typing/strong",
-    "execution_mode/compiled",
-    "platform/windows",
-    "platform/mac",
-    "platform/linux",
-    "runtime/language_specific",
-    "used_for/scientific_calculations"
-  ],
-  "key_features": [
-    {
-      "icon": "scientific",
-      "title": "Scientific computing",
-      "content": "Fortran is used heavily in scientific computing and engineering."
-    },
-    {
-      "icon": "cross-platform",
-      "title": "Cross-platform",
-      "content": "Fortran is portable and can run on almost any platform."
-    },
-    {
-      "icon": "fast",
-      "title": "Performant",
-      "content": "Fortran has been consistently rated as one of the highest performing languages for energy and time."
-    },
-    {
-      "icon": "stable",
-      "title": "Stable",
-      "content": "The Fortran values stability and backwards compatibility, Fortran programs can run for decades."
-    },
-    {
-      "icon": "multi-paradigm",
-      "title": "Math",
-      "content": "The name of Fortran derived from Formula Translation. Natively supports arrays and complex numbers."
-    },
-    {
-      "icon": "powerful",
-      "title": "Efficient",
-      "content": "Fortran has been optimized for decades to execute efficiently."
-    }
-  ],
-  "concepts": [],
   "exercises": {
-    "concept": [],
     "practice": [
       {
         "slug": "hello-world",
         "name": "Hello World",
         "uuid": "b71d9258-78ef-4986-b9ed-ebf93b72d399",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "conditionals",
           "optional_values",
@@ -96,9 +51,9 @@
         "slug": "acronym",
         "name": "Acronym",
         "uuid": "126acd3f-9ad5-46be-ae29-188fdbd7adf7",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "conditionals",
           "logic",
@@ -110,9 +65,9 @@
         "slug": "armstrong-numbers",
         "name": "Armstrong Numbers",
         "uuid": "b752faa1-2262-4be1-9699-1d684f6d479a",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "comparisons",
           "numbers",
@@ -131,9 +86,9 @@
         "slug": "bob",
         "name": "Bob",
         "uuid": "c0657767-1d7f-4262-b932-50ab53b9c220",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "conditionals",
           "equality",
@@ -144,9 +99,9 @@
         "slug": "collatz-conjecture",
         "name": "Collatz Conjecture",
         "uuid": "056c0605-8e8f-423c-b726-4daf6dc30b4c",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "conditionals",
           "logic",
@@ -166,9 +121,9 @@
         "slug": "difference-of-squares",
         "name": "Difference of Squares",
         "uuid": "dd6c972e-3c85-4a92-b8e5-d58ea3cadfa0",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "math"
         ]
@@ -177,9 +132,9 @@
         "slug": "grains",
         "name": "Grains",
         "uuid": "859da858-c6c2-4509-b32e-0fb4e461e1a5",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "numbers",
           "math"
@@ -189,9 +144,9 @@
         "slug": "hamming",
         "name": "Hamming",
         "uuid": "c4b23221-b6a8-452c-9816-c30501fc690f",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "bitwise_operations",
           "integers",
@@ -226,9 +181,9 @@
         "slug": "matrix",
         "name": "Matrix",
         "uuid": "5d4b176a-d656-4975-a937-ef3e4e830d3f",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "algorithms",
           "conditionals",
@@ -242,9 +197,9 @@
         "slug": "nth-prime",
         "name": "Nth Prime",
         "uuid": "423a13d3-8e2a-483a-8da5-50bfa76c04f4",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "algorithms",
           "lists",
@@ -256,9 +211,9 @@
         "slug": "pangram",
         "name": "Pangram",
         "uuid": "c9100446-6e8a-4171-9c1c-61f2b86ba24f",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "algorithms",
           "conditionals",
@@ -272,9 +227,9 @@
         "slug": "perfect-numbers",
         "name": "Perfect Numbers",
         "uuid": "81b492ae-0a1f-4247-bd21-7da5fa911104",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "logicals",
           "conditionals",
@@ -287,9 +242,9 @@
         "slug": "queen-attack",
         "name": "Queen Attack",
         "uuid": "0383afd8-8e78-43d8-82ed-fac5f4073532",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "logicals",
           "conditionals",
@@ -301,9 +256,9 @@
         "slug": "raindrops",
         "name": "Raindrops",
         "uuid": "15bab787-1566-45e9-9e26-0bb7f57bbcd5",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "algorithms",
           "loops",
@@ -314,9 +269,9 @@
         "slug": "rna-transcription",
         "name": "RNA Transcription",
         "uuid": "6fa09622-b92d-42ae-aeba-b68717c0b51c",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "conditionals",
           "logic",
@@ -354,9 +309,9 @@
         "slug": "space-age",
         "name": "Space Age",
         "uuid": "01a79e36-786b-45a1-83dd-2a883f0527eb",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "numbers",
           "math"
@@ -374,9 +329,9 @@
         "slug": "triangle",
         "name": "Triangle",
         "uuid": "58e138e9-55d8-49fa-b05d-70a6aa627b21",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "bools",
           "conditionals",
@@ -398,9 +353,9 @@
         "slug": "yacht",
         "name": "Yacht",
         "uuid": "26d9bb69-fb20-4563-8ad7-e5a0ad1392a3",
-        "difficulty": 1,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 1,
         "topics": [
           "logicals",
           "conditionals",
@@ -414,15 +369,9 @@
         "slug": "leap",
         "name": "Leap",
         "uuid": "609a16cb-6b46-4697-addb-b8e4793c56a2",
-        "difficulty": 2,
-        "practices": [
-          "conditionals",
-          "equality"
-        ],
-        "prerequisites": [
-          "conditionals",
-          "equality"
-        ]
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
       },
       {
         "slug": "reverse-string",
@@ -436,9 +385,9 @@
         "slug": "allergies",
         "name": "Allergies",
         "uuid": "52b1856c-7570-4d75-aaa9-e1cff3cb6155",
-        "difficulty": 3,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 3,
         "topics": [
           "bools",
           "conditionals",
@@ -452,9 +401,9 @@
         "slug": "high-scores",
         "name": "High Scores",
         "uuid": "d4c9aef2-b71e-41d9-897e-defb3e1ee304",
-        "difficulty": 3,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 3,
         "topics": [
           "conditionals",
           "comparisons",
@@ -467,9 +416,9 @@
         "slug": "rational-numbers",
         "name": "Rational Numbers",
         "uuid": "8cb180f8-2810-429c-8996-acdfd120b737",
-        "difficulty": 3,
         "practices": [],
         "prerequisites": [],
+        "difficulty": 3,
         "topics": [
           "logicals",
           "conditionals",
@@ -499,5 +448,48 @@
         "difficulty": 8
       }
     ]
-  }
+  },
+  "key_features": [
+    {
+      "title": "Scientific computing",
+      "content": "Fortran is used heavily in scientific computing and engineering.",
+      "icon": "scientific"
+    },
+    {
+      "title": "Cross-platform",
+      "content": "Fortran is portable and can run on almost any platform.",
+      "icon": "cross-platform"
+    },
+    {
+      "title": "Performant",
+      "content": "Fortran has been consistently rated as one of the highest performing languages for energy and time.",
+      "icon": "fast"
+    },
+    {
+      "title": "Stable",
+      "content": "The Fortran values stability and backwards compatibility, Fortran programs can run for decades.",
+      "icon": "stable"
+    },
+    {
+      "title": "Math",
+      "content": "The name of Fortran derived from Formula Translation. Natively supports arrays and complex numbers.",
+      "icon": "multi-paradigm"
+    },
+    {
+      "title": "Efficient",
+      "content": "Fortran has been optimized for decades to execute efficiently.",
+      "icon": "powerful"
+    }
+  ],
+  "tags": [
+    "execution_mode/compiled",
+    "paradigm/imperative",
+    "paradigm/procedural",
+    "platform/linux",
+    "platform/mac",
+    "platform/windows",
+    "runtime/language_specific",
+    "typing/strong",
+    "used_for/scientific_calculations"
+  ]
 }
