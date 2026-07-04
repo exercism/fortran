@@ -1,3 +1,5 @@
+! The tests were created from https://github.com/exercism/problem-specifications/blob/main/exercises/collatz-conjecture/canonical-data.json
+
 program collatz_conjecture_test_main
    use TesterMain
    use collatz_conjecture
@@ -17,14 +19,11 @@ program collatz_conjecture_test_main
    call assert_equal(152, steps(1000000), "large number of even and odd steps")
 
    ! Test 5: zero is an error
-   ! ERROR: Only positive numbers are allowed
    call assert_equal(-1, steps(0), "zero is an error")
 
    ! Test 6: negative value is an error
-   ! ERROR: Only positive numbers are allowed
    call assert_equal(-1, steps(-15), "negative value is an error")
 
    call test_report()
 
 end program
-
