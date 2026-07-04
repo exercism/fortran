@@ -1,0 +1,22 @@
+{{ header }}
+
+program {{ name }}_test_main
+  use TesterMain
+  use {{ name }}
+  implicit none
+
+  character(len=1), parameter :: CARRIAGE_RETURN = CHAR(13)
+  character(len=1), parameter :: NEWLINE = CHAR(10)
+  character(len=1), parameter :: TAB = CHAR(9)
+
+{% for case in cases -%}
+  ! Test {{ loop.index }}: {{ case["description"] }}
+  call assert_equal("{{ case["expected"] }}", &
+                    hey({{ case["input"]["heyBob"] | escape_quote_whitespace }}), &
+                    "{{ case["description"] }}")
+
+{% endfor %}
+
+  call test_report()
+
+end program
