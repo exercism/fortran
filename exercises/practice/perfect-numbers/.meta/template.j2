@@ -1,0 +1,20 @@
+{{ header }}
+
+program {{ name }}_test_main
+  use TesterMain
+  use {{ name }}
+  implicit none
+
+{% for case in cases -%}
+  ! Test {{ loop.index }}: {{ case["description"] }}
+  {% if 'error' in case["expected"] -%}
+    {% set expected = "ERROR" -%}
+  {% else -%}
+    {% set expected = case["expected"] -%}
+  {% endif -%}
+  call assert_equal("{{ expected }}", {{ case["property"] }}({{ case["input"]["number"] }}), "{{ case["description"] }}")
+
+{% endfor %}
+  call test_report()
+
+end program
