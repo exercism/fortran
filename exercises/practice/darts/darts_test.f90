@@ -3,6 +3,7 @@
 program darts_test_main
   use TesterMain
   use darts
+
   implicit none
 
   ! Test 1: Missed target
