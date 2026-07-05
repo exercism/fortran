@@ -3,6 +3,7 @@
 program luhn_test_main
   use TesterMain
   use luhn
+
   implicit none
 
   ! Test 1: single digit strings can not be valid
