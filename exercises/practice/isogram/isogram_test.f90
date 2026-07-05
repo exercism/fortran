@@ -3,6 +3,7 @@
 program isogram_test_main
   use TesterMain
   use isogram
+
   implicit none
 
   ! Test 1: empty string
