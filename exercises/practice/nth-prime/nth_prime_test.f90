@@ -1,3 +1,5 @@
+! The tests were created from https://github.com/exercism/problem-specifications/blob/main/exercises/nth-prime/canonical-data.json
+
 program nth_prime_test_main
    use TesterMain
    use nth_prime
@@ -22,4 +24,3 @@ program nth_prime_test_main
    call test_report()
 
 end program
-
