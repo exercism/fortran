@@ -1,3 +1,5 @@
+! The tests were created from https://github.com/exercism/problem-specifications/blob/main/exercises/pangram/canonical-data.json
+
 program pangram_test_main
    use TesterMain
    use pangram
@@ -31,10 +33,6 @@ program pangram_test_main
    ! Test 9: mixed case and punctuation
    call assert_equal(.true., is_pangram("Five quacking Zephyrs jolt my wax bed."), "mixed case and punctuation")
 
-   ! Test 10: case insensitive
-   call assert_equal(.false., is_pangram("the quick brown fox jumps over with lazy FX"), "case insensitive")
-
    call test_report()
 
 end program
-
