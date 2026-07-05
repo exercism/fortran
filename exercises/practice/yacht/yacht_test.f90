@@ -1,3 +1,5 @@
+! The tests were created from https://github.com/exercism/problem-specifications/blob/main/exercises/yacht/canonical-data.json
+
 program yacht_test_main
    use TesterMain
    use yacht
@@ -31,64 +33,66 @@ program yacht_test_main
    ! Test 9: Yacht of 3s counted as fives
    call assert_equal(0, score([3, 3, 3, 3, 3], "fives"), "Yacht of 3s counted as fives")
 
-   ! Test 10: Sixes
+   ! Test 10: Fives
+   call assert_equal(10, score([1, 5, 3, 5, 3], "fives"), "Fives")
+
+   ! Test 11: Sixes
    call assert_equal(6, score([2, 3, 4, 5, 6], "sixes"), "Sixes")
 
-   ! Test 11: Full house two small, three big
+   ! Test 12: Full house two small, three big
    call assert_equal(16, score([2, 2, 4, 4, 4], "full house"), "Full house two small, three big")
 
-   ! Test 12: Full house three small, two big
+   ! Test 13: Full house three small, two big
    call assert_equal(19, score([5, 3, 3, 5, 3], "full house"), "Full house three small, two big")
 
-   ! Test 13: Two pair is not a full house
+   ! Test 14: Two pair is not a full house
    call assert_equal(0, score([2, 2, 4, 4, 5], "full house"), "Two pair is not a full house")
 
-   ! Test 14: Four of a kind is not a full house
+   ! Test 15: Four of a kind is not a full house
    call assert_equal(0, score([1, 4, 4, 4, 4], "full house"), "Four of a kind is not a full house")
 
-   ! Test 15: Yacht is not a full house
+   ! Test 16: Yacht is not a full house
    call assert_equal(0, score([2, 2, 2, 2, 2], "full house"), "Yacht is not a full house")
 
-   ! Test 16: Four of a Kind
+   ! Test 17: Four of a Kind
    call assert_equal(24, score([6, 6, 4, 6, 6], "four of a kind"), "Four of a Kind")
 
-   ! Test 17: Yacht can be scored as Four of a Kind
+   ! Test 18: Yacht can be scored as Four of a Kind
    call assert_equal(12, score([3, 3, 3, 3, 3], "four of a kind"), "Yacht can be scored as Four of a Kind")
 
-   ! Test 18: Full house is not Four of a Kind
+   ! Test 19: Full house is not Four of a Kind
    call assert_equal(0, score([3, 3, 3, 5, 5], "four of a kind"), "Full house is not Four of a Kind")
 
-   ! Test 19: Little Straight
+   ! Test 20: Little Straight
    call assert_equal(30, score([3, 5, 4, 1, 2], "little straight"), "Little Straight")
 
-   ! Test 20: Little Straight as Big Straight
+   ! Test 21: Little Straight as Big Straight
    call assert_equal(0, score([1, 2, 3, 4, 5], "big straight"), "Little Straight as Big Straight")
 
-   ! Test 21: Four in order but not a little straight
+   ! Test 22: Four in order but not a little straight
    call assert_equal(0, score([1, 1, 2, 3, 4], "little straight"), "Four in order but not a little straight")
 
-   ! Test 22: No pairs but not a little straight
+   ! Test 23: No pairs but not a little straight
    call assert_equal(0, score([1, 2, 3, 4, 6], "little straight"), "No pairs but not a little straight")
 
-   ! Test 23: Minimum is 1, maximum is 5, but not a little straight
+   ! Test 24: Minimum is 1, maximum is 5, but not a little straight
    call assert_equal(0, score([1, 1, 3, 4, 5], "little straight"), "Minimum is 1, maximum is 5, but not a little straight")
 
-   ! Test 24: Big Straight
+   ! Test 25: Big Straight
    call assert_equal(30, score([4, 6, 2, 5, 3], "big straight"), "Big Straight")
 
-   ! Test 25: Big Straight as little straight
+   ! Test 26: Big Straight as little straight
    call assert_equal(0, score([6, 5, 4, 3, 2], "little straight"), "Big Straight as little straight")
 
-   ! Test 26: No pairs but not a big straight
+   ! Test 27: No pairs but not a big straight
    call assert_equal(0, score([6, 5, 4, 3, 1], "big straight"), "No pairs but not a big straight")
 
-   ! Test 27: Choice
+   ! Test 28: Choice
    call assert_equal(23, score([3, 3, 5, 6, 6], "choice"), "Choice")
 
-   ! Test 28: Yacht as choice
+   ! Test 29: Yacht as choice
    call assert_equal(10, score([2, 2, 2, 2, 2], "choice"), "Yacht as choice")
 
    call test_report()
 
 end program
-
