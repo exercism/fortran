@@ -1,0 +1,16 @@
+{{ header }}
+
+program {{ name }}_test_main
+  use TesterMain
+  use {{ name }}
+
+  implicit none
+{% for case in cases %}
+  ! Test {{ loop.index }}: {{ case["description"] }}
+  call assert_equal([character(len=13) :: {{ case["expected"] | map("repr") | join(", ") }}], &
+    {{ case["property"] }}("{{ case["input"]["strand"] }}"), &
+    "{{ case["description"] }}")
+{% endfor %}
+  call test_report()
+
+end program
