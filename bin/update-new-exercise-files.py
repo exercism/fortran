@@ -107,14 +107,16 @@ def template_stub() -> str:
         program {{ name }}_test_main
           use TesterMain
           use {{ name }}
+
           implicit none
-
-        {% for case in cases -%}
+        {% for case in cases %}
           ! Test {{ loop.index }}: {{ case["description"] }}
-          call assert_equal("{{ case["expected"] }}", {{ case["property"] }}(...), "{{ case["description"] }}")
-
+        {%- if not case["expect_error"] %}
+          call assert_equal({{ case["expected"] }}, {{ case["property"] }}({{ case["input"]["..."] }}), "{{ case["description"] }}")
+        {%- else %}
+          call assert_equal(-1, {{ case["property"] }}({{ case["input"]["number"] }}), "{{ case["description"] }}")
+        {%- endif %}
         {% endfor %}
-
           call test_report()
 
         end program
