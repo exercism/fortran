@@ -1,3 +1,5 @@
+! The tests were created from https://github.com/exercism/problem-specifications/blob/main/exercises/raindrops/canonical-data.json
+
 program raindrops_test_main
    use TesterMain
    use raindrops
@@ -61,4 +63,3 @@ program raindrops_test_main
    call test_report()
 
 end program
-
