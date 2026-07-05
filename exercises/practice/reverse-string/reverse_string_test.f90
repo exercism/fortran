@@ -3,6 +3,7 @@
 program reverse_string_test_main
   use TesterMain
   use reverse_string
+
   implicit none
 
   ! Test 1: an empty string
@@ -26,4 +27,3 @@ program reverse_string_test_main
   call test_report()
 
 end program
-
