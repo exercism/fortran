@@ -1,4 +1,4 @@
-
+! The tests were created from https://github.com/exercism/problem-specifications/blob/main/exercises/leap/canonical-data.json
 
 program leap_test_main
    use TesterMain
@@ -7,7 +7,7 @@ program leap_test_main
    implicit none
 
    ! Test 1: year not divisible by 4 in common year
-   call assert_equal(.false., is_leap_year(2015),"year not divisible by 4 in common year")
+   call assert_equal(.false., is_leap_year(2015), "year not divisible by 4 in common year")
 
    ! Test 2: year divisible by 2, not divisible by 4 in common year
    call assert_equal(.false., is_leap_year(1970), "year divisible by 2, not divisible by 4 in common year")
@@ -36,4 +36,3 @@ program leap_test_main
    call test_report()
 
 end program
-
