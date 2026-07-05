@@ -1,0 +1,36 @@
+{{ header }}
+
+program {{ name }}_test_main
+  use TesterMain
+  use {{ name }}
+
+  implicit none
+
+  type(list_t) :: test_list
+  integer :: unused
+
+{% for case in cases %}
+  ! Test {{ loop.index }}: {{ case["description"] }}
+  test_list = new()
+  {%- for instruction in case["input"]["operations"] %}
+  {%- if instruction["operation"] in ["push", "unshift"] %}
+  call {{ instruction["operation"] }}(test_list, {{ instruction["value"] }})
+  {%- elif instruction["operation"] in ["pop", "shift"] %}
+  {%- if instruction["expected"] %}
+  call assert_equal({{ instruction["expected"] }}, {{ instruction["operation"] }}(test_list), &
+    "{{ case["description"] }}")
+  {%- else %}
+  unused = {{ instruction["operation"] }}(test_list)
+  {%- endif %}
+  {%- elif instruction["operation"] == "count" %}
+  call assert_equal({{ instruction["expected"] }}, length(test_list), &
+    "{{ case["description"] }}")
+  {%- elif instruction["operation"] == "delete" %}
+  call delete(test_list, {{ instruction["value"] }})
+  {%- endif %}
+  {%- endfor %}
+  call destroy(test_list)
+{% endfor %}
+  call test_report()
+
+end program
