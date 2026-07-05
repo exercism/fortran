@@ -1,0 +1,23 @@
+{{ header }}
+
+program {{ name }}_test_main
+   use TesterMain
+   use {{ name }}
+
+   implicit none
+
+   integer distance
+{% for case in cases %}
+   ! Test {{ loop.index }}: {{ case["description"] }}
+{%- if not case["expect_error"] %}
+   ! Test {{ loop.index }}: {{ case["description"] }}
+   call assert_equal(.true., compute("{{ case["input"]["strand1"] }}", "{{ case["input"]["strand2"] }}", distance), "{{ case["description"] }}")
+   call assert_equal({{ case["expected"] }}, distance, "{{ case["description"] }}, distance={{ case["expected"] }}")
+{%- else %}
+   call assert_equal(.false., compute("{{ case["input"]["strand1"] }}", "{{ case["input"]["strand2"] }}", distance), "{{ case["description"] }}")
+   call assert_equal(0, distance, "{{ case["description"] }}, distance=0")
+{%- endif %}
+{% endfor %}
+   call test_report()
+
+end program
