@@ -7,7 +7,7 @@ program {{ name }}_test_main
    implicit none
 {% for case in cases %}
    ! Test {{ loop.index }}: {{ case["description"] }}
-   call assert_equal({{ case["expected"] }}, age_in_years("{{ case["input"]["planet"] }}", {{ case["input"]["seconds"] }}.d0), "{{ case["description"] }}")
+   call assert_equal({{ case["expected"] }}d0, age_in_years("{{ case["input"]["planet"] }}", {{ case["input"]["seconds"] }}.d0), "{{ case["description"] }}")
 {% endfor %}
    call test_report()
 
