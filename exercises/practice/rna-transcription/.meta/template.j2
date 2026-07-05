@@ -1,0 +1,14 @@
+{{ header }}
+
+program {{ name }}_test_main
+   use TesterMain
+   use {{ name }}
+
+   implicit none
+{% for case in cases %}
+   ! Test {{ loop.index }}: {{ case["description"] }}
+   call assert_equal("{{ case["expected"] }}", {{ case["property"] | camel_to_snake }}("{{ case["input"]["dna"] }}"), "{{ case["description"] }}")
+{% endfor %}
+   call test_report()
+
+end program

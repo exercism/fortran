@@ -1,3 +1,5 @@
+! The tests were created from https://github.com/exercism/problem-specifications/blob/main/exercises/rna-transcription/canonical-data.json
+
 program rna_transcription_test_main
    use TesterMain
    use rna_transcription
@@ -25,4 +27,3 @@ program rna_transcription_test_main
    call test_report()
 
 end program
-
