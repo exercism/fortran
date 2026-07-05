@@ -1,3 +1,5 @@
+! The tests were created from https://github.com/exercism/problem-specifications/blob/main/exercises/grains/canonical-data.json
+
 program grains_test_main
    use TesterMain
    use grains
@@ -25,17 +27,14 @@ program grains_test_main
    ! Test 7: grains on square 64
    call assert_equal(9223372036854775808.d0, square(64), "grains on square 64")
 
-   ! Test 8: square 0 raises an exception
-   ! ERROR: square must be between 1 and 64
-   call assert_equal(-1.d0, square(0), "square 0 raises an exception")
+   ! Test 8: square 0 is invalid
+   call assert_equal(-1.d0, square(0), "square 0 is invalid")
 
-   ! Test 9: negative square raises an exception
-   ! ERROR: square must be between 1 and 64
-   call assert_equal(-1.d0, square(-1), "negative square raises an exception")
+   ! Test 9: negative square is invalid
+   call assert_equal(-1.d0, square(-1), "negative square is invalid")
 
-   ! Test 10: square greater than 64 raises an exception
-   ! ERROR: square must be between 1 and 64
-   call assert_equal(-1.d0, square(65), "square greater than 64 raises an exception")
+   ! Test 10: square greater than 64 is invalid
+   call assert_equal(-1.d0, square(65), "square greater than 64 is invalid")
 
    ! Test 11: returns the total number of grains on the board
    call assert_equal(18446744073709551615.d0, total(), "returns the total number of grains on the board")
@@ -43,4 +42,3 @@ program grains_test_main
    call test_report()
 
 end program
-
