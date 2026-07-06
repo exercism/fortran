@@ -8,9 +8,13 @@ program {{ name }}_test_main
 {% for case in cases %}
   ! Test {{ loop.index }}: {{ case["description"] }}
 {%- if not case["expect_error"] %}
-  call assert_equal({{ case["expected"] + 1 }}, {{ case["property"] }}({{ case["input"]["array"] }}, {{ case["input"]["value"] }}), "{{ case["description"] }}")
+  call assert_equal({{ case["expected"] + 1 }}, &
+                    {{ case["property"] }}([integer :: {{ case["input"]["array"] | join(", ") }}], &
+                    {{ case["input"]["value"] }}), "{{ case["description"] }}")
 {%- else %}
-  call assert_equal(-1, {{ case["property"] }}({{ case["input"]["array"] }}, {{ case["input"]["value"] }}), "{{ case["description"] }}")
+  call assert_equal(-1, &
+                    {{ case["property"] }}([integer :: {{ case["input"]["array"] | join(", ") }}], &
+                    {{ case["input"]["value"] }}), "{{ case["description"] }}")
 {%- endif %}
 {% endfor %}
   call test_report()
