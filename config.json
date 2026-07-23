@@ -129,6 +129,14 @@
         ]
       },
       {
+        "slug": "eliuds-eggs",
+        "name": "Eliuds-Eggs",
+        "uuid": "76c695aa-475c-4fdc-b87d-79fc9c1a7e11",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
         "slug": "grains",
         "name": "Grains",
         "uuid": "859da858-c6c2-4509-b32e-0fb4e461e1a5",
