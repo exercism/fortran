@@ -436,6 +436,14 @@
         ]
       },
       {
+        "slug": "secret-handshake",
+        "name": "Secret-Handshake",
+        "uuid": "a54ba6a1-e98b-4bbc-b109-0b430123ea36",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
         "slug": "protein-translation",
         "name": "Protein Translation",
         "uuid": "3d2ba0a1-2a2a-4e1f-89e8-c5add9ddceef",
