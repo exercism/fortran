@@ -421,6 +421,14 @@
         ]
       },
       {
+        "slug": "largest-series-product",
+        "name": "Largest-Series-Product",
+        "uuid": "fcdb9ea8-e6ab-4c3c-84e1-277847bac80b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
         "slug": "rational-numbers",
         "name": "Rational Numbers",
         "uuid": "8cb180f8-2810-429c-8996-acdfd120b737",
