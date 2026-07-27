@@ -429,6 +429,14 @@
         "difficulty": 3
       },
       {
+        "slug": "line-up",
+        "name": "Line-Up",
+        "uuid": "c2ab1539-ccc5-4270-997b-fe5be375698a",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
         "slug": "rational-numbers",
         "name": "Rational Numbers",
         "uuid": "8cb180f8-2810-429c-8996-acdfd120b737",
