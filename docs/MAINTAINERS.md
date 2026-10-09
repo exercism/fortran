@@ -25,7 +25,7 @@ so the template must declare those constants (see `exercises/practice/bob/.meta/
 ### Prerequisites
 
 - Working CMake and Fortran compiler
-- Python 3.11+ with `jinja2`
+- Python 3.12+ with `jinja2`
 - git
 
 ### Workflow for adding a new exercise
