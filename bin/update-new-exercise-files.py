@@ -1,42 +1,19 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-"""
+"""Create starter files for a new practice exercise.
 
-See docs/TEST.md for usage of this script
+Writes a stub solution (<exercise>.f90), a stub example (.meta/example.f90)
+and a starter test template (.meta/template.j2). Existing files are left
+untouched. The exercise directory and its .meta/config.json must already
+exist (run `bin/configlet sync` first).
 
-Use this script to create an initial <exercise>_test.f90 file
-which can be used as a skeleton for your test. Typically, you will
-have to replace 'response' in the generated file with the right
-function call.
+After editing the template, generate the test file with `bin/generate_tests`.
+See docs/MAINTAINERS.md for the full workflow.
 
-Also note that Fortran has issues with special characters such as \n and \t
-so take special care handling these.
+Example:
 
-
-Prerequisites
-- Working cmake and fortran compiler
-- Python 3.x (it may work with Python 2.x, but that is untested)
-- Up-to-date local version of the https://github.com/exercism/problem-specifications.git repo
-
-Workflow for creating a new test
-- pull latest changes from exercism/problem-specifications
-- run this script for the example you want to create
-- copy config/CMakeLists.txt for exercise directory
-- implement working exercise
-- fix potential problematic tests (see eg. exercise/bob "Test 20" and "Test 24")
-- ensure ctest validates without errors
-- open a pull request with your changes
-
-For bob example:
-
-$ python3 bin/update-new-exercise-files.py --exercise_path exercises/practice/bob
-$ cp config/CMakeLists.txt exercises/practice/bob/.
-$ cd exercises/practice/bob
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make
-$ ctest -V
+$ python3 bin/update-new-exercise-files.py -e exercises/practice/bob
+$ bin/generate_tests bob
 """
 
 import argparse
@@ -87,7 +64,7 @@ class Exercise:
 
 
 def stub_implementation(exercise_name: str) -> str:
-    return textwrap.dedent("""\
+    return textwrap.dedent(f"""\
         module {exercise_name}
           implicit none
         contains
@@ -125,7 +102,7 @@ def template_stub() -> str:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create exercise")
-    parser.add_argument("-e", "--exercise_path", help="The path of the exercise")
+    parser.add_argument("-e", "--exercise_path", required=True, help="The path of the exercise")
 
     args = parser.parse_args()
     exercise = Exercise(args.exercise_path)

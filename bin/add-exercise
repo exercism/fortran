@@ -15,16 +15,12 @@ command -v curl >/dev/null 2>&1 || {
     echo >&2 "curl is required but not installed. Please install it and make sure it's in your PATH."
     exit 1
 }
-python3 -c 'import toml' 2>/dev/null || {
-    echo >&2 "The python3 toml module is required: pip3 install toml"
-    exit 1
-}
 
 bin/fetch-configlet
 
 # Add entry for exercise in config.json
 slug="${1}"
-name=$(echo "${slug}" | sed 's/\b\w/\u&/g')
+name=$(echo "${slug}" | sed 's/-/ /g; s/\b\w/\u&/g')
 uuid=$(bin/configlet uuid)
 jq --arg slug "${slug}" --arg uuid "${uuid}" --arg name "${name}" \
     '.exercises.practice += [{slug: $slug, name: $name, uuid: $uuid, practices: [], prerequisites: [], difficulty: 1}]' \
@@ -34,29 +30,9 @@ jq --arg slug "${slug}" --arg uuid "${uuid}" --arg name "${name}" \
 bin/configlet sync --update --yes --tests include --filepaths --metadata --docs --exercise "${slug}"
 
 
-if [ -n "${XDG_CACHE_HOME}" ] && [ -d "${XDG_CACHE_HOME}" ]; then
-    os_cache_dir="${XDG_CACHE_HOME}"
-elif [ "$(uname)" == "Darwin" ]; then
-    os_cache_dir="${HOME}/Library/Caches"
-else
-    os_cache_dir="${HOME}/.cache"
-fi
-
-cache_dir="${os_cache_dir}/exercism/configlet/problem-specifications"
-
-snake_name=$(echo "${slug}" | sed 's/-/_/g')
 exercise_dir="exercises/practice/${slug}"
-stub_file_path="${exercise_dir}/${snake_name}.f90"
-test_file_path="${exercise_dir}/${snake_name}_test.f90"
-example_file_path="${exercise_dir}/.meta/example.f90"
-canonical_data_file_path="${cache_dir}/exercises/${slug}/canonical-data.json"
-cmakelists_file_path="${exercise_dir}/CMakeLists.txt"
 
-touch "${stub_file_path}"
-touch "${test_file_path}"
-touch "${example_file_path}"
+cp config/CMakeLists.txt "${exercise_dir}/CMakeLists.txt"
 
-cp config/CMakeLists.txt "${cmakelists_file_path}"
-
-# Update the new exercise files, which includes generating the tests
-python3 bin/update-new-exercise-files.py "${slug}" "${snake_name}" "${stub_file_path}" "${test_file_path}" "${example_file_path}" "${canonical_data_file_path}"
+# Create the stub solution, stub example and starter test template
+python3 bin/update-new-exercise-files.py -e "${exercise_dir}"
