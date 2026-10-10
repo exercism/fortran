@@ -35,19 +35,6 @@
   "exercises": {
     "practice": [
       {
-        "slug": "hello-world",
-        "name": "Hello World",
-        "uuid": "b71d9258-78ef-4986-b9ed-ebf93b72d399",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 1,
-        "topics": [
-          "conditionals",
-          "optional_values",
-          "text_formatting"
-        ]
-      },
-      {
         "slug": "acronym",
         "name": "Acronym",
         "uuid": "126acd3f-9ad5-46be-ae29-188fdbd7adf7",
@@ -159,6 +146,19 @@
           "bitwise_operations",
           "integers",
           "type_conversion"
+        ]
+      },
+      {
+        "slug": "hello-world",
+        "name": "Hello World",
+        "uuid": "b71d9258-78ef-4986-b9ed-ebf93b72d399",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1,
+        "topics": [
+          "conditionals",
+          "optional_values",
+          "text_formatting"
         ]
       },
       {
