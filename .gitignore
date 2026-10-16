@@ -17,4 +17,5 @@ build/
 __pycache__/
 .vscode/
 
+# Ugly but useful:
 CLAUDE.md
