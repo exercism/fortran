@@ -460,6 +460,14 @@
         "difficulty": 3
       },
       {
+        "slug": "all-your-base",
+        "name": "All-Your-Base",
+        "uuid": "3ab46277-7bf6-41ab-b9a8-47651aa48c45",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "protein-translation",
         "name": "Protein Translation",
         "uuid": "3d2ba0a1-2a2a-4e1f-89e8-c5add9ddceef",
