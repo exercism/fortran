@@ -16,3 +16,6 @@ exercises/practice/*/*_build_all.f90
 build/
 __pycache__/
 .vscode/
+
+# Ugly but useful:
+CLAUDE.md
