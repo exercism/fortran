@@ -1,15 +1,15 @@
 # For maintainers
 
-## Generating tests: `bin/generate_tests`
+## Generating tests: `bin/generate_tests.py`
 
 Test files are generated from the canonical data in
 [exercism/problem-specifications](https://github.com/exercism/problem-specifications)
 using a Jinja template stored in each exercise at `.meta/template.j2`.
 
 ```bash
-bin/generate_tests bob            # regenerate one exercise
-bin/generate_tests                # regenerate every exercise that has a template
-bin/generate_tests --no-pull bob  # skip `git pull` of problem-specifications
+bin/generate_tests.py bob            # regenerate one exercise
+bin/generate_tests.py                # regenerate every exercise that has a template
+bin/generate_tests.py --no-pull bob  # skip `git pull` of problem-specifications
 ```
 
 The script reads problem-specifications from configlet's cache
@@ -33,14 +33,21 @@ so the template must declare those constants (see `exercises/practice/bob/.meta/
 Using `bob` as an example:
 
 - Create a new branch, e.g. `git checkout -b exercise-bob`
-- run `bin/add-exercise bob` to fix `config.json`, configlet sync, CMake and starter-file steps below in one go (needs `jq` and `curl`).
+- Run `bin/add-exercise bob` (needs `jq` and `curl`). This:
+  - fetches configlet and runs `configlet create`, which adds the exercise to `config.json` and syncs its docs, metadata and `tests.toml` from problem-specifications
+  - sorts `config.json` with `bin/reorder-exercises`
+  - copies `exercises/shared/CMakeLists.txt` into the exercise directory
+  - writes a stub solution, a stub `.meta/example.f90` and a starter `.meta/template.j2` (from `exercises/shared/template.j2`)
+
+  It prompts for your GitHub username unless you pass `-a <username>`, and sets difficulty 1 unless you pass `-d <difficulty>`.
+
 - Edit `.meta/template.j2` so each case calls the right function with the right inputs, then generate the tests:
 
   ```bash
-  bin/generate_tests bob
+  bin/generate_tests.py bob
   ```
 
-- Write a working solution in `.meta/example.f90`, and leave a skeleton in the student file (e.g. `bob.f90`)
+- Write a working solution in `.meta/example.f90`. Replace the student file (e.g. `bob.f90`) with a skeleton of the functions or subroutines the tests call, to help the student get started
 - Make sure all tests pass, running the full build from the repository root:
 
   ```bash
@@ -55,10 +62,5 @@ Using `bob` as an example:
 
 ### Changing `CMakeLists.txt`
 
-When changing the cmake file, update the master copy in `config/` and use `bin/update-cmake-files` to copy it to all exercise directories.
+When changing the cmake file, update the master copy in `exercises/shared/` and use `bin/update-cmake-files` to copy it to all exercise directories.
 
-## Solution
-
-When you have a solution, copy that solution into `.meta/example.f90`.
-
-You should leave a skeleton implementation of the function or subroutine that helps the student and leave the file with the exercise name in the exercise directory.

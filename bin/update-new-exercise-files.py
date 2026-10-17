@@ -3,17 +3,18 @@
 """Create starter files for a new practice exercise.
 
 Writes a stub solution (<exercise>.f90), a stub example (.meta/example.f90)
-and a starter test template (.meta/template.j2). Existing files are left
-untouched. The exercise directory and its .meta/config.json must already
-exist (run `bin/configlet sync` first).
+and a starter test template (.meta/template.j2, copied from
+exercises/shared/template.j2). Existing files are left untouched. The
+exercise directory and its .meta/config.json must already exist (run
+`bin/configlet create` first; `bin/add-exercise` does both steps).
 
-After editing the template, generate the test file with `bin/generate_tests`.
+After editing the template, generate the test file with `bin/generate_tests.py`.
 See docs/MAINTAINERS.md for the full workflow.
 
 Example:
 
 $ python3 bin/update-new-exercise-files.py -e exercises/practice/bob
-$ bin/generate_tests bob
+$ bin/generate_tests.py bob
 """
 
 import argparse
@@ -78,26 +79,8 @@ def stub_implementation(exercise_name: str) -> str:
 
 
 def template_stub() -> str:
-    return textwrap.dedent("""\
-        {{ header }}
-
-        program {{ name }}_test_main
-          use TesterMain
-          use {{ name }}
-
-          implicit none
-        {% for case in cases %}
-          ! Test {{ loop.index }}: {{ case["description"] }}
-        {%- if not case["expect_error"] %}
-          call assert_equal({{ case["expected"] }}, {{ case["property"] }}({{ case["input"]["..."] }}), "{{ case["description"] }}")
-        {%- else %}
-          call assert_equal(-1, {{ case["property"] }}({{ case["input"]["number"] }}), "{{ case["description"] }}")
-        {%- endif %}
-        {% endfor %}
-          call test_report()
-
-        end program
-    """)
+    shared = pathlib.Path(__file__).resolve().parent.parent / "exercises/shared/template.j2"
+    return shared.read_text()
 
 
 if __name__ == "__main__":
@@ -111,4 +94,4 @@ if __name__ == "__main__":
     exercise.write_example_file(stub_implementation(exercise.name))
     exercise.write_test_template(template_stub())
 
-    print(f"Use './bin/generate_tests {exercise.slug}' to generate the test file from the Jinja template ({exercise.path / ".meta/template.j2"}).")
+    print(f"Use './bin/generate_tests.py {exercise.slug}' to generate the test file from the Jinja template ({exercise.path / ".meta/template.j2"}).")

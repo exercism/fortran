@@ -53,7 +53,7 @@ We simulate Test-Driven Development (TDD) by implementing the tests in order of 
 
 ### Fortran Track
 
-Test files for the Fortran track are generated from `.meta/template.j2` with the Python 3 script `bin/generate_tests`, which is documented [here](docs/MAINTAINERS.md).
+Test files for the Fortran track are generated from `.meta/template.j2` with the Python 3 script `bin/generate_tests.py`, which is documented [here](docs/MAINTAINERS.md).
 
 ## Submitting a Pull Request
 
