@@ -1,9 +1,5 @@
 # Exercism Fortran Track
 
-[![configlet](https://github.com/exercism/fortran/actions/workflows/configlet.yml/badge.svg)](https://github.com/exercism/fortran/actions/workflows/configlet.yml)
-[![fortran / main](https://github.com/exercism/fortran/actions/workflows/ci.yml/badge.svg)](https://github.com/exercism/fortran/actions/workflows/ci.yml)
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/pclausen/fortran)
-
 Exercism exercises in Fortran.
 
 ## Setup
