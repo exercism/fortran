@@ -70,7 +70,7 @@ run_tests() {
         --read-only \
         --mount type=bind,src="${PWD}",dst=/solution \
         --mount type=bind,src="${PWD}",dst=/output \
-        --mount type=tmpfs,dst=/tmp \
+        --tmpfs /tmp:rw,exec \
         exercism/fortran-test-runner "${slug}" /solution /output
     jq -e '.status == "pass"' "${PWD}/results.json" >/dev/null 2>&1
 }
