@@ -93,7 +93,6 @@ def jinja_env(exercise: pathlib.Path) -> jinja2.Environment:
     env.filters["tojson"] = filter_tojson
     # String escaping, ANSI-C style.
     env.filters["repr"] = repr
-    # Return a dict with only specified keys kepts.
     env.filters["camel_to_snake"] = lambda x: re.sub(r"([a-z])([A-Z])", (lambda m: f"{m.group(1)}_{m.group(2).lower()}"), x)
     env.filters["format_list"] = lambda x: shlex.quote(
         "[" + ",".join(f'"{i}"' if isinstance(i, str) else str(i) for i in x) + "]"
@@ -124,7 +123,9 @@ def generate(specs: pathlib.Path, exercise: pathlib.Path) -> None:
         case["expected"] = bool_to_str(case["expected"])
 
     timestamp = datetime.datetime.now(tz=datetime.UTC).replace(microsecond=0).isoformat()
-    header = f"! The tests were created from https://github.com/exercism/problem-specifications/blob/main/exercises/{exercise.name}/canonical-data.json"
+    header = f"""; These tests are auto-generated with test data from: 
+; https://github.com/exercism/problem-specifications/blob/main/exercises/{exercise.name}/canonical-data.json
+; File last updated on {timestamp}"""
     data = {
         "cases": cases,
         "header": header,
