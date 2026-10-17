@@ -16,3 +16,5 @@ exercises/practice/*/*_build_all.f90
 build/
 __pycache__/
 .vscode/
+
+CLAUDE.md

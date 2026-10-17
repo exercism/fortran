@@ -1,4 +1,6 @@
-! The tests were created from https://github.com/exercism/problem-specifications/blob/main/exercises/sum-of-multiples/canonical-data.json
+! These tests are auto-generated with test data from:
+! https://github.com/exercism/problem-specifications/blob/main/exercises/sum-of-multiples/canonical-data.json
+! File last updated on 2026-10-17T01:05:22+00:00
 
 program sum_of_multiples_test_main
   use TesterMain

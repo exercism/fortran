@@ -1,9 +1,5 @@
 # Exercism Fortran Track
 
-[![configlet](https://github.com/exercism/fortran/actions/workflows/configlet.yml/badge.svg)](https://github.com/exercism/fortran/actions/workflows/configlet.yml)
-[![fortran / main](https://github.com/exercism/fortran/actions/workflows/ci.yml/badge.svg)](https://github.com/exercism/fortran/actions/workflows/ci.yml)
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/pclausen/fortran)
-
 Exercism exercises in Fortran.
 
 ## Setup
@@ -57,7 +53,7 @@ We simulate Test-Driven Development (TDD) by implementing the tests in order of 
 
 ### Fortran Track
 
-Test files for the Fortran track should be created with the Python3 script `bin/create_fortran_test.py` which is documented [here](docs/MAINTAINERS.md).
+Test files for the Fortran track are generated from `.meta/template.j2` with the Python 3 script `bin/generate_tests.py`, which is documented [here](docs/MAINTAINERS.md).
 
 ## Submitting a Pull Request
 

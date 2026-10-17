@@ -19,7 +19,7 @@ import jinja2
 
 def problem_spec_dir() -> pathlib.Path:
     """Detect and return the problem specs."""
-    cache_dir = os.getenv("XDG_CACHE_HOME", os.getenv("HOME") + "/.cache")
+    cache_dir = os.getenv("XDG_CACHE_HOME") or pathlib.Path.home() / ".cache"
     specs = pathlib.Path(cache_dir) / "exercism/configlet/problem-specifications"
     if specs.exists():
         return specs
@@ -93,7 +93,6 @@ def jinja_env(exercise: pathlib.Path) -> jinja2.Environment:
     env.filters["tojson"] = filter_tojson
     # String escaping, ANSI-C style.
     env.filters["repr"] = repr
-    # Return a dict with only specified keys kepts.
     env.filters["camel_to_snake"] = lambda x: re.sub(r"([a-z])([A-Z])", (lambda m: f"{m.group(1)}_{m.group(2).lower()}"), x)
     env.filters["format_list"] = lambda x: shlex.quote(
         "[" + ",".join(f'"{i}"' if isinstance(i, str) else str(i) for i in x) + "]"
@@ -124,7 +123,9 @@ def generate(specs: pathlib.Path, exercise: pathlib.Path) -> None:
         case["expected"] = bool_to_str(case["expected"])
 
     timestamp = datetime.datetime.now(tz=datetime.UTC).replace(microsecond=0).isoformat()
-    header = f"! The tests were created from https://github.com/exercism/problem-specifications/blob/main/exercises/{exercise.name}/canonical-data.json"
+    header = f"""! These tests are auto-generated with test data from:
+! https://github.com/exercism/problem-specifications/blob/main/exercises/{exercise.name}/canonical-data.json
+! File last updated on {timestamp}"""
     data = {
         "cases": cases,
         "header": header,
@@ -143,8 +144,8 @@ def generate(specs: pathlib.Path, exercise: pathlib.Path) -> None:
     # Check for changes or the lack thereof.
     test_file = exercise / json.loads((exercise / ".meta/config.json").read_text())["files"]["test"][0]
     if test_file.exists():
-        old_content = [i for i in test_file.read_text().strip().splitlines() if "generated on" not in i]
-        new_content = [i for i in out.splitlines() if "generated on" not in i]
+        old_content = [i for i in test_file.read_text().strip().splitlines() if "last updated on" not in i]
+        new_content = [i for i in out.splitlines() if "last updated on" not in i]
         if old_content == new_content:
             return
 
