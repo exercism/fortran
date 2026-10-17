@@ -1,4 +1,6 @@
-! The tests were created from https://github.com/exercism/problem-specifications/blob/main/exercises/secret-handshake/canonical-data.json
+! These tests are auto-generated with test data from:
+! https://github.com/exercism/problem-specifications/blob/main/exercises/secret-handshake/canonical-data.json
+! File last updated on 2026-10-17T01:05:22+00:00
 
 program secret_handshake_test_main
   use TesterMain
@@ -59,7 +61,7 @@ program secret_handshake_test_main
   ! Test 11: do nothing for zero
   
   call assert_equal([character(len=20) :: ], commands(0), &
-                 "do nothing for zero")
+                    "do nothing for zero")
 
   call test_report()
 
