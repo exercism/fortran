@@ -117,7 +117,7 @@
       },
       {
         "slug": "eliuds-eggs",
-        "name": "Eliuds-Eggs",
+        "name": "Eliuds Eggs",
         "uuid": "76c695aa-475c-4fdc-b87d-79fc9c1a7e11",
         "practices": [],
         "prerequisites": [],
@@ -351,7 +351,7 @@
       },
       {
         "slug": "two-fer",
-        "name": "Two-Fer",
+        "name": "Two Fer",
         "uuid": "0ee87521-e88e-4230-87da-26eba66db914",
         "practices": [],
         "prerequisites": [],
@@ -422,7 +422,7 @@
       },
       {
         "slug": "largest-series-product",
-        "name": "Largest-Series-Product",
+        "name": "Largest Series Product",
         "uuid": "fcdb9ea8-e6ab-4c3c-84e1-277847bac80b",
         "practices": [],
         "prerequisites": [],
@@ -430,7 +430,7 @@
       },
       {
         "slug": "line-up",
-        "name": "Line-Up",
+        "name": "Line Up",
         "uuid": "c2ab1539-ccc5-4270-997b-fe5be375698a",
         "practices": [],
         "prerequisites": [],
@@ -453,11 +453,19 @@
       },
       {
         "slug": "secret-handshake",
-        "name": "Secret-Handshake",
+        "name": "Secret Handshake",
         "uuid": "a54ba6a1-e98b-4bbc-b109-0b430123ea36",
         "practices": [],
         "prerequisites": [],
         "difficulty": 3
+      },
+      {
+        "slug": "all-your-base",
+        "name": "All Your Base",
+        "uuid": "d9397188-1910-4873-bac0-d044ca13dbc0",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
       },
       {
         "slug": "protein-translation",
