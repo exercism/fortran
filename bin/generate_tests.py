@@ -85,7 +85,8 @@ def filter_escape_whitespace_and_quote(data: str) -> str:
 
 
 def filter_fortran_matrix(data: list[list]) -> str:
-    """Convert row-major nested lists to a Fortran column-major `reshape` expression."""
+    """Convert row-major nested lists to a Fortran column-major `reshape` expression.
+        Limitation: the output is invalid without a type spec if `data` is empty."""
     rows = len(data)
     cols = len(data[0]) if rows else 0
     flat = ", ".join(str(x) for row in data for x in row)
