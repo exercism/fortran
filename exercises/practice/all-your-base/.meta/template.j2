@@ -1,0 +1,20 @@
+{{ header }}
+
+program {{ name }}_test_main
+  use TesterMain
+  use {{ name }}
+
+  implicit none
+{% for case in cases %}
+{%- set input = case["input"] %}
+{%- set digits = input["digits"] if input["digits"] else "[integer ::]" %}
+  ! Test {{ loop.index }}: {{ case["description"] }}
+{%- if not case["expect_error"] %}
+  call assert_equal({{ case["expected"] }}, {{ case["property"] }}({{ digits }}, {{ input["inputBase"] }}, {{ input["outputBase"] }}), "{{ case["description"] }}")
+{%- else %}
+  call assert_equal([-1], {{ case["property"] }}({{ digits }}, {{ input["inputBase"] }}, {{ input["outputBase"] }}), "{{ case["description"] }}")
+{%- endif %}
+{% endfor %}
+  call test_report()
+
+end program

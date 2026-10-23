@@ -460,6 +460,14 @@
         "difficulty": 3
       },
       {
+        "slug": "all-your-base",
+        "name": "All Your Base",
+        "uuid": "d9397188-1910-4873-bac0-d044ca13dbc0",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "anagram",
         "name": "Anagram",
         "uuid": "097e1e3b-4118-4c23-ac85-eecb9a4c1cdb",
