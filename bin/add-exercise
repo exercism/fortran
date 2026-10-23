@@ -68,7 +68,20 @@ fi
 ./bin/configlet create --practice-exercise "${slug}" --author "${author}" --difficulty "${difficulty}"
 
 exercise_dir="exercises/practice/${slug}"
-files=$(jq -r --arg dir "${exercise_dir}" '.files | to_entries | map({key: .key, value: (.value | map("'"'"'" + $dir + "/" + . + "'"'"'") | join(" and "))}) | from_entries' "${exercise_dir}/.meta/config.json")
+files=$(jq -r --arg dir "${exercise_dir}" '
+    .files |
+    to_entries |
+    map(
+        {
+            key: .key, value: (
+                .value |
+                map("'"'"'" + $dir + "/" + . + "'"'"'") |
+                join(" and ")
+            )
+        }
+    ) |
+    from_entries
+    ' "${exercise_dir}/.meta/config.json")
 
 bin/reorder-exercises
 cp exercises/shared/CMakeLists.txt "${exercise_dir}/"
