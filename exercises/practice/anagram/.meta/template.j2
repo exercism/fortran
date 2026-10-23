@@ -1,0 +1,16 @@
+{{ header }}
+
+program {{ name }}_test_main
+  use TesterMain
+  use {{ name }}
+
+  implicit none
+{% for case in cases %}
+  ! Test {{ loop.index }}: {{ case["description"] }}
+  call assert_equal([character(len=20) :: {% for word in case["expected"] %}"{{ word }}"{{ ", " if not loop.last }}{% endfor %}], &
+    {{ case["property"] }}("{{ case.input.subject }}", [character(len=20) :: {% for word in case.input.candidates %}"{{ word }}"{{ ", " if not loop.last }}{% endfor %}]), &
+    "{{ case["description"] }}")
+{% endfor %}
+  call test_report()
+
+end program
