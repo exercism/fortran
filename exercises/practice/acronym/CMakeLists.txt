@@ -68,4 +68,3 @@ add_test (${exercise}_test ${exercise} )
 
 # Run the tests on every build
 #add_custom_target(test_${exercise} ALL DEPENDS ${exercise} COMMAND ${exercise})
-
