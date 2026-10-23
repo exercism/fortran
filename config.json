@@ -479,6 +479,12 @@
         "prerequisites": [],
         "difficulty": 8
       }
+    ],
+    "foregone": [
+      "flatten-array",
+      "meetup",
+      "swift-scheduling",
+      "zipper"
     ]
   },
   "key_features": [
