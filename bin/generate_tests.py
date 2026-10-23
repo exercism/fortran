@@ -84,6 +84,17 @@ def filter_escape_whitespace_and_quote(data: str) -> str:
     return data
 
 
+def filter_fortran_matrix(data: list[list]) -> str:
+    """Convert row-major nested lists to a Fortran column-major `reshape` expression.
+    
+    Limitation: the output is invalid without a type spec if `data` is empty.
+    """
+    rows = len(data)
+    cols = len(data[0]) if rows else 0
+    flat = ", ".join(str(x) for row in data for x in row)
+    return f"reshape([{flat}], [{rows}, {cols}], order=[2, 1])"
+
+
 def jinja_env(exercise: pathlib.Path) -> jinja2.Environment:
     """Return a configured Jinja env with filters added."""
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(exercise / ".meta"))
@@ -99,6 +110,8 @@ def jinja_env(exercise: pathlib.Path) -> jinja2.Environment:
     )
     # Replace whitespace with chars and concatenation.
     env.filters["escape_quote_whitespace"] = filter_escape_whitespace_and_quote
+    # Row-major nested lists to Fortran matrix.
+    env.filters["fortran_matrix"] = filter_fortran_matrix
 
     return env
 
