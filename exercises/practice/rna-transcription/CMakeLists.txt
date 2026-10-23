@@ -36,10 +36,10 @@ else()
       if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../../../testlib) # in git repo locally?
         file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../../../testlib DESTINATION  ${CMAKE_CURRENT_SOURCE_DIR} PATTERN *)
       else() # get from git with http
-        message("Downloading testlib from https://raw.githubusercontent.com/exercism/fortran/master")
+        message("Downloading testlib from https://raw.githubusercontent.com/exercism/fortran/main")
         file(MAKE_DIRECTORY ${testlib_path} )
-        file(DOWNLOAD https://raw.githubusercontent.com/exercism/fortran/master/testlib/TesterMain.f90 ${testlib_path}/TesterMain.f90 SHOW_PROGRESS)
-        file(DOWNLOAD https://raw.githubusercontent.com/exercism/fortran/master/testlib/CMakeLists.txt ${testlib_path}/CMakeLists.txt SHOW_PROGRESS)
+        file(DOWNLOAD https://raw.githubusercontent.com/exercism/fortran/main/testlib/TesterMain.f90 ${testlib_path}/TesterMain.f90 SHOW_PROGRESS)
+        file(DOWNLOAD https://raw.githubusercontent.com/exercism/fortran/main/testlib/CMakeLists.txt ${testlib_path}/CMakeLists.txt SHOW_PROGRESS)
       endif()
     endif()
     # add lib to build

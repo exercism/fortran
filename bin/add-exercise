@@ -1,62 +1,104 @@
 #!/usr/bin/env bash
 
+# Synopsis:
+# Scaffold the files for a new practice exercise.
+# After creating the exercise, follow the instructions in the output.
+
+# Example:
+# bin/add-exercise two-fer
+
+# Example with difficulty:
+# bin/add-exercise -d 5 two-fer
+
+# Example with author and difficulty:
+# bin/add-exercise -a foo -d 3 two-fer
+
 set -euo pipefail
+scriptname=$0
 
-if [ $# -ne 1 ]; then
-    echo "Usage: bin/add-exercise <exercise-slug>"
-    exit 1
-fi
-
-command -v jq >/dev/null 2>&1 || {
-    echo >&2 "jq is required but not installed. Please install it and make sure it's in your PATH."
-    exit 1
-}
-command -v curl >/dev/null 2>&1 || {
-    echo >&2 "curl is required but not installed. Please install it and make sure it's in your PATH."
-    exit 1
-}
-python3 -c 'import toml' 2>/dev/null || {
-    echo >&2 "The python3 toml module is required: pip3 install toml"
+help_and_exit() {
+    echo >&2 "Scaffold the files for a new practice exercise."
+    echo >&2 "Usage: ${scriptname} [-h] [-a author] [-d difficulty] <exercise-slug>"
+    echo >&2 "Where: author is the GitHub username of the exercise creator."
+    echo >&2 "Where: difficulty is between 1 (easiest) to 10 (hardest)."
     exit 1
 }
 
-bin/fetch-configlet
+die() { echo >&2 "$*"; exit 1; }
 
-# Add entry for exercise in config.json
+required_tool() {
+    command -v "${1}" >/dev/null 2>&1 ||
+        die "${1} is required but not installed. Please install it and make sure it's in your PATH."
+}
+
+require_files_template() {
+    jq -e --arg key "${1}" '.files[$key] | length > 0' config.json > /dev/null ||
+        die "The '.files.${1}' array in the 'config.json' file is empty. Please add at least one file. See https://exercism.org/docs/building/tracks/config-json#h-files for more information."
+}
+
+required_tool jq
+
+require_files_template "solution"
+require_files_template "test"
+require_files_template "example"
+
+[[ -f ./bin/fetch-configlet ]] || die "Run this script from the repo's root directory."
+
+author=''
+difficulty='1'
+while getopts :ha:d: opt; do
+    case $opt in
+        h) help_and_exit ;;
+        a) author=$OPTARG ;;
+        d) difficulty=$OPTARG ;;
+        ?) echo >&2 "Unknown option: -$OPTARG"; help_and_exit ;;
+    esac
+done
+shift "$((OPTIND - 1))"
+
+(( $# >= 1 )) || help_and_exit
+
 slug="${1}"
-name=$(echo "${slug}" | sed 's/\b\w/\u&/g')
-uuid=$(bin/configlet uuid)
-jq --arg slug "${slug}" --arg uuid "${uuid}" --arg name "${name}" \
-    '.exercises.practice += [{slug: $slug, name: $name, uuid: $uuid, practices: [], prerequisites: [], difficulty: 1}]' \
-    config.json > config.json.tmp && mv config.json.tmp config.json
 
-# Sync the exercise
-bin/configlet sync --update --yes --tests include --filepaths --metadata --docs --exercise "${slug}"
-
-
-if [ -n "${XDG_CACHE_HOME}" ] && [ -d "${XDG_CACHE_HOME}" ]; then
-    os_cache_dir="${XDG_CACHE_HOME}"
-elif [ "$(uname)" == "Darwin" ]; then
-    os_cache_dir="${HOME}/Library/Caches"
-else
-    os_cache_dir="${HOME}/.cache"
+if [[ -z "${author}" ]]; then
+    read -rp 'Your GitHub username: ' author
 fi
 
-cache_dir="${os_cache_dir}/exercism/configlet/problem-specifications"
+./bin/fetch-configlet
+./bin/configlet create --practice-exercise "${slug}" --author "${author}" --difficulty "${difficulty}"
 
-snake_name=$(echo "${slug}" | sed 's/-/_/g')
 exercise_dir="exercises/practice/${slug}"
-stub_file_path="${exercise_dir}/${snake_name}.f90"
-test_file_path="${exercise_dir}/${snake_name}_test.f90"
-example_file_path="${exercise_dir}/.meta/example.f90"
-canonical_data_file_path="${cache_dir}/exercises/${slug}/canonical-data.json"
-cmakelists_file_path="${exercise_dir}/CMakeLists.txt"
+files=$(jq -r --arg dir "${exercise_dir}" '
+    .files |
+    to_entries |
+    map(
+        {
+            key: .key, value: (
+                .value |
+                map("'"'"'" + $dir + "/" + . + "'"'"'") |
+                join(" and ")
+            )
+        }
+    ) |
+    from_entries
+    ' "${exercise_dir}/.meta/config.json")
 
-touch "${stub_file_path}"
-touch "${test_file_path}"
-touch "${example_file_path}"
+bin/reorder-exercises
+cp exercises/shared/CMakeLists.txt "${exercise_dir}/"
+python3 bin/update-new-exercise-files.py -e "${exercise_dir}"
 
-cp config/CMakeLists.txt "${cmakelists_file_path}"
+cat << NEXT_STEPS
 
-# Update the new exercise files, which includes generating the tests
-python3 bin/update-new-exercise-files.py "${slug}" "${snake_name}" "${stub_file_path}" "${test_file_path}" "${example_file_path}" "${canonical_data_file_path}"
+Your next steps are:
+- Edit the starter test generator template in '${exercise_dir}/.meta/template.j2'
+  - The template should be based on the canonical data at 'https://github.com/exercism/problem-specifications/blob/main/exercises/${slug}/canonical-data.json'
+  - Any test cases you don't want generated, mark them in '${exercise_dir}/.meta/tests.toml' with "include = false"
+- Generate the test suite in $(jq -r '.test' <<< "${files}") using 'bin/generate_tests.py ${slug}'
+- Create the example solution in $(jq -r '.example' <<< "${files}")
+- Verify the example solution passes the tests by building from the repo root
+  ('mkdir -p build && cd build && cmake .. && cmake --build . && ctest -V -R ${slug}')
+- Create the stub solution in $(jq -r '.solution' <<< "${files}")
+- Update the 'difficulty' value for the exercise's entry in the 'config.json' file in the repo's root
+- Sort exercises using 'bin/reorder-exercises'
+- Validate CI using 'bin/configlet lint'
+NEXT_STEPS
