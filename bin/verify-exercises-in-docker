@@ -27,11 +27,11 @@ usage() {
 
 die() { echo "$*" >&2; exit 1; }
 
-docker_local=false
+docker_local=0
 while getopts ":hL" opt; do
     case $opt in
         h) usage; exit ;;
-        L) docker_local=true ;;
+        L) docker_local=1 ;;
         ?) die "Unknown option -$OPTARG" ;;
     esac
 done
@@ -50,7 +50,7 @@ copy_example_or_examplar_to_solution() {
 }
 
 pull_docker_image() {
-    if $docker_local && docker image inspect "$image" >/dev/null 2>&1; then
+    if (( docker_local )) && docker image inspect "$image" >/dev/null 2>&1; then
         echo "Using local image"
         docker image ls "$image"
     else
