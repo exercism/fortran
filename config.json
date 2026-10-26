@@ -476,6 +476,14 @@
         "difficulty": 5
       },
       {
+        "slug": "flower-field",
+        "name": "Flower Field",
+        "uuid": "e4f5b8d7-4afd-46e2-8843-ecb633fa974a",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
         "slug": "protein-translation",
         "name": "Protein Translation",
         "uuid": "3d2ba0a1-2a2a-4e1f-89e8-c5add9ddceef",
