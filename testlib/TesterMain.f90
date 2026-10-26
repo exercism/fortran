@@ -55,6 +55,7 @@ module TesterMain
   interface assert_equal
     module procedure assert_equal_str
     module procedure assert_equal_str_arr
+    module procedure assert_equal_str_mat
     module procedure assert_equal_int
     module procedure assert_equal_int_arr
     module procedure assert_equal_dble
@@ -255,6 +256,40 @@ contains
   end subroutine
 
   !------------------------------------------------------------------
+  subroutine assert_equal_str_mat(estrmat, istrmat, test_description)
+    ! -------------------------------
+    character(len=*), dimension(:,:), intent(in) :: estrmat, istrmat
+    character(len=*), intent(in) :: test_description
+    ! -------------------------------
+    logical :: assert_test
+    character(len=MAX_STRING_LEN) :: expected_msg
+
+    TESTS_RUN = TESTS_RUN + 1
+
+    assert_test = all(shape(estrmat) == shape(istrmat))
+
+    if (.not. assert_test) then
+      call test_fail_msg(test_description)
+      call elogger('Matrices are not the same shape!')
+      expected_msg = get_expected_msg(adjustl(ia_to_s(shape(estrmat))), adjustl(ia_to_s(shape(istrmat))))
+      call elogger(expected_msg)
+      call write_json_fail(test_description, expected_msg)
+      return
+    endif
+
+    assert_test = all(istrmat == estrmat)
+
+    if (.not. assert_test) then
+      call test_fail_msg(test_description)
+      expected_msg = get_expected_msg(sm_to_s(estrmat), sm_to_s(istrmat))
+      call elogger(expected_msg)
+      call write_json_fail(test_description, expected_msg)
+    else
+      call write_json_success(test_description)
+    endif
+  end subroutine
+
+  !------------------------------------------------------------------
   subroutine assert_equal_int(e_int,i_int,test_description)
     ! -------------------------------
     integer, intent(in) :: e_int,i_int
@@ -388,6 +423,30 @@ contains
       call truncate_array_string(s, '",')
     end if
   end function sa_to_s
+
+! String matrix to string, one quoted string per row (trailing blanks kept)
+  function sm_to_s(sm) result(s)
+    character(len=*), intent(in) :: sm(:,:)
+    character(len=MAX_RESULT_STRING_LEN) :: s
+    character(len=len(sm)*size(sm, 2)) :: rows(size(sm, 1))
+    integer :: r, c, status
+
+    if (size(sm, 1) == 0) then
+      s = ''
+      return
+    end if
+
+    do r = 1, size(sm, 1)
+      do c = 1, size(sm, 2)
+        rows(r)((c-1)*len(sm)+1:c*len(sm)) = sm(r, c)
+      end do
+    end do
+
+    write(s, '(*("""",a,"""":","))', iostat=status) rows
+    if (status /= 0) then
+      call truncate_array_string(s, '",')
+    end if
+  end function sm_to_s
 
 ! Integer array to string
   function ia_to_s(i) result(s)
