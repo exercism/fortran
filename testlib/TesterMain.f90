@@ -8,7 +8,7 @@
 !
 !   call assert_equal(input, expected, message)
 !
-! where input/expected may be one of: string(len=80), logical, integer or double precision.
+! where input/expected may be one of: string(len=80), logical, integer, integer(int64) array or double precision.
 !
 ! When used like below, the number of failed test is counted and summarized in 'test_report' routine.
 !
@@ -36,6 +36,7 @@
 module TesterMain
 !------------------------------------------------------------------
 
+  use, intrinsic :: iso_fortran_env, only: int64
   implicit none
   save
   public
@@ -58,6 +59,7 @@ module TesterMain
     module procedure assert_equal_str_mat
     module procedure assert_equal_int
     module procedure assert_equal_int_arr
+    module procedure assert_equal_int64_arr
     module procedure assert_equal_dble
     module procedure assert_equal_real
     module procedure assert_equal_bool
@@ -345,6 +347,40 @@ contains
   end subroutine
 
   !------------------------------------------------------------------
+  subroutine assert_equal_int64_arr(e_int_arr, i_int_arr, test_description)
+    ! -------------------------------
+    integer(int64), dimension(:), intent(in) :: e_int_arr, i_int_arr
+    character(len=*), intent(in) :: test_description
+    ! -------------------------------
+    logical :: assert_test
+    character(len=MAX_STRING_LEN) :: expected_msg
+
+    TESTS_RUN=TESTS_RUN+1
+
+    assert_test = size(e_int_arr) == size(i_int_arr)
+
+    if (.not. assert_test) then
+      call test_fail_msg(test_description)
+      call elogger('Arrays are not the same size!')
+      expected_msg = get_expected_msg(adjustl(ia64_to_s(e_int_arr)), adjustl(ia64_to_s(i_int_arr)))
+      call elogger(expected_msg)
+      call write_json_fail(test_description, expected_msg)
+      return
+    endif
+
+    assert_test = all(i_int_arr == e_int_arr)
+
+    if (.not. assert_test) then
+      call test_fail_msg(test_description)
+      expected_msg = get_expected_msg(adjustl(ia64_to_s(e_int_arr)), adjustl(ia64_to_s(i_int_arr)))
+      call elogger(expected_msg)
+      call write_json_fail(test_description, expected_msg)
+    else
+      call write_json_success(test_description)
+    endif
+  end subroutine
+
+  !------------------------------------------------------------------
   subroutine assert_equal_dble(e_dble,i_dble,test_description)
     ! -------------------------------
     double precision, intent(in) :: e_dble,i_dble
@@ -459,6 +495,18 @@ contains
       call truncate_array_string(s, ',')
     end if
   end function ia_to_s
+
+! 64-bit integer array to string
+  function ia64_to_s(i) result(s)
+    integer(int64), intent(in) :: i(:)
+    character(len=MAX_RESULT_STRING_LEN) :: s
+    integer :: status
+
+    write(s, '(*(i0:","))', iostat=status) i
+    if (status /= 0) then
+      call truncate_array_string(s, ',')
+    end if
+  end function ia64_to_s
 
 ! Double precision to string
   function d_to_s(d)
