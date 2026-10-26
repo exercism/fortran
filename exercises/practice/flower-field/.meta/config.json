@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "colinleach"
+  ],
+  "files": {
+    "solution": [
+      "flower_field.f90"
+    ],
+    "test": [
+      "flower_field_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "blurb": "Mark all the flowers in a garden."
+}

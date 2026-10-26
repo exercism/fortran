@@ -84,15 +84,40 @@ def filter_escape_whitespace_and_quote(data: str) -> str:
     return data
 
 
-def filter_fortran_matrix(data: list[list]) -> str:
+def fortran_literal(x) -> str:
+    """Format a Python scalar as a Fortran literal."""
+    if isinstance(x, bool):
+        return ".true." if x else ".false."
+    if isinstance(x, str):
+        return '"' + x.replace('"', '""') + '"'
+    return str(x)
+
+
+def filter_fortran_matrix(
+    data: list[list] | list[str], type_spec: str | None = None, indent: int = 6, max_width: int = 80
+) -> str:
     """Convert row-major nested lists to a Fortran column-major `reshape` expression.
-    
-    Limitation: the output is invalid without a type spec if `data` is empty.
+
+    Each row may be a list of scalars or a string (one element per character).
+    `type_spec` (e.g. "integer" or "character(len=1)") is emitted as an array
+    constructor type spec; it is required when `data` has no elements.
+    Expressions longer than `max_width` are split with `&` continuations, one
+    matrix row per line, each indented by `indent` spaces, to stay within
+    Fortran's 132-character line limit.
     """
     rows = len(data)
     cols = len(data[0]) if rows else 0
-    flat = ", ".join(str(x) for row in data for x in row)
-    return f"reshape([{flat}], [{rows}, {cols}], order=[2, 1])"
+    row_strs = [", ".join(fortran_literal(x) for x in row) for row in data if len(row)]
+    if not row_strs and not type_spec:
+        raise ValueError("fortran_matrix needs a type_spec for an empty matrix")
+    prefix = f"{type_spec} :: " if type_spec else ""
+    suffix = f"], [{rows}, {cols}], order=[2, 1])"
+
+    single = f"reshape([{prefix}{', '.join(row_strs)}".rstrip() + suffix
+    if len(single) <= max_width:
+        return single
+    sep = ", &\n" + " " * indent
+    return f"reshape([{prefix}&\n" + " " * indent + sep.join(row_strs) + suffix
 
 
 def jinja_env(exercise: pathlib.Path) -> jinja2.Environment:
