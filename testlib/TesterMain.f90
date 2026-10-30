@@ -59,7 +59,10 @@ module TesterMain
     module procedure assert_equal_str_mat
     module procedure assert_equal_int
     module procedure assert_equal_int_arr
+    module procedure assert_equal_int_mat
+    module procedure assert_equal_int64
     module procedure assert_equal_int64_arr
+    module procedure assert_equal_int64_mat
     module procedure assert_equal_dble
     module procedure assert_equal_real
     module procedure assert_equal_bool
@@ -347,6 +350,61 @@ contains
   end subroutine
 
   !------------------------------------------------------------------
+  subroutine assert_equal_int_mat(e_int_mat, i_int_mat, test_description)
+    ! -------------------------------
+    integer, dimension(:,:), intent(in) :: e_int_mat, i_int_mat
+    character(len=*), intent(in) :: test_description
+    ! -------------------------------
+    logical :: assert_test
+    character(len=MAX_STRING_LEN) :: expected_msg
+
+    TESTS_RUN = TESTS_RUN + 1
+
+    assert_test = all(shape(e_int_mat) == shape(i_int_mat))
+
+    if (.not. assert_test) then
+      call test_fail_msg(test_description)
+      call elogger('Matrices are not the same shape!')
+      expected_msg = get_expected_msg(adjustl(ia_to_s(shape(e_int_mat))), adjustl(ia_to_s(shape(i_int_mat))))
+      call elogger(expected_msg)
+      call write_json_fail(test_description, expected_msg)
+      return
+    endif
+
+    assert_test = all(i_int_mat == e_int_mat)
+
+    if (.not. assert_test) then
+      call test_fail_msg(test_description)
+      expected_msg = get_expected_msg(im_to_s(e_int_mat), im_to_s(i_int_mat))
+      call elogger(expected_msg)
+      call write_json_fail(test_description, expected_msg)
+    else
+      call write_json_success(test_description)
+    endif
+  end subroutine
+
+  !------------------------------------------------------------------
+  subroutine assert_equal_int64(e_int,i_int,test_description)
+    ! -------------------------------
+    integer(int64), intent(in) :: e_int,i_int
+    character(len=*), intent(in) :: test_description
+    ! -------------------------------
+    logical :: assert_test
+    character(len=MAX_STRING_LEN) :: expected_msg
+
+    TESTS_RUN=TESTS_RUN+1
+    assert_test = i_int == e_int
+    if (.not. assert_test) then
+      call test_fail_msg(test_description)
+      expected_msg = get_expected_msg(adjustl(i64_to_s(e_int)),adjustl(i64_to_s(i_int)))
+      call elogger(expected_msg)
+      call write_json_fail( test_description, expected_msg)
+    else
+      call write_json_success( test_description)
+    endif
+  end subroutine
+
+  !------------------------------------------------------------------
   subroutine assert_equal_int64_arr(e_int_arr, i_int_arr, test_description)
     ! -------------------------------
     integer(int64), dimension(:), intent(in) :: e_int_arr, i_int_arr
@@ -373,6 +431,40 @@ contains
     if (.not. assert_test) then
       call test_fail_msg(test_description)
       expected_msg = get_expected_msg(adjustl(ia64_to_s(e_int_arr)), adjustl(ia64_to_s(i_int_arr)))
+      call elogger(expected_msg)
+      call write_json_fail(test_description, expected_msg)
+    else
+      call write_json_success(test_description)
+    endif
+  end subroutine
+
+  !------------------------------------------------------------------
+  subroutine assert_equal_int64_mat(e_int_mat, i_int_mat, test_description)
+    ! -------------------------------
+    integer(int64), dimension(:,:), intent(in) :: e_int_mat, i_int_mat
+    character(len=*), intent(in) :: test_description
+    ! -------------------------------
+    logical :: assert_test
+    character(len=MAX_STRING_LEN) :: expected_msg
+
+    TESTS_RUN = TESTS_RUN + 1
+
+    assert_test = all(shape(e_int_mat) == shape(i_int_mat))
+
+    if (.not. assert_test) then
+      call test_fail_msg(test_description)
+      call elogger('Matrices are not the same shape!')
+      expected_msg = get_expected_msg(adjustl(ia_to_s(shape(e_int_mat))), adjustl(ia_to_s(shape(i_int_mat))))
+      call elogger(expected_msg)
+      call write_json_fail(test_description, expected_msg)
+      return
+    endif
+
+    assert_test = all(i_int_mat == e_int_mat)
+
+    if (.not. assert_test) then
+      call test_fail_msg(test_description)
+      expected_msg = get_expected_msg(im64_to_s(e_int_mat), im64_to_s(i_int_mat))
       call elogger(expected_msg)
       call write_json_fail(test_description, expected_msg)
     else
@@ -443,6 +535,13 @@ contains
     write(i_to_s, *) i
   end function
 
+! 64-bit integer to string
+  function i64_to_s(i)
+    integer(int64), intent(in) :: i
+    character(len=MAX_RESULT_STRING_LEN) :: i64_to_s
+    write(i64_to_s, *) i
+  end function
+
 ! String array to string
   function sa_to_s(sa) result(s)
     character(len=*), intent(in) :: sa(:)
@@ -496,6 +595,25 @@ contains
     end if
   end function ia_to_s
 
+! Integer matrix to string, row by row, rows separated by "/"
+  function im_to_s(im) result(s)
+    integer, intent(in) :: im(:,:)
+    character(len=MAX_RESULT_STRING_LEN) :: s
+    character(len=:), allocatable :: buf
+    integer :: r
+
+    buf = ''
+    do r = 1, size(im, 1)
+      if (r > 1) buf = buf // '/'
+      buf = buf // trim(ia_to_s(im(r, :)))
+    end do
+
+    s = buf
+    if (len(buf) > len(s)) then
+      call truncate_array_string(s, ',')
+    end if
+  end function im_to_s
+
 ! 64-bit integer array to string
   function ia64_to_s(i) result(s)
     integer(int64), intent(in) :: i(:)
@@ -507,6 +625,25 @@ contains
       call truncate_array_string(s, ',')
     end if
   end function ia64_to_s
+
+! 64-bit integer matrix to string, row by row, rows separated by "/"
+  function im64_to_s(im) result(s)
+    integer(int64), intent(in) :: im(:,:)
+    character(len=MAX_RESULT_STRING_LEN) :: s
+    character(len=:), allocatable :: buf
+    integer :: r
+
+    buf = ''
+    do r = 1, size(im, 1)
+      if (r > 1) buf = buf // '/'
+      buf = buf // trim(ia64_to_s(im(r, :)))
+    end do
+
+    s = buf
+    if (len(buf) > len(s)) then
+      call truncate_array_string(s, ',')
+    end if
+  end function im64_to_s
 
 ! Double precision to string
   function d_to_s(d)

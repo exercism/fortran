@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "colinleach"
+  ],
+  "files": {
+    "solution": [
+      "game_of_life.f90"
+    ],
+    "test": [
+      "game_of_life_test.f90"
+    ],
+    "example": [
+      ".meta/example.f90"
+    ]
+  },
+  "blurb": "Implement Conway's Game of Life.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
+}
