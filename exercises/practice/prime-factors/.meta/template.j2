@@ -1,0 +1,15 @@
+{{ header }}
+
+program {{ name }}_test_main
+  use, intrinsic :: iso_fortran_env, only: int64
+  use TesterMain
+  use {{ name }}
+
+  implicit none
+{% for case in cases %}
+  ! Test {{ loop.index }}: {{ case["description"] }}
+  call assert_equal([integer(int64) :: {{ case["expected"] | join(", ") }}], {{ case["property"] }}({{ case["input"]["value"] }}_int64), "{{ case["description"] }}")
+{% endfor %}
+  call test_report()
+
+end program

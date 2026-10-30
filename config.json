@@ -437,6 +437,14 @@
         "difficulty": 3
       },
       {
+        "slug": "prime-factors",
+        "name": "Prime Factors",
+        "uuid": "05bf6ff9-2447-495e-96b0-323014678be6",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
         "slug": "rational-numbers",
         "name": "Rational Numbers",
         "uuid": "8cb180f8-2810-429c-8996-acdfd120b737",
