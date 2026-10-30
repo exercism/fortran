@@ -476,6 +476,14 @@
         "difficulty": 4
       },
       {
+        "slug": "game-of-life",
+        "name": "Conway's Game of Life",
+        "uuid": "07e9129d-bd58-4d5d-9380-4433d8f3446e",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "anagram",
         "name": "Anagram",
         "uuid": "097e1e3b-4118-4c23-ac85-eecb9a4c1cdb",
