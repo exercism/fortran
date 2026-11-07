@@ -1,0 +1,15 @@
+function most_common_word(words) result(message)
+  character(len=*), intent(in) :: words(:)
+  character(len=100) :: message
+  integer :: i, n, best, best_count
+
+  best_count = 0
+  do i = 1, size(words)
+    n = count(words == words(i))
+    if (n > best_count) then
+      best = i
+      best_count = n
+    end if
+  end do
+  write(message, '(3a, i0, a)') '"', trim(words(best)), '" appears ', best_count, ' times'
+end function
