@@ -512,6 +512,14 @@
         ]
       },
       {
+        "slug": "two-bucket",
+        "name": "Two Bucket",
+        "uuid": "72903302-3448-43cf-884a-e265c97f79bc",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
         "slug": "linked-list",
         "name": "Linked List",
         "uuid": "ff677dc5-c9b9-4a2e-9e5d-7202d2ec979a",

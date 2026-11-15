@@ -1,0 +1,72 @@
+{{ header }}
+
+program {{ name }}_test_main
+  use TesterMain
+  use {{ name }}
+
+  implicit none
+
+  interface assert_equal
+    procedure assert_equal_bucket_result
+  end interface assert_equal
+{% for case in cases %}
+  ! Test {{ loop.index }}: {{ case.description }}
+  call assert_equal( &
+{%- if not case.expect_error %}
+    bucket_result_t(moves = {{ case.expected.moves }}, goal_bucket = "{{ case.expected.goalBucket }}", other_bucket = {{ case.expected.otherBucket }}), &
+{%- else %}
+    bucket_result_t(moves = -1, goal_bucket = "", other_bucket = 0), &
+{%- endif %}
+    measure({{ case.input.bucketOne }}, {{ case.input.bucketTwo }}, {{ case.input.goal }}, "{{ case.input.startBucket }}"), &
+    "{{ case.description }}")
+{% endfor %}
+  call test_report()
+
+contains
+
+  ! The following are used by the test runner to compare results. You don't
+  ! need to use or understand these procedures to complete the exercise.
+
+  ! An impossible goal is signalled by moves = -1; the other fields are then ignored.
+  function eq_bucket_result(r1, r2) result(eq)
+    type(bucket_result_t), intent(in) :: r1, r2
+    logical :: eq
+
+    if (r1%moves == -1 .or. r2%moves == -1) then
+      eq = r1%moves == r2%moves
+    else
+      eq = r1%moves == r2%moves .and. &
+           r1%goal_bucket == r2%goal_bucket .and. &
+           r1%other_bucket == r2%other_bucket
+    end if
+  end function eq_bucket_result
+
+  subroutine assert_equal_bucket_result(e_res, i_res, test_description)
+    type(bucket_result_t), intent(in) :: e_res, i_res
+    character(*), intent(in) :: test_description
+    character(MAX_STRING_LEN) :: expected_msg
+
+    TESTS_RUN = TESTS_RUN + 1
+
+    if (.not. eq_bucket_result(e_res, i_res)) then
+      call test_fail_msg(test_description)
+      expected_msg = get_expected_msg(br_to_s(e_res), br_to_s(i_res))
+      call elogger(expected_msg)
+      call write_json_fail(test_description, expected_msg)
+    else
+      call write_json_success(test_description)
+    end if
+  end subroutine assert_equal_bucket_result
+
+  function br_to_s(r) result(s)
+    type(bucket_result_t), intent(in) :: r
+    character(MAX_RESULT_STRING_LEN) :: s
+
+    if (r%moves == -1) then
+      s = "impossible (moves = -1)"
+    else
+      write(s, '("(", i0, ", ", a, ", ", i0, ")")') r%moves, trim(r%goal_bucket), r%other_bucket
+    end if
+  end function br_to_s
+
+end program {{ name }}_test_main
