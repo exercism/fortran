@@ -1,15 +1,15 @@
 # For maintainers
 
-## Generating tests: `bin/generate_tests.py`
+## Generating tests: `bin/generate_tests`
 
 Test files are generated from the canonical data in
 [exercism/problem-specifications](https://github.com/exercism/problem-specifications)
 using a Jinja template stored in each exercise at `.meta/template.j2`.
 
 ```bash
-bin/generate_tests.py bob            # regenerate one exercise
-bin/generate_tests.py                # regenerate every exercise that has a template
-bin/generate_tests.py --no-pull bob  # skip `git pull` of problem-specifications
+bin/generate_tests bob            # regenerate one exercise
+bin/generate_tests                # regenerate every exercise that has a template
+bin/generate_tests --no-pull bob  # skip `git pull` of problem-specifications
 ```
 
 The script reads problem-specifications from configlet's cache
@@ -44,7 +44,7 @@ Using `bob` as an example:
 - Edit `.meta/template.j2` so each case calls the right function with the right inputs, then generate the tests:
 
   ```bash
-  bin/generate_tests.py bob
+  bin/generate_tests bob
   ```
 
 - Write a working solution in `.meta/example.f90`. Replace the student file (e.g. `bob.f90`) with a skeleton of the functions or subroutines the tests call, to help the student get started

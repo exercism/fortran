@@ -8,13 +8,13 @@ exercises/shared/template.j2). Existing files are left untouched. The
 exercise directory and its .meta/config.json must already exist (run
 `bin/configlet create` first; `bin/add-exercise` does both steps).
 
-After editing the template, generate the test file with `bin/generate_tests.py`.
+After editing the template, generate the test file with `bin/generate_tests`.
 See docs/MAINTAINERS.md for the full workflow.
 
 Example:
 
 $ python3 bin/update-new-exercise-files.py -e exercises/practice/bob
-$ bin/generate_tests.py bob
+$ bin/generate_tests bob
 """
 
 import argparse
@@ -94,4 +94,4 @@ if __name__ == "__main__":
     exercise.write_example_file(stub_implementation(exercise.name))
     exercise.write_test_template(template_stub())
 
-    print(f"Use './bin/generate_tests.py {exercise.slug}' to generate the test file from the Jinja template ({exercise.path / ".meta/template.j2"}).")
+    print(f"Use './bin/generate_tests {exercise.slug}' to generate the test file from the Jinja template ({exercise.path / ".meta/template.j2"}).")
