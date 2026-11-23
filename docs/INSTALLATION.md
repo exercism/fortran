@@ -4,7 +4,9 @@ The Fortran language track requires that you have the following software
 installed on your system:
 
 - a modern Fortran compiler
-- the CMake cross-platform build system
+- `make` (recommended)
+
+CMake is optional.
 
 ## Prerequisite: A Modern Fortran Compiler
 
@@ -21,37 +23,35 @@ popular proprietary choice for high performance applications. Most
 exercises will work with Intel Fortran, but are only tested with GNU
 Fortran so your mileage may vary.
 
-## Prerequisite: CMake
+## Recommended: make
 
-CMake is an open source cross-platform build system that generates build
-scripts for your native build system (`make`, Visual Studio, Xcode, etc.).
-Exercism's Fortran track uses CMake to give you a ready-made build that:
+Each exercise includes a `Makefile`, so that you can build and run the tests
+with a single command: `make`. This is also what `exercism test` uses.
 
-- compiles the tests
-- compiles your solution
-- links the test executable
-- lets you run the tests with `ctest`
+If you don't have `make`, you can
+[compile the tests directly](https://exercism.org/docs/tracks/fortran/tests#h-without-make).
 
-Using CMake allows exercism to provide a cross-platform build script that
-can generate project files for integrated development environments like
-Visual Studio and Xcode. This allows you to focus on the problem and
-not worry about setting up a build for each exercise.
+## Optional: CMake
 
-Getting a portable build isn't easy and requires access to many kinds of
-systems. If you encounter any problems with the supplied CMake recipe,
-please [report the issue](https://github.com/exercism/fortran/issues) so we can
-improve the CMake support.
+CMake is a cross-platform build system that can generate project files for IDEs
+like Visual Studio and Xcode. Each exercise includes a CMake recipe, which you
+can use instead of `make`. [CMake 3.10 or later](https://cmake.org/) is required.
 
-[CMake 3.10 or later](http://www.cmake.org/) is required to use the provided build recipe.
+If you encounter any problems with the supplied CMake recipe, please
+[report the issue](https://github.com/exercism/fortran/issues).
+
+## Installation
 
 ### Linux
 
-Ubuntu 16.04 and later have compatible compilers in the package manager, so
-installing the necessary compiler can be done with
+Ubuntu 22.04 and later have compatible compilers in the package manager, so
+the compiler and `make` can be installed with
 
 ```bash
-sudo apt-get install gfortran cmake
+sudo apt-get install gfortran make
 ```
+
+Add `cmake` if you want to use it.
 
 For other distributions, you should be able to acquire the compiler through your
 package manager.
@@ -61,8 +61,11 @@ package manager.
 MacOS users can install GCC with [Homebrew](http://brew.sh/) via
 
 ```bash
-brew install gfortran cmake
+brew install gfortran
 ```
+
+`make` is part of the Xcode command line tools, which Homebrew also needs. Run
+`brew install cmake` if you want to use CMake.
 
 ### Windows
 
@@ -78,7 +81,7 @@ With Windows there are a number of options:
 
 Windows 10 introduces the [Windows Subsystem for Linux
 (WSL)](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux). If
-you have Ubuntu 16.04 or later as the subsystem, open an Ubuntu Bash
+you have Ubuntu 22.04 or later as the subsystem, open an Ubuntu Bash
 shell and follow the [Linux](#linux) instructions.
 
 #### Windows with MingW GNU Fortran
@@ -99,6 +102,10 @@ these installations to the PATH, ie.:
 ```Batchfile
 set PATH=%PATH%;C:\tools\mingw64\bin;C:\Program Files\CMake\bin
 ```
+
+CMake is optional, so you can leave it out of both commands. With MingW, `make`
+is usually called `mingw32-make`. If that doesn't work for you,
+[compile the tests directly](https://exercism.org/docs/tracks/fortran/tests#h-without-make).
 
 #### Windows with Visual Studio with NMake and Intel Fortran
 
