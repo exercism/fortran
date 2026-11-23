@@ -27,11 +27,11 @@ To disable a test, simply comment it out with a `'!'`, eg.
 Working through each exercise is a process of:
 
 * Creating the initial build with CMake
-* For each unit test:
- * Satisfy compile errors to make the test fail.
- * Implement just enough to make the test pass.
- * Refactor your implementation to enhance readability, reduce duplication, etc.
- * Uncomment the next test
+* Repeating these steps until all the tests pass:
+  * Fix any compile errors, then run the tests to see which ones fail.
+  * Implement just enough to make the next failing test pass.
+  * Refactor your implementation to enhance readability, reduce duplication, etc.
+  * Run the tests again and move on to the next failing test.
 
 
 ## Creating the Initial Build with CMake
@@ -42,11 +42,8 @@ You should not need to edit this file.  The provided recipe assumes that
 your implementation exists in a source file named after
 the exercise.
 
-For instance, the exercise "Bob" expects an implementation in `bob.f90` file.
-
-**Create your initial implementation files before running CMake.**
-If you do not have file `bob.f90` when running CMake for exercise "Bob", then CMake will generate an error about files not being found.
-**These files can be empty, but they must exist.**
+For instance, the exercise "Bob" expects an implementation in the file `bob.f90`.
+A stub of this file is provided with the exercise, ready for you to complete.
 
 Using this recipe, CMake can generate a suitable project for your environment
 by running `cmake -G` with a suitable generator and the location of the
@@ -57,7 +54,7 @@ to hold these generated build files, as well as the compiled code.
 
 This will keep your exercise folder uncluttered and tidy.
 
-**Note: The first time `cmake` is called, the [testlib](###-Testlib) will be downloaded automatically. The `testlib` is needed for the unit tests to work.
+**Note:** The first time `cmake` is called, the [testlib](#testlib) will be downloaded automatically. The `testlib` is needed for the unit tests to work.
 
 Since you will be running CMake to create the build instructions for each
 assignment, you might want to create a bash script (Linux/MacOS) or
@@ -80,19 +77,15 @@ The generator name for CMake is `Unix Makefiles`.
 Assuming the current exercise is `bob` and we're in the exercise folder:
 
 ```
-$ touch bob.f90
 $ mkdir build
 $ cd build
 $ cmake -G "Unix Makefiles" ..
 $ make
 ```
 
-This example shows creating empty files for the implementation before
-running CMake.
-
-Simply type make in the build directory to compile the tests. This should
-generate compile time errors. Once the errors are fixed run `make` again.
-When all build errors are fixed run the tests:
+Run `make` in the build directory to compile your solution and the tests.
+If there are compile errors, fix them and run `make` again.
+When the build succeeds, run the tests:
 
 ```
 $ ctest -V
@@ -105,15 +98,10 @@ and Enterprise. Assuming the current exercise is `bob` and we're in the
 exercise folder:
 
 ```
-> copy nul: bob.f90
 > mkdir build
 > cd build
 > cmake -G "Visual Studio 15" ..
 ```
-
-This example shows creating empty files for the implementation before
-running CMake.
-
 
 ### Windows with MingW
 
@@ -121,18 +109,18 @@ The generator name for CMake is `MinGW Makefiles`. Assuming the current
 exercise is `bob` and we're in the exercise folder:
 
 ```
-> copy nul: bob.f90
 > mkdir build
 > cd build
 > cmake -G "MinGW Makefiles" ..
 ```
 
-This example shows creating empty files for the implementation before
-running CMake.
+Run `mingw32-make` in the build directory to compile your solution and the tests.
+If there are compile errors, fix them and run `mingw32-make` again.
+When the build succeeds, run the tests:
 
-Simply type make in the build directory to compile the tests. This should
-generate compile time errors. Once the errors are fixed run `make` again.
-When all build errors are fixed run the tests:
+```
+> ctest -V
+```
 
 ### MacOS with Xcode
 
@@ -140,17 +128,13 @@ The generator name for CMake is `Xcode`.
 Assuming the current exercise is `bob` and we're in the exercise folder:
 
 ```
-$ touch bob.f90
 $ mkdir build
 $ cd build
 $ cmake -G Xcode ..
 ```
-This example shows creating empty files for the implementation before
-running CMake.
-
-Simply type make in the build directory to compile the tests. This should
-generate compile time errors. Once the errors are fixed run `make` again.
-When all build errors are fixed run the tests:
+Run `cmake --build .` in the build directory to compile your solution and the tests.
+If there are compile errors, fix them and run `cmake --build .` again.
+When the build succeeds, run the tests:
 
 ```
 $ ctest -V
@@ -159,13 +143,13 @@ $ ctest -V
 
 The tests depends on a small library called `testlib` which is downloaded from github the first time the build is configured with cmake.
 
-In case the download fails, the download can be done manually, eg.
+In case the download fails, delete the `testlib` folder if it exists (it may contain empty files), and download the files manually, eg.
 
 ```
 mkdir testlib
 cd testlib
-wget https://raw.githubusercontent.com/exercism/fortran/master/testlib/CMakeLists.txt
-wget https://raw.githubusercontent.com/exercism/fortran/master/testlib/TesterMain.f90
+wget https://raw.githubusercontent.com/exercism/fortran/main/testlib/CMakeLists.txt
+wget https://raw.githubusercontent.com/exercism/fortran/main/testlib/TesterMain.f90
 ```
 
 
