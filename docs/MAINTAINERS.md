@@ -48,19 +48,24 @@ Using `bob` as an example:
   ```
 
 - Write a working solution in `.meta/example.f90`. Replace the student file (e.g. `bob.f90`) with a skeleton of the functions or subroutines the tests call, to help the student get started
-- Make sure all tests pass, running the full build from the repository root:
+- Make sure all tests pass:
 
   ```bash
-  mkdir -p build && cd build
-  cmake ..
-  cmake --build .
-  ctest -V -R bob
+  bin/verify-exercises bob
   ```
 
 - Run `bin/reorder-exercises` and `bin/configlet lint`
 - If everything passes, open a pull request with your changes
 
-### Changing `CMakeLists.txt`
+### Changing the shared files
 
-When changing the cmake file, update the master copy in `exercises/shared/` and use `bin/update-cmake-files` to copy it to all exercise directories.
+Each exercise has its own copy of three files, so that students get everything they need to run the tests:
 
+| File             | Master copy        |
+| ---------------- | ------------------ |
+| `CMakeLists.txt` | `exercises/shared` |
+| `Makefile`       | `exercises/shared` |
+| `TesterMain.f90` | `testlib`          |
+
+Only edit the master copies, then use `bin/update-cmake-files` to copy them to all exercise directories.
+The test runner also downloads `testlib/TesterMain.f90`.

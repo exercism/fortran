@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+# Synopsis:
+# Verify that each exercise's example solution passes the tests, using the
+# exercise's Makefile in the same way as a student would.
+# You can either verify all exercises or a single exercise.
+
+# Example: verify all exercises
+# bin/verify-exercises
+
+# Example: verify single exercise
+# bin/verify-exercises two-fer
+
+set -uo pipefail
+
+cd "$(dirname "$0")/.." || exit 1
+
+count=0
+failed=()
+
+for dir in exercises/practice/${1:-*}/; do
+    [[ -d "${dir}" ]] || continue
+    slug=$(basename "${dir}")
+    count=$((count + 1))
+    tmp_dir=$(mktemp -d)
+
+    # Only copy the files that a student downloads
+    cp "${dir}Makefile" "${dir}TesterMain.f90" "${dir}${slug//-/_}_test.f90" "${tmp_dir}" \
+        && cp "${dir}.meta/example.f90" "${tmp_dir}/${slug//-/_}.f90" \
+        && output=$(make -C "${tmp_dir}" 2>&1)
+
+    if [[ $? -eq 0 ]]; then
+        echo "pass: ${slug}"
+    else
+        echo "FAIL: ${slug}"
+        echo "${output:-}"
+        failed+=("${slug}")
+    fi
+    output=
+    rm -rf "${tmp_dir}"
+done
+
+if ((count == 0)); then
+    echo "no matching exercises found!" >&2
+    exit 1
+fi
+
+if ((${#failed[@]} > 0)); then
+    echo "${#failed[@]} of ${count} exercises failed: ${failed[*]}" >&2
+    exit 1
+fi
+
+echo "All ${count} exercises passed"

@@ -9,6 +9,7 @@ exercises/practice/*/**
 !exercises/practice/*/.meta/
 !exercises/practice/*/.meta/*
 !exercises/practice/*/CMakeLists.txt
+!exercises/practice/*/Makefile
 !exercises/practice/*/**/*.f90
 exercises/practice/*/*_build_all.f90
 
