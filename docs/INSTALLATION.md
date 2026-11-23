@@ -43,7 +43,7 @@ systems. If you encounter any problems with the supplied CMake recipe,
 please [report the issue](https://github.com/exercism/fortran/issues) so we can
 improve the CMake support.
 
-[CMake 2.8.11 or later](http://www.cmake.org/) is required to use the provided build recipe.
+[CMake 3.10 or later](http://www.cmake.org/) is required to use the provided build recipe.
 
 ### Linux
 
