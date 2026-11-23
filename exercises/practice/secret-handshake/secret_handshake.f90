@@ -6,7 +6,7 @@ contains
     integer, intent(in) :: number
     character(len=20), allocatable :: commands(:)
 
-    commands = []  ! Replace this line with your implementation
+    commands = [character(len=20) :: ]  ! Replace this line with your implementation
   end function
 
 end module
