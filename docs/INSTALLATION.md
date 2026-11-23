@@ -30,8 +30,7 @@ Exercism's Fortran track uses CMake to give you a ready-made build that:
 - compiles the tests
 - compiles your solution
 - links the test executable
-- automatically runs the tests as part of every build
-- fails the build if the any tests fail
+- lets you run the tests with `ctest`
 
 Using CMake allows exercism to provide a cross-platform build script that
 can generate project files for integrated development environments like
@@ -70,17 +69,17 @@ brew install gfortran cmake
 With Windows there are a number of options:
 
 - [Windows Subsystem for Linux
-  (WSL)](<#####-Windows-Subsystem-for-Linux-(WSL)>)
-- [Windows with MingW GNU Fortran](#####-Windows-with-MingW-GNU-Fortran)
+  (WSL)](#windows-subsystem-for-linux-wsl)
+- [Windows with MingW GNU Fortran](#windows-with-mingw-gnu-fortran)
 - [Windows with Visual Studio with NMake and Intel
-  Fortran](#####-Windows-with-Visual-Studio-with-NMake-and-Intel-Fortran)
+  Fortran](#windows-with-visual-studio-with-nmake-and-intel-fortran)
 
 #### Windows Subsystem for Linux (WSL)
 
 Windows 10 introduces the [Windows Subsystem for Linux
 (WSL)](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux). If
 you have Ubuntu 16.04 or later as the subsystem, open an Ubuntu Bash
-shell and follow the [Linux](####-Linux) instructions.
+shell and follow the [Linux](#linux) instructions.
 
 #### Windows with MingW GNU Fortran
 
@@ -103,7 +102,7 @@ set PATH=%PATH%;C:\tools\mingw64\bin;C:\Program Files\CMake\bin
 
 #### Windows with Visual Studio with NMake and Intel Fortran
 
-See [Intel Fortran](###-Intel-Fortran)
+See [Intel Fortran](#intel-fortran)
 
 ### Intel Fortran
 
