@@ -11,7 +11,7 @@ for dir in exercises/*/*/; do
     done
 done
 
-if [ $status -ne 0 ]; then
+if (( status != 0 )); then
     echo "run bin/update-cmake-files to update the shared files of all exercises"
 fi
 
