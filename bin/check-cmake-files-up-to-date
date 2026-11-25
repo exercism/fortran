@@ -5,8 +5,8 @@
 
 status=0
 
-for file in exercises/shared/CMakeLists.txt exercises/shared/Makefile testlib/TesterMain.f90; do
-    for dir in exercises/*/*/; do
+for dir in exercises/*/*/; do
+    for file in exercises/shared/CMakeLists.txt exercises/shared/Makefile testlib/TesterMain.f90; do
         diff -q "$file" "$dir" || status=1
     done
 done
