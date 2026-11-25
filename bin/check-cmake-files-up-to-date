@@ -15,4 +15,4 @@ if (( status != 0 )); then
     echo "run bin/update-cmake-files to update the shared files of all exercises"
 fi
 
-exit $status
+exit "$status"
