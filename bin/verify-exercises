@@ -25,11 +25,10 @@ for dir in exercises/practice/${1:-*}/; do
     tmp_dir=$(mktemp -d)
 
     # Only copy the files that a student downloads
-    cp "${dir}Makefile" "${dir}TesterMain.f90" "${dir}${slug//-/_}_test.f90" "${tmp_dir}" \
-        && cp "${dir}.meta/example.f90" "${tmp_dir}/${slug//-/_}.f90" \
-        && output=$(make -C "${tmp_dir}" 2>&1)
+    cp "${dir}Makefile" "${dir}TesterMain.f90" "${dir}${slug//-/_}_test.f90" "${tmp_dir}"
+    cp "${dir}.meta/example.f90" "${tmp_dir}/${slug//-/_}.f90"
 
-    if [[ $? -eq 0 ]]; then
+    if output=$(make -C "${tmp_dir}" 2>&1); then
         echo "pass: ${slug}"
     else
         echo "FAIL: ${slug}"
