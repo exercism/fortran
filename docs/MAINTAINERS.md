@@ -2,9 +2,7 @@
 
 ## Generating tests: `bin/generate_tests.py`
 
-Test files are generated from the canonical data in
-[exercism/problem-specifications](https://github.com/exercism/problem-specifications)
-using a Jinja template stored in each exercise at `.meta/template.j2`.
+Test files are generated from the canonical data in [exercism/problem-specifications](https://github.com/exercism/problem-specifications) using a Jinja template stored in each exercise at `.meta/template.j2`.
 
 ```bash
 bin/generate_tests.py bob            # regenerate one exercise
@@ -12,19 +10,16 @@ bin/generate_tests.py                # regenerate every exercise that has a temp
 bin/generate_tests.py --no-pull bob  # skip `git pull` of problem-specifications
 ```
 
-The script reads problem-specifications from configlet's cache
-(`~/.cache/exercism/configlet/problem-specifications`, filled by `bin/configlet sync`),
-or from a parent directory named `problem-specifications`.
+The script reads problem-specifications from configlet's cache (`~/.cache/exercism/configlet/problem-specifications`, filled by `bin/configlet sync`), or from a parent directory named `problem-specifications`.
 Only cases included in `.meta/tests.toml` are generated.
 
 Fortran string literals cannot contain escapes such as `\n` and `\t`.
-The `escape_quote_whitespace` template filter rewrites these as
-`" // NEWLINE // "`, `" // TAB // "` and `" // CARRIAGE_RETURN // "`,
-so the template must declare those constants (see `exercises/practice/bob/.meta/template.j2`).
+The `escape_quote_whitespace` template filter rewrites these as `" // NEWLINE // "`, `" // TAB // "` and `" // CARRIAGE_RETURN // "`, so the template must declare those constants (see `exercises/practice/bob/.meta/template.j2`).
 
 ### Prerequisites
 
-- Working CMake and Fortran compiler
+- A Fortran compiler and `make`
+- CMake (optional), for the repo-wide build that CI also runs
 - Python 3.12+ with `jinja2`
 - git
 
@@ -33,10 +28,11 @@ so the template must declare those constants (see `exercises/practice/bob/.meta/
 Using `bob` as an example:
 
 - Create a new branch, e.g. `git checkout -b exercise-bob`
-- Run `bin/add-exercise bob` (needs `jq` and `curl`). This:
+- Run `bin/add-exercise bob` (needs `jq` and `curl`).
+  This:
   - fetches configlet and runs `configlet create`, which adds the exercise to `config.json` and syncs its docs, metadata and `tests.toml` from problem-specifications
   - sorts `config.json` with `bin/reorder-exercises`
-  - copies `exercises/shared/CMakeLists.txt` into the exercise directory
+  - copies `exercises/shared/CMakeLists.txt`, `exercises/shared/Makefile` and `testlib/TesterMain.f90` into the exercise directory
   - writes a stub solution, a stub `.meta/example.f90` and a starter `.meta/template.j2` (from `exercises/shared/template.j2`)
 
   It prompts for your GitHub username unless you pass `-a <username>`, and sets difficulty 1 unless you pass `-d <difficulty>`.
@@ -47,20 +43,26 @@ Using `bob` as an example:
   bin/generate_tests.py bob
   ```
 
-- Write a working solution in `.meta/example.f90`. Replace the student file (e.g. `bob.f90`) with a skeleton of the functions or subroutines the tests call, to help the student get started
-- Make sure all tests pass, running the full build from the repository root:
+- Write a working solution in `.meta/example.f90`.
+  Replace the student file (e.g. `bob.f90`) with a skeleton of the functions or subroutines the tests call, to help the student get started
+- Make sure all tests pass:
 
   ```bash
-  mkdir -p build && cd build
-  cmake ..
-  cmake --build .
-  ctest -V -R bob
+  bin/verify-exercises bob
   ```
 
 - Run `bin/reorder-exercises` and `bin/configlet lint`
 - If everything passes, open a pull request with your changes
 
-### Changing `CMakeLists.txt`
+### Changing the shared files
 
-When changing the cmake file, update the master copy in `exercises/shared/` and use `bin/update-cmake-files` to copy it to all exercise directories.
+Each exercise has its own copy of three files, so that students get everything they need to run the tests:
 
+| File             | Master copy        |
+| ---------------- | ------------------ |
+| `CMakeLists.txt` | `exercises/shared` |
+| `Makefile`       | `exercises/shared` |
+| `TesterMain.f90` | `testlib`          |
+
+Only edit the master copies, then use `bin/update-cmake-files` to copy them to all exercise directories.
+The test runner also downloads `testlib/TesterMain.f90`.

@@ -1,7 +1,9 @@
 #!/bin/bash
 
+# Copy the shared build files and the test library to all exercises.
+
 for dir in exercises/*/*/; do
-    cp exercises/shared/CMakeLists.txt "$dir"/CMakeLists.txt
+    cp exercises/shared/CMakeLists.txt exercises/shared/Makefile testlib/TesterMain.f90 "$dir"
 done
 
 exit 0

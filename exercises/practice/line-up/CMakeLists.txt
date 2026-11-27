@@ -28,39 +28,12 @@ endif()
 # Configure to run all the tests?
 if(${EXERCISM_RUN_ALL_TESTS})
     add_definitions(-DEXERCISM_RUN_ALL_TESTS)
-    set(exercise_f90 ${file}_build_all.f90)
+    add_executable(${exercise} ${file}_build_all.f90 ${file}_test.f90)
+    target_link_libraries(${exercise} TesterMain)
 else()
-    # if building in exercise folder add testlib
-    set(testlib_path ${CMAKE_CURRENT_SOURCE_DIR}/testlib)
-    if (NOT EXISTS ${testlib_path})
-      if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../../../testlib) # in git repo locally?
-        file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../../../testlib DESTINATION  ${CMAKE_CURRENT_SOURCE_DIR} PATTERN *)
-      else() # get from git with http
-        message("Downloading testlib from https://raw.githubusercontent.com/exercism/fortran/main")
-        file(MAKE_DIRECTORY ${testlib_path} )
-        file(DOWNLOAD https://raw.githubusercontent.com/exercism/fortran/main/testlib/TesterMain.f90 ${testlib_path}/TesterMain.f90 SHOW_PROGRESS)
-        file(DOWNLOAD https://raw.githubusercontent.com/exercism/fortran/main/testlib/CMakeLists.txt ${testlib_path}/CMakeLists.txt SHOW_PROGRESS)
-      endif()
-    endif()
-    # add lib to build
-    add_subdirectory(testlib)
-    include_directories(testlib ${CMAKE_CURRENT_BINARY_DIR}/testlib)
-    if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${file}.f90)
-        set(exercise_f90 ${file}.f90)
-    endif()
+    # if building in exercise folder, compile the test library with the exercise
+    add_executable(${exercise} TesterMain.f90 ${file}.f90 ${file}_test.f90)
 endif()
-
-# Get test_files if exercise needs it
-file(GLOB test_files test_files/*.*)
-foreach(test_file ${test_files})
-    message("Copying ${test_file} to binary directory for example ${file}")
-    configure_file(${test_file} . COPYONLY)
-endforeach()
-
-# Build executable from sources and headers
-add_executable(${exercise} ${exercise_f90} ${file}_test.f90  )
-
-target_link_libraries(${exercise} TesterMain)
 
 include(CTest)
 

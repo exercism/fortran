@@ -84,7 +84,7 @@ files=$(jq -r --arg dir "${exercise_dir}" '
     ' "${exercise_dir}/.meta/config.json")
 
 bin/reorder-exercises
-cp exercises/shared/CMakeLists.txt "${exercise_dir}/"
+cp exercises/shared/CMakeLists.txt exercises/shared/Makefile testlib/TesterMain.f90 "${exercise_dir}/"
 python3 bin/update-new-exercise-files.py -e "${exercise_dir}"
 
 cat << NEXT_STEPS
@@ -95,8 +95,7 @@ Your next steps are:
   - Any test cases you don't want generated, mark them in '${exercise_dir}/.meta/tests.toml' with "include = false"
 - Generate the test suite in $(jq -r '.test' <<< "${files}") using 'bin/generate_tests.py ${slug}'
 - Create the example solution in $(jq -r '.example' <<< "${files}")
-- Verify the example solution passes the tests by building from the repo root
-  ('mkdir -p build && cd build && cmake .. && cmake --build . && ctest -V -R ${slug}')
+- Verify the example solution passes the tests using 'bin/verify-exercises ${slug}'
 - Create the stub solution in $(jq -r '.solution' <<< "${files}")
 - Update the 'difficulty' value for the exercise's entry in the 'config.json' file in the repo's root
 - Sort exercises using 'bin/reorder-exercises'

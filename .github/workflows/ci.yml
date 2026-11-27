@@ -38,3 +38,6 @@ jobs:
           cmake ..
           cmake --build .
           ctest -V
+
+      - name: Verify all exercises with make, as students run them
+        run: bin/verify-exercises

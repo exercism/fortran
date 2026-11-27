@@ -1,9 +1,18 @@
 #!/bin/bash
 
-changed_files=$(diff -q --from-file=exercises/shared/CMakeLists.txt exercises/*/*/CMakeLists.txt)
+# Check that all exercises have current copies of the shared build files and
+# the test library.
 
-if [ -n "$changed_files" ]; then
-    echo "$changed_files"
-    echo "run bin/update-cmake-files to update the cmake file of all exercises"
-    exit 1
+status=0
+
+for dir in exercises/*/*/; do
+    for file in exercises/shared/CMakeLists.txt exercises/shared/Makefile testlib/TesterMain.f90; do
+        diff -q "$file" "$dir" || status=1
+    done
+done
+
+if (( status != 0 )); then
+    echo "run bin/update-cmake-files to update the shared files of all exercises"
 fi
+
+exit "$status"
