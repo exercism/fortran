@@ -1,16 +1,74 @@
 # Tests
 
-Each exercise supplies the unit tests and a CMake build recipe. You
-provide the implementation.
-Each test file is meant to link against your implementation to provide a
-console executable that runs the tests. Running the test executable
-prints messages for each failing test and reports a non-zero exit status
-when tests fail.
+Each exercise comes with a set of unit tests and everything needed to build and run them.
+You provide the implementation.
 
-The test file will have the name `<exercise>_test.f90`, so for exercise
-"Bob" the file containing the tests is `bob_test.f90`. Each test will have
-a comment describing the test and then the actual test starting with
-`call assert_equal` eg.
+## Running the tests
+
+Open a terminal in the exercise folder, and run:
+
+```
+make
+```
+
+This compiles your solution and the tests, then runs the tests.
+Run it again each time you change your solution.
+
+If you have the [Exercism CLI](https://exercism.org/docs/using/solving-exercises/working-locally), you can use this command instead, which also runs `make`:
+
+```
+exercism test
+```
+
+To remove the files created by the build, run `make clean`.
+
+### Without make
+
+If you don't have `make` (on Windows, for example), you can compile and run the tests directly.
+For the exercise "Bob":
+
+```
+gfortran TesterMain.f90 bob.f90 bob_test.f90 -o run_tests
+```
+
+Then run the tests on Linux or macOS:
+
+```
+./run_tests
+```
+
+Or on Windows:
+
+```
+.\run_tests
+```
+
+## Working through an exercise
+
+The files for each exercise are named after it.
+For the exercise "Bob":
+
+| File             | Contents                                                          |
+| ---------------- | ----------------------------------------------------------------- |
+| `bob.f90`        | a stub of the solution, ready for you to complete                 |
+| `bob_test.f90`   | the tests                                                         |
+| `TesterMain.f90` | the test library                                                  |
+| `Makefile`       | instructions for `make`                                           |
+| `CMakeLists.txt` | instructions for [CMake](#using-cmake-instead), which is optional |
+
+You only need to edit the solution file.
+
+Working through each exercise is a process of repeating these steps until all the tests pass:
+
+- Fix any compile errors, then run the tests to see which ones fail.
+- Implement just enough to make the next failing test pass.
+- Refactor your implementation to enhance readability, reduce duplication, etc.
+- Run the tests again and move on to the next failing test.
+
+A message is printed for each failing test, followed by a summary.
+If any tests fail, `make` ends with an error.
+
+Each test has a comment describing the test and then the actual test, starting with `call assert_equal`, eg.
 
 ```
   ! Test 16: non-letters with question
@@ -24,132 +82,30 @@ To disable a test, simply comment it out with a `'!'`, eg.
   ! call assert_equal("Sure.", hey(":) ?"), "non-letters with question")
 ```
 
-Working through each exercise is a process of:
+## Using CMake instead
 
-- Creating the initial build with CMake
-- Repeating these steps until all the tests pass:
-  - Fix any compile errors, then run the tests to see which ones fail.
-  - Implement just enough to make the next failing test pass.
-  - Refactor your implementation to enhance readability, reduce duplication, etc.
-  - Run the tests again and move on to the next failing test.
+You don't need CMake, but it may be useful if you work in an IDE such as Visual Studio or Xcode, or use a compiler other than GFortran.
 
-## Creating the Initial Build with CMake
-
-Each exercise will bring a `CMakeLists.txt` file along with the unit
-tests. It contains the canned CMake recipe to handle the build for you.
-You should not need to edit this file. The provided recipe assumes that
-your implementation exists in a source file named after
-the exercise.
-
-For instance, the exercise "Bob" expects an implementation in the file `bob.f90`.
-A stub of this file is provided with the exercise, ready for you to complete.
-
-Using this recipe, CMake can generate a suitable project for your environment
-by running `cmake -G` with a suitable generator and the location of the
-directory for the exercise. CMake will generate a build script appropriate
-for your operating system. To keep those generated files separate from
-your exercise source code, it is common to create a directory called `build`
-to hold these generated build files, as well as the compiled code.
-
-This will keep your exercise folder uncluttered and tidy.
-
-**Note:** The first time `cmake` is called, the [testlib](#testlib) will be downloaded automatically. The `testlib` is needed for the unit tests to work.
-
-Since you will be running CMake to create the build instructions for each
-assignment, you might want to create a bash script (Linux/MacOS) or
-batch file (Windows) for this command.
-
-Once the build environment has been created by CMake, you can build your
-code using the appropriate command for your environment:
-
-- Linux with make: `make`
-- Windows with Visual Studio: Select Build / Build Solution from the menu.
-- Windows with MingW: `mingw32-make.exe`
-- Windows with nMake: `nmake.exe`
-- MacOS with Xcode: Select Build from the toolbar
-
-Examples of running CMake for different environments are shown below.
-
-### Linux\MacOS with Make
-
-The generator name for CMake is `Unix Makefiles`.
-Assuming the current exercise is `bob` and we're in the exercise folder:
+The exercise folder must keep its original name, because CMake uses it to find the source files.
+Start in the exercise folder:
 
 ```
-$ mkdir build
-$ cd build
-$ cmake -G "Unix Makefiles" ..
-$ make
+mkdir build
+cd build
+cmake ..
+cmake --build .
+ctest -V
 ```
 
-Run `make` in the build directory to compile your solution and the tests.
-If there are compile errors, fix them and run `make` again.
-When the build succeeds, run the tests:
+After changing your solution, only the last two commands are needed.
 
-```
-$ ctest -V
-```
+**Note:** Always run `cmake` from a separate folder, such as `build`.
+Running `cmake .` in the exercise folder replaces the `Makefile` that comes with the exercise.
 
-### Windows with Visual Studio 2017
+CMake chooses a suitable generator for your system.
+To choose another, use the `-G` option, eg. `cmake -G Xcode ..`.
+Run `cmake --help` to list the generators you can use.
+With Visual Studio or Xcode, run the tests with `ctest -V -C Debug`.
 
-The generator name for CMake is `Visual Studio 15`. The same generator
-supports all IDE editions of Visual Studio 2017: Community, Professional,
-and Enterprise. Assuming the current exercise is `bob` and we're in the
-exercise folder:
-
-```
-> mkdir build
-> cd build
-> cmake -G "Visual Studio 15" ..
-```
-
-### Windows with MingW
-
-The generator name for CMake is `MinGW Makefiles`. Assuming the current
-exercise is `bob` and we're in the exercise folder:
-
-```
-> mkdir build
-> cd build
-> cmake -G "MinGW Makefiles" ..
-```
-
-Run `mingw32-make` in the build directory to compile your solution and the tests.
-If there are compile errors, fix them and run `mingw32-make` again.
-When the build succeeds, run the tests:
-
-```
-> ctest -V
-```
-
-### MacOS with Xcode
-
-The generator name for CMake is `Xcode`.
-Assuming the current exercise is `bob` and we're in the exercise folder:
-
-```
-$ mkdir build
-$ cd build
-$ cmake -G Xcode ..
-```
-
-Run `cmake --build .` in the build directory to compile your solution and the tests.
-If there are compile errors, fix them and run `cmake --build .` again.
-When the build succeeds, run the tests:
-
-```
-$ ctest -V
-```
-
-### Testlib
-
-The tests depends on a small library called `testlib` which is downloaded from github the first time the build is configured with cmake.
-
-In case the download fails, delete the `testlib` folder if it exists (it may contain empty files), and download the files manually, eg.
-
-```
-mkdir testlib
-cd testlib
-wget https://raw.githubusercontent.com/exercism/fortran/main/testlib/CMakeLists.txt
-wget https://raw.githubusercontent.com/exercism/fortran/main/testlib/TesterMain.f90
-```
+If your exercise folder doesn't contain a `Makefile`, it was downloaded before these files were added to the exercises.
+You can still use CMake.
